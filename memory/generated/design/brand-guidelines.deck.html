@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brand Guidelines - Maxxim</title>
+    <meta name="maxxim:client" content="maxxim" />
+    <meta name="maxxim:phase" content="design" />
+    <meta name="maxxim:skill" content="presentation" />
+    <meta name="maxxim:source" content="brand-guidelines.html" />
+    <meta name="maxxim:generated" content="2026-07-01" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    />
+    <style>
+      :root {
+        --signal: #2d5bff; --ink: #0a0a0a; --slate: #6b7280;
+        --line: #c7ccd6; --mist: #f5f6f8; --paper: #fff;
+      }
+      .reveal { font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
+                font-size: 34px; color: var(--ink); font-weight: 400; }
+      .reveal .slides { text-align: left; }
+      .reveal .slides section { padding: 0 10px; }
+      .reveal h1, .reveal h2, .reveal h3 { font-family: 'Poppins'; color: var(--ink);
+        font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; text-transform: none; margin: 0 0 .35em; }
+      .reveal h1 { font-size: 1.95em; }
+      .reveal h2 { font-size: 1.4em; }
+      .reveal h3 { font-size: 1.0em; font-weight: 600; color: var(--slate); letter-spacing: 0; }
+      .reveal p { line-height: 1.5; margin: 0 0 .55em; }
+      .reveal ul, .reveal ol { display: block; width: 100%; margin: .2em 0 .6em; }
+      .reveal ul { list-style: none; padding-left: 0; }
+      .reveal ul li { position: relative; padding-left: 1em; margin: .38em 0; line-height: 1.4; }
+      .reveal ul li::before { content: ''; position: absolute; left: 0; top: .55em;
+        width: .42em; height: .42em; background: var(--signal); border-radius: 50%; }
+      .reveal ol { padding-left: 1.2em; } .reveal ol li { margin: .38em 0; line-height: 1.4; }
+      .reveal strong { color: var(--signal); font-weight: 600; }
+      .reveal em { color: var(--signal); font-style: normal; font-weight: 600; }
+      .reveal a { color: var(--signal); text-decoration: none; }
+      .reveal .eyebrow { text-transform: uppercase; letter-spacing: .22em; font-size: .46em;
+        font-weight: 700; color: var(--signal); margin: 0 0 .7em; }
+      .reveal .lead { font-size: 1.1em; color: var(--slate); font-weight: 400; }
+      .reveal .stat { font-size: 3.1em; font-weight: 700; color: var(--signal);
+        letter-spacing: -0.03em; line-height: 1; margin: 0 0 .1em; }
+      .reveal .rule { width: 64px; height: 4px; background: var(--signal); border-radius: 2px; margin: .55em 0 .7em; }
+      .reveal .cols { display: flex; gap: 1.2em; align-items: flex-start; }
+      .reveal .cols > * { flex: 1; }
+      .reveal blockquote { border-left: 4px solid var(--signal); background: var(--mist);
+        padding: .5em 1em; color: var(--ink); font-style: normal; box-shadow: none; width: auto; border-radius: 0 8px 8px 0; }
+      .reveal table { font-size: .58em; border-collapse: collapse; width: 100%; }
+      .reveal table th, .reveal table td { text-align: left; padding: .45em .6em; border-bottom: 1px solid var(--line); }
+      .reveal table th { color: var(--slate); text-transform: uppercase; font-size: .8em; letter-spacing: .04em; font-weight: 600; }
+      .reveal .slide-number { background: transparent; color: var(--slate); font-size: 14px; right: 26px; bottom: 18px; }
+      .brandmark { position: fixed; left: 28px; bottom: 18px; z-index: 31;
+        font-size: 12px; letter-spacing: .18em; font-weight: 700; color: var(--slate); opacity: .55; }
+      /* Plate slides */
+      .reveal section.cover, .reveal section.divider, .reveal section.plate { color: #fff; }
+      .reveal section.cover h1, .reveal section.divider h2 { color: #fff; }
+      .reveal section.cover .lead, .reveal section.divider .lead { color: #d6e0ff; }
+      .reveal section.divider.dark .lead { color: #cfd3db; }
+      .reveal section.cover .meta { color: #aebfff; font-size: .6em; margin-top: 1em; }
+      .reveal section.cover .wordmark { font-weight: 700; letter-spacing: .04em; font-size: .7em; color: #fff; margin-bottom: 2em; }
+      /* Plate helpers */
+      .plate-center { display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; height: 100%; }
+      .logo-lockup { display: flex; align-items: center; gap: .55em; }
+      .mono-m { font-family: 'Poppins'; font-weight: 700; font-size: 1.4em; line-height: 1;
+        border: 4px solid currentColor; border-radius: 14px; padding: .04em .26em .12em; letter-spacing: -0.02em; }
+      .wordmark-lg { font-family: 'Poppins'; font-weight: 600; font-size: 2.6em; letter-spacing: -0.03em; }
+      .plate-tag { font-family: 'Poppins'; font-weight: 400; letter-spacing: .04em; font-size: .7em; margin-top: .9em; }
+      .plate-positive { color: var(--signal); }
+      .plate-positive .plate-tag { color: var(--slate); }
+      /* Reversed-logo (real SVG) plate */
+      .logo-svg-wrap { display: flex; align-items: center; justify-content: center; }
+      .logo-svg-wrap img { width: 360px; max-width: 60vw; height: auto; }
+      .plate-note { position: absolute; left: 40px; bottom: 40px; right: 40px; }
+      .plate-note .eyebrow { color: #9db6ff; }
+      .plate-note p { color: #cfdcff; font-size: .6em; line-height: 1.5; margin: 0; }
+      /* Swatch grid */
+      .swatches { display: flex; gap: .7em; width: 100%; margin-top: .2em; }
+      .swatch { flex: 1; }
+      .swatch .chip { height: 130px; border-radius: 10px; border: 1px solid var(--line); }
+      .swatch .nm { font-weight: 600; font-size: .56em; margin: .4em 0 .1em; color: var(--ink); }
+      .swatch .vals { font-size: .46em; color: var(--slate); line-height: 1.4; }
+      .swatch .lead-tag { display: inline-block; font-size: .42em; letter-spacing: .12em; text-transform: uppercase;
+        color: var(--signal); font-weight: 700; margin-bottom: .2em; }
+      /* Type specimen */
+      .spec-row { display: flex; align-items: baseline; gap: 1em; border-bottom: 1px solid var(--line);
+        padding: .28em 0; }
+      .spec-aa { font-family: 'Poppins'; color: var(--ink); width: 1.9em; text-align: center; }
+      .spec-meta { font-size: .42em; color: var(--slate); width: 7em; line-height: 1.35; flex-shrink: 0; }
+      .spec-sample { color: var(--ink); flex: 1; }
+      /* Clear space / min size panel */
+      .cs-box { border: 2px dashed var(--line); border-radius: 12px; padding: 1.1em; background: var(--mist); }
+      .cs-inner { border: 2px solid var(--signal); border-radius: 8px; padding: .55em .8em; display: inline-flex;
+        align-items: center; gap: .4em; background: #fff; }
+      .cs-mini-m { font-family: 'Poppins'; font-weight: 700; border: 3px solid var(--signal); color: var(--signal);
+        border-radius: 8px; padding: 0 .22em .06em; font-size: .9em; }
+      .cs-mini-word { font-family: 'Poppins'; font-weight: 600; color: var(--signal); font-size: 1em; letter-spacing: -0.02em; }
+      .size-row { display: flex; align-items: flex-end; gap: 1.6em; margin-top: .3em; }
+      .size-row .nm { font-size: .42em; color: var(--slate); text-align: center; margin-top: .3em; }
+      .size-chip { background: var(--signal); color: #fff; font-family: 'Poppins'; font-weight: 700;
+        border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+      /* Engine / specialists */
+      .engine-grid { display: flex; gap: .8em; width: 100%; margin-top: .2em; }
+      .engine-card { flex: 1; border: 1px solid var(--line); border-radius: 12px; padding: .8em .85em; background: #fff; }
+      .engine-card .who { font-family: 'Poppins'; font-weight: 700; color: var(--signal); font-size: .92em; letter-spacing: -0.02em; }
+      .engine-card .role { font-size: .5em; color: var(--slate); text-transform: uppercase; letter-spacing: .1em; font-weight: 600; margin: .1em 0 .5em; }
+      .engine-card .does { font-size: .58em; color: var(--ink); line-height: 1.45; }
+      .engine-foot { font-size: .56em; color: var(--slate); margin-top: .7em; }
+      /* Pairings */
+      .pair-row { display: flex; align-items: center; gap: .8em; margin: .35em 0; }
+      .pair-chip { border-radius: 8px; font-family: 'Poppins'; font-weight: 600; font-size: .6em;
+        padding: .5em .8em; display: flex; align-items: center; justify-content: center; min-width: 6.4em; }
+      .pair-label { font-size: .55em; color: var(--slate); line-height: 1.4; }
+      /* Application mockups */
+      .mock-grid { display: flex; gap: .8em; width: 100%; }
+      .mock { flex: 1; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; }
+      .mock .cap { font-size: .42em; color: var(--slate); padding: .4em .6em; border-top: 1px solid var(--line);
+        text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+      .mock .art { height: 150px; display: flex; flex-direction: column; }
+      .card-art { background: var(--signal); color: #fff; padding: .7em; justify-content: space-between; }
+      .card-art .w { font-family: 'Poppins'; font-weight: 600; font-size: .8em; letter-spacing: -0.02em; }
+      .card-art .nm { font-size: .5em; font-weight: 600; }
+      .card-art .dt { font-size: .38em; opacity: .85; line-height: 1.5; }
+      .social-art { background: var(--mist); align-items: center; justify-content: center; }
+      .social-avatar { width: 62px; height: 62px; border-radius: 50%; background: var(--signal); color: #fff;
+        display: flex; align-items: center; justify-content: center; font-family: 'Poppins'; font-weight: 700; font-size: 1em; }
+      .web-art { background: #fff; }
+      .web-bar { height: 22px; background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center;
+        gap: .3em; padding: 0 .5em; }
+      .web-bar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+      .web-bar .wm { margin-left: auto; font-family: 'Poppins'; font-weight: 600; color: var(--signal); font-size: .42em; }
+      .web-body { flex: 1; padding: .7em; display: flex; flex-direction: column; justify-content: center; }
+      .web-body .h { font-family: 'Poppins'; font-weight: 600; color: var(--ink); font-size: .6em; line-height: 1.1; margin-bottom: .4em; }
+      .web-body .btn { background: var(--signal); color: #fff; font-size: .4em; font-weight: 600; padding: .35em .7em;
+        border-radius: 5px; align-self: flex-start; }
+      .sign-art { background: var(--signal); color: #fff; align-items: center; justify-content: center; }
+      .sign-art .w { font-family: 'Poppins'; font-weight: 600; font-size: 1.1em; letter-spacing: -0.02em; }
+      .note-tag { font-size: .5em; color: var(--slate); margin-top: .5em; }
+      .lockopen { display: flex; gap: 1.2em; }
+      .lockopen h3 { margin-bottom: .3em; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Title -->
+        <section class="cover" data-background-color="#2d5bff">
+          <div class="wordmark">MAXXIM</div>
+          <div class="eyebrow" style="color:#fff">Design · Edition 03</div>
+          <h1>Brand Guidelines</h1>
+          <div class="rule" style="background:#fff"></div>
+          <p class="lead">The brand book the rest of the engagement is measured against.</p>
+          <p class="meta">1 July 2026 · Prepared by Maxxim</p>
+          <aside class="notes">Welcome, and thanks for the time. This is the Maxxim brand book, edition three, refreshed on the first of July. It is the one place we write the brand down: the strategy it stands on, the logo system, the exact colours and type, and how it all gets used in practice. Everything we build from here, the website, the copy, the partner hub, the third of July showcase, is measured against this. Two things changed since the twenty-seventh of June edition. There is now a reversed logo variant, documented and embedded in this book. And the product mechanics are now known and named, so Max, Sal, and Pip appear where they make the engine concrete. Neither one re-opens the identity. I will walk you through the locked identity first, then the system, then how it lives in the real world.</aside>
+        </section>
+
+        <!-- Philosophy -->
+        <section>
+          <div class="eyebrow">Philosophy</div>
+          <h2>Built to look like a standard, not a startup shouting</h2>
+          <ul>
+            <li>The proven method, run by a human, at AI speed</li>
+            <li>Held together by a community, not a lone operator</li>
+            <li>Disciplined and high-contrast, never decorative</li>
+            <li>Trust earned through legibility and restraint</li>
+            <li>Finished, owned outcomes, not spectacle</li>
+          </ul>
+          <aside class="notes">The whole system serves one idea: the proven method, run by a human, at AI speed, held together by a community rather than a lone operator. Because we sell finished, owned outcomes and not spectacle, the look is calm and high-contrast. It should feel like a standard you would trust to sign off your work. That restraint is a strategic choice, not just taste, because over-claiming is exactly what the trust gap punishes. A Sage brand earns trust by refusing to dress plumbing up as the product.</aside>
+        </section>
+
+        <!-- Strategy foundation -->
+        <section>
+          <div class="eyebrow">Strategy foundation</div>
+          <h2>The engine behind the partner, not the name on the door</h2>
+          <div class="cols">
+            <div>
+              <h3>Who we serve</h3>
+              <ul>
+                <li>The Capacity-Capped Operator who can win the work but cannot deliver growth repeatably</li>
+                <li>Any organisation type, from tradie to government, through the partner</li>
+              </ul>
+            </div>
+            <div>
+              <h3>The seam we make legible</h3>
+              <ul>
+                <li>The human twenty per cent and machine eighty per cent split, now proven by a live partner</li>
+                <li>Jewell is the name on the door. Maxxim is the engine behind it</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">The visual system is built to fit the strategy, so it helps to name it. We serve the Capacity-Capped Operator, the partner who can win the work and own the relationship but cannot deliver agency-grade growth repeatably, and through that partner we serve any organisation type at all. The core of the whole business is the split: the human holds the twenty per cent clients actually pay for, trust, taste, and judgement, and the machine runs the repeatable eighty per cent at speed. That split is now embodied by a live partner. Jewell enters and owns the client, the Discover phase is always human, and Design and Deploy hand off to the Maxxim engine at scale. Jewell is the name on the door. Maxxim is the engine behind it. The archetype is a weighted blend, Sage first for method-proven authority, Creator in support as the builder of an engine. The whole visual system exists to make that split obvious, credible, and ownable, and to keep the human the hero, not the machine.</aside>
+        </section>
+
+        <!-- The engine: Max / Sal / Pip -->
+        <section>
+          <div class="eyebrow">The engine, made concrete</div>
+          <h2>Three named specialists, always under the human</h2>
+          <div class="engine-grid">
+            <div class="engine-card">
+              <div class="who">Max</div>
+              <div class="role">The words · Cowork</div>
+              <div class="does">Strategy, plans, copy, briefs, and summaries. Drives the tools.</div>
+            </div>
+            <div class="engine-card">
+              <div class="who">Sal</div>
+              <div class="role">The pixels · Design Studio</div>
+              <div class="does">Logos, brand imagery, collateral, and video.</div>
+            </div>
+            <div class="engine-card">
+              <div class="who">Pip</div>
+              <div class="role">Social · Social Studio</div>
+              <div class="does">Drafts posts and, on approval, publishes them.</div>
+            </div>
+          </div>
+          <p class="engine-foot">Branded expression of the method. Always subordinate to Maxxim and to the accountable human, who is the partner.</p>
+          <aside class="notes">The product mechanics are now known, so the engine can be shown as a legible system rather than a black box. The method is carried by three named specialists, each a process. Max does the words in Cowork: strategy, plans, copy, briefs, and summaries. Sal does the pixels in the Design Studio: logos, brand imagery, collateral, and video. Pip runs the Social Studio, drafting posts and publishing them only on approval. Name them when it makes the engine concrete for a partner, but keep them subordinate. They are how the method is shown working, never separate products, and never the accountable human. The accountable human is always the partner. In our vocabulary Maxxim is the platform, Max is the agent, the 3D Process is the method, and Jewell is the method owner. Human in the loop is the point, not a limitation, because that is exactly where quality is decided.</aside>
+        </section>
+
+        <!-- Logo plate (positive) -->
+        <section class="plate" data-background-color="#ffffff">
+          <div class="plate-center plate-positive">
+            <div class="logo-lockup">
+              <span class="mono-m">M</span>
+              <span class="wordmark-lg">Maxxim</span>
+            </div>
+            <div class="plate-tag">The human at the wheel</div>
+          </div>
+          <aside class="notes">Here is the primary mark on white. It is a typographic combination mark: the word Maxxim set in Poppins, paired with a compact gated-M monogram that can stand alone as the icon. With the Blue Frog removed, the system leans typographic, so the wordmark carries the identity and the monogram is restrained and abstract, never a character. It reads as a platform and a standard, not a mascot. This is shown set in Poppins for now, and the final vector files, horizontal, stacked, and icon, slot straight into the same positions when Brand Identity publishes them.</aside>
+        </section>
+
+        <!-- Logo plate: reversed variant, real SVG on dark -->
+        <section class="plate" data-background-color="#0a0a0a">
+          <div class="plate-center">
+            <div class="logo-svg-wrap">
+              <img src="https://assets.maxxim.ai/maxxim/inverse/78512f900b9d.svg" alt="Maxxim reversed logo, white wordmark for dark grounds" />
+            </div>
+          </div>
+          <div class="plate-note">
+            <div class="eyebrow">New · Reversed (inverse) variant</div>
+            <p>White maxxim wordmark for dark grounds and Signal Blue fields. A variant within the locked identity, not a re-opening.</p>
+          </div>
+          <aside class="notes">This is the new reversed, or inverse, variant, embedded here as the real vector file. It is the Edition 03 logotype knocked out in white, for dark grounds and Signal Blue fields. Use it wherever the primary Signal Blue mark would lose contrast: on solid Signal Blue panels, on Ink or near-black surfaces, and on dark photographic fields. Do not use it on white or a light field, where the white wordmark disappears; there we switch back to the primary Signal Blue mark, or to the single-colour mono Ink mark where colour is unavailable. It is white, full stop: do not recolour it, do not tint it, do not add a gradient, glow, or drop shadow, and never place any animal or mascot alongside it. It follows the same clear-space and minimum-size floors as the primary mark, with a little extra breathing room on a dark ground so the knockout does not crowd a panel edge. It is a variant, not a new identity. The identity is not re-opened by it.</aside>
+        </section>
+
+        <!-- Reversed variant: when and how -->
+        <section>
+          <div class="eyebrow">Logo · Backgrounds and inverse rules</div>
+          <h2>Match the mark to the ground</h2>
+          <div class="cols">
+            <div>
+              <h3>Primary Signal Blue mark</h3>
+              <ul>
+                <li>On white or a light field</li>
+                <li>On a white holding shape over busy or photographic detail</li>
+                <li>Where blue is unavailable, single-colour mono in Ink</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Reversed white mark</h3>
+              <ul>
+                <li>On Signal Blue fields, panels, and bands</li>
+                <li>On Ink or any dark or near-black ground</li>
+                <li>On a Signal Blue holding shape over busy or dark photographic detail</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note-tag">On a dark photo, do not trust the photo to carry contrast. Use a solid Signal Blue or Ink holding shape behind the whole footprint. At the small end, prefer the white icon-only monogram over a shrunk wordmark.</p>
+          <aside class="notes">The rule for choosing between the two marks is simple: match the mark to the ground. On white or a light field, the primary Signal Blue mark. On Signal Blue or a dark field, the reversed white mark. On a busy or photographic end-client field, place the mark on a holding shape rather than over busy detail: the reversed white mark on a Signal Blue holding shape, the primary Signal Blue mark on a white holding shape. Where colour is unavailable, the single-colour mono mark in the near-black Ink value, kept flat. On a dark photo especially, do not trust the image to carry the contrast; if any part of the clear-space zone would fall over a lighter passage, put a solid Signal Blue or Ink shape behind the whole footprint. And where a favicon or a very small mark sits on a dark UI, use the white icon-only monogram rather than shrinking the wordmark, so it stays crisp at the sixteen-pixel floor.</aside>
+        </section>
+
+        <!-- Colour swatches -->
+        <section>
+          <div class="eyebrow">Colour</div>
+          <h2>One locked blue, leading. Neutrals support.</h2>
+          <div class="swatches">
+            <div class="swatch">
+              <span class="lead-tag">Locked · lead</span>
+              <div class="chip" style="background:#2d5bff;border-color:#2d5bff"></div>
+              <div class="nm">Signal Blue</div>
+              <div class="vals">#2D5BFF<br>C82 M64 Y0 K0<br>PMS 2727 C</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#0a0a0a;border-color:#0a0a0a"></div>
+              <div class="nm">Ink</div>
+              <div class="vals">#0A0A0A<br>K96<br>Supporting</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#ffffff"></div>
+              <div class="nm">White</div>
+              <div class="vals">#FFFFFF<br>0/0/0/0<br>Supporting</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#f5f6f8"></div>
+              <div class="nm">Mist</div>
+              <div class="vals">#F5F6F8<br>Cool Gray 1 C<br>Supporting</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#c7ccd6"></div>
+              <div class="nm">Line</div>
+              <div class="vals">#C7CCD6<br>Cool Gray 3 C<br>Supporting</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:#6b7280"></div>
+              <div class="nm">Slate</div>
+              <div class="vals">#6B7280<br>Cool Gray 8 C<br>Supporting</div>
+            </div>
+          </div>
+          <aside class="notes">Colour is simple on purpose. Signal Blue is the one locked brand colour and the lead, hex two D five B F F. Blue is trust, reliability, and competence, the ground the trust gap is fought on, and the bright electric quality adds the speed that signals AI. Together they encode the promise, trust plus speed, in a single colour, and the Signal name reinforces clarity over noise. The five neutrals, Ink, White, Mist, Line, and Slate, are recommended supporting colours, not locked, so the book is usable for text, surfaces, and rules without ever introducing a second brand colour. The hex and RGB are exact; the CMYK and Pantone for the bl
