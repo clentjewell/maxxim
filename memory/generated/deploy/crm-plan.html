@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CRM Plan, Maxxim</title>
+    <meta name="maxxim:client" content="maxxim">
+    <meta name="maxxim:phase" content="deploy">
+    <meta name="maxxim:skill" content="crm-plan">
+    <meta name="maxxim:generated" content="2026-07-01">
+    <meta name="maxxim:document" content="crm-plan">
+    <meta name="maxxim:generated_by" content="crm-planner">
+    <meta name="maxxim:version" content="2">
+    <meta name="maxxim:sources" content="master-briefing-v2.1, discovery-dataset-v2, update-brief-2026-07-01, maxxim-product-guide-2026-06-29, jewell-partner-site, business-plan, marketing-plan, customer-profile, USER, SOUL">
+  </head>
+  <body>
+    <h1>CRM Plan</h1>
+
+    <section>
+      <h2>How to read this plan</h2>
+      <p>This is the CRM strategy for Maxxim, produced in the Deploy phase against Master Briefing v2.1, the Gate 1 direction of 27 June 2026, and the 1 July refresh that folded in the 29 June product mechanics and the live Jewell partner site. It is the relationship engine underneath <a href="../design/marketing-plan.html">marketing-plan.html</a> and the partner community. Where the marketing plan describes how Maxxim recruits partners and how partners win clients, this plan describes how every one of those relationships is recorded, scored, automated, governed, and grown over time.</p>
+      <p>One structural fact governs every section. <strong>Maxxim has a two-sided data model.</strong> There is a partner layer (the operators who license the method or refer clients in) and an end-client layer (the universal range of organisations the partners commercialise). These two layers are connected by the engagement, and every engagement carries a <strong>lead-source tag</strong> that is the commercial spine of the whole model. That tag drives the clip scaling and the finder's fee. A CRM that cannot hold both layers and tag the lead source on every engagement cannot support the business model. So this plan treats the lead-source field not as a nice-to-have but as the single most load-bearing field in the system.</p>
+      <p>Two lifecycles run in parallel, and this version models both explicitly. The <strong>partner lifecycle</strong> is the arc Maxxim works directly: recruit an operator, have them choose a door (license or refer), onboard the founding cohort, activate them on a first engagement, and retain them through the community. The <strong>end-client lifecycle</strong> runs through partners: a client is identified, buys the Diagnostic, engages, launches an owned asset, and continues into Deepen. Jewell is the live exemplar of the partner arc run end to end, and Pottsville Acupuncture is the cleared public example of the end-client outcome.</p>
+      <p>The product is now known in detail and this plan uses it as fact. The engagement is carried by three named specialists, each a process the partner drives and checks: <strong>Max</strong> does the words in Claude Cowork, <strong>Sal</strong> does the pixels in the Design Studio, and <strong>Pip</strong> runs the Social Studio. The method is 3D plus Deepen and the gates are mechanical. Client sites ship as owned Astro assets on Cloudflare Pages, images from the asset store, with an embedded contact form now at apps.maxxim.ai (newsletter and chat later). End clients can be given a cut-down, read-only portal with Files, Help, and a private assistant called Ari. Nobody on either layer sees costs; per-action cost is logged for owners only. These mechanics change what the CRM must capture and how the syncs run.</p>
+      <p><strong>The CRM is planned as HubSpot</strong>, consistent with the stack, with the contact-form app at apps.maxxim.ai as the current lead-capture surface. Section 10 sets out the specific requirements that choice must satisfy. Where a requirement is generic, it holds for any platform; where it is HubSpot-specific, it is named as such. Strategy and adoption still matter more than platform power: a well-used pipeline that holds the lead-source rule cleanly beats a powerful instance nobody adopts.</p>
+      <p>The same disciplines as every upstream document apply. Pricing anchors that are real are stated as real: the Growth Diagnostic at $4,950, the premium engagement band of $25,000 to $250,000 with a recent run near $80,000, and the specialist module near $1,500. Every partner economic, every floor, clip, cap, and finder's-fee rate is illustrative, pending pilots, and must be confirmed by Clent before it is treated as locked or used in public copy. Where Master Briefing v2.1 forbids inventing an answer, the item is carried as OPEN. End-client ownership per lead source across the four flows stays OPEN and is not resolved here. Proof respects clearance: Pottsville Acupuncture is the only cleared public Maxxim proof, and Jewell's own named results stay under Jewell's banner. Ownership is Clent and Raef only. Australian English throughout, no em dashes, no exclamation marks.</p>
+    </section>
+
+    <section>
+      <h2>1. CRM Objectives</h2>
+      <p>Five objectives, each tied to a business-plan priority. Most baselines are TBD because Maxxim is pre-scale and the founding cohort is what converts blanks into numbers. Targets are directional and require Clent sign-off before any is treated as a commitment.</p>
+
+      <h3>Customer data goals</h3>
+      <ul>
+        <li><strong>Single source of truth across both layers.</strong> One record system that holds every partner, every end client, and every engagement that connects them, so no partner status or engagement sits in a private spreadsheet. Target: 100 percent of founding-cohort partners and their engagements in the CRM by the close of the cohort window, September 2026.</li>
+        <li><strong>Lead-source completeness is the non-negotiable.</strong> Every engagement record carries a lead-source tag before delivery begins. Target: 100 percent of engagements tagged at creation. This is the field that drives the clip; a missing tag is a commercial dispute waiting to happen.</li>
+        <li><strong>Field completeness on the core record.</strong> Partner records complete on door, status, and owner; engagement records complete on tier, lead source, and stage. Target: 95 percent completeness on those required fields.</li>
+      </ul>
+
+      <h3>Lifecycle automation targets</h3>
+      <ul>
+        <li>Triggered workflows live for the highest-leverage transitions first: showcase to cohort, cohort sign to onboarding, first Diagnostic sold, and at-risk participation. Target: at least four automation workflows live by end of July 2026, covering every partner-layer stage transition the founding cohort actually hits in the window.</li>
+      </ul>
+
+      <h3>Retention KPIs</h3>
+      <ul>
+        <li><strong>Partner retention and renewal.</strong> The again-and-again metric and the truest read of the community moat. Baseline TBD; target set from the first renewal cycle.</li>
+        <li><strong>Deepen attach and repeat rate.</strong> The compounding line, the Pottsville pattern. Target: a Deepen retainer attached on a meaningful share of completed engagements; baseline TBD from first Deepen cycles.</li>
+        <li><strong>Client LTV growth including Deepen.</strong> Justifies acquisition effort and is one of the four unit economics the cohort must lock. Baseline TBD, Pottsville pattern indicative.</li>
+      </ul>
+
+      <h3>Data quality benchmarks</h3>
+      <ul>
+        <li><strong>Duplicate rate.</strong> Below two percent on partner and end-client records, because the named pipeline is small and known, so duplicates are inexcusable at this scale.</li>
+        <li><strong>Decay rate.</strong> Contact details and partner status reviewed quarterly, aligned to the community quarterly review, so the CRM cleanup is the same meeting as the business review and never a separate chore.</li>
+        <li><strong>Lead-source dispute rate.</strong> Zero engagements reaching the clip calculation without a tag agreed in advance. The single most important quality benchmark in the system.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Customer Data Model</h2>
+      <p>The data model is the heart of this plan, because Maxxim is genuinely two-sided. A partner is not a contact who happens to also be a customer; a partner is a delivery channel that owns end-client relationships Maxxim mostly cannot see. The model below holds both layers and makes the engagement and its lead-source tag the connective tissue between them. It maps onto HubSpot's object model: partners and end clients are two record types on the Company object (separated by a record-type field), partner and client people are Contacts, and the engagement is a custom object (or the Deal object extended) that links the two.</p>
+
+      <figure>
+        <figcaption>The two-sided data model: partners and end clients connected by engagements, with the lead-source tag as the commercial spine</figcaption>
+        <pre><code>             THE MAXXIM TWO-SIDED DATA MODEL
+
+   LAYER A: PARTNER SIDE              LAYER B: END-CLIENT SIDE
+   (Maxxim's direct customer)        (served through a partner)
+
+   +----------------------+          +-----------------------+
+   |   PARTNER (org)      |          |   END CLIENT (org)    |
+   |   - door: license /  |          |   - org type: pb/solo |
+   |     refer / spec     |          |     /sme/corp/nfp/gov |
+   |   - status, tier     |          |   - sector, region    |
+   |   - owner (Clent/Raef)|          |   - probity overlay?  |
+   +----------+-----------+          +-----------+-----------+
+              | has                              | has
+              v                                  v
+   +----------------------+          +-----------------------+
+   |  PARTNER CONTACT     |          |  CLIENT CONTACT       |
+   |  (person at partner) |          |  (the buyer / DMU)    |
+   +----------------------+          +-----------------------+
+              |                                  |
+              |   +--------------------------+   |
+              +--&gt;|       ENGAGEMENT         |&lt;--+
+                  |  the join between sides  |
+                  |  - LEAD SOURCE TAG  ***  |
+                  |    partner / maxxim /    |
+                  |    referred / jewell-    |
+                  |    direct (four flows)   |
+                  |  - delivering PARTNER    |
+                  |  - lifecycle stage       |
+                  |  - tier + value (real    |
+                  |    anchors; clip illus.) |
+                  |  - 3D phase + gate state |
+                  +-----------+--------------+
+                              | generates
+                              v
+                  +--------------------------+
+                  |  INTERACTION / ACTIVITY  |
+                  |  gate sign-offs, table   |
+                  |  posts, emails, deal-    |
+                  |  share, Diagnostic sale, |
+                  |  apps.maxxim.ai form-in  |
+                  +--------------------------+
+
+   REFERRER (special partner record) attaches to an ENGAGEMENT
+   via a one-off FINDER'S-FEE record (who referred, fee, window).
+
+   *** The lead-source tag is the field the whole revenue model
+       turns on. It is set ONCE, before delivery, and is locked.
+       Who owns the end client per flow is OPEN for three of the
+       four flows (see the note below).</code></pre>
+      </figure>
+
+      <p><strong>The four flows and the OPEN ownership question.</strong> Master Briefing v2.1 defines four money flows, and the lead-source tag distinguishes them: partner-sourced (the partner brought the client), Maxxim-sourced (the platform generated the lead), referred (a Referrer sent the client in), and Jewell-direct (the exemplar partner's own delivery on the same rails). For the partner-sourced route the partner owns the end client. For the other three, <strong>how end-client ownership is assigned per lead source is OPEN and is not settled here</strong>: a Maxxim-sourced lead has its ownership assigned before delivery but by a rule Clent has not yet fixed, a referred client is owned by the delivering partner but the referrer's standing rule is open, and the future self-serve portal would add a fifth path with its own open ownership question. The data model holds an ownership field on the engagement so that whatever Clent decides can be recorded without a rebuild.</p>
+
+      <h3>Entity: Partner (Layer A account, HubSpot Company record-type = partner)</h3>
+      <p>The Maxxim direct customer. One record per operator. Data sources: the recruitment pipeline, the 3 July showcase sign-ups, founder-network entry, the apps.maxxim.ai contact form, and the partner hub at onboarding.</p>
+      <table>
+        <thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Partner name (org)</td><td>Standard, text</td><td>The operator or operator business</td></tr>
+          <tr><td>Record type</td><td>Standard, single-select (partner)</td><td>Separates Layer A companies from Layer B on one object</td></tr>
+          <tr><td>Partner door</td><td>Custom, single-select (license / refer / specialist)</td><td>Drives the entire relationship type and which automations apply</td></tr>
+          <tr><td>Partner status</td><td>Custom, single-select (pipeline / showcased / signed / onboarded / active / dormant)</td><td>The partner-layer lifecycle stage; powers retention alerts</td></tr>
+          <tr><td>Internal owner</td><td>Custom, single-select (Clent / Raef only)</td><td>Who holds the relationship internally; ownership is Clent and Raef only</td></tr>
+          <tr><td>Vertical strength</td><td>Custom, multi-select (trades, local, NFP, government, corporate, other)</td><td>Powers the deal-share board and vertical-pod matching</td></tr>
+          <tr><td>Floor status</td><td>Custom, single-select (waived-pilot / active / illustrative)</td><td>Tracks the founding-cohort risk reversal; rate illustrative, pending pilots</td></tr>
+          <tr><td>Community participation</td><td>Custom, score 0 to 100</td><td>Weekly-table and review activity; a forward retention signal</td></tr>
+          <tr><td>First-touch source</td><td>Custom, single-select (session / founder network / referral / LinkedIn / apps form)</td><td>Layer 1 recruitment attribution, confirmed at sign</td></tr>
+          <tr><td>Consent and confidentiality flags</td><td>Custom, boolean set</td><td>Public-use consent, marketing consent, named-client-sharing consent</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Entity: End Client (Layer B account, HubSpot Company record-type = end-client)</h3>
+      <p>The organisation a partner commercialises. Universal across organisation types. Visibility is partner-mediated now; some fields may be held by the partner and surfaced to Maxxim only in aggregate, consistent with the confidentiality norm. Data sources: the delivering partner, the Diagnostic record, the engagement.</p>
+      <table>
+        <thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>End-client name (org)</td><td>Standard, text</td><td>The served organisation; may be withheld without consent</td></tr>
+          <tr><td>Record type</td><td>Standard, single-select (end-client)</td><td>Separates Layer B companies from Layer A on one object</td></tr>
+          <tr><td>Organisation type</td><td>Custom, single-select (personal brand / solo / SME / corporate / NFP / government)</td><td>The universal range; drives tier and the probity overlay</td></tr>
+          <tr><td>Sector and region</td><td>Custom, text and single-select</td><td>Vertical word-of-mouth and partner matching</td></tr>
+          <tr><td>Probity overlay required</td><td>Custom, boolean</td><td>True for NFP and government; triggers the procurement-gate and audit overlay</td></tr>
+          <tr><td>Asset ownership confirmed</td><td>Custom, boolean</td><td>Confirms the promise was kept: the client owns the launched Astro asset (the Pottsville pattern)</td></tr>
+          <tr><td>Portal and Ari provisioned</td><td>Custom, boolean</td><td>Whether a read-only portal (Files, Help, Ari) was given; a soft retention surface</td></tr>
+          <tr><td>Confidentiality status</td><td>Custom, single-select (private / consented-aggregate / cleared-public)</td><td>Governs whether the client can be named; Pottsville is cleared-public</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Entity: Engagement (the join, the deal record)</h3>
+      <p>The single most important entity, modelled as a HubSpot custom object (or an extended Deal) associated to one Partner and one End Client. It carries the lead-source tag, the tier, the 3D phase, and the value. One engagement per 3D run. Data sources: the partner at sale, the Diagnostic, the gate sign-offs.</p>
+      <table>
+        <thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Lead source</td><td>Custom, single-select (partner-sourced / Maxxim-sourced / referred / Jewell-direct), locked after set</td><td>The commercial spine; drives clip scaling and finder's fee; set once before delivery; distinguishes the four flows</td></tr>
+          <tr><td>End-client ownership</td><td>Custom, single-select (delivering partner / assigned / OPEN)</td><td>Holds who owns the client; partner-sourced resolves to the partner; the other flows carry the OPEN rule until Clent fixes it</td></tr>
+          <tr><td>Delivering partner</td><td>Custom, association to Partner</td><td>Who owns the margin and signs the 20 percent</td></tr>
+          <tr><td>End client</td><td>Custom, association to End Client</td><td>Who is being commercialised</td></tr>
+          <tr><td>Engagement tier</td><td>Custom, single-select (Diagnostic $4,950 / tradie-local / SME-mid / premium $25K to $250K / Deepen)</td><td>Real price anchors; the land-and-expand position</td></tr>
+          <tr><td>Engagement value</td><td>Custom, currency</td><td>Real anchors; the clip and cap calculation is illustrative, pending pilots</td></tr>
+          <tr><td>3D phase and gate state</td><td>Custom, single-select (Pre-3D / Discover / Design / Deploy / Deepen) plus gate status</td><td>Tracks delivery progress and the partner sign-off at each gate</td></tr>
+          <tr><td>Lifecycle stage</td><td>Custom, single-select (see Section 4)</td><td>The pipeline position for the end-client layer</td></tr>
+          <tr><td>Diagnostic credited</td><td>Custom, boolean</td><td>Whether the $4,950 was credited forward into the engagement</td></tr>
+          <tr><td>Compute logged</td><td>Custom, boolean or reference</td><td>Whether per-action cost was captured for this run (owners only) so contribution margin can be measured</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Entity: Interaction / Activity</h3>
+      <p>Every touch: gate sign-offs, weekly-table posts, deal-share entries, Diagnostic sales, emails, showcase attendance, and inbound submissions from the apps.maxxim.ai contact form. Standard activity fields (type, date, owner, related record) plus a custom field for community-versus-commercial classification so the no-sell community rhythm can be measured without polluting the sales pipeline. Data sources: the partner hub, the email platform, gate reviews, the contact-form app.</p>
+
+      <h3>Entity: Referrer and Finder's-Fee record</h3>
+      <p>A Referrer is a Partner with door = refer. When a referred engagement converts, a one-off Finder's-Fee record attaches to that engagement: who referred, the fee (illustrative, set against gross margin not headline price), one-off or trailing, and the window. This keeps the refer door clean and documented before the client starts, per the briefing rule. Christy Kilmartin's two hats stay separate in the data model, held as either two records or a clearly flagged dual door; the pay rule between referrer and specialist is OPEN.</p>
+
+      <h3>Sync approach between systems</h3>
+      <p>Five systems hold customer data and must stay in step. The CRM (HubSpot) is the system of record for relationships; the partner hub (the extended dashboard on admin.maxxim.ai) is the operational home; the apps.maxxim.ai contact form is the current lead-capture surface; the email platform carries nurture and the community rhythm; accounting holds invoices and the actual money flows.</p>
+      <ul>
+        <li><strong>CRM (HubSpot) is the master for partner, end-client, and engagement records.</strong> Everything else reconciles to it.</li>
+        <li><strong>apps.maxxim.ai contact form to CRM:</strong> a form submission creates or updates a Contact and a pipeline record with a first-touch source captured, so no enquiry is lost between the site and the CRM.</li>
+        <li><strong>Partner hub to CRM:</strong> partner status and community participation sync from the hub into the CRM at sign and on a regular cadence, so the deal-share board and the weekly table feed the participation score.</li>
+        <li><strong>maxxim.ai to CRM:</strong> showcase registrations and site enquiries flow into the CRM as pipeline records with a first-touch source captured.</li>
+        <li><strong>Email platform to CRM:</strong> two-way sync on engagement (opens, clicks, registration), with consent state as the gating field.</li>
+        <li><strong>Accounting to CRM:</strong> invoice and payment status link to the engagement, including the floor and clip lines, so the lead-source tag and the actual money reconcile and the unit economics can be measured per run.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Lead Management</h2>
+      <p>Maxxim has two lead types, because the funnel is two-stage. A <strong>partner lead</strong> is an operator Maxxim is recruiting (Stage 1). An <strong>end-client lead</strong> is an organisation a partner is acquiring (Stage 2), and Maxxim mostly sees these only when the partner brings them in or when Maxxim itself sources them. The scoring model below is written for the partner lead, because that is the lead Maxxim works directly. End-client leads are scored lightly and largely by the partner; what matters most for the end-client lead is the lead-source tag, not a points total.</p>
+
+      <h3>Lead capture points</h3>
+      <ul>
+        <li><strong>Partner leads:</strong> the founder network and warm operator referral (the primary source and the named pipeline: Alex and 3P, Arran Aitken, Greg Johnson, Christy Kilmartin); the 3 July showcase registration and attendance; LinkedIn organic operator interest; the maxxim.ai partner page feeding the apps.maxxim.ai contact form.</li>
+        <li><strong>End-client leads:</strong> the partner's own relationships and vertical databases (the tradie list); the Diagnostic enquiry; any Maxxim-sourced lead the platform generates (which must be tagged Maxxim-sourced at capture); referred clients from a Referrer.</li>
+      </ul>
+
+      <h3>Lead scoring model (partner lead)</h3>
+      <p>Two dimensions, demographic fit and behavioural engagement, weighted so that fit gates and behaviour accelerates. Because this is a small, high-trust recruitment, fit carries real weight: a wrong-fit operator who attends everything is still a wrong fit, and a perfectly-fit operator the founder already trusts can shortcut the journey. Points are illustrative starting values to be tuned through the cohort.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Criterion</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td>Demographic fit</td><td>Is a trusted operator with an existing client base or strong network (the Owen or Carol shape)</td><td>+25</td></tr>
+          <tr><td>Demographic fit</td><td>Has clear vertical strength that fills a pod gap (trades, NFP, government, corporate)</td><td>+15</td></tr>
+          <tr><td>Demographic fit</td><td>On the named founder pipeline or warmly referred by a trusted operator</td><td>+20</td></tr>
+          <tr><td>Demographic fit</td><td>Door clarity: knows whether they want license, refer, or specialist</td><td>+10</td></tr>
+          <tr><td>Behavioural</td><td>Registered for and attended the 3 July showcase</td><td>+15</td></tr>
+          <tr><td>Behavioural</td><td>Booked a direct founder conversation after the showcase</td><td>+20</td></tr>
+          <tr><td>Behavioural</td><td>Engaged with Pottsville proof or scrutinised a live Max, Sal and Pip walkthrough</td><td>+10</td></tr>
+          <tr><td>Behavioural</td><td>Opted into the community weekly table</td><td>+10</td></tr>
+          <tr><td>Negative</td><td>Wants the tool without the method or standard, or pushes against the gates</td><td>minus 30</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>MQL threshold (Marketing Qualified, ready for a founder conversation): 50 points.</strong> A fit operator showing real engagement. The handoff is to Clent or Raef for the direct conversation.</li>
+        <li><strong>SQL threshold (Sales Qualified, ready for a cohort offer): 75 points</strong> and a completed founder conversation. At SQL the partner is offered a door and the founding-cohort terms.</li>
+      </ul>
+      <p><strong>End-client lead note.</strong> The end-client lead is scored simply by the partner: fit to the Diagnostic, budget tier, and readiness. The decisive CRM action for an end-client lead is not the score, it is applying the lead-source tag at capture (partner-sourced, Maxxim-sourced, referred, or Jewell-direct), because that tag, not the score, drives the economics.</p>
+
+      <h3>Lead routing rules</h3>
+      <ul>
+        <li><strong>Partner leads route to an owner, Clent or Raef only.</strong> Routing is by relationship, not territory or round-robin, because the founder relationship is the trust lever and the cohort is small. Named-pipeline leads route to whoever holds that relationship. A submission from the apps.maxxim.ai partner form routes to the owner who holds the closest relationship, or to Clent by default.</li>
+        <li><strong>End-client leads route to the delivering partner</strong> who owns the relationship. A Maxxim-sourced end-client lead is assigned to a partner before delivery, and the assignment plus the Maxxim-sourced tag are recorded together, because that is the moment the clip is determined and, for that flow, ownership is decided under a rule that is OPEN.</li>
+        <li><strong>Specialist demand routes by module need</strong>, pulled in by the engagement gate that unlocks the module, not pushed.</li>
+      </ul>
+
+      <h3>SLA for follow-up</h3>
+      <ul>
+        <li><strong>Partner MQL:</strong> founder follow-up within 2 business days, because the recruitment window is short and operators trust responsiveness.</li>
+        <li><strong>Showcase attendee:</strong> personal follow-up within 1 week of 3 July, while the energy is live.</li>
+        <li><strong>apps.maxxim.ai form submission:</strong> acknowledged within 1 business day; a real founder reply follows on the MQL SLA.</li>
+        <li><strong>End-client Diagnostic enquiry (partner-owned SLA):</strong> partner responds within 2 business days; Maxxim supports with the enablement kit, it does not own the response.</li>
+        <li><strong>Referred client:</strong> the first referred client is treated immaculately, because the referrer is retained by the end client's experience, not their own.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Customer Lifecycle Stages</h2>
+      <p>Two lifecycles run in parallel, one per layer, because a partner and an end client are at different points in different journeys. Both map onto the 3D spine and its gates. The partner arc is modelled explicitly as recruit, license or refer, onboard the founding cohort, activate, and retain; the end-client arc runs through partners.</p>
+
+      <figure>
+        <figcaption>The two parallel lifecycles, partner layer above (recruit to retain), end-client layer below, both on the 3D spine</figcaption>
+        <pre><code>   PARTNER LIFECYCLE (Layer A, Maxxim's direct customer)
+
+   RECRUIT -&gt; CHOOSE DOOR -&gt; ONBOARD -&gt; ACTIVATE -&gt; RETAIN
+   pipeline    license or    founding   first run   weekly
+   + showcase  refer         cohort on  on the      table +
+   (Jewell =   (SQL 75)      platform   rails       Deepen +
+   exemplar)      |          + standards    |       deal-share
+       |          |              |          |          |
+    (MQL 50)   signed        onboarded   active    ADVOCATE
+                                                   refers other
+                                                   operators;
+                                                   quarterly wins
+
+   END-CLIENT LIFECYCLE (Layer B, served through a partner)
+
+   IDENTIFIED -&gt; DIAGNOSTIC -&gt; ENGAGED -&gt; LAUNCHED -&gt; DEEPEN
+   partner       $4,950        core 3D    owned       retainer
+   names the     sprint        engagement  Astro asset (compounds)
+   option        (qualifies)   sold        + portal/Ari    |
+       |            |             |           |            v
+       |         lead-source   gate sign-  asset       ADVOCATE
+       |         TAG SET ***   offs        ownership   word of mouth,
+       v                                   confirmed   cleared proof
+   (NFP/GOV: a PROCUREMENT GATE precedes IDENTIFIED,
+    and an AUDIT/RECORDS overlay spans every stage)
+
+   *** lead-source tag is set at the Diagnostic, before delivery,
+       and locked. It is the input to the clip and the finder's
+       fee. End-client ownership per flow is OPEN for three of the
+       four flows.</code></pre>
+      </figure>
+
+      <h3>Partner lifecycle stages (recruit, license or refer, onboard, activate, retain)</h3>
+      <table>
+        <thead><tr><th>Stage</th><th>Entry criteria</th><th>Action triggered at transition</th><th>Responsible</th><th>Metric</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Recruit (pipeline)</strong></td><td>Identified operator, on the named list, referred in, or via the apps.maxxim.ai form</td><td>Add to recruitment nurture; capture first-touch source; score against the model</td><td>Clent or Raef</td><td>Pipeline volume; source mix</td></tr>
+          <tr><td><strong>Recruit (showcased)</strong></td><td>Registered or attended the 3 July showcase</td><td>Personal follow-up within a week; move toward MQL then SQL</td><td>Clent or Raef</td><td>Showcase attendance; MQL conversion</td></tr>
+          <tr><td><strong>Choose door (signed)</strong></td><td>SQL reached and a door chosen (license or refer); cohort terms accepted</td><td>Kick off onboarding; create partner record; set door and floor status</td><td>Clent or Raef</td><td>Founding partners signed (5 to 8 by Sept)</td></tr>
+          <tr><td><strong>Onboard</strong></td><td>On the platform and standards; partner hub access live; Studios visible</td><td>Engineer a fast first-value moment: the first Diagnostic sale; pair at the weekly table</td><td>Ops (Ronnie), light facilitation</td><td>Time to first Diagnostic; standards completion</td></tr>
+          <tr><td><strong>Activate</strong></td><td>Running engagements on the rails; in the weekly table</td><td>Feed client friction into the compounding loop; surface deal-share matches</td><td>Ops and the community</td><td>Engagements per partner; participation score</td></tr>
+          <tr><td><strong>Retain (advocate)</strong></td><td>Presented a win at the quarterly; refers other operators</td><td>Run the case-study factory (inside clearance); reciprocate shared deal flow</td><td>Clent and the community</td><td>Referrals in; cleared case studies contributed; renewal</td></tr>
+        </tbody>
+      </table>
+      <p>Jewell is the live exemplar of this arc run end to end: a 35-year operator recruited through the founder relationship, on the license door, onboarded onto the same rails, active in market, and the reference every new partner is onboarded against. The Referrer arc is lighter: a Referrer is recruited, chooses the refer door, and is retained by a clean first referred-client experience rather than by delivery; there is no onboarding in the delivery sense. The Specialist arc is demand-pulled: recruited as the cohort needs module capacity, activated when an engagement gate unlocks their module.</p>
+
+      <h3>End-client lifecycle stages</h3>
+      <table>
+        <thead><tr><th>Stage</th><th>Entry criteria</th><th>Action triggered at transition</th><th>Responsible</th><th>Metric</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Identified</strong></td><td>Partner names the option to a client they hold (NFP/GOV: after the procurement gate)</td><td>Create end-client record; partner owns the relationship on the partner-sourced flow</td><td>Delivering partner</td><td>End-client leads per partner</td></tr>
+          <tr><td><strong>Diagnostic</strong></td><td>$4,950 Growth Diagnostic sold</td><td>SET AND LOCK THE LEAD-SOURCE TAG; record ownership per flow (OPEN for three of four); start pilot-data capture</td><td>Partner, supported by Maxxim</td><td>Diagnostics per active partner</td></tr>
+          <tr><td><strong>Engaged</strong></td><td>Core 3D engagement sold; Diagnostic credited forward</td><td>Run Discover to Deploy with gate sign-offs; Max words, Sal pixels, Pip social; record tier and value</td><td>Partner (signs the 20 percent)</td><td>Diagnostic-to-engagement conversion</td></tr>
+          <tr><td><strong>Launched</strong></td><td>Deploy complete; owned Astro asset delivered</td><td>Confirm asset-ownership flag; provision the read-only portal and Ari if given; prompt the Deepen conversation</td><td>Partner</td><td>Launches; asset ownership confirmed</td></tr>
+          <tr><td><strong>Deepen</strong></td><td>Retainer attached (the Pottsville pattern)</td><td>Start the compounding improvement loop; track LTV</td><td>Partner</td><td>Deepen attach rate; client LTV</td></tr>
+          <tr><td><strong>Advocate</strong></td><td>Owned working asset; willing, cleared testimonial</td><td>Capture proof (clearance permitting); enable vertical word of mouth</td><td>Partner, with Clent on clearance</td><td>Cleared case studies; referrals</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>5. Segmentation Framework</h2>
+      <p>Segments are built for three uses: targeting recruitment, personalising the community and nurture, and alerting on risk. They draw directly on the customer-profile personas and the marketing-plan priorities. Size estimates are directional because the motion is early; the approach is to estimate from the named pipeline and the cohort target, not from a market model.</p>
+      <table>
+        <thead><tr><th>Segment</th><th>Definition</th><th>Size estimate approach</th><th>Primary use case</th></tr></thead>
+        <tbody>
+          <tr><td><strong>License-door operators (Owen)</strong></td><td>Partners with door = license; trusted operators who own client relationships</td><td>From the named pipeline plus showcase attendees; the core of the 5 to 8 cohort</td><td>Targeting: the primary recruitment focus</td></tr>
+          <tr><td><strong>Refer-door connectors (Carol)</strong></td><td>Partners with door = refer; networked, no delivery</td><td>Named (Greg, Christy-as-referrer) plus showcase soft-intros</td><td>Targeting: lightest door; seeds Stage 2 deal flow</td></tr>
+          <tr><td><strong>Specialists (Sasha)</strong></td><td>Partners with door = specialist; scoped module providers</td><td>Recruited as the cohort needs module capacity</td><td>Alerting: pull in by demand, not push</td></tr>
+          <tr><td><strong>By vertical strength</strong></td><td>Partners segmented by pod (trades, local, NFP, government, corporate)</td><td>From the vertical-strength field on the partner record</td><td>Targeting and matching: deal-share board and pod coverage</td></tr>
+          <tr><td><strong>End-client value tier</strong></td><td>End clients by tier: Diagnostic, tradie-local, SME-mid, premium $25K to $250K, Deepen</td><td>From the engagement tier field</td><td>Personalisation: tier-appropriate proof and the Deepen prompt</td></tr>
+          <tr><td><strong>End-client by org type</strong></td><td>Personal brand, solo, SME, corporate, NFP, government</td><td>From the organisation-type field</td><td>Personalisation and compliance: NFP and government get the probity overlay</td></tr>
+          <tr><td><strong>Engagement level</strong></td><td>Active, at-risk, or dormant, on participation and recency</td><td>From the community participation score and last-activity date</td><td>Alerting: drives at-risk intervention and win-back</td></tr>
+          <tr><td><strong>By lead source (four flows)</strong></td><td>Engagements tagged partner-sourced, Maxxim-sourced, referred, or Jewell-direct</td><td>From the locked lead-source tag</td><td>Commercial: drives clip scaling, finder's fee, and unit-economics reporting</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. Automation Workflows</h2>
+      <p>Each workflow names a trigger, a sequence of actions with timing, and an owner, expressed so they map onto HubSpot workflows. The emphasis is light and sustainable: automation supports the founder relationship and the community rhythm, it does not replace them. The community is no-sell, so community automations are kept clearly separate from sales automations. All six are defined; the first four are live by end of July, the renewal and win-back workflows follow as the first engagements mature.</p>
+
+      <h3>Workflow 1: Partner lead assignment</h3>
+      <ul>
+        <li><strong>Trigger.</strong> A partner lead reaches MQL (50 points), registers for the showcase, or submits the apps.maxxim.ai partner form.</li>
+        <li><strong>Actions and timing.</strong> Immediately assign to the relationship owner (Clent or Raef); create a task to book a founder conversation; send a personalised, no-hype invitation within 2 business days; log first-touch source.</li>
+        <li><strong>Owner.</strong> Clent or Raef.</li>
+      </ul>
+
+      <h3>Workflow 2: Partner recruitment nurture (MQL toward SQL)</h3>
+      <ul>
+        <li><strong>Trigger.</strong> Partner lead enters Recruit (pipeline or showcased) and is below SQL.</li>
+        <li><strong>Actions and timing.</strong> Enrol in the recruitment nurture: roughly weekly in the run-up to 3 July, then as the cohort progresses; sequence carries the 80/20 thesis, the human-at-every-gate proof (Pottsville), the live Jewell example, and the community invitation; on showcase attendance, branch to a personal follow-up; on a booked founder conversation, raise score and flag for SQL review.</li>
+        <li><strong>Owner.</strong> In-house, light facilitation; founder closes.</li>
+      </ul>
+
+      <h3>Workflow 3: Partner onboarding</h3>
+      <ul>
+        <li><strong>Trigger.</strong> Partner status moves to Signed.</li>
+        <li><strong>Actions and timing.</strong> Create the partner record and hub access on day 0; sequence the platform-and-standards onboarding over the first 2 weeks (dashboard, the Cowork workspace, where each Studio unlocks); schedule the first weekly-table introduction; create the first-value task, one clean Diagnostic sale, with a 30-day target; pair the partner at the table so they are not alone.</li>
+        <li><strong>Owner.</strong> Ops (Ronnie), light facilitation.</li>
+      </ul>
+
+      <h3>Workflow 4: Diagnostic-sold and lead-source lock</h3>
+      <ul>
+        <li><strong>Trigger.</strong> An engagement is created at the Diagnostic tier.</li>
+        <li><strong>Actions and timing.</strong> Require the lead-source tag before the record can save (partner-sourced, Maxxim-sourced, referred, or Jewell-direct); lock the tag once set; record end-client ownership per flow, carrying the OPEN rule where Clent has not fixed it; if referred, create the Finder's-Fee record (who referred, fee, one-off or trailing, window) before delivery; start pilot-data capture (compute via the per-action log, value, tier) for the unit economics; notify the relationship owner of a partner's first sale.</li>
+        <li><strong>Owner.</strong> Delivering partner sets the tag; Ops verifies; the system enforces.</li>
+      </ul>
+
+      <h3>Workflow 5: Renewal and upsell (Deepen)</h3>
+      <ul>
+        <li><strong>Trigger.</strong> An engagement reaches Launched (Deploy complete, owned Astro asset delivered).</li>
+        <li><strong>Actions and timing.</strong> Confirm the asset-ownership flag and portal or Ari provisioning; 7 days after launch, prompt the partner to open the Deepen conversation, framed as improvement that compounds, not an open-ended retainer; track Deepen attach; on attach, start the compounding loop and begin LTV tracking. For partners, the equivalent renewal is the floor and continued cohort membership, surfaced at the quarterly review.</li>
+        <li><strong>Owner.</strong> Delivering partner; the system prompts.</li>
+      </ul>
+
+      <h3>Workflow 6: At-risk intervention and win-back</h3>
+      <ul>
+        <li><strong>Trigger (at-risk).</strong> Partner participation score drops below a threshold, or no activity for a set period, or the table goes quiet for that partner.</li>
+        <li><strong>Actions and timing.</strong> Flag the partner as at-risk; create a personal check-in task for the relationship owner within 1 week (not an automated email, because the moat is human); surface a deal-share match to re-engage them through value.</li>
+        <li><strong>Trigger (win-back).</strong> Partner becomes Dormant, or an end client completes a launch with no Deepen and goes quiet.</li>
+        <li><strong>Actions and timing.</strong> For a dormant partner, a founder-led re-engagement, not a campaign. For a lapsed end client, prompt the delivering partner to re-open the relationship with a fresh proof point or a Deepen offer; Maxxim supports with assets, the partner owns the outreach.</li>
+        <li><strong>Owner.</strong> Clent or Raef for partners; the delivering partner for end clients.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Sales and Marketing Alignment</h2>
+      <p>At Maxxim's current scale the sales and marketing functions largely sit with the same two people, so alignment is less about reconciling two departments and more about a clear, written handoff between the recruitment motion and the founder close, and between Maxxim and the partner. The discipline still matters, because the founding cohort is the proof and a dropped handoff is a lost partner.</p>
+
+      <h3>Shared definitions</h3>
+      <ul>
+        <li><strong>MQL.</strong> A partner lead at 50 points: a fit operator showing real engagement, ready for a founder conversation.</li>
+        <li><strong>SQL.</strong> A partner lead at 75 points with a completed founder conversation, ready for a door and a cohort offer.</li>
+        <li><strong>Opportunity.</strong> A partner who has accepted, in principle, a door and the founding-cohort terms; or an end-client engagement at or past the Diagnostic with a locked lead-source tag.</li>
+      </ul>
+
+      <h3>Handoff process</h3>
+      <ul>
+        <li><strong>Marketing to founder (Stage 1).</strong> When a lead hits MQL, the nurture passes a short brief into the CRM task: who they are, their door interest, vertical strength, first-touch source, and what they engaged with. Channel: the CRM record and a flag to the owner. Format: a five-line brief, not a long file, consistent with operators who trust demonstration over decks.</li>
+        <li><strong>Maxxim to partner (Stage 1 to Stage 2), the critical handoff.</strong> On sign, Maxxim equips the partner with the enablement kit (Diagnostic one-pager, pitch walkthrough, Pottsville case, gate deck, the read-only portal and Ari as a soft demo). The partner then owns the end-client relationship. Maxxim's marketing stops at the partner; the partner carries it forward. One named partner owns each client relationship, the single non-negotiable public rule. This handoff is recorded as the onboarding completing in the CRM.</li>
+        <li><strong>Diagnostic to engagement.</strong> The end client moves from the $4,950 Diagnostic, presented at the first gate, into the core engagement, with the fee credited forward. The lead-source tag, set at the Diagnostic, carries through.</li>
+      </ul>
+
+      <h3>Feedback loops</h3>
+      <ul>
+        <li>The partner reports lead quality and fit back through the monthly business review, which is the same meeting as the community review, so feedback and rhythm are one cadence, not two.</li>
+        <li>Client friction from partner runs feeds the compounding loop, which improves Max, Sal and Pip and the method, which strengthens the next recruitment pitch. The loop is the alignment.</li>
+      </ul>
+
+      <h3>Shared reporting</h3>
+      <p>Both the recruitment motion and the partner channel read the same dashboards (Section 9): the recruitment pipeline, the cohort progress, Diagnostics per partner, and the lead-source mix. There is one set of numbers, visible to Clent and Raef, and surfaced to partners in the parts that concern them (their own engagements, the deal-share board, the community participation).</p>
+
+      <h3>SLAs</h3>
+      <table>
+        <thead><tr><th>Commitment</th><th>By whom</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Lead volume and quality into the founder conversation</td><td>Marketing / recruitment</td><td>8 to 12 qualified showcase attendees; 5 to 8 signed by Sept (directional)</td></tr>
+          <tr><td>Follow-up speed on MQL</td><td>Founder (Clent or Raef)</td><td>Within 2 business days</td></tr>
+          <tr><td>Acknowledge apps.maxxim.ai form submission</td><td>Ops / founder</td><td>Within 1 business day</td></tr>
+          <tr><td>Enablement kit ready at onboarding</td><td>Maxxim</td><td>Available to every partner before their first Diagnostic pitch</td></tr>
+          <tr><td>Lead-source tag set before delivery</td><td>Delivering partner</td><td>100 percent of engagements; zero disputes</td></tr>
+          <tr><td>Feedback on lead quality</td><td>Partner</td><td>At the monthly business review</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>8. Data Quality and Governance</h2>
+      <p>Governance is load-bearing here for two reasons beyond the usual. First, the lead-source tag is a commercial input, so its integrity is a revenue matter, not just a hygiene matter. Second, the partner community is a circle of independent operators sharing client intelligence, which makes the confidentiality norm (no named client specifics shared without consent) a governance rule, not a courtesy.</p>
+
+      <h3>Data entry standards</h3>
+      <ul>
+        <li>Required fields enforced at entry: on Partner, the door, status, and owner; on End Client, the organisation type and confidentiality status; on Engagement, the lead source, delivering partner, and tier. A record cannot save without them.</li>
+        <li>Naming conventions: organisations recorded by legal name; the partner door and end-client org type from controlled single-selects, never free text, so segments stay clean.</li>
+        <li>The lead-source tag is set once, before delivery, and locked, with a documented written rule for how it is determined, in place before the first Maxxim-sourced deal so the clip cannot be disputed.</li>
+      </ul>
+
+      <h3>Deduplication</h3>
+      <ul>
+        <li><strong>Matching criteria:</strong> on organisation name plus primary contact email for both partners and end clients; HubSpot's native duplicate management runs on this basis.</li>
+        <li><strong>Prevention at entry:</strong> the system warns on a likely duplicate before a new record is created, which is realistic at this scale because the named pipeline is small and known, and because the apps.maxxim.ai form can match on email before creating a record.</li>
+        <li><strong>Merge rules:</strong> merges keep the earliest first-touch source and the locked lead-source tags on engagements; an engagement's lead source never changes in a merge.</li>
+      </ul>
+
+      <h3>Data enrichment</h3>
+      <ul>
+        <li>Partner records enriched from the founder's own knowledge of the operator and from LinkedIn (the operator-to-operator surface), not from bought third-party data, because trust is the currency and the pipeline is hand-known.</li>
+        <li>Engagement records enriched from behavioural data: gate sign-offs, hub activity, apps.maxxim.ai form submissions, and email engagement, which is owned first-party data.</li>
+        <li>End-client enrichment is partner-mediated and respects the confidentiality status, so Maxxim holds only what consent allows.</li>
+      </ul>
+
+      <h3>Cleanup cadence</h3>
+      <ul>
+        <li><strong>Quarterly,</strong> aligned to the community quarterly review: verify partner status and contact details, confirm engagement stages and lead-source tags, and clear stale pipeline. Owner: Ops (Ronnie), reviewed by Clent or Raef.</li>
+        <li><strong>Monthly,</strong> at the business review: confirm Diagnostics, engagements, and participation scores are current.</li>
+      </ul>
+
+      <h3>Privacy compliance</h3>
+      <ul>
+        <li><strong>Australian Privacy Act and the APPs</strong> govern personal information of partner and end-client contacts: collect only what is needed, tell people why, secure it, and allow access and correction. The apps.maxxim.ai contact form states its purpose and captures consent at the point of collection. For NFP and government end clients, public-sector privacy obligations apply on top, recorded via the probity overlay flag.</li>
+        <li><strong>GDPR</strong> applies to any contact in the EU or UK; consent state is a gating field on the email platform sync, so no one is marketed to without a recorded basis.</li>
+        <li><strong>Consent tracking:</strong> separate flags for marketing consent, public-use consent (the briefing rule that named partners are not used publicly without consent), and named-client-sharing consent (the community confidentiality norm). The default is private; sharing requires an affirmative flag.</li>
+        <li><strong>Retention and deletion:</strong> a documented policy for how long pipeline, partner, and end-client records are kept and when they are deleted or anonymised, with deletion requests honoured. Engagement and lead-source records are retained for the commercial reconciliation period.</li>
+      </ul>
+
+      <h3>Role-based access controls</h3>
+      <ul>
+        <li><strong>Clent and Raef:</strong> full access; ownership and the gate are theirs alone; per-action cost logging is visible to owners only.</li>
+        <li><strong>Ops (Ronnie, Sam):</strong> operational access for friction capture, support, and cleanup, without the owner-only commercial and cost controls.</li>
+        <li><strong>Partners:</strong> see their own records, their own engagements, the deal-share board, and the directory. A partner never sees another partner's named client specifics without consent, which is the confidentiality norm enforced in the access model. Partners and clients never see costs.</li>
+        <li><strong>The redacted credentials from the master briefing never appear in any CRM record or synced deliverable.</strong></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Reporting and Dashboards</h2>
+      <p>Reports are built around the business plan's leading and lagging indicators and the four unit economics the cohort must lock. Most baselines are TBD; the founding cohort is what converts them into numbers. Three dashboards serve three audiences, with the lead-source mix running through all of them as the 
