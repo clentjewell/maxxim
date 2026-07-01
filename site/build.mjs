@@ -327,7 +327,7 @@ ${sidebar({ home: true })}
     <p>The complete Maxxim strategy pack: Discover, Design and Deploy, produced by the engine and
        signed off by the accountable human at every gate. Start with the brand book, then work
        through each phase in order.</p>
-    <a class="cta" href="/3d-process/design/brand-book/">Open the Brand Book →</a>
+    <a class="cta" href="/brand-guidelines/">Open the Brand Guidelines →</a>
   </div>
 
   <div class="keyvis">
@@ -337,15 +337,15 @@ ${sidebar({ home: true })}
 
   <div class="bb-feature">
     <div class="txt">
-      <span class="kicker">Flagship · Design Phase</span>
+      <span class="kicker">Flagship · Brand Identity Guidelines · Edition 03</span>
       <h2>The Maxxim Brand Book</h2>
       <p>Strategy foundation, logo system, Signal Blue, the Poppins scale, voice, imagery and
-         applications — the canonical record of the brand, written down once.</p>
-      <a class="cta" href="/3d-process/design/brand-book/">Read it →</a>
+         applications — the canonical record of the brand, with the Edition 03 photography.</p>
+      <a class="cta" href="/brand-guidelines/">Read it →</a>
     </div>
     <img src="/images/s4-flatlay.jpg" alt="Maxxim brand materials flat lay">
   </div>
-  <p class="also">Also available: <a href="/book/">the A4 print edition</a> — the same brand book laid out as a 22-page landscape document.</p>
+  <p class="also">Also available: <a href="/3d-process/design/brand-book/">the web edition</a> (single scrolling page) and <a href="/book/">the A4 print edition</a> (22-page landscape document).</p>
 
   ${cards}
 </div></div>
@@ -378,11 +378,22 @@ DOCS.forEach((doc, i) => {
 // Brand photography.
 cpSync(join(ROOT, 'brand-guidelines', 'public', 'images'), join(OUT, 'images'), { recursive: true })
 
-// Flagship brand book.
+// Flagship brand book (web edition, hand-built single page).
 {
   const dir = join(OUT, '3d-process', 'design', 'brand-book')
   mkdirSync(dir, { recursive: true })
   cpSync(join(ROOT, 'site', 'templates', 'brand-book.html'), join(dir, 'index.html'))
+}
+
+// Official Brand Guidelines — the authored Bundled Page, with its
+// image-slots wired to the Edition 03 photography and a self-hosted
+// React/Babel runtime (so it never depends on a public CDN).
+{
+  const dir = join(OUT, 'brand-guidelines')
+  mkdirSync(dir, { recursive: true })
+  cpSync(join(ROOT, 'site', 'templates', 'brand-guidelines.html'), join(dir, 'index.html'))
+  cpSync(join(ROOT, 'brand-guidelines', 'public', 'images'), join(dir, 'images'), { recursive: true })
+  cpSync(join(ROOT, 'site', 'vendor'), join(dir, 'vendor'), { recursive: true })
 }
 
 // A4 print edition (built separately with base=/book/).
