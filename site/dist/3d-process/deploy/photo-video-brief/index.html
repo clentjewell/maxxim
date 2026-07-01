@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo and Video Brief · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc current" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">03 · Deploy</span>
+    <h1>Photo and Video Brief</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this document</h2>
+      <p>This is the production brief for Maxxim's founding visual content, produced in the Deploy phase against Master Briefing v2.1, the Gate 1 decisions in <a href="/3d-process/discover/discover-addendum/">discover-addendum.html</a>, the locked <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>, and the <a href="/3d-process/design/brand-guidelines/">brand-guidelines.html</a>. It was refreshed on 1 July to fold in the 29 June product mechanics and the live Jewell partner. It turns brand direction and channel requirements into shot lists, scene specs, talent and styling direction, technical formats, a repurposing plan, and production logistics. It is the document a photographer or videographer executes from, and it is also the brief the Design Studio works inside.</p>
+      <p>One mechanical fact shapes this whole document. In the Maxxim engine, imagery and video are gated: they do not unlock until the Photo and Video Brief exists. This brief is that gate. Once it is signed off, Sal, the designer in the Design Studio, can produce and adapt visual content against it, and the human partner signs off every asset before it ships. So this brief is not just direction for a human crew. It is the standard the machine must meet, and the guardrails Sal works inside. The tools behind Sal are chosen per job and are swappable: photoreal raster imagery routes to OpenAI GPT-image, video is produced with Google Veo animating a still, and premium hero imagery is produced manually in Midjourney. Naming the tools is not the point; the point is that the look stays operator-grade, real, and credible, never stocky and never abstract.</p>
+      <p>One frame governs everything below. The near-term customer is the partner, the Capacity-Capped Operator, and social is a founder-led thought-leadership channel voiced by Clent and Raef. So the priority visual content is, in order: founder portraits and talking-head thought-leadership video for Clent and Raef; capture of the 3 July showcase as the founding-community moment, for proof and for repurposing; and the Pottsville proof story, subject to client consent and clearance. The look fits the locked identity: Signal Blue #2D5BFF, Poppins, design Edition 03, Blue Frog removed. The posture is substance over gloss, credible, operator to operator. No hype, no glossy stock abstraction.</p>
+      <p>What is locked is stated plainly. What is open stays open. Per v2.1 and Gate 1, this brief does not invent Maxxim's category lead word, partner economics percentages, the front-door product, the fractional CMO model, the showcase promise wording, or Christy Kilmartin's role split. Proof respects clearance: Pottsville Acupuncture is the only cleared public Maxxim proof and may be used only with client consent confirmed; OTR Earthmover is internal only and never appears in public content; Hidrive is percentages only. Jewell is now a live partner running the whole model in market, which is powerful pattern and evidence, but Jewell's own named results stay under Jewell's banner and are not re-used as Maxxim's public proof. House style holds: no em dashes, no exclamation marks, Australian English, and the business is Jewell, never any corruption of the name. Ownership is Clent and Raef only. Named partners and named clients are not shown publicly without consent.</p>
+    </section>
+
+    <section>
+      <h2>1. Production Overview and Objectives</h2>
+      <p>The brand's single highest-value action is closing the cleared-proof gap and establishing founder authority. Visual content serves both. The objective is not a polished brand film; it is a durable library of credible, operator-grade assets that make the founders legible, make the method watchable, and make the community visible. The trust gap is closed by watching the work and watching the people accountable for it, not by reading claims. The engine that carries the work is now nameable, so where the engine appears the assets should show a legible system: Max doing the words, Sal doing the pixels, Pip running social, always subordinate to the human at the wheel.</p>
+      <table>
+        <thead>
+          <tr><th>Objective</th><th>What it must produce</th><th>Where it serves</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Establish founder authority</strong> for Clent and Raef.</td><td>A reusable bank of founder portraits and talking-head clips that read credible and grounded, not staged.</td><td>LinkedIn founder posts, the website About and How It Works, the partner hub, email signatures, proposals.</td></tr>
+          <tr><td><strong>Capture the founding moment</strong> on 3 July.</td><td>Documentary coverage of the partner table: the room, the conversation, the founders at the wheel, candid reactions.</td><td>Community content, the partner hub, the case for the community as the moat, recap assets.</td></tr>
+          <tr><td><strong>Make the proof watchable</strong> through Pottsville.</td><td>A consent-cleared proof story showing a launched, owned outcome and the human behind it.</td><td>Proof content, the Work page, YouTube long-form, the consideration-stage sales asset.</td></tr>
+          <tr><td><strong>Show the engine working</strong>, not a black box.</td><td>Screen and over-the-shoulder capture of Max, Sal, and Pip running the repeatable 80 percent and a human signing a gate.</td><td>The 80/20 and human-moat messaging, How It Works, the method walkthrough.</td></tr>
+        </tbody>
+      </table>
+      <p>Two production tiers run in this brief. <strong>Hero</strong> content is higher production and long shelf life: the founder portrait set, the Pottsville proof piece, the method walkthrough. Premium hero stills, where a generated frame is needed rather than a captured one, are produced manually in Midjourney to hold the quality bar. <strong>Social and documentary</strong> content is fast, authentic, and high volume: founder talking-head clips, the 3 July coverage, behind-the-table moments. The two are briefed differently and never conflated. The whole programme is scoped to be achievable by a small crew, because the brand posture is resource-realistic and the look should feel real, not expensive.</p>
+    </section>
+
+    <section>
+      <h2>2. Creative Direction and Visual Style</h2>
+      <p>The imagery style is set in the Brand Strategy and Brand Guidelines and is not re-opened here: real over illustrated, candid over staged, outcome over abstract. The brand sells finished, owned outcomes and accountable humans, so the camera and the generator both show real people and real launched work, never glowing-brain AI abstraction or circuit-board stock. Where the engine appears, show the structured output and the gate, not a mystery box. This holds equally for a captured photograph, a GPT-image frame, and a Veo clip: the same keyword set governs all three, so the library reads as one brand whatever the source.</p>
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>Direction</th><th>Avoid</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Mood</strong></td><td>Calm, credible, grounded. The Sage made visual. Confident without spectacle.</td><td>Hype, urgency, lens flares, dramatic slow-motion, hustle aesthetic.</td></tr>
+          <tr><td><strong>Lighting</strong></td><td>Soft, natural-feeling, directional. Clean key with gentle fill. Daylight or daylight-balanced.</td><td>Hard theatrical contrast, coloured gels beyond a subtle Signal Blue accent, moody darkness that hides the human.</td></tr>
+          <tr><td><strong>Colour</strong></td><td>Neutral, true-to-life base with disciplined Signal Blue (#2D5BFF) as the single accent: a wall, a screen, a prop, a graphic lower-third.</td><td>Heavy filters, teal-and-orange grade, oversaturation, Signal Blue washed across everything.</td></tr>
+          <tr><td><strong>Composition</strong></td><td>Clean, generous negative space for Poppins overlays. Eye-level, human, direct. Subject sharp, background simple.</td><td>Busy backgrounds, gimmicky angles, clutter, anything that competes with the human or the claim.</td></tr>
+          <tr><td><strong>Framing for type</strong></td><td>Leave deliberate clear space (top or one side) so a single Poppins claim in Signal Blue or white can sit over the frame without crowding.</td><td>Centre-filling the subject so no text can land; mismatched on-frame fonts.</td></tr>
+          <tr><td><strong>Wardrobe</strong></td><td>Smart-casual operator: plain shirts, knitwear, neutral tones. One subtle Signal Blue accent permitted per subject. Real, not corporate-stiff, not influencer-flashy.</td><td>Loud patterns, logos of other brands, anything that dates fast or reads as costume.</td></tr>
+        </tbody>
+      </table>
+      <p>Design Edition 03 is the reference for graphic treatment over footage: lower-thirds, claim cards, and end frames use Poppins and Signal Blue, weight and hierarchy for emphasis, never decoration. On dark or Signal Blue grounds, the reversed white Maxxim wordmark and white type are the correct overlay, held on a solid holding shape where the field is busy; on light grounds, the primary Signal Blue mark and Ink type, again on a holding shape where the field is busy. Because external style strips out exclamation marks, on-frame emphasis comes from the strength of the claim and the typographic scale, not punctuation. With Blue Frog removed, the system is clean and typographic; keep on-frame graphics minimal and confident, and never reintroduce a mascot of any kind.</p>
+    </section>
+
+    <section>
+      <h2>3. Shot List Structure and Content Map</h2>
+      <p>Content is organised into four photo categories and three video concepts, each mapped to a messaging pillar and a channel. The map below sets the structure before the detailed lists; it doubles as the capture checklist for the crew and the brief Sal produces against inside the Design Studio.</p>
+      <figure>
+        <figcaption>Shot-list structure and content map. Photo on the left, video on the right, each tied to a messaging pillar and a destination.</figcaption>
+<pre><code>
+                    MAXXIM VISUAL CONTENT
+                            |
+        +-------------------+--------------------+
+        |                                        |
+     PHOTO                                     VIDEO
+        |                                        |
+  +-----+------+------------+------------+   +---+-------------+-------------+
+  |     |      |            |            |   |                 |             |
+  P1    P2     P3           P4           V1                V2            V3
+FOUNDER PROOF  COMMUNITY    ENGINE /     FOUNDER           POTTSVILLE    METHOD
+PORTRAITS (Pottsville,  (3 July         OUTPUT            PROOF         WALK-
+        consent)        showcase)                STORY         THROUGH
+  |     |      |            |            |                 |             |
+  pillar pillar pillar      pillars      pillars           pillar        pillars
+  2 + 1  2     3            1 + 2        1 + 2 + 3          2             1 + 2
+  |     |      |            |            |                 |             |
+  web,  Work   hub,         How It       LinkedIn          YouTube,      YouTube,
+  Linke page, community     Works,       talking-head      Work page,    How It
+  dIn,  YouTube social      social       clips, social     consideration Works,
+  hub   (consent)                                          (consent)     social
+  |
+  PRIORITY 1: founder portraits + talking-head (V1) lead.
+  PRIORITY 2: 3 July showcase capture (P3) is time-bound, cannot be reshot.
+  PRIORITY 3: Pottsville (P2 + V2) only on confirmed client consent.
+</code></pre>
+      </figure>
+      <p>Pillars refer to the three messaging pillars in the Brand Strategy: Pillar 1 the engine for your judgement (80/20), Pillar 2 the human at every gate (the trust gap), Pillar 3 the community is the moat. Priority order reflects what drives the channel and what cannot be repeated. The founder portrait and talking-head set is priority one because it is the PR and social engine. The 3 July showcase is priority two because it is a single, unrepeatable date. The Pottsville story is priority three and is conditional: nothing in P2 or V2 proceeds, and nothing is published, until Pottsville's owner has given written consent and clearance is confirmed.</p>
+    </section>
+
+    <section>
+      <h2>4. Photography Shot List</h2>
+
+      <h3>Category P1: Founder portraits (priority 1, hero)</h3>
+      <p>Subjects are Clent and Raef only, the two owners. This is the bank that makes the founders credible across every surface. Shoot once, use everywhere. The direction is real and grounded, an operator you would trust, not a posed corporate headshot. These are captured on camera, not generated; the founders are the accountable humans, so the credibility must be literal.</p>
+      <table>
+        <thead>
+          <tr><th>Shot</th><th>Subject and framing</th><th>Setting and mood</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>P1.1 Hero portrait</strong></td><td>Clent, then Raef, individually. Head-and-shoulders, eye-level, direct to camera. Clear space one side for type.</td><td>Clean neutral or soft Signal Blue backdrop. Calm, confident, approachable.</td><td>Website About hero, partner hub, LinkedIn profile, proposals, PR headshot.</td></tr>
+          <tr><td><strong>P1.2 Working portrait</strong></td><td>Each founder mid-thought at a desk or workspace, a screen with structured output visible but not legible-private.</td><td>Real working environment, natural light. In the work, not posing.</td><td>How It Works, founder posts, articles, the engine-in-use context.</td></tr>
+          <tr><td><strong>P1.3 The two founders together</strong></td><td>Clent and Raef together, conversational, half-turned to each other or to camera. Two owners, no third principal in frame.</td><td>Neutral or workspace. Warm, partner-to-partner, equal footing.</td><td>About page (ownership = Clent and Raef), partner hub, community framing.</td></tr>
+          <tr><td><strong>P1.4 Candid detail</strong></td><td>Hands, a notebook, a screen mid-gate, a founder listening. Human texture, no faces required.</td><td>Available light, shallow depth. Documentary, unstaged.</td><td>Post backgrounds, carousel covers, texture between claims.</td></tr>
+          <tr><td><strong>P1.5 Vertical crops</strong></td><td>Every P1 subject also captured or croppable to 4:5 and 9:16, headroom preserved.</td><td>As above.</td><td>LinkedIn mobile, Instagram-later, story-format reuse.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Category P2: Pottsville proof (priority 3, hero, consent-gated)</h3>
+      <p>Conditional on confirmed written consent from the Pottsville Acupuncture owner. Pottsville is the only cleared public Maxxim proof. If consent is not secured, this category does not shoot and the proof is carried by screen capture of the public launched site only. No named client specifics appear publicly without consent.</p>
+      <table>
+        <thead>
+          <tr><th>Shot</th><th>Subject and framing</th><th>Setting and mood</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>P2.1 The launched site, in use</strong></td><td>The live Pottsville website on a screen, real context. The owned outcome, shown. Client owns the site outright.</td><td>Clean, real. Outcome over abstract.</td><td>Work page, proof content, case study.</td></tr>
+          <tr><td><strong>P2.2 The owner, accountable</strong></td><td>The business owner in their own space, only with consent and release signed. A real person behind a real result.</td><td>Their environment, natural light. Genuine, not staged testimonial.</td><td>Case study, proof content, consideration-stage asset (consent only).</td></tr>
+          <tr><td><strong>P2.3 The business, alive</strong></td><td>The premises and day-to-day, establishing the local allied-health context. Anonymised if consent is partial.</td><td>Documentary, true to the business.</td><td>Case-study supporting imagery, Work page texture.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Category P3: Community, the 3 July showcase (priority 2, documentary, time-bound)</h3>
+      <p>This is a single, unrepeatable date. The showcase runs as a partner discovery and alignment session, not a demo, so coverage is documentary and respectful of a working room, not a staged event shoot. Consent governs use of any attendee's likeness; named partners are not published without consent. The output of the day itself is a partner map, so the room is a working table, and the coverage should read that way.</p>
+      <table>
+        <thead>
+          <tr><th>Shot</th><th>Subject and framing</th><th>Setting and mood</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>P3.1 The room, wide</strong></td><td>Establishing wide of the table and the group. The community made visible.</td><td>The actual venue, available light. Real gathering, not a conference set.</td><td>Community content (Pillar 3), partner hub, recap.</td></tr>
+          <tr><td><strong>P3.2 Founders at the wheel</strong></td><td>Clent or Raef facilitating, mid-sentence, group engaged. The human at the wheel, literally.</td><td>Candid, in the moment.</td><td>Pillar 3 and Pillar 2, founder authority, hub.</td></tr>
+          <tr><td><strong>P3.3 Candid reactions and conversation</strong></td><td>Attendees listening, nodding, talking across the table. Belonging, captured (consent-cleared faces only for public use).</td><td>Documentary, warm, unposed.</td><td>Community proof, the table in public, reshare assets.</td></tr>
+          <tr><td><strong>P3.4 Detail and texture</strong></td><td>Hands, notes, the partner map being built, coffee on the table. Human texture, faces optional.</td><td>Available light, intimate.</td><td>Post backgrounds, carousel covers, recap b-roll stills.</td></tr>
+          <tr><td><strong>P3.5 Group portrait, optional</strong></td><td>The founding cohort together, only if the room consents. A founding-moment record.</td><td>Quick, natural, not over-directed.</td><td>Anniversary and milestone content (consent only).</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Category P4: Engine and output (priority 2, hero, evergreen)</h3>
+      <p>Makes the abstract concrete without breaking the human-at-the-wheel position. Show the structured output and the gate, never a black box, never an anthropomorphised AI. Where the engine is named on screen, show Max, Sal, and Pip as a legible system doing real production, subordinate to the accountable human.</p>
+      <table>
+        <thead>
+          <tr><th>Shot</th><th>Subject and framing</th><th>Setting and mood</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>P4.1 Structured output on screen</strong></td><td>A real 3D deliverable on a clean screen, Max running the words in Cowork or Sal producing in the Design Studio. Legible enough to read as substance, no private client data.</td><td>Clean, well-lit, modern but plain.</td><td>How It Works, Pillar 1, the 80/20 explainer.</td></tr>
+          <tr><td><strong>P4.2 The gate, signed</strong></td><td>A human hand or face at the moment of sign-off. Accountability, shown not asserted.</td><td>Real, close, calm.</td><td>Pillar 2, the trust take, How It Works.</td></tr>
+          <tr><td><strong>P4.3 Clean claim plates</strong></td><td>Empty branded backgrounds and surfaces in Signal Blue and neutral for type-only claim cards, with room for the reversed white mark on the blue plates.</td><td>Minimal, Edition 03.</td><td>Static claim posts, carousel covers, milestones.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Generated versus captured.</strong> P1 founder portraits, P2 owner and business, and P3 community are captured on camera, because the credibility is the point and the subjects are real people who must consent. P4 engine and output, and any abstract or brand plate, may be produced by the engine: photoreal frames via GPT-image, premium hero frames via Midjourney by hand, and any short motion via Veo animating a still. Whatever the source, the frame obeys the same style rules and never drifts into AI abstraction.</p>
+    </section>
+
+    <section>
+      <h2>5. Video Concepts and Treatments</h2>
+      <p>Per the locked rule, each concept fixes duration, format, and platform before creative direction. All three are designed so one capture feeds many cuts. House style applies on screen too: no exclamation marks, claims carry their own weight. Where a still can carry a moment, Veo can animate it into short motion, so a strong P4 or portrait frame can become a clip without a separate shoot.</p>
+
+      <h3>Concept V1: Founder talking-head, the thought-leadership engine (priority 1)</h3>
+      <ul>
+        <li><strong>Duration and format:</strong> captured long, cut short. Each session yields one 60 to 90 second anchor piece per topic plus several 20 to 40 second vertical cuts.</li>
+        <li><strong>Platform:</strong> LinkedIn native (primary), website, partner hub, email. 16:9 master, 9:16 and 1:1 cuts.</li>
+        <li><strong>Subjects:</strong> Clent and Raef, piece-to-camera, one claim per piece.</li>
+        <li><strong>Treatment:</strong> single subject, eye-level, soft natural light, simple workspace or neutral background with clear space for a Poppins lower-third. Direct address, calm and plain, operator to operator. Signal Blue lower-third names the founder and the claim, with the reversed white mark where the plate is blue. No music bed louder than the voice; substance over production.</li>
+        <li><strong>Content source:</strong> the three messaging pillars. Batch a month of topics in one session. Topics are drawn from the 80/20 thesis, the human moat, Pottsville and the method, and the table. The live Jewell partner is available as a talking point that the model works in market, cited as Jewell's, not folded into Maxxim's public proof.</li>
+        <li><strong>Repurposing:</strong> one anchor cut for LinkedIn, two to three short vertical cuts, audio pulled for a quote-card, transcript repurposed to a text post. One sitting, many assets, drafted for social by Pip on approval.</li>
+      </ul>
+
+      <h3>Concept V2: Pottsville proof story (priority 3, consent-gated)</h3>
+      <ul>
+        <li><strong>Duration and format:</strong> one 3 to 5 minute YouTube proof piece (the durable sales asset) plus a 60 second cut and 9:16 highlights.</li>
+        <li><strong>Platform:</strong> YouTube (primary, evergreen), Work page embed, LinkedIn clip. 16:9 master, vertical highlights.</li>
+        <li><strong>Subjects:</strong> the launched, owned site; the accountable human; the business owner only with signed release.</li>
+        <li><strong>Treatment:</strong> a quiet, credible teardown. Show the full Discover, Design, Deploy arc through real artefacts, the launched site, and the outcome the client owns outright, hosted on their own domain. Documentary, evidence-led, no hype. A founder voiceover or to-camera frames the method; the proof persuades.</li>
+        <li><strong>Hard condition:</strong> does not enter production or publication without confirmed Pottsville consent and clearance. If consent is unavailable, V2 reduces to a screen-capture walkthrough of the public site with no owner likeness and no private specifics.</li>
+        <li><strong>Repurposing:</strong> the long piece anchors the Work page; a 60 second cut for LinkedIn; vertical highlights; stills pulled for the case study; quotes (cleared) for proof cards.</li>
+      </ul>
+
+      <h3>Concept V3: Method walkthrough, watch the engine work (priority 2)</h3>
+      <ul>
+        <li><strong>Duration and format:</strong> one 8 to 12 minute YouTube walkthrough plus short clips of the engine running the spine and a gate sign-off.</li>
+        <li><strong>Platform:</strong> YouTube (primary), How It Works embed, LinkedIn clips. 16:9 master, vertical and square clips.</li>
+        <li><strong>Subjects:</strong> screen capture of the structured output, a founder narrating, a human signing a gate.</li>
+        <li><strong>Treatment:</strong> calm, instructional, transparent. Walk the gated flow, show Max running the words, Sal the pixels, and Pip social across the repeatable 80 percent, then a named human signing the 20 percent. Show the output and the gate, never a black box. Show, concretely, that a brief like this one is what unlocks the next stage of creative in the Design Studio. Chapters and a strong title so it works as on-demand proof linked from anywhere.</li>
+        <li><strong>Repurposing:</strong> the full walkthrough is an evergreen sales asset; per-gate clips seed Pillar 1 and Pillar 2; a 90 second 80/20 explainer cut; screen stills for carousels.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Talent, Wardrobe, and Styling</h2>
+      <p>Talent is deliberately small and real. The brand sells accountable humans, so the people on camera are the actual people, not models, and not generated. Any face that appears in a public asset is a consenting real person.</p>
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Who</th><th>Direction</th><th>Release</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Founders</strong></td><td>Clent and Raef only. Two owners, no third principal on camera.</td><td>Smart-casual operator wardrobe, plain neutral tones, one subtle Signal Blue accent permitted. Real, relaxed, credible. Brief them to speak, not to perform.</td><td>Internal, owners. No external release needed; usage is owned.</td></tr>
+          <tr><td><strong>Pottsville owner</strong></td><td>The business owner, consent-gated.</td><td>Their own clothes, their own space. Genuine, not coached testimonial.</td><td>Signed talent and likeness release required before any capture or use. No release, no shoot.</td></tr>
+          <tr><td><strong>3 July attendees</strong></td><td>Partners and guests in the room.</td><td>Come as they are. Documentary, not directed.</td><td>Consent for likeness use governs public publication. Capture broadly, publish only cleared faces. Named partners not published without consent.</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>Wardrobe rule:</strong> plain over patterned, neutral base, one Signal Blue accent maximum per subject, no competing brand logos, nothing that dates fast.</li>
+        <li><strong>Styling rule:</strong> minimal. Real workspaces over set-dressed studios. The look is operator-grade, not influencer-grade.</li>
+        <li><strong>What not to cast:</strong> no stock-model talent, no generated human faces standing in for real people, no abstract AI personification, no actors playing operators. The credibility is the point.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Technical Specifications</h2>
+      <p>Capture high and crop down. Shoot in formats that survive reframing across LinkedIn, YouTube, the website, and later vertical surfaces, so one capture serves every channel without a reshoot. Generated assets are held to the same output standard: high resolution, colour-managed to Signal Blue, no visible artefacts, and delivered in the same aspect-ratio set as captured work.</p>
+      <table>
+        <thead>
+          <tr><th>Asset</th><th>Capture or source</th><th>Master deliverable</th><th>Derived crops and formats</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Founder portraits (P1)</strong></td><td>Captured. Full-frame stills, RAW, ample headroom for cropping.</td><td>High-res 16:9 and 4:5 masters, colour-managed to Signal Blue accent.</td><td>1:1 LinkedIn profile, 4:5 feed, 9:16 vertical, web hero crop, low-res web exports.</td></tr>
+          <tr><td><strong>Proof and engine stills (P2, P4)</strong></td><td>P2 captured. P4 captured or generated (GPT-image, or Midjourney for premium hero). Screens captured at native resolution, no moire.</td><td>High-res masters plus clean screen-capture PNGs.</td><td>Web, carousel, case study, claim-card backgrounds.</td></tr>
+          <tr><td><strong>3 July documentary (P3)</strong></td><td>Captured. Stills RAW; any clips 4K 16:9, 25fps, with safe-area for vertical reframe.</td><td>High-res stills; 4K clip masters.</td><td>9:16 and 1:1 social cuts, web recap, hub gallery.</td></tr>
+          <tr><td><strong>Founder talking-head (V1)</strong></td><td>Captured. 4K 16:9, 25fps, framed centre with vertical safe-area. Clean audio via lav or shotgun.</td><td>16:9 master with Poppins lower-third.</td><td>9:16 LinkedIn, 1:1 feed, audio-only quote cards, captioned cuts.</td></tr>
+          <tr><td><strong>Pottsville film (V2)</strong></td><td>Captured. 4K 16:9, 25fps, documentary coverage plus screen capture.</td><td>16:9 YouTube master, chaptered.</td><td>60s LinkedIn cut, 9:16 highlights, stills.</td></tr>
+          <tr><td><strong>Method walkthrough (V3)</strong></td><td>Captured plus screen recording. 4K 16:9 plus clean high-res recording of the output and the gate.</td><td>16:9 YouTube master, chaptered, strong title.</td><td>Per-gate clips, 90s 80/20 cut, square and vertical, screen stills.</td></tr>
+          <tr><td><strong>Short motion from a still</strong></td><td>Generated. Veo animating a strong P4 or brand still.</td><td>Short 16:9 or 9:16 clip, seconds not minutes.</td><td>Social loop, hero motion accent, carousel motion.</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>Aspect ratios to deliver across the board:</strong> 16:9 (YouTube, web, master), 1:1 and 4:5 (LinkedIn feed), 9:16 (vertical, story, later Instagram).</li>
+        <li><strong>Captions:</strong> all video delivered with burnt-in or sidecar captions in Poppins; most LinkedIn viewing is sound-off, and accessible captions are a baseline.</li>
+        <li><strong>Colour and type:</strong> grade neutral and true; reserve Signal Blue as the single accent. On-frame type is Poppins only, weight and hierarchy for emphasis, no exclamation marks. Logo overlays follow the guidelines: reversed white mark on dark or Signal Blue, primary Signal Blue mark on light.</li>
+        <li><strong>Audio:</strong> voice over music always; if music is used keep it quiet and unobtrusive. Substance over spectacle holds for sound too.</li>
+        <li><strong>Hosting and delivery:</strong> final imagery for client sites is served from assets.maxxim.ai, and sites are Astro on Cloudflare Pages. Deliver masters and all derived crops so the engine and the crew hand off cleanly.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Content Repurposing Plan</h2>
+      <p>The repurposing plan is not an afterthought; it determines what is captured on the day. Every hero asset is planned as one capture feeding many cuts across the channel map in the Social Strategy. The flow below shows the spine: founder session and showcase capture in, a month of assets out. Pip drafts and, on approval, publishes the social cuts, so the plan feeds a real production line rather than a folder.</p>
+      <figure>
+        <figcaption>Repurposing flow. One capture, many assets, mapped to LinkedIn, YouTube, the website, the hub, and email.</figcaption>
+<pre><code>
+   ONE CAPTURE                         MANY ASSETS
+   ===========                         ===========
+
+   V1 FOUNDER          +--> 60-90s anchor cut ........ LinkedIn native
+   TALKING-HEAD        +--> 2-3 short vertical cuts ... LinkedIn 9:16
+   (one batch          +--> audio-only quote card ..... static post
+    session)           +--> transcript ................ founder text post
+                       +--> still frame ............... carousel cover
+                       +--> low-res export ............ email / hub
+
+   V3 METHOD           +--> 8-12 min walkthrough ...... YouTube (evergreen)
+   WALKTHROUGH         +--> per-gate clips ............ Pillar 1 + 2 social
+                       +--> 90s 80/20 explainer ....... LinkedIn clip
+                       +--> screen stills ............. carousels, How It Works
+
+   3 JULY SHOWCASE     +--> wide + candids (stills) ... Pillar 3, hub gallery
+   (P3, documentary,   +--> recap clip (cleared) ...... LinkedIn community post
+    time-bound)        +--> founders-at-wheel stills .. About, authority
+                       +--> texture stills ............ post backgrounds
+
+   POTTSVILLE          +--> 3-5 min proof film ........ YouTube + Work page
+   (V2 + P2, consent   +--> 60s cut ................... LinkedIn proof
+    gated)             +--> site + owner stills ....... case study, Work page
+                       +--> cleared quote ............. proof card
+
+   NET RESULT: one founder session + one showcase day +
+   one method capture + (consent) one Pottsville visit
+   = weeks of Pillar 1-3 content without a reshoot.
+</code></pre>
+      </figure>
+      <p>Capture discipline driven by this plan: always shoot vertical-safe so 9:16 cuts exist without a reshoot; always leave clear space for Poppins type and the mark; always capture more candid texture than you think you need, because stills between claims are the cheapest, most-used assets; and always capture clean audio, because audio-only quote cards and captioned cuts multiply one talking-head into many posts. The showcase is a recurring case-study factory; one capture day produces weeks of content, and once the library exists Sal and Pip can adapt it into new formats without a new shoot.</p>
+    </section>
+
+    <section>
+      <h2>9. Production Logistics</h2>
+      <p>Production problems are logistics problems. Three capture events anchor this brief, scoped to a small crew, plus a desk-based method capture the engine can largely produce. The 3 July showcase is the immovable date and the highest logistical risk because it cannot be reshot.</p>
+
+      <h3>Shoot schedule outline</h3>
+      <table>
+        <thead>
+          <tr><th>Shoot</th><th>Timing</th><th>Scope</th><th>Crew and kit</th><th>Risk and contingency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Shoot A: Founder portraits and V1 batch</strong> (priority 1)</td><td>Before 3 July where possible, so founder assets exist for showcase comms.</td><td>P1 full portrait set for Clent and Raef; V1 month-batch of talking-head topics; P4 engine and output stills.</td><td>One photographer or DOP, one light kit, lav or shotgun audio, one workspace location.</td><td>Both founders must be available same day; if not, split into two half-days. Hold a backup date.</td></tr>
+          <tr><td><strong>Shoot B: 3 July showcase</strong> (priority 2, immovable)</td><td>3 July 2026, on the day.</td><td>P3 documentary stills and clips: the room, the founders, candids, texture, 
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/deploy/paid-media-plan/"><span class="lbl">← Previous</span><span class="ttl">Paid Media Plan</span></a>
+<a href="/3d-process/deploy/pr-plan/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">PR Plan</span></a></div>
+</div></div>
+</body>
+</html>

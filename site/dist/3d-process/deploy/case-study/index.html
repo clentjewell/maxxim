@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Study Framework: Pottsville Acupuncture · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc current" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">03 · Deploy</span>
+    <h1>Case Study Framework: Pottsville Acupuncture</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this document</h2>
+      <p>This is the case study framework for the Deploy phase, built against Master Briefing v2.1 and refreshed on 1 July to fold in the 29 June product mechanics and the live Jewell partner site. Its subject is <strong>Pottsville Acupuncture</strong>, a local allied-health practice taken through a full Jewell-run 3D engagement, Discover then Design then Deploy, that ended with a launched website the practice owns outright at pottsvilleacupuncture.com.au. Under the clearance rules that govern every public Maxxim-brand use, Pottsville is the only launched, cleared public proof Maxxim holds, so this is the one case study cleared to be written, distributed, and shown.</p>
+      <p>The frame is deliberate. Pottsville is not just a happy client. It is the <strong>reference implementation</strong> a prospective partner is shown: this is how a partner takes a client through the 3D Process, and this is what the client gets at the end. Jewell is now the first live, in-market partner running the whole model on Maxxim, and Pottsville is the worked example that proves the method delivers when a human runs it. Read every section twice: once as the story of one acupuncture practice, and once as the template a partner will follow with their own client.</p>
+      <p>This document is a framework, not a finished case study. The narrative structure, the interview guide, the written template, the data presentation, and the distribution and repurposing plans are complete and ready to use. The specific figures, dates, and quotes are not invented here. Where a real number or a real quote belongs, the text reads <strong>[to confirm with client]</strong> or <strong>[to confirm with Jewell]</strong>. Per v2.1, Max must not fabricate metrics or testimonials. The interview guide exists precisely to capture those specifics from the practice and from Jewell before publication.</p>
+      <p>House style is locked and hard: no em dashes, no exclamation marks, Australian English, confident and plain, never hype. The business that ran the engagement is <strong>Jewell</strong>, never Joule. Maxxim is owned by Clent and Raef, two owners, no board, and no one else appears in the ownership line. Proof clearance is absolute: only Pottsville is public, so no other client (Beyond the Clinic, Jewell Tyres, OTR Earthmover, Hidrive and the rest) is named or quantified in any externally facing version of this case study, and <strong>Jewell's own named results on the Jewell site stay under Jewell's banner and are never lifted as Maxxim's own public proof</strong>. This document draws on <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>, <a href="/3d-process/design/copy-deck/">copy-deck.html</a>, <a href="/3d-process/design/customer-profile/">customer-profile.html</a>, <a href="/3d-process/discover/offer-worksheet/">offer-worksheet.html</a>, and <a href="/3d-process/discover/discover-summary/">discover-summary.html</a>.</p>
+    </section>
+
+    <section>
+      <h2>The seam this case study makes visible</h2>
+      <p>Since the 27 June version, the core of the whole business went from a model on paper to a working example in market. The human-20-percent and machine-80-percent split is now concretely embodied by the live Jewell partner, and a case study is where a reader can actually see the split working on a real client. The rule this framework enforces in every section: the human is always the hero, the machine is always the volume, and the copy never lets the machine take credit the human is accountable for. That is what makes a Maxxim case study different from an AI-tool demo.</p>
+      <p>The engine is now nameable and showable, which changes how the solution and results sections are written. Three named specialists, each one a process, make the method concrete: <strong>Max</strong> does the words in Claude Cowork (strategy, plans, copy, briefs, summaries); <strong>Sal</strong> does the pixels in the Design Studio (logos, brand imagery, collateral, video); <strong>Pip</strong> runs the Social Studio (drafts and, on approval, publishes posts). The work is gated and mechanical: creative unlocks only as the briefs it depends on exist and a logo is locked. When a case study needs to prove the engine is real rather than a claim, it reaches for these facts, and it keeps Max, Sal, and Pip subordinate to the named partner who signs each gate.</p>
+    </section>
+
+    <section>
+      <h2>The 3D journey for Pottsville</h2>
+      <p>The case study is structured around the journey the practice actually travelled, because that journey is the product a partner is buying confidence in. Discover sets the strategy, Design builds the brand and the assets, Deploy launches and hands over, and Deepen compounds the result once the engine is live. A human signs the gate between each phase. The same three named specialists carry the repeatable volume across all three phases.</p>
+      <figure>
+        <figcaption>The 3D journey Pottsville travelled, then Deepen. The same gated phases are what a partner runs for their own client. The diagram is the spine of every version of this case study: web, one-pager, and pitch slide. It shows the method rather than a black box, which is exactly what the trust gap rewards.</figcaption>
+<pre><code>
+  POTTSVILLE ACUPUNCTURE  ::  THE 3D JOURNEY (reference implementation)
+
+  +------------+     +------------+     +------------+     +------------+
+  |  DISCOVER  | --> |   DESIGN   | --> |   DEPLOY   | --> |   DEEPEN   |
+  +------------+     +------------+     +------------+     +------------+
+       |                  |                  |                  |
+       v                  v                  v                  v
+  - Foundation       - Brand strategy   - Website built    - Launch, then
+  - Audience         - Customer profile - Launched live      improve
+    teardown         - Copy and message   at pottsville-   - Compounding
+  - Competitor         framework          acupuncture.       retainer line
+    read             - Visual / design    com.au           - [to confirm
+  - Killer             direction        - Proof assets       with Jewell if
+    questions        - Launched-asset   - Onboarding +       a Deepen line
+  - Offer              specification      handover           is active for
+    worksheet                           - Client OWNS it      Pottsville]
+  - Synthesis                             outright
+
+     [GATE 1]           [GATE 2]           [GATE 3]
+   human signs        human signs        human signs
+   off Discovery      off Design         off launch
+
+  Max does the words, Sal does the pixels, Pip runs social.
+  The three specialists carry the repeatable 80 percent at AI
+  speed across every phase. The human partner (Jewell) owns the
+  20 percent the client pays for: trust, taste, judgement,
+  accountability, and the sign-off at every gate.
+
+  Jewell is the name on the door. Maxxim is the engine behind it.
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>1. Case Study Framework</h2>
+      <p>Every Maxxim case study follows one narrative arc, no exceptions: <strong>situation, then challenge, then solution, then results</strong>. The customer is the hero. Jewell, as the partner who ran the engagement, is the guide, not the protagonist. Maxxim, and Max, Sal, and Pip, are the engine behind the guide, named but never the star. The reader should feel the practice's problem before they see the method.</p>
+
+      <h3>The standard sections</h3>
+      <ul>
+        <li><strong>Situation / background.</strong> Who Pottsville is and the context they operated in. A local allied-health practice in Pottsville, the kind of small, service-led business that is excellent at its craft and under-served by slow, expensive agencies. This maps to the Time-Poor Local SME in <a href="/3d-process/design/customer-profile/">customer-profile.html</a>. [Confirm with client: years operating, number of practitioners, services offered, catchment.] This is where the reader recognises themselves or their own client.</li>
+        <li><strong>Challenge.</strong> The specific problem the practice faced before the engagement. Frame it as the trust gap and the capacity gap a typical local practice feels: a presence that did not reflect the quality of the care, no clear way to be found and chosen online, and no appetite to hand control to an agency that holds the keys. [Confirm the exact pain with the practice in interview.]</li>
+        <li><strong>Solution.</strong> What was provided and how. A full 3D run by Jewell as the partner, with Max, Sal, and Pip running the repeatable 80 percent at speed and a human signing off at every gate. The output: a complete strategy and a launched website the practice owns outright, delivered in days not months. Introduce Jewell here as the accountable guide, and the engine behind it as showable, not a black box.</li>
+        <li><strong>Implementation.</strong> The experience of working together across Discover, Design, and Deploy. The gated rhythm, the speed (days not months as the brand claim, [exact timeframe to confirm with Jewell]), the named specialists doing the production, and what it felt like to have one accountable person rather than a faceless agency queue.</li>
+        <li><strong>Results.</strong> The payoff, led by the strongest cleared outcome. The launched, owned site is the anchor result that needs no other number to stand up. Any quantified outcomes (enquiries, bookings, search visibility, time to launch) are marked [to confirm with client] until captured and cleared.</li>
+        <li><strong>Customer quote.</strong> The money quote that captures the transformation, in the practice's own words. [To confirm with client. Do not draft a quote on the client's behalf.] The interview guide in Section 3 is built to surface it.</li>
+        <li><strong>Next steps / CTA.</strong> What the reader should do after reading. For a partner reading it as the reference implementation: start a partner conversation or join the founding cohort. For an end client: book the Growth Diagnostic. Section 8 sets the CTA per channel, drawn from the locked library in <a href="/3d-process/design/copy-deck/">copy-deck.html</a>.</li>
+      </ul>
+
+      <h3>Length and tone</h3>
+      <p>The full written version runs <strong>500 to 800 words</strong>. Tone is confident, specific, and customer-as-hero. Confidence is sized to the proof: state what is real (launched, owned, days not months), flag what is not yet captured ([to confirm]). The voice is the Sage from <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>: plain, grounded, credible, calm. No hype, because hype is exactly what the trust gap punishes, and no exclamation marks, so emphasis comes from the claim itself.</p>
+    </section>
+
+    <section>
+      <h2>2. Target Case Studies</h2>
+      <p>Under the clearance rules, the target list for public use is a list of one. The discipline is to develop Pottsville to its fullest before reaching for anything internal, and to treat the unfinished items as a clearance pipeline, not a content backlog. The single highest-value action across the whole brand is clearing more named proof beyond Pottsville, a point echoed in <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>, <a href="/3d-process/design/copy-deck/">copy-deck.html</a>, and <a href="/3d-process/discover/offer-worksheet/">offer-worksheet.html</a>, so this section doubles as the proof-development priority.</p>
+
+      <h3>Priority 1: Pottsville Acupuncture (cleared, public, develop now)</h3>
+      <ul>
+        <li><strong>Customer type:</strong> local allied-health practice, a clear instance of the Time-Poor Local SME the partner serves, and a relatable shape for the small-business end of the universal aperture (personal brand, solo operator, SME, corporate, not for profit, government).</li>
+        <li><strong>Challenge angle:</strong> a quality practice held back by a presence that did not match the care, and the reluctance to hand control to a slow, opaque agency.</li>
+        <li><strong>Expected proof points:</strong> a launched website the client owns outright (cleared and anchor), delivered in days not months, plus [to confirm] enquiry, booking, visibility, or time-to-launch figures captured in interview.</li>
+        <li><strong>Why this story matters:</strong> it is the reference implementation. A prospective partner sees a full Discover, Design, Deploy run with a real, ownable outcome, which is the confidence they are actually buying. It is the only proof cleared to carry that weight in public.</li>
+      </ul>
+
+      <h3>Jewell as a live partner: proof of the model, not a Maxxim case study</h3>
+      <p>Jewell now runs the whole model in market as the flagship partner, which is powerful evidence that the partner model holds and that Maxxim's first partner is a long-standing operator. Treat this as evidence and pattern, cited as <strong>Jewell's</strong>, never dressed up as Maxxim's own public proof. Jewell's proof library (a client at plus 300 percent revenue, Circl Group, Walter Wealth, and others) lives under Jewell's banner. Do not build a Maxxim case study from Jewell's named client results, and do not quote Jewell's numbers as Maxxim's. Where the case study references the live partner, the line is that the partner model is proven in market, attributed to Jewell.</p>
+
+      <h3>Priority 2 and beyond: the clearance pipeline (not public, do not develop for external use yet)</h3>
+      <p>These exist in the internal library and are listed only to direct clearance effort. None may be named, quantified, or distributed externally without Clent's clearance. They are the path to a second and third public case study.</p>
+      <table>
+        <thead>
+          <tr><th>Candidate</th><th>Status</th><th>Action to make it usable</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hidrive</td><td>Percentages only, and only with clearance before any public use</td><td>Seek Clent clearance for a percentages-only treatment; capture a quotable owner story. Do not lift Jewell's named Hidrive figure as Maxxim's</td></tr>
+          <tr><td>Beyond the Clinic (BTC)</td><td>Internal demo, public clearance not confirmed</td><td>Confirm clearance with the client and Clent before any external development</td></tr>
+          <tr><td>Jewell Tyres</td><td>Internal demo, public clearance not confirmed</td><td>Confirm clearance before external development</td></tr>
+          <tr><td>OTR Earthmover</td><td>Internal only</td><td>Do not develop for external use. Internal pattern reference only</td></tr>
+          <tr><td>Jewell AI, Estipaint, Assurant, Jewell Health, Ultimate Labs</td><td>Internal / demo / staging, clearance not confirmed</td><td>Hold back until cleared by Clent</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Selection logic the partner community should apply going forward</strong>, once more proof clears: prioritise the strongest cleared results, the most relatable challenges for the target segment, diversity across organisation types (a tradie, a not-for-profit, a government body all broaden appeal), and willingness to participate and be named. Pottsville already meets the first, second, and fourth. The fourth criterion, willingness, must be reconfirmed for any specific metrics or quotes before publication.</p>
+    </section>
+
+    <section>
+      <h2>3. Interview Guide</h2>
+      <p>This guide captures the specifics this framework deliberately leaves blank. Run it with the practice owner or principal at Pottsville, and run the implementation questions with the Jewell team member who delivered the engagement. Ask open questions, then follow up for the concrete number, the timeframe, or the exact phrase. The aim is metric-rich, quotable answers, not "how was your experience".</p>
+
+      <h3>Background</h3>
+      <ul>
+        <li>Tell me about the practice. How long have you been operating, how many practitioners, and what does a typical patient come to you for?</li>
+        <li>Before this engagement, how were new patients finding you, and how were you presenting the practice online?</li>
+        <li>What did your previous website or marketing do for the business, honestly, in a normal month?</li>
+      </ul>
+
+      <h3>Challenge</h3>
+      <ul>
+        <li>What was not working before we started? What was the gap between the quality of your care and the way the practice came across?</li>
+        <li>What was that costing you, in enquiries, in bookings, in time, or in confidence? Put a number on it if you can.</li>
+        <li>Had you tried anything else first, an agency, a freelancer, a do-it-yourself builder, or an AI tool? What stopped that from working?</li>
+        <li>What was your worry about handing this to someone else? What did you not want to happen?</li>
+      </ul>
+
+      <h3>Decision</h3>
+      <ul>
+        <li>How did you come to work with Jewell on this? What made you say yes?</li>
+        <li>What convinced you the work would hit a standard you would be happy to put your name to?</li>
+        <li>What mattered most: the speed, the fact you would own it outright, or having a named person accountable? Why that one?</li>
+      </ul>
+
+      <h3>Experience</h3>
+      <ul>
+        <li>Walk me through what the process felt like across the three phases. What surprised you?</li>
+        <li>How long did it take from start to a launched site? [Capture the exact timeframe for the days-not-months claim.]</li>
+        <li>What was it like having one accountable person rather than an agency queue? Can you give an example?</li>
+        <li>Was there a moment where you thought, this is different from what I expected?</li>
+      </ul>
+
+      <h3>Results</h3>
+      <ul>
+        <li>Since launch, what has changed? Enquiries, bookings, the kind of patient you attract, how you are found online? Give me the specific numbers and the before-and-after.</li>
+        <li>Over what period did you see that change? In the first month, by three months?</li>
+        <li>What can you do now that you could not do before? What is the unexpected benefit?</li>
+        <li>How does it feel to own the site outright, rather than renting it from an agency?</li>
+      </ul>
+
+      <h3>Advice and the money quote</h3>
+      <ul>
+        <li>What would you tell another local practice owner who is weighing this up?</li>
+        <li>If you had to sum up the difference in one sentence, what would you say? [This is the candidate money quote. Capture it verbatim and seek written approval.]</li>
+      </ul>
+
+      <h3>Implementation questions for the Jewell delivery lead</h3>
+      <ul>
+        <li>Which parts of the run did Max, Sal, and Pip carry, and which parts did you sign off as the human at the gate? This is the 80/20 made concrete for a partner audience.</li>
+        <li>What was the actual elapsed time across Discover, Design, and Deploy?</li>
+        <li>Was the site shipped locked, and did the client take up the option to unlock it to hand-editable control? Did they take a read-only portal with Ari?</li>
+        <li>Is a Deepen line active for Pottsville, and what does it cover?</li>
+        <li>What would a partner running this same engagement need to know to repeat it cleanly?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Written Case Study Template</h2>
+      <p>A section-by-section template with the pattern filled and the specifics flagged. Channel writers fill the brackets from the interview, they do not freestyle claims, and they do not invent a figure to fill a gap.</p>
+
+      <h3>Headline formula</h3>
+      <p>Result plus customer type, with the timeframe when one is cleared. Pattern: <strong>"How [customer type] got [result] in [timeframe]."</strong></p>
+      <ul>
+        <li><strong>Recommended primary headline (cleared, no number required):</strong> "How a local acupuncture practice got a launched website it owns outright." This stands entirely on cleared proof.</li>
+        <li><strong>Stronger variant, once a timeframe is confirmed:</strong> "How Pottsville Acupuncture launched a website it owns outright, in [to confirm: days not months]."</li>
+        <li><strong>Metric variant, only if a figure is captured and cleared:</strong> "How Pottsville Acupuncture grew [metric] by [to confirm] after launch." Do not publish this variant on an invented number.</li>
+      </ul>
+
+      <h3>Opening hook (1 to 2 sentences)</h3>
+      <p>Capture the transformation up front. Pattern: a practice excellent at its craft, let down by a presence that did not show it, now launched and owned. Example shell: "Pottsville Acupuncture delivers real care to its community. Its online presence did not say so, until a full 3D run gave the practice a launched website it owns outright."</p>
+
+      <h3>Challenge section (set up the tension)</h3>
+      <p>Two to three sentences. Name the specific problem and what it cost, in the practice's framing from the interview. Lead with the human stakes: patients who could not find or choose the practice easily, and an owner wary of handing control to an agency. Insert [confirmed challenge detail] and [confirmed cost or lost-enquiry figure] here.</p>
+
+      <h3>Solution section (introduce the guide, show the engine)</h3>
+      <p>Introduce Jewell as the accountable partner who ran the engagement, and the 3D Process as the method. Make the 80/20 visible: Max, Sal, and Pip ran the repeatable 80 percent at AI speed (Max the words, Sal the pixels, Pip the social), and a named human signed off at every gate. Walk the reader through Discover, Design, Deploy in plain terms. Keep Jewell the guide and the practice the hero, and keep the specialists subordinate to the human. The engine behind the partner, not the name on the door.</p>
+
+      <h3>Results section (the payoff, lead with the strongest)</h3>
+      <p>Lead with the anchor that is cleared and needs no number: a launched website the practice owns outright, on its own domain, delivered in days not months. Then, only where captured and cleared, the supporting figures with before-and-after framing: "[to confirm: enquiries up from X to Y], [to confirm: time to launch], [to confirm: search visibility]." Close the section with the customer quote: [to confirm with client, verbatim, approved].</p>
+
+      <h3>Call to action</h3>
+      <p>Two CTAs, chosen by where the case study sits, both drawn from the locked library in <a href="/3d-process/design/copy-deck/">copy-deck.html</a>. For partner-facing placements: "See how a partner runs this. Start a partner conversation," or "Join the founding partner cohort." For end-client placements: "Book your Growth Diagnostic."</p>
+    </section>
+
+    <section>
+      <h2>5. Data and Proof Points</h2>
+      <p>How to present results for maximum impact without inventing anything. The rule for Pottsville is simple: the launched, owned site delivered in days not months is the cleared anchor and carries the case on its own. Every quantified claim is a placeholder until captured in interview and cleared by the client.</p>
+
+      <h3>Before and after snapshot</h3>
+      <figure>
+        <figcaption>The before-and-after snapshot. Cleared items are the spine. Bracketed items are captured in interview before publication. Never publish a bracketed cell as a number until it is confirmed and cleared.</figcaption>
+<pre><code>
+  POTTSVILLE ACUPUNCTURE  ::  BEFORE  -->  AFTER
+
+  BEFORE the 3D run            AFTER launch
+  ----------------------       ----------------------
+  Presence did not match  -->  Launched website the
+  the quality of care          practice OWNS outright,
+                               on its own domain
+                               (CLEARED, anchor proof)
+
+  Hard to be found and    -->  [to confirm: search
+  chosen online                visibility / findability]
+
+  [to confirm: enquiries  -->  [to confirm: enquiries
+  / bookings before]           / bookings after]
+
+  Slow, opaque agency     -->  A named human accountable
+  the only alternative         at every gate; days not
+                               months [timeframe to
+                               confirm with Jewell]
+
+  No owned asset          -->  Asset owned outright,
+                               unlockable to hand-edit,
+                               no agency holding keys
+                               (CLEARED)
+</code></pre>
+      </figure>
+
+      <h3>Results summary table</h3>
+      <table>
+        <thead>
+          <tr><th>Proof point</th><th>Category</th><th>Before</th><th>After</th><th>Clearance status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Launched website, owned outright, on own domain</td><td>Risk reduction / ownership</td><td>No owned asset</td><td>Live, owned outright, unlockable</td><td>Cleared, public, anchor</td></tr>
+          <tr><td>Time to launch (days not months)</td><td>Time saving</td><td>Agency norm: weeks to months</td><td>[to confirm with Jewell]</td><td>Claim cleared; exact figure [to confirm]</td></tr>
+          <tr><td>Enquiries or bookings</td><td>Revenue growth</td><td>[to confirm with client]</td><td>[to confirm with client]</td><td>[to confirm and clear]</td></tr>
+          <tr><td>Search visibility / findability</td><td>Efficiency gain</td><td>[to confirm with client]</td><td>[to confirm with client]</td><td>[to confirm and clear]</td></tr>
+          <tr><td>Accountable human at every gate</td><td>Satisfaction / trust</td><td>Faceless agency queue</td><td>Named person, signed gates</td><td>Cleared (method fact)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>How to present metrics, once captured</h3>
+      <ul>
+        <li><strong>Percentage plus absolute.</strong> Pair any percentage with the underlying number for context, for example "[to confirm]% more enquiries (from X to Y a month)". A percentage alone reads as spin.</li>
+        <li><strong>Anchor the timeframe.</strong> "In just [to confirm]" or "within the first [to confirm] months" makes the result feel real and repeatable, and reinforces the days-not-months claim.</li>
+        <li><strong>Visual presentation.</strong> Use a single callout box for the anchor result (launched and owned), a small before-and-after pair for any captured figure, and one highlighted statistic at most per view. Do not crowd the page with weak numbers.</li>
+        <li><strong>Proof-point categories to capture against:</strong> efficiency gains, cost savings, revenue growth, time savings, risk reduction, satisfaction improvements. Tag each captured result to a category so the right proof lands with the right reader.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Customer Quote Framework</h2>
+      <p>Customer quotes carry more credibility than anything the brand writes about itself, so the interview is built to surface four quote types. None is drafted here. Each is captured verbatim and approved before use. The example prompts are the questions to ask, not the answers to expect.</p>
+      <ul>
+        <li><strong>Challenge quote</strong>, articulating the pain. Prompt: "Before this, what was the gap between the care you give and the way the practice came across?" [Capture verbatim.]</li>
+        <li><strong>Decision quote</strong>, explaining the choice. Prompt: "What convinced you the work would hit a standard you would put your name to?" [Capture verbatim.]</li>
+        <li><strong>Results quote</strong>, quantifying the outcome. Prompt: "Since launch, what has actually changed, and by how much?" [Capture verbatim, with the number where offered.]</li>
+        <li><strong>Recommendation quote</strong>, endorsing to peers. Prompt: "What would you tell another local practice owner weighing this up?" [Capture verbatim. This is the strongest distribution asset.]</li>
+      </ul>
+      <p>Until cleared wording exists, the only quote material available is the three recurring themes from <a href="/3d-process/design/copy-deck/">copy-deck.html</a>, used as paraphrased highlights and clearly not as quotation: it is finished and it is mine; a real person stood behind it; it was fast. Do not present these as the client's words.</p>
+    </section>
+
+    <section>
+      <h2>7. Visual and Design Direction</h2>
+      <p>Imagery and layout follow the locked visual identity from <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>: Signal Blue #2D5BFF, Poppins, design Edition 03, real over illustrated, candid over staged, outcome over abstract. The case study should show the real launched work and the real people accountable for it, never stock AI abstractions of glowing brains and circuit boards, which undercut the human-at-the-wheel position.</p>
+
+      <h3>Photography and imagery needs</h3>
+      <ul>
+        <li><strong>The launched site itself.</strong> A clean screenshot or device mockup of pottsvilleacupuncture.com.au. This is the anchor visual, the proof made visible. [Confirm the practice is happy for the site to be shown, already public.]</li>
+        <li><strong>Practice and people shots.</strong> The owner or principal, and the practice environment, candid not staged. [To confirm: client consent and available photography, or a shoot per the Photo/Video Brief.]</li>
+        <li><strong>The human guide.</strong> Where appropriate, the Jewell person accountable for the run, to make the accountability tangible. [Confirm internally.]</li>
+        <li><strong>The reversed wordmark.</strong> Where the case study sits on a dark ground or a Signal Blue field, use the reversed Maxxim wordmark variant so the mark holds contrast. It is a variant inside the locked identity, not a new identity.</li>
+      </ul>
+
+      <h3>Layout recommendations</h3>
+      <ul>
+        <li>Pull quotes set in Poppins, the recommendation quote given the most space once cleared.</li>
+        <li>A single data callout box for the anchor result, owned and launched, in Signal Blue.</li>
+        <li>A before-and-after visual built from the snapshot in Section 5, cleared cells only.</li>
+        <li>The 3D journey diagram from the top of this document as the structural backbone, so the reader sees the method and the named specialists, not a black box.</li>
+        <li>Disciplined, high-contrast layout per the Sage restraint. Weight and hierarchy carry emphasis, not decoration.</li>
+      </ul>
+
+      <h3>Format specifications</h3>
+      <ul>
+        <li><strong>Web:</strong> the Work page case study, full 500 to 800 word narrative with the journey diagram and the site screenshot.</li>
+        <li><strong>PDF one-pager:</strong> headline, hook, the before-and-after snapshot, the anchor result, one cleared quote, and a CTA.</li>
+        <li><strong>Presentation:</strong> the journey diagram on one slide, the before-and-after on a second, the anchor result and quote on a third.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Distribution Plan</h2>
+      <p>A case study that lives on page forty-seven of the site is worthless. Pottsville is the only cleared public proof, so it should appear wherever a buyer is deciding. Each channel gets a format adaptation, because a case study on a website is not the same as one in a pitch deck.</p>
+      <figure>
+        <figcaption>The proof-to-distribution map. One cleared case, adapted per channel. Anything marked [to confirm] needs client or Clent clearance before it ships. Named partners and any second client are never used publicly without consent, and Jewell's own named results are never re-used as Maxxim's public proof.</figcaption>
+<pre><code>
+  PROOF  -->  DISTRIBUTION MAP  (Pottsville, the cleared public proof)
+
+                        +---------------------------+
+                        |   POTTSVILLE ACUPUNCTURE   |
+                        |   launched + owned proof   |
+                        +---------------------------+
+                                     |
+     +-----------------+-------------+-------------+-----------------+
+     v                 v             v             v                 v
+  WEBSITE          SALES          SOCIAL        EMAIL              PR
+  ----------       ----------     ----------    ----------         ----------
+  Work page        One-pager      Quote         Partner            Method-led
+  case study;      PDF; proposal  graphics;     nurture proof;     pitch with
+  homepage         insert;        result card;  end-client         the launched-
+  social proof;    pitch-deck     short video   reassurance        and-owned
+  service-page     slide          testimonial   sequence           hook
+  callout                         [to confirm]                     [to confirm
+                                                                    client OK]
+     |                 |             |             |                 |
+     v                 v             v             v                 v
+  Read the         Drop into      Lift one      One claim per      Local /
+  Pottsville       partner and    cleared       email; link to     trade angle:
+  story (CTA)      end-client     line per       the full Work-     a real local
+                   proposals      post           page story        practice win
+</code></pre>
+      </figure>
+
+      <h3>Channel-by-channel adaptation</h3>
+      <ul>
+        <li><strong>Website.</strong> A dedicated Work-page case study (the full narrative), a homepage social-proof strip, and a callout on the relevant service page. This is the proof surface, so let the cleared evidence persuade. Per the v2.1 site audit, Pottsville is the first and only case study on the Work page; BTC, OTR, Hidrive, and Jewell Tyres are not added, and Jewell's own client results stay under Jewell's banner.</li>
+        <li><strong>Sales collateral.</strong> A one-page PDF summary for the partner to hand over, a proposal insert, and a pitch-deck slide. For a partner audience, framed as the reference implementation they will run, showing Max, Sal, and Pip carrying the volume and the human signing the gates. For an end client, framed as the outcome they will receive.</li>
+        <li><strong>Social media.</strong> Quote graphics (once a quote is cleared), a result-highlight card built on the anchor proof, and a short-form video testimonial [to confirm with client]. One sharp true claim per post, no exclamation marks. Pip drafts these in the Social Studio, and a human approves before publish.</li>
+        <li><strong>Email campaigns.</strong> Proof content in the partner nurture sequence (operator-to-operator, the engine working in the open) and the end-client sequence (outcome-led, reassuring). One claim per message, linking to the full Work-page story.</li>
+        <li><strong>PR.</strong> A method-led pitch using the launched-and-owned hook and a real local-practice angle, suitable for local or trade press. [Confirm client comfort with media exposure before pitching.] Claims stay method-led where a figure is not yet cleared.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Repurposing Strategy</h2>
+      <p>One cleared case study should yield five or more derivative assets, so the effort of capturing and clearing Pottsville pays back many times. Each derivative below specifies format, length, and primary use. Anything that depends on an uncleared quote or figure is marked [to confirm].</p>
+      <table>
+        <thead>
+          <tr><th>Derivative</th><th>Format</th><th>Length</th><th>Primary use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Social proof snippet</td><td>One to two sentence line, text badge</td><td>Under 25 words</td><td>Website social-proof strip, ad copy. Built on cleared anchor; quote version [to confirm]</td></tr>
+          <tr><td>Testimonial graphic</td><td>Quote plus practice name plus anchor result, Signal Blue</td><td>One image</td><td>Social and partner hub. Needs a cleared quote [to confirm]. Drafted by Pip, human-approved</td></tr>
+          <tr><td>Blog post</td><td>Expanded narrative w
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/deploy/design-brief/"><span class="lbl">← Previous</span><span class="ttl">Design Brief</span></a>
+<a href="/3d-process/deploy/crm-plan/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">CRM Plan</span></a></div>
+</div></div>
+</body>
+</html>

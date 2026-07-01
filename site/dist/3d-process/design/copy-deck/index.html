@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copy Deck · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc current" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">02 · Design</span>
+    <h1>Copy Deck</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this document</h2>
+      <p>This is the messaging framework for Maxxim, produced in the Design phase against Master Briefing v2.1, the Gate 1 decisions in <a href="/3d-process/discover/discover-summary/">discover-summary.html</a>, and the locked <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>. It was refreshed on 1 July to fold in two new inputs: the 29 June product guide, which gives the real mechanics of how the platform works day to day, and the live Jewell partner site, which is the first in-market proof of the whole model. This is not finished ad copy. It is the layer the website, the partner hub, the social channels, and the 3 July showcase materials are written from. Every channel specialist and creative should be able to write on brand without re-deriving the strategy, by lifting the hierarchy, the audience messages, the headline patterns, and the call-to-action language set out here. It draws on <a href="/3d-process/discover/offer-worksheet/">offer-worksheet.html</a>, <a href="/3d-process/discover/audience-teardown/">audience-teardown.html</a>, and <a href="/3d-process/design/customer-profile/">customer-profile.html</a>.</p>
+      <p>It carries two audiences at once, because Maxxim sells to a partner who serves an end client. The <strong>partner</strong> is the front door now: the operator who licenses or refers, the human moat, the community. The <strong>end client</strong> is universal: personal brand, solo operator, SME, corporate, not for profit, and all levels of government, reached through the partner. The single objection under both is the trust gap. The sharpest way to state the whole brand in one line, now that a real operator embodies it, is this: <strong>the engine behind the partner, not the name on the door</strong>. The lead word for end-client growth copy is locked: <strong>growth</strong>.</p>
+      <p>What is open stays open. Per v2.1 and Gate 1, this deck does not invent Maxxim's one-word category lead, partner economics percentages, the front-door product claim, the fractional CMO model for Maxxim, Maxxim's end-client visibility rule, the showcase promise wording, or Christy Kilmartin's role split. Proof respects clearance: Pottsville Acupuncture is the only launched public proof and leads all copy; OTR Earthmover is internal only; Hidrive is percentages only; and Jewell's own named results stay under Jewell's banner and are never re-used as Maxxim's own public proof. House style is locked and hard: no em dashes, no exclamation marks, Australian English, operator to operator, confident and plain, never hype. The business is Jewell, never Joule.</p>
+    </section>
+
+    <section>
+      <h2>The seam every message is written across</h2>
+      <p>Since the 27 June version, the core of the business went from a model on paper to a working example in market. The human-20-percent and machine-80-percent split is now concretely embodied by the live Jewell partner. Jewell enters and owns the client, the Discover phase is always human, then Design and Deploy hand off to the Maxxim engine at scale, human-checked at every stage. Jewell is the name on the door. Maxxim is the engine behind it. That sentence governs the tone of every block below: the human is always the hero, the machine is always the volume, and the copy never lets the machine take the credit the human is accountable for.</p>
+      <p>The engine is now nameable and showable. Three named specialists, each one a process, make the method concrete: <strong>Max</strong> does the words in Claude Cowork (strategy, plans, copy, briefs, summaries); <strong>Sal</strong> does the pixels in the Design Studio (logos, brand imagery, collateral, video); <strong>Pip</strong> runs the Social Studio (drafts and, on approval, publishes posts). The work is gated and mechanical: creative unlocks only as the briefs it depends on exist and a logo is locked, and the Social Studio unlocks only once the Social Strategy exists. Clients receive a complete strategy and launched assets they own outright, on their own domain, in days not months. When copy needs to prove the engine is real rather than a claim, it reaches for these facts.</p>
+    </section>
+
+    <section>
+      <h2>1. Messaging Hierarchy</h2>
+      <p>One primary message at the top, three supporting messages beneath it, proof points at the base. Everything in market should ladder up to this without a rewrite per channel. The hierarchy is the partner-side argument first, because the partner is the buyer; the end-client benefit sits inside the proof the partner buys into. It is tight enough to fit on a single slide.</p>
+
+      <figure>
+        <figcaption>The message hierarchy: brand idea, three pillars, proof points. The brand idea now carries the live-partner seam. Pottsville is the only public proof at the base; Jewell as a live partner proves the model works but its named results stay under Jewell's banner; OTR is internal only; Hidrive is percentages only.</figcaption>
+<pre><code>
+                  +-----------------------------------+
+                  |            BRAND IDEA             |
+                  |  The proven method, run by a      |
+                  |  human, at AI speed.              |
+                  |  Fast AND accountable AND         |
+                  |  method-backed. The engine behind |
+                  |  the partner, not the name on the |
+                  |  door. A community, not a lone    |
+                  |  operator.                        |
+                  +-----------------------------------+
+                                   |
+        +--------------------------+--------------------------+
+        |                          |                          |
+        v                          v                          v
+  +---------------+        +-----------------+        +-----------------+
+  | PILLAR 1      |        | PILLAR 2        |        | PILLAR 3        |
+  | The engine    |        | The human at    |        | The community   |
+  | for your      |        | every gate      |        | is the moat     |
+  | judgement     |        |                 |        |                 |
+  | (the 80/20)   |        | (the trust gap) |        | (stronger       |
+  |               |        |                 |        |  together)      |
+  +---------------+        +-----------------+        +-----------------+
+        |                          |                          |
+        v                          v                          v
+  +---------------+        +-----------------+        +-----------------+
+  | PROOF         |        | PROOF           |        | PROOF           |
+  | Method run    |        | Pottsville      |        | Founding cohort |
+  | for years;    |        | launched and    |        | of 5 to 8;      |
+  | Max, Sal, Pip |        | owned; gates    |        | Jewell live in  |
+  | run the 80    |        | enforced by the |        | market; the     |
+  | percent;      |        | product; premium|        | shared table;   |
+  | days not      |        | run near        |        | the compounding |
+  | months        |        | $80,000         |        | Deepen loop     |
+  +---------------+        +-----------------+        +-----------------+
+</code></pre>
+      </figure>
+
+      <h3>Primary message</h3>
+      <p>Maxxim is the proven method, run by a human, at AI speed: the engine that lets a trusted operator deliver agency-grade growth repeatably, and put their name on every result. The engine behind the partner, not the name on the door.</p>
+
+      <h3>Supporting messages and their proof</h3>
+      <ul>
+        <li><strong>Pillar 1, the engine for your judgement (the 80/20).</strong> Max, Sal, and Pip run the repeatable 80 percent at speed, you own the 20 percent clients actually pay for. Proof: the 3D Process has run with real clients for years through Jewell; Max does the words, Sal does the pixels, Pip runs social; the end client gets finished, owned work in days not months.</li>
+        <li><strong>Pillar 2, the human at every gate (the trust gap).</strong> A named human signs off at every phase, so the work is something you can stand behind. Proof: Pottsville Acupuncture launched and owned by the client; the gates are enforced by the product, not just promised, because creative unlocks only as its briefs exist and a logo is locked; a recent premium run transacted at around $80,000 inside the $25,000 to $250,000 band.</li>
+        <li><strong>Pillar 3, the community is the moat (stronger together).</strong> Trust, taste, and judgement held by a community beat the same held by a lone operator. Proof: a founding cohort of 5 to 8 partners proving the model; Jewell already live in market on Maxxim as the engine behind it, the first working proof the partner model holds; a shared table, shared deal flow, and a compounding Deepen loop that improves the method for everyone.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Value Proposition Statement</h2>
+      <p><strong>For trusted operators who can win the work but cannot deliver agency-grade growth repeatably, Maxxim is the commercialisation engine that runs a proven, gated method at AI speed with an accountable human at every gate, so you can scale under your own name, keep your margin, and stand behind every result, for any organisation you choose to commercialise.</strong></p>
+      <p>This framing leads with the partner because Gate 1 names the partner as the front door now, and it answers the three questions a value proposition must answer: what Maxxim does (runs a proven method fast, with a human accountable), for whom (trusted operators who are capacity-capped), and why it matters (scale, margin, and a result you can put your name on). It was chosen over an end-client-led framing, which would speak past the actual buyer, and over a pure-AI-speed framing, which would walk straight into the trust gap the brand exists to close. The live Jewell partner is now the proof this is not theory: a 35-year operator runs the whole model in market, which lets the proposition end on a fact rather than a promise.</p>
+    </section>
+
+    <section>
+      <h2>3. Key Messages by Audience</h2>
+      <p>The audience splits into two layers. Layer A is the partner, the buyer and front door. Layer B is the end client, universal, reached through the partner. The matrix below shows how each pillar lands per segment, then each segment gets its own primary message, supporting points, and tone adjustment. The personas map to <a href="/3d-process/design/customer-profile/">customer-profile.html</a>: Operator Owen (A1), Connector Carol (A2), Specialist Sasha (A3), Director Diane (B, growth-stage and corporate), and Procurement Pat (B, public-sector and not-for-profit overlay). Every message is written from the buyer's perspective, not the seller's.</p>
+
+      <h3>Audience-by-message matrix</h3>
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Pillar 1, the engine</th><th>Pillar 2, the human at the gate</th><th>Pillar 3, the community</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A1 Operator Owen</strong>, Capacity-Capped Client Partner (primary)</td>
+            <td>Serve your whole pipeline without hiring a team. Max, Sal, and Pip run the 80 percent, you keep your hours for judgement.</td>
+            <td>The human at the wheel is you. Sign the 20 percent and mean it. The engine behind you, not the name on your client's door.</td>
+            <td>Join a founding table where deal flow and judgement are shared, not hoarded. Jewell already runs the whole model on it.</td>
+          </tr>
+          <tr>
+            <td><strong>A2 Connector Carol</strong>, Networked Referrer</td>
+            <td>No delivery, no method to learn. Put your network to work without becoming the work.</td>
+            <td>Your name is safe, because a named partner owns every engagement and stands behind quality at every gate.</td>
+            <td>Stay inside a trusted circle whose recommendations are reliable.</td>
+          </tr>
+          <tr>
+            <td><strong>A3 Specialist Sasha</strong>, Scoped Specialist</td>
+            <td>Do your one thing brilliantly. You slot alongside Sal or Pip, the engine handles the rest.</td>
+            <td>Scoped brief, clear fee, a system that protects the standard your craft sits inside. The gate tells you when your module unlocks.</td>
+            <td>Pulled in by demand across the partner network, not chasing loose freelance hours.</td>
+          </tr>
+          <tr>
+            <td><strong>B, Director Diane</strong>, growth-stage SME and corporate</td>
+            <td>Agency-grade strategy and launched assets, in days not months.</td>
+            <td>One named human accountable for the outcome, owned by you outright.</td>
+            <td>Backed by a method and a network that keep improving, not a one-off project.</td>
+          </tr>
+          <tr>
+            <td><strong>B, Procurement Pat</strong>, public sector and not for profit</td>
+            <td>A fast, accountable outcome that still sits inside procurement rules.</td>
+            <td>A gated, documented, defensible method with a named owner on the record.</td>
+            <td>A method proven across a partner network, with assets you own and can audit.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>A1, Operator Owen, the Capacity-Capped Client Partner (primary)</h3>
+      <p><strong>Primary message:</strong> The engine for your judgement. License a proven method, run agency-grade growth under your own name, and stop being your own ceiling.</p>
+      <ul>
+        <li>Max, Sal, and Pip run the repeatable 80 percent at speed: the words, the pixels, the social. You own the 20 percent clients actually pay for: trust, taste, judgement, and the relationship.</li>
+        <li>Keep your client and keep your margin. Scale without becoming the agency you never wanted to build.</li>
+        <li>A human stays at the wheel, and that human is you. Put your name on the output and stand behind it. Maxxim is the engine behind you, not a platform in front of your client.</li>
+        <li>Jewell already runs the whole model in market on Maxxim, so you are joining a proven pattern, not a promise. One named partner owns each client relationship, always.</li>
+      </ul>
+      <p><strong>Tone adjustment:</strong> the fullest operator-to-operator register. Plain, direct, evidence-led, no hype. He judges the engine, not the marketing, so let the proof, the named specialists, and the gates carry the persuasion. Demonstration over slideware.</p>
+
+      <h3>A2, Connector Carol, the Networked Referrer</h3>
+      <p><strong>Primary message:</strong> Refer and earn, no delivery required. Put your network to work without putting your name at risk.</p>
+      <ul>
+        <li>One clean introduction, one clear arrangement. Refer the client in and step back.</li>
+        <li>A named partner owns and stands behind every engagement, so your recommendation is safe.</li>
+        <li>No method to learn, no delivery to manage, no ownership to carry.</li>
+        <li>The arrangement is documented up front: who referred, the fee, and the window. (The finder's-fee rate is being proven through the founding cohort and is not stated here.)</li>
+      </ul>
+      <p><strong>Tone adjustment:</strong> light, relationship-led, low effort. Lead with reputation protection. Keep it to a single clear page in feel. Reassure, do not sell.</p>
+
+      <h3>A3, Specialist Sasha, the Scoped Specialist</h3>
+      <p><strong>Primary message:</strong> Do your one thing brilliantly. The engine handles the rest.</p>
+      <ul>
+        <li>A clean, fixed scope and a fair fee for the craft, with the add-on anchored around $1,500.</li>
+        <li>You slot in alongside Sal or Pip on a defined module. No ownership of the whole engagement, and no creep into work you did not sign up for.</li>
+        <li>A gated system that routes you clean work and protects the standard your craft lives inside. Your module unlocks when its brief exists, not before.</li>
+        <li>Pulled in by demand across the partner network, not pushed to chase loose hours.</li>
+      </ul>
+      <p><strong>Tone adjustment:</strong> craft-respecting and precise. Clear scoped briefs, clean handoffs. Speak to the discipline of the work, not the size of the engagement.</p>
+
+      <h3>B, Director Diane, the growth-stage SME and corporate lead (end client, through partner)</h3>
+      <p><strong>Primary message:</strong> Agency-grade growth, delivered in days, owned by you, with a named human accountable at every gate.</p>
+      <ul>
+        <li>A complete strategy and launched assets in days, not a six-month agency build.</li>
+        <li>You own what is built outright, on your own domain, and can unlock it to hand-editable control if you want it. No agency holding the keys.</li>
+        <li>One accountable owner when it matters, not an opaque black box or unaccountable AI output.</li>
+        <li>Launch, then deepen. Improvement that compounds, modelled on the Pottsville pattern.</li>
+      </ul>
+      <p><strong>Tone adjustment:</strong> outcome-led and accountable, slightly more polished than the partner register. Evidence first. She wants a named human she can call and a process she can see. Lead with Pottsville as the cleared proof.</p>
+
+      <h3>B, Procurement Pat, the public-sector and not-for-profit buyer (end client, overlay)</h3>
+      <p><strong>Primary message:</strong> A gated, accountable, probity-friendly method, with assets you own outright and a named human signing off at every step.</p>
+      <ul>
+        <li>The same fast, owned outcome, wrapped in a documented, defensible process where each phase pauses for sign-off.</li>
+        <li>A named owner on the record, and a paper trail that survives an audit.</li>
+        <li>Value for money against panel or quote rules, with accessibility and privacy obligations met.</li>
+        <li>Speed, inside the rules, not at the expense of them.</li>
+      </ul>
+      <p><strong>Tone adjustment:</strong> the most formal and most precise register. Documented, evidence-first, written method and compliance statements over conversation. Lean on probity, accountability, and ownership. (No public-sector run is yet cleared as proof, so claims stay method-led, not case-led.)</p>
+    </section>
+
+    <section>
+      <h2>4. Headline and Hook Framework</h2>
+      <p>Eight templates across proven frameworks, each with a partner-facing and an end-client-facing example filled in. Every example obeys house style: no em dashes, no exclamation marks. Channel writers fill the template, they do not freestyle the claim. No blanks: every row is completed and client-specific.</p>
+
+      <table>
+        <thead>
+          <tr><th>Framework</th><th>Template structure</th><th>Partner-facing example</th><th>End-client-facing example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Benefit-led</strong> (lead with the outcome)</td>
+            <td>[Desired outcome], [qualifier that proves it is real].</td>
+            <td>Run agency-grade growth under your own name, and keep the margin.</td>
+            <td>A complete strategy and a launched site you own, in days not months.</td>
+          </tr>
+          <tr>
+            <td><strong>PAS</strong> (Problem, Agitate, Solve)</td>
+            <td>[Problem]. [What it costs to stay there]. [The Maxxim resolution].</td>
+            <td>You win more work than you can deliver. Every month you turn good work away. Maxxim runs the 80 percent so you can serve your whole pipeline.</td>
+            <td>Agencies are slow, expensive, and opaque. Every month of delay is a month of lost growth. Maxxim delivers a launched, owned asset in days, with a human accountable.</td>
+          </tr>
+          <tr>
+            <td><strong>AIDA</strong> (Attention, Interest, Desire, Action)</td>
+            <td>[Sharp claim]. [Why it holds]. [What you get]. [Next step].</td>
+            <td>The proven method, run by a human, at AI speed. A gated process a person signs at every phase. Scale on judgement, not headcount. Join the founding partner cohort.</td>
+            <td>Growth, finished and owned, in days. A method proven for years, with Pottsville launched and owned. Agency-grade work without the agency wait. Book your Growth Diagnostic.</td>
+          </tr>
+          <tr>
+            <td><strong>Curiosity-gap</strong> (open a loop)</td>
+            <td>[The thing that does not usually go together], [resolved].</td>
+            <td>Fast and accountable, at the same time. The quadrant no agency or AI tool occupies.</td>
+            <td>AI speed, with a human who signs the work. See how both hold together.</td>
+          </tr>
+          <tr>
+            <td><strong>Social proof</strong> (lead with credibility)</td>
+            <td>[Cleared proof], [what it demonstrates].</td>
+            <td>Pottsville Acupuncture, launched and owned by the client. The method, run by a human, working in the open.</td>
+            <td>Pottsville Acupuncture got a launched site they own outright. The same gated method is available to you.</td>
+          </tr>
+          <tr>
+            <td><strong>Consequences of inaction</strong> (the cost of standing still)</td>
+            <td>Stay [current state] and [the cost compounds].</td>
+            <td>Stay founder-capped and your ceiling stays you, while a competitor licenses a proven method and scales past you.</td>
+            <td>Keep paying for slow, opaque work you do not own, and every month is a month of growth you do not get back.</td>
+          </tr>
+          <tr>
+            <td><strong>The 80/20 frame</strong> (the core thesis, compressed)</td>
+            <td>[AI does the repeatable]. [You own the part that pays].</td>
+            <td>Max, Sal, and Pip run the repeatable 80 percent. You own the 20 percent clients actually pay for.</td>
+            <td>The engine handles the heavy lifting. A named human owns the judgement your result depends on.</td>
+          </tr>
+          <tr>
+            <td><strong>The seam</strong> (the live-partner line, compressed)</td>
+            <td>[The engine], [not the name on the door].</td>
+            <td>The engine behind the partner, not the name on the door. Jewell runs the whole model on it.</td>
+            <td>A named person owns your result. The engine behind them just makes it fast.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>5. Tagline Options</h2>
+      <p>Five candidates, carried from <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a> and framed for use. None of these settles Maxxim's one-word category lead, which stays open and is Clent's call. These are taglines, not a category claim.</p>
+      <ul>
+        <li><strong>The human at the wheel.</strong> Rationale: owns the trust position in four words and closes the central objection directly, reinforcing accountability. Best use: homepage hero and partner hub, where the trust gap is the first thing to answer.</li>
+        <li><strong>The engine behind the partner.</strong> Rationale: captures the seam the live Jewell partner now proves in market, and puts the human in front and the machine behind. Best use: partner-facing surfaces and the For Partners hero, where the operator needs to know the engine serves them.</li>
+        <li><strong>Proven method. AI speed. Human judgement.</strong> Rationale: states all three sides of the empty quadrant, literal and credible, very Sage. Best use: the explainer line under the logo, sales collateral, and the showcase opener.</li>
+        <li><strong>The engine for your judgement.</strong> Rationale: speaks straight to the primary partner audience and their 80/20 job to be done. Best use: partner outreach and partner-facing pages.</li>
+        <li><strong>Finished, owned, in days.</strong> Rationale: leads with the end-client outcome the partner sells. Best use: end-client-facing pages and the Growth Diagnostic step, where the message must carry to the buyer behind the partner.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Tone of Voice Guide</h2>
+      <p>Four dimensions, each with where the brand sits and concrete do and don't examples. Every example obeys the locked external style: no em dashes, no exclamation marks, Australian English. This applies the <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a> voice, it does not re-open it.</p>
+
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>Where the brand sits</th><th>Do</th><th>Don't</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Confidence</strong></td>
+            <td>Assured, sized to the proof, never inflated.</td>
+            <td>The method has run with real clients for years. Pottsville is launched, and the client owns it. Jewell now runs the whole model in market.</td>
+            <td>Maxxim is the revolutionary AI platform transforming marketing forever.</td>
+          </tr>
+          <tr>
+            <td><strong>Formality</strong></td>
+            <td>Plain operator-to-operator. Short sentences, exact words.</td>
+            <td>Max, Sal, and Pip run the repeatable 80 percent at speed. You own the 20 percent clients pay for.</td>
+            <td>Our synergistic end-to-end solution leverages cutting-edge AI to optimise outcomes.</td>
+          </tr>
+          <tr>
+            <td><strong>Accountability</strong></td>
+            <td>Names the human and shows the gate. The human is the hero.</td>
+            <td>A named human signs off at every gate, so the work is something you can stand behind. The engine behind the partner, not the name on the door.</td>
+            <td>Our AI handles everything automatically, no human needed.</td>
+          </tr>
+          <tr>
+            <td><strong>Honesty</strong></td>
+            <td>States what is locked, flags what is open, no false certainty.</td>
+            <td>Partner economics are set in structure. The exact floor and clip are being proven through the founding cohort.</td>
+            <td>Partners keep 70 percent, guaranteed.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Naming the specialists in copy</h3>
+      <p>Max, Sal, and Pip are the branded expression of the method: Max does the words, Sal does the pixels, Pip runs social. Name them when it makes the engine concrete for a partner or a scrutinising buyer, and keep them subordinate to Maxxim. They are how the method is shown working. They are never presented as separate products, and never as the accountable human. The accountable human is always the partner. When copy would tempt a reader to think the machine is in charge, name the partner instead of the specialist.</p>
+
+      <h3>Channel-specific tone adaptations</h3>
+      <ul>
+        <li><strong>Website and partner hub:</strong> the fullest expression of the Sage. Lead with the position, then the proof, then the recommendation. Confident and grounded. This is the proof surface, so let cleared evidence and the live Jewell partner do the persuading. Add Pottsville as the lead case. Do not display OTR, Hidrive, BTC, or Jewell Tyres, and do not re-use Jewell's named client results as Maxxim's own public proof.</li>
+        <li><strong>Email (partner nurture and end-client):</strong> short and substantive. One claim per message, a single clear next step. Partner email is operator-to-operator and reciprocal; end-client email is outcome-led and reassuring. Transactional email stays plain and exact, especially around the Growth Diagnostic credit.</li>
+        <li><strong>Social and short form:</strong> the Sage compressed. One sharp, true claim per post. No exclamation marks means emphasis comes from the claim itself, not punctuation. Lift lines straight from Sections 1 and 4. Never imply economics that are still open.</li>
+        <li><strong>Sales collateral, proposals, and gate sign-offs:</strong> the most formal and most precise register. Separate locked from open explicitly. This is where accountability and honesty carry the most weight. For public-sector buyers, lean into documented method and compliance language.</li>
+        <li><strong>The 3 July showcase and partner conversations:</strong> warmer, more reciprocal. This is the table, not a pitch. Run as discovery and alignment, invite rather than sell. The exact showcase promise wording is open and Clent's to finalise, so copy stays directional, not committed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Boilerplate Copy</h2>
+      <p>Company description in three lengths, for reuse across footers, partnership pages, and about pages. All obey house style.</p>
+
+      <h3>25-word version</h3>
+      <p>Maxxim is the engine that lets trusted operators run a proven, gated growth method at AI speed, with an accountable human signing off at every step.</p>
+
+      <h3>50-word version</h3>
+      <p>Maxxim is the commercialisation engine for trusted operators. Three named specialists, Max, Sal, and Pip, run the repeatable 80 percent of a growth engagement at speed, while a human partner owns the 20 percent clients pay for. Partners license a proven method, keep their margin, and stand behind every result.</p>
+
+      <h3>100-word version</h3>
+      <p>Maxxim is the proven method, run by a human, at AI speed. It is the engine that lets trusted operators deliver agency-grade growth repeatably, under their own name. Max, Sal, and Pip, the named specialists inside Maxxim, run the repeatable 80 percent of a marketing engagement at speed: the words, the pixels, and the social. A human partner owns the 20 percent clients actually pay for: trust, taste, judgement, and the relationship. The method is gated, with a named human signing off at every phase. The end client receives a complete strategy and launched assets they own outright, in days not months.</p>
+    </section>
+
+    <section>
+      <h2>8. Call-to-Action Library</h2>
+      <p>Organised by funnel stage, split across the partner door and the end-client door, because the two motions convert differently. Each CTA names where to use it and why the language works at that stage. The two primary CTAs are set: the partner converts on the founding cohort, the end client converts on the Growth Diagnostic.</p>
+
+      <h3>Awareness, first touch</h3>
+      <ul>
+        <li><strong>See how it works.</strong> Use on social, homepage nav, and first-touch ads. Low commitment, invites the curious to understand the model before judging it.</li>
+        <li><strong>Meet the engine for your judgement.</strong> Use on partner-facing first-touch. Names the operator's job to be done, not a tool, so it earns the click without over-claiming.</li>
+        <li><strong>See the method, run by a human.</strong> Use on end-client first-touch. Leads with the trust position, which is the first thing the wary buyer needs.</li>
+      </ul>
+
+      <h3>Consideration, evaluation stage</h3>
+      <ul>
+        <li><strong>Read the Pottsville story.</strong> Use on the Work page and in nurture. Leads with the only cleared public proof, which is exactly what a scrutinising buyer wants at this stage.</li>
+        <li><strong>Meet Max, Sal, and Pip.</strong> Use on How It Works and partner consideration pages. The partner judges the engine by seeing the named specialists at work, so the CTA offers a look inside, not a claim.</li>
+        <li><strong>See what the gates cover.</strong> Use on How It Works. Surfaces the accountability mechanism that closes the trust gap, for buyers comparing options.</li>
+      </ul>
+
+      <h3>Decision, conversion points</h3>
+      <ul>
+        <li><strong>Join the founding partner cohort.</strong> Primary partner CTA. Use on For Partners and at the close of the showcase materials. Frames the next step as joining a founding table, with genuine cohort scarcity, not buying a tool.</li>
+        <li><strong>Book your Growth Diagnostic.</strong> Primary end-client CTA. Use on end-client pages and partner-led proposals. Carries the locked lead word, growth, and points to the only fully settled price, the credited $4,950 first step, which makes the first yes low risk.</li>
+        <li><strong>Start a partner conversation.</strong> Use where a softer entry suits the referrer or specialist. An invitation to a discovery and alignment chat, not a commitment, which fits the lighter doors.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Proof Points an
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/design/logo-brief/"><span class="lbl">← Previous</span><span class="ttl">Logo Brief</span></a>
+<a href="/3d-process/design/customer-profile/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">Customer Profile</span></a></div>
+</div></div>
+</body>
+</html>

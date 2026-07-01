@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maxxim Brand Book · Edition 03</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;--label:#8A8F9C;
+  --border:#E4E6EC;--border-soft:#EEF0F4;--red:#E0342B;--red-bg:#FBE7E5;--red-bd:#F1C9C5;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* ------------------------------------------------------------- sidebar */
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:30px 26px;display:flex;flex-direction:column;z-index:20;overflow-y:auto}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:12px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.2em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:30px;flex:1;display:flex;flex-direction:column;gap:2px}
+.sidebar nav a{display:flex;align-items:baseline;gap:11px;padding:8px 10px;border-radius:9px;
+  font-size:14px;font-weight:500;color:var(--ink)}
+.sidebar nav a .n{font-family:var(--mono);font-size:10.5px;color:var(--label)}
+.sidebar nav a:hover{background:var(--mist)}
+.sidebar nav a.active{color:var(--blue);font-weight:600}
+.sidebar nav a.active .n{color:var(--blue)}
+.sidebar .foot{font-size:11px;color:var(--label);line-height:1.6}
+.sidebar .foot a{color:var(--blue);font-weight:600}
+
+.main{margin-left:236px}
+.wrap{max-width:1160px;padding:0 64px}
+section.block{padding:88px 0 40px}
+
+/* --------------------------------------------------------------- shared */
+.sec-head{display:flex;align-items:baseline;gap:14px}
+.sec-head .no{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--blue)}
+.sec-head h2{font-size:52px;font-weight:700;letter-spacing:-.03em;line-height:1.02}
+.sec-lede{margin-top:18px;font-size:17px;line-height:1.65;color:var(--caption);max-width:62ch;font-weight:300}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.card{border-radius:20px}
+.chip{display:inline-block;font-family:var(--mono);font-size:11.5px;background:var(--mist);
+  border:1px solid var(--border);border-radius:8px;padding:6px 12px;color:var(--body)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.mono-note{font-family:var(--mono);font-size:11.5px;color:var(--label)}
+
+/* ---------------------------------------------------------------- cover */
+#cover{padding-top:64px}
+.lockup{display:flex;align-items:center;gap:12px}
+.lockup .m{display:flex;align-items:center;gap:7px;color:var(--blue);font-weight:700;font-size:17px;letter-spacing:-.02em}
+.lockup .m span{color:var(--ink)}
+.lockup .x{color:var(--label);font-size:13px}
+.lockup .j{font-weight:700;font-size:17px;letter-spacing:-.01em}
+.badge{margin-top:26px;display:inline-flex;align-items:center;gap:10px}
+.badge .dot{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-tint))}
+.badge .t{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.18em;color:var(--caption);text-transform:uppercase}
+#cover h1{margin-top:38px;font-size:96px;font-weight:700;letter-spacing:-.035em;line-height:1.0;max-width:12ch}
+#cover h1 em{font-style:normal;color:var(--blue)}
+#cover .intro{margin-top:28px;font-size:19px;font-weight:300;line-height:1.6;color:var(--body);max-width:52ch}
+#cover .intro strong{font-weight:600;color:var(--blue)}
+.keyvis{margin-top:44px;border-radius:22px;overflow:hidden;position:relative}
+.keyvis img{width:100%;height:480px;object-fit:cover}
+.keyvis .wm{position:absolute;right:26px;top:22px;display:flex;align-items:center;gap:8px;color:#fff;
+  font-weight:700;font-size:19px;letter-spacing:-.02em;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+.keyvis .chips{position:absolute;left:0;right:0;bottom:-9999px}
+.prompt-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+/* --------------------------------------------------------------- glance */
+.glance-grid{margin-top:36px;display:grid;grid-template-columns:1.35fr 1fr;gap:22px}
+.why{background:var(--ink);color:#fff;padding:38px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px}
+.why .kicker{color:var(--blue-tint)}
+.why p.big{margin-top:20px;font-size:31px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
+.why p.big em{font-style:normal;color:var(--blue-tint)}
+.why .sub{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:14.5px;color:rgba(255,255,255,.75)}
+.why .sub .dot{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-tint));flex:none}
+.gcol{display:flex;flex-direction:column;gap:22px}
+.essence{background:var(--mist);border:1px solid var(--border);padding:30px 32px}
+.essence .kicker{color:var(--label)}
+.essence .big{margin-top:12px;font-size:27px;font-weight:700;letter-spacing:-.02em}
+.essence p{margin-top:10px;font-size:14.5px;line-height:1.55;color:var(--caption)}
+.pos{background:var(--blue);color:#fff;padding:30px 32px;flex:1}
+.pos .kicker{color:rgba(255,255,255,.72)}
+.pos p{margin-top:12px;font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.01em}
+.stats{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.stat{padding:26px 28px;border-left:1px solid var(--border)}
+.stat:first-child{border-left:none}
+.stat .v{font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
+.stat .d{margin-top:6px;font-size:13px;line-height:1.45;color:var(--caption)}
+.values{margin-top:22px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.value{background:var(--mist);border:1px solid var(--border);border-radius:16px;padding:20px 18px}
+.value .n{font-family:var(--mono);font-size:10.5px;color:var(--blue);font-weight:600}
+.value .t{margin-top:8px;font-size:14.5px;font-weight:600;line-height:1.3}
+.value p{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--caption)}
+
+/* ---------------------------------------------------------------- story */
+.story-grid{margin-top:36px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:stretch}
+.story-copy p{font-size:16.5px;line-height:1.75;color:var(--body);margin-bottom:18px;max-width:60ch}
+.story-copy p strong{color:var(--ink)}
+.story-img{border-radius:20px;overflow:hidden}
+.story-img img{width:100%;height:100%;object-fit:cover;min-height:420px}
+.seam{margin-top:30px;background:var(--ink);color:#fff;border-radius:20px;padding:38px 42px}
+.seam .kicker{color:var(--blue-tint)}
+.seam-bar{margin-top:24px;display:flex;height:76px;border-radius:14px;overflow:hidden;font-weight:600}
+.seam-bar .h{width:20%;background:#fff;color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:0 20px}
+.seam-bar .m{flex:1;background:var(--blue);display:flex;flex-direction:column;justify-content:center;padding:0 24px}
+.seam-bar .pct{font-size:20px;letter-spacing:-.02em}
+.seam-bar .lbl{font-size:11.5px;font-weight:500;opacity:.75;margin-top:2px}
+.seam p.note{margin-top:20px;font-size:15px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.78);max-width:66ch}
+.archetype{margin-top:30px}
+.arch-cards{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.arch{padding:30px 32px}
+.arch.sage{background:var(--blue);color:#fff}
+.arch.sage .kicker{color:rgba(255,255,255,.72)}
+.arch.creator{background:var(--mist);border:1px solid var(--border)}
+.arch.creator .kicker{color:var(--blue)}
+.arch .name{margin-top:10px;font-size:34px;font-weight:700;letter-spacing:-.02em}
+.arch p{margin-top:10px;font-size:15px;line-height:1.55}
+.arch.sage p{color:rgba(255,255,255,.9)}
+.arch.creator p{color:var(--body)}
+
+/* ----------------------------------------------------------------- logo */
+.logo-hero{margin-top:36px;background:var(--mist);border:1px solid var(--border);border-radius:22px;
+  padding:56px;display:flex;align-items:center;justify-content:center;gap:26px;color:var(--blue)}
+.logo-hero .word{font-size:88px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.variants{margin-top:22px}
+.variant{background:#fff;border:1px solid var(--border);border-radius:18px;padding:30px;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:210px;text-align:center}
+.variant.rev{background:var(--blue);border-color:var(--blue);color:#fff}
+.variant.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.variant .cap{font-size:13px;font-weight:600}
+.variant .cap small{display:block;font-weight:400;color:var(--label);margin-top:3px;font-size:12px}
+.variant.rev .cap small,.variant.dark .cap small{color:rgba(255,255,255,.65)}
+.v-lock{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.02em}
+.rules{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rule-card{border:1px solid var(--border);border-radius:18px;padding:26px 30px}
+.rule-card h4{font-size:16px;font-weight:600;margin-bottom:12px}
+.rule-card li{font-size:14.5px;line-height:1.6;color:var(--body);margin:0 0 8px 18px}
+.minsize{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.minsize th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--label);padding:8px 10px;border-bottom:1px solid var(--border)}
+.minsize td{padding:10px;border-bottom:1px solid var(--border-soft);color:var(--body)}
+.misuse{margin-top:30px}
+.mis-grid{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mis{border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.mis .stage{height:120px;background:var(--mist);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mis .stage .mk{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
+.mis .lbl{display:flex;gap:8px;align-items:center;padding:11px 16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--body)}
+.mis .lbl .x{color:var(--red);font-weight:700}
+
+/* --------------------------------------------------------------- colour */
+.col-grid{margin-top:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
+.blue-card{background:var(--blue);color:#fff;padding:38px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:430px}
+.blue-card .top{display:flex;justify-content:space-between;align-items:flex-start}
+.blue-card .hex{margin-top:10px;font-size:54px;font-weight:700;letter-spacing:-.02em}
+.blue-card .lock{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+  background:rgba(255,255,255,.18);border-radius:999px;padding:8px 16px}
+.blue-card .specs{display:flex;gap:30px;font-size:14.5px}
+.blue-card .specs .k{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.6);letter-spacing:.08em}
+.blue-card .use{border-top:1px solid rgba(255,255,255,.22);padding-top:18px;font-size:15px;line-height:1.55;color:rgba(255,255,255,.92)}
+.blue-card .use small{display:block;margin-top:10px;font-size:13.5px;font-weight:300;color:rgba(255,255,255,.72)}
+.neutrals{display:flex;flex-direction:column;gap:14px}
+.neutral{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.neutral .sw{width:92px;flex:none}
+.neutral .tx{padding:14px 20px}
+.neutral .nm{font-size:15.5px;font-weight:600}
+.neutral .sp{font-family:var(--mono);font-size:11px;color:var(--label);margin-top:3px}
+.neutral .us{font-size:13px;color:var(--body);margin-top:7px;line-height:1.45}
+.confirm{margin-top:22px;border:1.5px dashed var(--blue-soft);border-radius:14px;padding:16px 20px;
+  font-size:13.5px;line-height:1.55;color:var(--body)}
+.confirm strong{color:var(--blue)}
+
+/* ----------------------------------------------------------------- type */
+.type-cards{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.type-card{border:1px solid var(--border);border-radius:20px;padding:34px 36px}
+.type-card.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.type-card .kicker{color:var(--blue)}
+.type-card.dark .kicker{color:var(--blue-tint)}
+.type-card .face{margin-top:14px;font-size:56px;font-weight:700;letter-spacing:-.03em}
+.type-card .glyphs{margin-top:8px;font-size:15px;color:var(--caption)}
+.type-card.dark .glyphs{color:rgba(255,255,255,.7)}
+.weights{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.wchip{font-size:12.5px;border:1px solid var(--border);border-radius:999px;padding:7px 14px;color:var(--body)}
+.type-card.dark .wchip{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.85)}
+.scale{margin-top:30px;border-top:1px solid var(--border)}
+.scale-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--border-soft)}
+.scale-row .spec{font-family:var(--mono);font-size:11.5px;color:var(--label);flex:none;text-align:right}
+.specimen{margin-top:30px;background:var(--ink);color:#fff;border-radius:20px;padding:40px 44px}
+.specimen .kicker{color:var(--blue-tint)}
+.specimen .big{margin-top:16px;font-size:34px;font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.specimen .sub{margin-top:14px;font-size:16px;font-weight:300;color:rgba(255,255,255,.7)}
+.tracked{margin-top:22px;background:var(--mist);border:1px solid var(--border);border-radius:20px;
+  padding:48px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.tracked .mx{font-size:52px;font-weight:700;color:var(--blue);letter-spacing:.2em;padding-left:.2em}
+
+/* ---------------------------------------------------------------- voice */
+.dim-table{margin-top:36px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.dim-head{display:grid;grid-template-columns:170px 1fr 1fr;background:var(--ink);color:#fff}
+.dim-head div{padding:14px 22px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;font-weight:600}
+.dim-row{display:grid;grid-template-columns:170px 1fr 1fr;border-top:1px solid var(--border-soft)}
+.dim-row .d{padding:20px 22px;font-size:16px;font-weight:600;color:var(--blue)}
+.dim-row .m{padding:20px 22px;font-size:14.5px;line-height:1.55;border-left:1px solid var(--border-soft)}
+.dim-row .l{padding:20px 22px;font-size:14.5px;line-height:1.55;color:var(--label);border-left:1px solid var(--border-soft)}
+.dodont{margin-top:30px;display:flex;flex-direction:column;gap:18px}
+.dd-pair .lbl{font-size:14px;font-weight:600;margin-bottom:9px}
+.dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dd-do{background:var(--blue);border-radius:16px;padding:20px 24px;color:#fff}
+.dd-dont{background:#fff;border:1.5px solid var(--red-bd);border-radius:16px;padding:20px 24px}
+.dd-tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.12em}
+.dd-do .dd-tag{color:rgba(255,255,255,.75)}
+.dd-dont .dd-tag{color:var(--red)}
+.dd-do p{margin-top:8px;font-size:15px;line-height:1.5}
+.dd-dont p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--label)}
+.voice-cols{margin-top:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:30px}
+.style-rule{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px}
+.style-rule .g{color:var(--blue);font-weight:700}
+.style-rule span:last-child{font-size:15px;line-height:1.5}
+.channels{border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.channel{padding:15px 20px;border-bottom:1px solid var(--border-soft)}
+.channel:last-child{border-bottom:none}
+.channel .nm{font-size:14.5px;font-weight:600;color:var(--blue)}
+.channel .tn{font-size:13.5px;color:var(--body);margin-top:3px;line-height:1.45}
+
+/* ----------------------------------------------------- specialists */
+.spec-cards{margin-top:36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.spec-card{background:var(--blue);color:#fff;border-radius:18px;padding:28px;min-height:250px;display:flex;flex-direction:column}
+.spec-card.alt{background:#fff;border:1px solid var(--border);color:var(--ink);padding:0;overflow:hidden}
+.spec-card .nm{font-size:38px;font-weight:700;letter-spacing:-.02em}
+.spec-card .rl{margin-top:6px;font-size:13.5px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.8)}
+.spec-card p{margin-top:15px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.94)}
+.spec-card.alt .head{background:var(--blue);color:#fff;padding:20px 26px}
+.spec-card.alt .bd{padding:18px 26px 24px}
+.spec-card.alt .rl{color:var(--blue);margin-top:0}
+.spec-card.alt p{color:var(--body)}
+.spec-note{margin-top:24px;background:var(--mist);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:20px 26px;font-size:15.5px;line-height:1.55}
+.spec-img{margin-top:26px;border-radius:20px;overflow:hidden}
+.spec-img img{width:100%;height:380px;object-fit:cover}
+
+/* -------------------------------------------------------------- imagery */
+.img-quote{margin-top:36px;background:var(--mist);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;
+  padding:26px 32px;font-size:18px;line-height:1.6}
+.cats{margin-top:30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.cat .ck{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:var(--blue)}
+.cat .ct{font-size:18px;font-weight:600;margin-top:6px}
+.cat p{font-size:13.5px;color:var(--body);line-height:1.5;margin-top:6px;min-height:60px}
+.cat img{width:100%;height:250px;object-fit:cover;border-radius:14px;margin-top:12px}
+.avoid{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.avoid .a{display:flex;gap:14px;align-items:center;background:var(--mist);border-radius:14px;padding:18px 22px;font-size:14.5px;line-height:1.45}
+.avoid .a.full{grid-column:1/-1}
+.avoid .x{width:32px;height:32px;flex:none;border-radius:50%;background:var(--red-bg);color:var(--red);
+  font-weight:700;display:flex;align-items:center;justify-content:center}
+.img-cta{margin-top:22px;background:var(--blue);color:#fff;border-radius:14px;padding:20px 28px;font-size:15.5px;line-height:1.5}
+.board{margin-top:30px}
+.board-grid{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.board-grid img{width:100%;height:170px;object-fit:cover;border-radius:12px}
+.board-grid .wide{grid-column:span 2}
+
+/* ------------------------------------------------------- architecture */
+.arch-grid{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.arch-card{border:1px solid var(--border);border-radius:20px;padding:32px 36px}
+.arch-card.jewell{background:var(--ink);border-color:var(--ink);color:#fff}
+.arch-card .kicker{color:var(--blue)}
+.arch-card.jewell .kicker{color:var(--blue-tint)}
+.arch-card .nm{margin-top:12px;font-size:30px;font-weight:700;letter-spacing:-.02em}
+.arch-card p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--body)}
+.arch-card.jewell p{color:rgba(255,255,255,.82)}
+.proof{margin-top:22px;border:1.5px dashed var(--blue-soft);border-radius:16px;padding:22px 28px}
+.proof .kicker{color:var(--blue)}
+.proof p{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--body)}
+
+/* --------------------------------------------------------- applications */
+#applications{background:var(--ink);color:#fff;margin-top:48px}
+#applications .wrap{padding-top:88px;padding-bottom:96px}
+#applications .sec-head h2{color:#fff}
+#applications .sec-lede{color:rgba(255,255,255,.65)}
+.apps{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.app-mock{border-radius:18px;overflow:hidden}
+.proposal-mock{background:var(--blue);color:#fff;padding:32px;min-height:360px;display:flex;flex-direction:column;justify-content:space-between}
+.proposal-mock .lk{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;letter-spacing:-.02em}
+.proposal-mock .ttl{font-size:28px;font-weight:600;letter-spacing:-.015em;line-height:1.18}
+.proposal-mock .for{margin-top:12px;font-size:14px;font-weight:300;color:rgba(255,255,255,.82)}
+.proposal-mock .ft{border-top:1px solid rgba(255,255,255,.25);padding-top:13px;font-size:12.5px;letter-spacing:.04em;color:rgba(255,255,255,.85)}
+.app-photo img{width:100%;height:100%;object-fit:cover;min-height:360px}
+.social-mock{background:#fff;color:var(--ink);border-radius:18px;padding:28px}
+.social-mock .h{font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.25;color:var(--blue)}
+.social-mock p{margin-top:13px;font-size:14.5px;line-height:1.5;color:var(--body)}
+.social-mock .ft{margin-top:18px;padding-top:15px;border-top:1px solid var(--border-soft);display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:700;font-size:16px}
+.social-mock .ft span{color:var(--ink)}
+.web-mock{border-radius:18px;overflow:hidden;background:#fff}
+.web-mock .bar{background:var(--border-soft);padding:10px 16px;display:flex;align-items:center;gap:6px}
+.web-mock .bar i{width:10px;height:10px;border-radius:50%;background:#D6D9E0}
+.web-mock .bar span{margin-left:12px;font-size:11.5px;color:var(--label);font-family:var(--mono)}
+.web-mock .hero{background:var(--blue);color:#fff;padding:0}
+.web-mock .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid rgba(255,255,255,.16)}
+.web-mock .nav .lk{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
+.web-mock .nav .links{display:flex;gap:18px;font-size:12.5px;color:rgba(255,255,255,.85)}
+.web-mock .body{padding:36px 28px 40px}
+.web-mock .body .h{font-size:34px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.web-mock .body p{margin-top:11px;font-size:14px;font-weight:300;color:rgba(255,255,255,.85);max-width:44ch}
+.web-mock .cta{display:inline-block;margin-top:18px;background:#fff;color:var(--blue);font-size:13.5px;font-weight:600;padding:11px 20px;border-radius:9px}
+.sig-mock{background:var(--mist);color:var(--ink);border-radius:18px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.sig-mock .l1{font-size:15px;font-weight:600}
+.sig-mock .l2{font-size:13px;color:var(--body)}
+.sig-mock .l3{margin-top:7px;font-size:13px;color:var(--body)}
+.sig-mock .lk{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:700;font-size:17px}
+.back-cover{margin-top:72px;border-top:1px solid rgba(255,255,255,.14);padding-top:44px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.back-cover .big{font-size:38px;font-weight:700;letter-spacing:-.025em;line-height:1.1;max-width:18ch}
+.back-cover .big em{font-style:normal;color:var(--blue-tint)}
+.back-cover .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.5);text-transform:uppercase;text-align:right;line-height:2}
+
+@media(max-width:1100px){
+  #cover h1{font-size:64px}
+  .glance-grid,.story-grid,.col-grid,.type-cards,.rules,.voice-cols,.arch-grid,.apps{grid-template-columns:1fr}
+  .spec-cards,.cats,.mis-grid{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .values{grid-template-columns:1fr 1fr}
+  .board-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);padding:20px 22px}
+  .sidebar nav{flex-direction:row;overflow-x:auto;gap:6px;margin-top:16px}
+  .sidebar nav a{white-space:nowrap}
+  .main{margin-left:0}
+  .wrap{padding:0 22px}
+  #cover h1{font-size:46px}
+  .sec-head h2{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="mark" href="/">
+    <svg width="26" height="26" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Maxxim</span>
+  </a>
+  <span class="eyebrow">Brand Guidelines</span>
+  <nav>
+    <a href="#glance"><span class="n">01</span>Glance</a>
+    <a href="#story"><span class="n">02</span>Story</a>
+    <a href="#logo"><span class="n">03</span>Logo</a>
+    <a href="#colour"><span class="n">04</span>Colour</a>
+    <a href="#type"><span class="n">05</span>Typography</a>
+    <a href="#voice"><span class="n">06</span>Voice &amp; tone</a>
+    <a href="#specialists"><span class="n">07</span>Specialists</a>
+    <a href="#imagery"><span class="n">08</span>Imagery</a>
+    <a href="#architecture"><span class="n">09</span>Architecture</a>
+    <a href="#applications"><span class="n">10</span>Applications</a>
+  </nav>
+  <div class="foot">Edition 03 · 2026<br><a href="/">← Pack home</a></div>
+</aside>
+
+<div class="main">
+
+<!-- ================================================== COVER -->
+<section class="block wrap" id="cover">
+  <div class="lockup">
+    <span class="m">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Maxxim</span>
+    </span>
+    <span class="x">×</span>
+    <span class="j">Jewell</span>
+  </div>
+  <div class="badge">
+    <span class="dot"></span>
+    <span class="t">Brand Identity Guidelines · Edition 03 · 2026</span>
+  </div>
+  <h1>The <em>human</em> at the wheel.</h1>
+  <p class="intro">Maxxim is the commercialisation engine that runs Jewell's proven, gated
+     3D Process at <strong>AI speed</strong>, with an accountable human at every gate. This is the
+     visual and verbal system that makes the method legible: calm, credible, high-contrast, and
+     built to be trusted with the sign-off.</p>
+  <div class="keyvis" id="hero-keyvisual">
+    <img src="/images/cover-city.jpg" alt="City at dusk, Signal Blue grade">
+    <span class="wm">
+      <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Maxxim
+    </span>
+  </div>
+  <div class="prompt-chips">
+    <span class="chip">SUBJECT: city at dusk, aerial</span>
+    <span class="chip">GRADE: Signal Blue #2D5BFF</span>
+    <span class="chip">MOOD: premium, calm, capable</span>
+    <span class="chip">RULE: no people, no neon wash</span>
+  </div>
+</section>
+
+<!-- ================================================== 01 GLANCE -->
+<section class="block wrap" id="glance">
+  <div class="sec-head"><span class="no">01</span><h2>Brand at a glance</h2></div>
+  <div class="glance-grid">
+    <div class="card why">
+      <div>
+        <span class="kicker">The why · The trust gap</span>
+        <p class="big">Agencies have the human without the speed. AI tools have the speed without
+           the human. We exist to be <em>fast, accountable and method-backed</em> at the same time.</p>
+      </div>
+      <div class="sub"><span class="dot"></span>Finished, owned outcomes. Never spectacle.</div>
+    </div>
+    <div class="gcol">
+      <div class="card essence">
+        <span class="kicker">Brand essence</span>
+        <div class="big">The human at the wheel.</div>
+        <p>The proven method, run by a human, at AI speed. Partner-facing alternative:
+           the engine behind the partner.</p>
+      </div>
+      <div class="card pos">
+        <span class="kicker">Positioning, one line</span>
+        <p>The only AI-powered marketing platform combining a proven method, a named human at
+           every gate, and a partner community — finished, owned, delivered at speed.</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="v">80 / 20</div><div class="d">AI runs the repeatable 80%. The human owns the 20% clients pay for.</div></div>
+    <div class="stat"><div class="v">3D + Deepen</div><div class="d">Discover, Design, Deploy — then the compounding loop.</div></div>
+    <div class="stat"><div class="v">3</div><div class="d">Named specialists: Max, Sal, Pip. The method made visible.</div></div>
+    <div class="stat"><div class="v">2</div><div class="d">Owners, Clent and Raef. No board. A human stands behind it.</div></div>
+  </div>
+  <div class="values">
+    <div class="value"><div class="n">V1</div><div class="t">A human stands behind it</div><p>Every output carries a named person's accountability.</p></div>
+    <div class="value"><div class="n">V2</div><div class="t">Finished, not busy</div><p>Launched outcomes and owned assets, not hours or dashboards.</p></div>
+    <div class="value"><div class="n">V3</div><div class="t">The client owns it</div><p>Assets owned outright, on their own domain, unlockable.</p></div>
+    <div class="value"><div class="n">V4</div><div class="t">Keep the gate</div><p>No phase proceeds until the prior one is signed off.</p></div>
+    <div class="value"><div class="n">V5</div><div class="t">Stronger together</div><p>A community's judgement beats a lone operator's.</p></div>
+  </div>
+</section>
+
+<!-- ================================================== 02 STORY -->
+<section class="block wrap" id="story">
+  <div class="sec-head"><span class="no">02</span><h2>Brand story</h2></div>
+  <div class="story-grid">
+    <div class="story-copy">
+      <p>Maxxim exists for the <strong>Capacity-Capped Operator</strong>: the trusted partner who can
+         win the work and own the relationship, but cannot deliver agency-grade growth repeatably.
+         Behind that partner, Maxxim runs Jewell's proven, gated 3D Process at AI speed.</p>
+      <p>The method is <strong>3D plus Deepen</strong>: Discover, then Design, then Deploy, then the
+         compounding loop once the engine is live. The gate is the quality bar, and the product
+         enforces it — creative unlocks only as its briefs exist and a logo is locked.</p>
+      <p><strong>Human in the loop is the point, not a limitation.</strong> AI carries the repeatable
+         volume; the human holds trust, taste and judgement, which is where quality is decided.
+         The brand sells finished, owned outcomes, so the visual system is disciplined and
+         high-contrast: it earns trust through legibility and restraint, not decoration.</p>
+      <p>Jewell, a 35-year operator, now runs the whole model in market — the live proof that a
+         capacity-capped operator becomes a scaled partner rather than a stuck one.</p>
+    </div>
+    <div class="story-img"><img src="/images/s1-desk.jpg" alt="Focused operator at a desk with a marketing dashboard"></div>
+  </div>
+  <div class="seam">
+    <span class="kicker">The seam the brand makes legible</span>
+    <div class="seam-bar">
+      <div class="h"><span class="pct">20%</span><span class="lbl">HUMAN · trust, taste, judgement</span></div>
+      <div class="m"><span class="pct">80%</span><span class="lbl">MACHINE · the repeatable volume, human-checked at every gate</span></div>
+    </div>
+    <p class="note">Jewell enters and owns the client. Discover is always human. Design and Deploy hand
+       off to the Maxxim engine at scale once the judgement work is set. Jewell is the name on the
+       door; Maxxim is the engine behind it. The visual system keeps the human the hero.</p>
+  </div>
+  <div class="archetype">
+    <span class="kicker" style="color:var(--label)">Archetype · a weighted blend</span>
+    <div class="arch-cards">
+      <div class="card arch sage">
+        <span class="kicker">Primary archetype</span>
+        <div class="name">Sage</div>
+        <p>Wise, trustworthy, analytical, evidence-led, never hyperbolic. Authority from a method
+           proven over years — and a refusal to dress plumbing up as the product.</p>
+      </div>
+      <div class="card arch creator">
+        <span class="kicker">Supporting archetype</span>
+        <div class="name">Creator</div>
+        <p>Structured, methodical, a builder of real things. Ties the brand to tangible, launched
+           outcomes. Deliberately not the Magician, and not the Hero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 03 LOGO -->
+<section class="block wrap" id="logo">
+  <div class="sec-head"><span class="no">03</span><h2>Logo system</h2></div>
+  <p class="sec-lede">A typographic combination mark: the Maxxim wordmark in Poppins, paired with the
+     gated-M monogram. A platform and a standard, not a mascot. The Blue Frog is permanently
+     removed and must never be reintroduced.</p>
+
+  <div class="logo-hero">
+    <svg width="104" height="104" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="word">Maxxim</span>
+  </div>
+
+  <div class="variants grid3">
+    <div class="variant">
+      <div class="v-lock" style="color:var(--blue)">
+        <svg width="40" height="40" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:30px;color:var(--ink)">Maxxim</span>
+      </div>
+      <div class="cap">Horizontal lockup<small>Default. Website, proposals, email signature. Min 120px / 24mm.</small></div>
+    </div>
+    <div class="variant rev">
+      <div class="v-lock">
+        <svg width="40" height="40" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:30px">Maxxim</span>
+      </div>
+      <div class="cap">Reversed (inverse)<small>White knockout on Signal Blue or dark grounds. Never on light fields.</small></div>
+    </div>
+    <div class="variant dark">
+      <div class="v-lock">
+        <svg width="52" height="52" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cap">Icon only<small>Favicon, app icon, avatar. 16px hard floor, designed for directly.</small></div>
+    </div>
+  </div>
+
+  <div class="rules">
+    <div class="rule-card">
+      <h4>Clear space &amp; minimum size</h4>
+      <ul>
+        <li>Protect the mark with clear space equal to <strong>x</strong>, the cap-height of the wordmark, on all sides.</li>
+        <li>Below 120px wide, drop the wordmark and use the icon alone.</li>
+      </ul>
+      <table class="minsize">
+        <tr><th>Variant</th><th>Screen</th><th>Print</th></tr>
+        <tr><td>Horizontal lockup</td><td>120px</td><td>24mm</td></tr>
+        <tr><td>Stacked lockup</td><td>80px</td><td>18mm</td></tr>
+        <tr><td>Icon only</td><td>16px floor</td><td>flat, no effects</td></tr>
+      </table>
+    </div>
+    <div class="rule-card">
+      <h4>Backgrounds &amp; inverse rules</h4>
+      <ul>
+        <li><strong>On white or light:</strong> primary mark in Signal Blue.</li>
+        <li><strong>On Signal Blue or dark:</strong> reversed mark knocked out in white.</li>
+        <li><strong>On busy or photographic fields:</strong> place the mark on a solid Signal Blue or white holding shape — never directly over busy detail.</li>
+        <li><strong>Where colour is unavailable:</strong> single-colour mono mark in Ink, kept flat.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="misuse">
+    <span class="kicker" style="color:var(--label)">3.5 · Misuse — six things the mark never does</span>
+    <div class="mis-grid">
+      <div class="mis"><div class="stage"><span class="mk" style="transform:scaleX(1.9)">Maxxim</span></div><div class="lbl"><span class="x">✕</span>Stretched or skewed</div></div>
+      <div class="mis"><div class="stage" style="background:var(--blue)"><span class="mk">Maxxim</span></div><div class="lbl"><span class="x">✕</span>Blue on blue, no contrast</div></div>
+      <div class="mis"><div class="stage" style="background:#fff"><span class="mk" style="color:#fff;text-shadow:0 0 1px #E4E6EC">Maxxim</span></div><div class="lbl"><span class="x">✕</span>White on white, no contrast</div></div>
+      <div class="mis"><div class="stage"><span class="mk" style="transform:rotate(-18deg)">Maxxim</span></div><div class="lbl"><span class="x">✕</span>Rotated</div></div>
+      <div class="mis"><div class="stage"><span class="mk" style="text-shadow:0 6px 10px rgba(45,91,255,.5)">Maxxim</span></div><div class="lbl"><span class="x">✕</span>Shadow, glow or gradient</div></div>
+      <div class="mis"><div class="stage"><span class="mk">Maxxim</span><span style="font-size:24px;color:#9AA0AC;margin-left:8px">+ mascot</span></div><div class="lbl"><span class="x">✕</span>Any animal or mascot alongside</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 04 COLOUR -->
+<section class="block wrap" id="colour">
+  <div class="sec-head"><span class="no">04</span><h2>Colour</h2></div>
+  <p class="sec-lede">Signal Blue is the one locked brand colour, and it leads. Blue is the colour of
+     trust, reliability and competence — the ground the trust gap is fought on — and the electric
+     saturation signals AI speed. "Signal" means clarity over noise.</p>
+  <div class="col-grid">
+    <div class="card blue-card">
+      <div class="top">
+        <div>
+          <span class="kicker" style="color:rgba(255,255,255,.72)">Primary · Signal Blue</span>
+          <div class="hex">#2D5BFF</div>
+        </div>
+        <span class="lock">LOCKED</span>
+      </div>
+      <div class="specs">
+        <div><div class="k">RGB</div>45 / 91 / 255</div>
+        <div><div class="k">CMYK</div>82 / 64 / 0 / 0</div>
+        <div><div class="k">PANTONE</div>2727 C</div>
+      </div>
+      <div class="use">
+        Brand fields, positive mark on white, reverse field for the white knockout, CTAs, links,
+        accents. It leads everywhere.
+        <small>The Signal name reinforces clarity over noise.</small>
+      </div>
+    </div>
+    <div class="neutrals">
+      <div class="neutral"><div class="sw" style="background:#0A0A0A"></div>
+        <div class="tx"><div class="nm">Ink · #0A0A0A</div><div class="sp">RGB 10/10/10 · CMYK 0/0/0/96 · Neutral Black C</div>
+        <div class="us">Primary text, mono mark, dark ground for the reversed white mark.</div></div></div>
+      <div class="neutral"><div class="sw" style="background:#fff;border-right:1px solid var(--border)"></div>
+        <div class="tx"><div class="nm">White · #FFFFFF</div><div class="sp">RGB 255/255/255</div>
+        <div class="us">Primary background. The reversed mark knocked out of blue or dark.</div></div></div>
+      <div class="neutral"><div class="sw" style="background:#F5F6F8;border-right:1px solid var(--border)"></div>
+        <div class="tx"><div class="nm">Mist · #F5F6F8</div><div class="sp">RGB 245/246/248</div>
+        <div class="us">Light neutral surfaces, proposal covers, light end-client contexts.</div></div></div>
+      <div class="mono-note" style="padding-left:4px">Neutrals are recommended supporting colours, not locked.</div>
+    </div>
+  </div>
+  <div class="confirm"><strong>To confirm:</strong> the CMYK and Pantone values for Signal Blue are
+     working approximations, to be locked at production stage against printed proofs. Hex and RGB
+     are exact.</div>
+</section>
+
+<!-- ================================================== 05 TYPOGRAPHY -->
+<section class="block wrap" id="type">
+  <div class="sec-head"><span class="no">05</span><h2>Typography</h2></div>
+  <p class="sec-lede">Poppins is the locked typeface — a geometric sans: modern, clean, even,
+     approachable without being playful. One family carries the whole system. Weight and hierarchy
+     create emphasis, not ornament.</p>
+  <div class="type-cards">
+    <div class="type-card">
+      <span class="kicker">Body &amp; UI · running text</span>
+      <div class="face">Poppins</div>
+      <div class="glyphs">Aa Bb Cc Dd Ee · 1234567890 · &amp; ? !</div>
+      <div class="weights"><span class="wchip">Light 300</span><span class="wchip">Regular 400</span><span class="wchip">Medium 500</span><span class="wchip">SemiBold 600</span><span class="wchip">Bold 700</span></div>
+    </div>
+    <div class="type-card dark">
+      <span class="kicker">Display · titles &amp; headlines</span>
+      <div class="face">Poppins</div>
+      <div class="glyphs">The same family, heavier cuts. No second typeface, ever.</div>
+      <div class="weights"><span class="wchip">SemiBold 600</span><span class="wchip">Bold 700</span><span class="wchip">Tracking −2 to −3%</span></div>
+    </div>
+  </div>
+  <div class="scale">
+    <div class="scale-row"><span style="font-size:42px;font-weight:700;letter-spacing:-.02em">Display / Hero</span><span class="spec">Bold · 64–72pt · covers</span></div>
+    <div class="scale-row"><span style="font-size:33px;font-weight:600;letter-spacing:-.015em">H1 Section heading</span><span class="spec">SemiBold · 40–48pt</span></div>
+    <div class="scale-row"><span style="font-size:26px;font-weight:500;letter-spacing:-.01em">H2 Sub-section heading</span><span class="spec">Medium · 28–32pt</span></div>
+    <div class="scale-row"><span style="font-size:20px;font-weight:600">H3 Panel heading</span><span class="spec">SemiBold · 20–22pt</span></div>
+    <div class="scale-row"><span style="font-size:16px">Body copy, the running text of the document</span><span class="spec">Regular · 16–18pt</span></div>
+    <div class="scale-row"><span style="font-size:13.5px">Caption and data label text</span><span class="spec">Regular · 12–14pt</span></div>
+    <div class="scale-row" style="border-bottom:none"><span style="font-size:12px;font-weight:300">Small and legal fine print</span><span class="spec">Light · 10–12pt</span></div>
+  </div>
+  <div class="specimen">
+    <span class="kicker">Specimen</span>
+    <div class="big">The proven method, run by a human, at AI speed.</div>
+    <div class="sub">Poppins Light through Bold — one family carries the whole system.</div>
+  </div>
+  <div class="tracked">
+    <div class="mx">MAXXIM</div>
+    <div class="mono-note">Poppins Bold · tracking +200 · Signal Blue on white</div>
+  </div>
+  <div class="rules" style="margin-top:22px">
+    <div class="rule-card">
+      <h4>Type colour rules</h4>
+      <ul>
+        <li>Body on white: <strong>Ink #0A0A0A</strong></li>
+        <li>Headlines on white: <strong>Ink or Signal Blue</strong></li>
+        <li>Any text on Signal Blue: <strong>White only</strong></li>
+      </ul>
+    </div>
+    <div class="rule-card">
+      <h4>Never</h4>
+      <ul>
+        <li>Coloured type in non-brand hues.</li>
+        <li>Script or decorative fonts alongside Poppins.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 06 VOICE -->
+<section class="block wrap" id="voice">
+  <div class="sec-head"><span class="no">06</span><h2>Voice &amp; tone</h2></div>
+  <p class="sec-lede">Plain. Precise. Accountable. Claims are sized to the proof, the human is named,
+     and what is open is flagged as open. The machine is never the hero.</p>
+  <div class="dim-table">
+    <div class="dim-head"><div>DIMENSION</div><div>MORE LIKE THIS ✓</div><div>LESS LIKE THIS ✗</div></div>
+    <div class="dim-row"><div class="d">Confidence</div><div class="m">Assured and evidence-backed. Claims are sized to the proof.</div><div class="l">Boastful or hyperbolic. Claims outrun the evidence.</div></div>
+    <div class="dim-row"><div class="d">Formality</div><div class="m">Plain operator-to-operator. Short sentences, exact words.</div><div class="l">Stiff corporate jargon, or loose and chatty filler.</div></div>
+    <div class="dim-row"><div class="d">Accountability</div><div class="m">Names the human and shows the gate. The human is the hero.</div><div class="l">Faceless and automated. The machine is the hero.</div></div>
+    <div class="dim-row"><div class="d">Honesty</div><div class="m">States what is locked, flags what is open, no false certainty.</div><div class="l">Papering over open questions with invented precision.</div></div>
+  </div>
+  <div class="dodont">
+    <div class="dd-pair">
+      <div class="lbl">Confidence</div>
+      <div class="dd-cols">
+        <div class="dd-do"><span class="dd-tag">DO</span><p>The method has run with real clients for years. Pottsville is launched, and the client owns it. Jewell now runs the whole model in market.</p></div>
+        <div class="dd-dont"><span class="dd-tag">DON'T</span><p>Maxxim is the revolutionary AI platform transforming marketing forever.</p></div>
+      </div>
+    </div>
+    <div class="dd-pair">
+      <div class="lbl">Formality</div>
+      <div class="dd-cols">
+        <div class="dd-do"><span class="dd-tag">DO</span><p>AI runs the repeatable 80 percent at speed. You own the 20 percent clients pay for.</p></div>
+        <div class="dd-dont"><span class="dd-tag">DON'T</span><p>Our synergistic end-to-end solution leverages cutting-edge artificial intelligence to optimise outcomes.</p></div>
+      </div>
+    </div>
+    <div class="dd-pair">
+      <div class="lbl">Accountability</div>
+      <div class="dd-cols">
+        <div class="dd-do"><span class="dd-tag">DO</span><p>A named human signs off at every gate, so the work is something you can stand behind.</p></div>
+        <div class="dd-dont"><span class="dd-tag">DON'T</span><p>Our AI handles everything automatically, no human needed.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="voice-cols">
+    <div>
+      <span class="kicker" style="color:var(--label)">Style rules</span>
+      <div style="margin-top:16px">
+        <div class="style-rule"><span class="g">›</span><span>Australian English throughout</span></div>
+        <div class="style-rule"><span class="g">›</span><span>No em dashes. Use commas or full stops instead</span></div>
+        <div class="style-rule"><span class="g">›</span><span>No exclamation marks. The claim carries the emphasis</span></div>
+        <div class="style-rule"><span class="g">›</span><span>Short sentences over complex constructions</span></div>
+        <div class="style-rule"><span class="g">›</span><span>Name the specialists, Max, Sal and Pip, to make the engine concrete. They are the method, not the hero</span></div>
+      </div>
+    </div>
+    <div>
+      <span class="kicker" style="color:var(--label)">Channel tone</span>
+      <div class="channels" style="margin-top:16px">
+        <div class="channel"><div class="nm">Website / partner hub</div><div class="tn">Fullest Sage expression. Lead with position then proof.</div></div>
+        <div class="channel"><div class="nm">Community sessions</div><div class="tn">Warmer, more reciprocal. Discovery and alignment, not pitch.</div></div>
+        <div class="channel"><div class="nm">End-client copy (via partners)</div><div class="tn">Simpler, outcome-led. Done for you, owned by you, live in days.</div></div>
+        <div class="channel"><div class="nm">Proposals / gate sign-offs</div><div class="tn">Most formal and precise. Separate locked from open explicitly.</div></div>
+        <div class="channel"><div class="nm">Social / short form</div><div class="tn">Sage compressed. One sharp, true claim. No exclamation marks.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 07 SPECIALISTS -->
+<section class="block wrap" id="specialists">
+  <div class="sec-head"><span class="no">07</span><h2>The specialists</h2></div>
+  <p class="sec-lede">Max. Sal. Pip. The method made visible. Three named specialists, each a process —
+     the branded expression of the engine, always subordinate to the accountable human.</p>
+  <div class="spec-cards">
+    <div class="spec-card">
+      <div class="nm">Max</div>
+      <div class="rl">Words + Strategy · Claude Cowork</div>
+      <p>Max runs the repeatable content and strategy work: briefs, copy decks, research synthesis,
+         discovery documents. Max is the words behind the partner.</p>
+    </div>
+    <div class="spec-card alt">
+      <div class="head"><div class="nm">Sal</div></div>
+      <div class="bd">
+        <div class="rl">Pixels + Design · Design Studio</div>
+        <p>Sal does the design work: brand guidelines, site builds, visual assets, video.
+           Sal is the eye behind the partner.</p>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="nm">Pip</div>
+      <div class="rl">Social · Social Studio</div>
+      <p>Pip runs social: platforms, posts, cadences — drafting and, on approval, publishing.
+         Pip is the voice in the feed.</p>
+    </div>
+  </div>
+  <div class="spec-note">The specialists are how the method is shown working. They are never presented
+     as separate products. The accountable human is always the partner.</div>
+  <div class="spec-img"><img src="/images/s8-monitors.jpg" alt="Three monitors: copy, design and social output side by side"></div>
+</section>
+
+<!-- ================================================== 08 IMAGERY -->
+<section class="block wrap" id="imagery">
+  <div class="sec-head"><span class="no">08</span><h2>Imagery &amp; art direction</h2></div>
+  <p class="sec-lede">Real over illustrated. Outcome over abstract. Photorealistic, editorial,
+     Signal Blue led.</p>
+  <div class="img-quote">The brand sells finished, owned outcomes. Imagery must show real launched
+     work and real people accountable for it — the live site on a browser, the named partner at
+     the table — not stock AI abstractions of glowing brains and circuit boards. Abstract AI
+     imagery undercuts the human-at-the-wheel position.</div>
+  <div class="cats">
+    <div class="cat">
+      <span class="ck">CATEGORY 1</span>
+      <div class="ct">The Partner at Work</div>
+      <p>Real operators doing skilled, focused work. Candid, natural light, never posed.</p>
+      <img src="/images/s6-cat1.jpg" alt="Professional woman reviewing a website on a large monitor">
+    </div>
+    <div class="cat">
+      <span class="ck">CATEGORY 2</span>
+      <div class="ct">The Finished Outcome</div>
+      <p>Actual digital deliverables. Live websites in a browser, proposal documents, a phone showing a post.</p>
+      <img src="/images/s6-cat2.jpg" alt="MacBook with a live site, proposal document and phone">
+    </div>
+    <div class="cat">
+      <span class="ck">CATEGORY 3</span>
+      <div class="ct">The Table / Community</div>
+      <p>Partners together. A meeting at a table, people reviewing shared work. Warm and collaborative.</p>
+      <img src="/images/s6-cat3.jpg" alt="Four professionals collaborating at a round table">
+    </div>
+  </div>
+  <div class="avoid">
+    <div class="a"><span class="x">✕</span>Glowing brains, neural networks, circuit-board overlays</div>
+    <div class="a"><span class="x">✕</span>Robotic hands or AI robot imagery</div>
+    <div class="a"><span class="x">✕</span>Heavily posed corporate stock photography</div>
+    <div class="a"><span class="x">✕</span>Illustrated or cartoon icons as hero images</div>
+    <div class="a full"><span class="x">✕</span>Purple, teal or neon colour washes — they undercut Signal Blue's leadership</div>
+  </div>
+  <div class="img-cta">When in doubt: choose the photograph that shows a real person accountable for
+     real, finished work.</div>
+  <div class="board">
+    <span class="kicker" style="color:var(--label)">Photography board · Edition 03</span>
+    <div class="board-grid">
+      <img class="wide" src="/images/cover-city.jpg" alt="City at dusk">
+      <img src="/images/s1-desk.jpg" alt="Operator at desk">
+      <img src="/images/s4-flatlay.jpg" alt="Brand flat lay">
+      <img src="/images/s5-doc.jpg" alt="Printed brand document">
+      <img src="/images/s6-cat1.jpg" alt="Partner at work">
+      <img src="/images/s6-cat2.jpg" alt="Finished outcome">
+      <img src="/images/s6-cat3.jpg" alt="Community table">
+      <img src="/images/s9-proposal.jpg" alt="Proposal cover">
+      <img src="/images/s9-social.jpg" alt="Phone with LinkedIn post">
+      <img src="/images/back-hand.jpg" alt="Hand on keyboard">
+      <img class="wide" src="/images/s8-monitors.jpg" alt="Three monitors">
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== 09 ARCHITECTURE -->
+<section class="block wrap" id="architecture">
+  <div class="sec-head"><span class="no">09</span><h2>Brand architecture</h2></div>
+  <p class="sec-lede">Two brands, one seam. The partner is always the front door.</p>
+  <div class="arch-grid">
+    <div class="arch-card jewell">
+      <span class="kicker">The name on the door</span>
+      <div class="nm">Jewell</div>
+      <p>The partner brand. Jewell enters and owns the client relationship, runs the always-human
+         Discover phase, and signs off every gate. A 35-year operator now running the full model in
+         market — the live proof of the seam. Jewell's external lead word is locked: <strong>growth</strong>.</p>
+    </div>
+    <div class="arch-card">
+      <span class="kicker">The engine behind it</span>
+      <div class="nm" style="color:var(--blue)">Maxxim</div>
+      <p>The commercialisation engine. Runs Design and Deploy at scale once the judgement work is
+         set, through Max, Sal and Pip. Maxxim is named and showable, but always subordinate to the
+         accountable human. Maxxim's own one-word category lead remains open.</p>
+    </div>
+  </div>
+  <div class="proof">
+    <span class="kicker">Proof clearance</span>
+    <p>Pottsville Acupuncture is the only cleared public Maxxim case study. The Jewell partner site
+       is a reference for how the seam reads, but Jewell's named client results stay under Jewell's
+       banner and are never re-used as Maxxim's public proof.</p>
+  </div>
+</section>
+
+<!-- ================================================== 10 APPLICATIONS -->
+<section class="block" id="applications">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">10</span><h2>Application examples</h2></div>
+    <p class="sec-lede">The system in the world, with the mark placed correctly. The layout, colour
+       and type are the brand.</p>
+    <div class="apps">
+      <div class="app-mock proposal-mock">
+        <div class="lk">
+          <svg width="26" height="26" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Maxxim
+        </div>
+        <div>
+          <div class="ttl">Growth Partnership Proposal</div>
+          <div class="for">Prepared for [Client Name]</div>
+        </div>
+        <div class="ft">Maxxim · Jewell Projects</div>
+      </div>
+      <div class="app-mock app-photo"><img src="/images/s9-proposal.jpg" alt="Printed Signal Blue proposal cover on a marble desk"></div>
+
+      <div class="social-mock">
+        <div class="h">AI runs the 80 percent. You own the 20 percent clients pay for.</div>
+        <p>The engine handles the repeatable work. A named human signs off every gate, and the
+           client owns what ships.</p>
+        <div class="ft">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Maxxim</span>
+        </div>
+      </div>
+      <div class="app-mock app-photo"><img src="/images/s9-social.jpg" alt="Phone in hand showing a Maxxim-branded LinkedIn post"></div>
+
+      <div class="web-mock" style="grid-column:1/-1">
+        <div class="bar"><i></i><i></i><i></i><span>maxxim.ai</span></div>
+        <div class="hero">
+          <div class="nav">
+            <div class="lk">
+              <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Maxxim
+            </div>
+            <div class="links"><span>Method</span><span>Partners</span><span>Proof</span></div>
+          </div>
+          <div class="body">
+            <div class="h">The human at the wheel.</div>
+            <p>AI runs the repeatable 80 percent. You own the 20 percent clients pay for.</p>
+            <span class="cta">Become a Partner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sig-mock" style="grid-column:1/-1">
+        <div>
+          <div class="l1">[Partner Name]</div>
+          <div class="l2">Maxxim Partner · partner@theirdomain.com</div>
+          <div class="l3">Maxxim, the human at the wheel. · maxxim.ai</div>
+        </div>
+        <div class="lk">
+          <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Maxxim
+        </div>
+      </div>
+    </div>
+
+    <div class="back-cover">
+      <div class="big">The proven method, run by a <em>human</em>, at AI speed.</div>
+      <div class="meta">Maxxim Brand Guidelines<br>Edition 03 · July 2026<br>Produced by Sal · Signed off by the human</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Highlight the active section in the sidebar as the reader scrolls.
+const links = [...document.querySelectorAll('.sidebar nav a')];
+const ids = links.map(a => a.getAttribute('href').slice(1));
+const obs = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  }
+}, { rootMargin: '-30% 0px -60% 0px' });
+ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+</script>
+</body>
+</html>

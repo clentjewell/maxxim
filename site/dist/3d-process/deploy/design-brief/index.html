@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Brief · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc current" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">03 · Deploy</span>
+    <h1>Design Brief</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this document</h2>
+      <p>This is the creative brief for Maxxim's graphic and visual collateral, produced in the Deploy phase against Master Briefing v2.1, the Gate 1 decisions, and the 1 July refresh that folded in the 29 June product mechanics and the live Jewell partner. It turns the locked <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a>, the <a href="/3d-process/design/brand-guidelines/">brand-guidelines.html</a>, the <a href="/3d-process/design/logo-brief/">logo-brief.html</a>, and the Copy Deck into something a designer or the Design Studio can produce against without guessing. It covers the near-term collateral the partner motion needs: the 3 July showcase deck and partner map board, a partner one-pager and prospectus, social templates, the Pottsville case study layout, and core brand application.</p>
+      <p>It is not the logo brief and it is not the website brief. The logomark has its own deep brief, already produced, and this document treats the mark as a fixed input and shows where it goes. The website is briefed separately. What this brief governs is everything printed, presented, posted, and handed over that sits between those two.</p>
+      <p><strong>Who produces the pixels.</strong> In the Maxxim engine the designer is <strong>Sal</strong>, the specialist in the Design Studio. Sal makes the pixels: logos, brand imagery, collateral, and video, on the client's page, where the generate, see, tweak, pick loop runs. Sal is subordinate to Maxxim and to the accountable human, who is the partner. This brief is what Sal, or a human designer refining Sal's candidates, builds against. It sits alongside Max, who does the words in Claude Cowork and produced this brief, and Pip, who runs the Social Studio and publishes the social set on approval.</p>
+      <p><strong>What is locked, and not re-opened here.</strong> The visual identity is fixed: Signal Blue #2D5BFF, Poppins, design Edition 03, the Blue Frog removed. The reversed, or inverse, logo variant now exists inside that locked identity for dark grounds and Signal Blue fields, and is used here, not re-derived. The voice is fixed: direct, grounded, credible, calm, operator to operator. House style is hard: no em dashes, no exclamation marks, Australian English, the business is Jewell and never any corruption of the name. Where a choice is still Clent's, it is flagged as open, not decided. Proof respects clearance: Pottsville Acupuncture is the only cleared public Maxxim proof, OTR Earthmover is internal only, Hidrive is percentages only. Partner economics are shown as structure, never as numbers. The 3 July showcase promise wording is open and Clent's to finalise, so collateral leaves room for it rather than committing it.</p>
+      <p><strong>What changed since the 27 June version.</strong> The reversed logo variant is now referenced and mapped onto every dark-ground surface. The product mechanics are known and named, so Max, Sal, and Pip appear where the engine becomes concrete and the Design Studio gating is written into the timeline. Jewell is now a live partner running the whole model in market, which sharpens the proof language without changing a locked or open item. The swappable image engines behind Sal are noted where they affect how an asset is produced. Proof clearance is unchanged.</p>
+    </section>
+
+    <section>
+      <h2>1. Project Overview</h2>
+      <p><strong>What is being designed.</strong> A near-term set of brand collateral that lets Maxxim found its partner community and recruit a founding cohort. The anchor is the 3 July showcase, the founding meeting of the partner community, which needs a presentation deck, a live partner map board, and a leave-behind. Around that sit the partner one-pager and prospectus, a set of social templates led by LinkedIn, the Pottsville case study layout, and the core brand application kit that keeps every surface consistent.</p>
+      <p><strong>Why it is needed.</strong> The partner is the front door now. Maxxim recruits a small, high-trust founding cohort of 5 to 8 partners by demonstration and relationship, not by reach and spend. Every piece in this brief exists to support that motion: to make the 3 July room feel like a credible table, to give an operator something true to take away, to let the founder profile the moment on LinkedIn, and to present the one cleared proof, Pottsville, at its best. The collateral is the visible surface of a Sage brand whose whole case is trust, so the design has to look like a standard you would sign your work behind. The live Jewell partner now stands as concrete evidence that a real operator can run the whole model, and the collateral is built to let that story carry without re-using Jewell's own named results as Maxxim's public proof.</p>
+      <p><strong>What success looks like.</strong> A designer, human or Sal in the Design Studio, can pick this up and produce on-brand collateral in the first round. The 3 July showcase is fully equipped, on brand, and credible to a scrutinising operator. The partner one-pager and prospectus carry the two-door model and the structure-only economics without ever stating an open number. Social templates let the founder post one true claim at a time with no exclamation marks. The Pottsville layout presents the cleared proof cleanly. Across all of it, the brand reads as one disciplined system: Signal Blue, Poppins, real over abstract, the human at the wheel, the primary mark on light grounds and the reversed mark on dark.</p>
+      <p><strong>How it fits the marketing plan.</strong> This collateral serves Marketing Plan Objective 1 (found the partner community at the showcase), Objective 2 (sign the founding cohort), and the Proof and Position campaign (Pottsville and the case study factory). The deck and the leave-behind directly equip the founding meeting; the one-pager and prospectus equip the 1:1 follow-ups; the social templates run the lean, founder-led organic profile that Pip publishes on approval; the case study layout is the reusable shell every future cleared proof drops into.</p>
+    </section>
+
+    <section>
+      <h2>2. Brand Context</h2>
+      <p><strong>Positioning in one line.</strong> Maxxim is the commercialisation engine that lets trusted operators run Jewell's proven, gated 3D Process at AI speed, with an accountable human at every gate. It is the trustworthy middle between slow, expensive, opaque agencies and risky, effort-heavy pure-AI tools. The most ownable thing is the combination: fast and accountable and method-backed at the same time, delivering finished outcomes the client owns. The engine behind the partner, not the name on the door.</p>
+      <p><strong>The seam the design must make legible.</strong> The human 20 percent and machine 80 percent split is the core of the whole business, now embodied by the live Jewell partner. The partner owns trust, taste, and judgement and the client relationship. Maxxim runs the volume at machine speed, human-checked at every gate. The collateral exists to make that split obvious, credible, and ownable, and to keep the human the hero rather than the machine. Where the engine is shown, show Max, Sal, and Pip as a legible system and the gate as a real thing, never a black box.</p>
+      <p><strong>Personality.</strong> A Sage, weighted toward authority, proof, and judgment, with a Creator support note as the builder of an engine, and a warmth reserved for how the partner community is spoken about. The brand states what is proven, flags what is open, and never inflates. Substance over spectacle. Plumbing is not the product.</p>
+      <p><strong>Tone of voice.</strong> Direct. Grounded. Credible. Calm. Confidence sized to the proof, plain operator-to-operator formality, accountability that names the human and shows the gate, honesty that separates locked from open. Emphasis comes from the strength of the claim, not from punctuation, which is why the external style strips out exclamation marks and em dashes.</p>
+      <p><strong>Core values the design must carry.</strong> A human stands behind it. Finished, not busy. The client owns it. Keep the gate. Stronger together. The visual work should feel accountable and finished, never busy or decorative for its own sake.</p>
+      <p><strong>Locked visual identity (the frame every deliverable fits inside).</strong></p>
+      <table>
+        <thead>
+          <tr><th>Element</th><th>Locked value</th><th>What it means for collateral</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Primary colour</td><td>Signal Blue #2D5BFF</td><td>The single brand colour. Trust plus speed in one. High-contrast, disciplined, never diluted into a palette of many colours.</td></tr>
+          <tr><td>Reverse</td><td>White #FFFFFF</td><td>The mark and type reversed out of Signal Blue or a dark field. This is the reversed, or inverse, treatment.</td></tr>
+          <tr><td>Typeface</td><td>Poppins</td><td>Geometric sans. Weight and hierarchy carry emphasis, not ornament. SemiBold and Medium for headings, Regular for body.</td></tr>
+          <tr><td>System edition</td><td>Edition 03</td><td>The current, cleaner, more typographic system. Apply Edition 03, do not revive earlier editions.</td></tr>
+          <tr><td>Retired motif</td><td>Blue Frog removed</td><td>Do not reintroduce the Blue Frog, or any animal, creature, or mascot, in any collateral.</td></tr>
+        </tbody>
+      </table>
+      <p>This brief applies the identity with intent. It does not re-derive or re-open it. Where a single-colour dark value is needed for mono print, it is the near-black Ink value confirmed at Brand Identity, not pure black, kept calm rather than harsh. The recommended supporting neutrals in the Brand Guidelines, Ink, Mist, Line, and Slate, are available for type, surfaces, and rules, but Signal Blue stays the single locked brand colour.</p>
+    </section>
+
+    <section>
+      <h2>3. Target Audience</h2>
+      <p>The collateral carries two audiences, because Maxxim sells to a partner who serves an end client. The partner is the front door now and the primary audience for almost everything in this brief. The end client is any organisation type, reached through the partner, and is the audience for the Pottsville case and the end-client-facing template variants.</p>
+      <table>
+        <thead>
+          <tr><th>Audience</th><th>Who they are</th><th>What they should feel</th><th>What they should do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>A1 Operator Owen</strong> (primary)</td><td>The Capacity-Capped Client Partner. A skilled operator with a network, a reputation, and judgement, but no repeatable machine. The license door. Alex and 3P, Arran Aitken, Greg Johnson in the named pipeline. Jewell itself is the live proof this operator can scale rather than stay stuck.</td><td>Someone named the cap I feel daily. This is a credible standard I could put my name on, not hype.</td><td>Attend 3 July, name a client they would run it on, book the 1:1, lean toward the license door.</td></tr>
+          <tr><td><strong>A2 Connector Carol</strong></td><td>The Networked Referrer. Has the relationships, not the delivery appetite. The refer door. Christy Kilmartin and Greg Johnson in the live shape.</td><td>My name is safe here. Low effort, no delivery, reputation protected.</td><td>Refer cleanly, step back, stay inside a trusted circle.</td></tr>
+          <tr><td><strong>A3 Specialist Sasha</strong></td><td>The Scoped Specialist. Wants to do one thing brilliantly inside a system, slotting alongside Sal or Pip, never owning the whole engagement.</td><td>The craft is respected and the standard is protected.</td><td>Take a scoped brief, deliver, stay pulled in by network demand.</td></tr>
+          <tr><td><strong>B Director Diane</strong></td><td>Growth-stage SME and corporate end client, reached through a partner.</td><td>A named human I can call, a process I can see, an asset I own.</td><td>Book the Growth Diagnostic; read the Pottsville story.</td></tr>
+          <tr><td><strong>B Procurement Pat</strong></td><td>Public-sector and not-for-profit buyer overlay, part of the wider organisation aperture set at Gate 1.</td><td>Documented, defensible, probity-friendly, auditable.</td><td>Engage inside procurement rules; trust the paper trail.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>The single emotion to design for.</strong> Calm confidence. The room and the page should feel like a standard you would trust to sign off your work, not a startup shouting for attention. The trust gap is the thing every audience carries, and the design closes it the same way the voice does: with proof, restraint, and a visible human, never with spectacle.</p>
+    </section>
+
+    <section>
+      <h2>4. Key Messages</h2>
+      <p>The messaging is lifted from the Copy Deck and the Brand Strategy messaging framework, not re-written. Designers reference these; they do not freestyle the claim. Every line obeys house style: no em dashes, no exclamation marks.</p>
+      <p><strong>Primary message.</strong> Maxxim is the proven method, run by a human, at AI speed: the engine that lets a trusted operator deliver agency-grade growth repeatably, and put their name on every result.</p>
+      <p><strong>Three pillars (the supporting messages collateral ladders up to).</strong></p>
+      <ul>
+        <li><strong>Pillar 1, the engine for your judgement.</strong> Max, Sal, and Pip run the repeatable 80 percent at speed; you own the 20 percent clients actually pay for.</li>
+        <li><strong>Pillar 2, the human at every gate.</strong> A named human signs off at every phase, so the work is something you can stand behind. The gates are enforced by the product, not just promised.</li>
+        <li><strong>Pillar 3, the community is the moat.</strong> Trust, taste, and judgement held by a community beat the same held by a lone operator.</li>
+      </ul>
+      <p><strong>Headline hierarchy for layout.</strong> One sharp, true claim leads each surface. A short proof or qualifier supports it. A single clear call to action closes it. Designers should size the type so the claim carries the weight, since there is no exclamation mark to lean on.</p>
+      <p><strong>Taglines available (carried from strategy, none settles the open category word).</strong> The human at the wheel. The engine behind the partner. Proven method. AI speed. Human judgement. The engine for your judgement. Finished, owned, in days. Stronger together than alone. Use the table, engine, or moat framings for showcase and community collateral; use the outcome framing for end-client surfaces.</p>
+      <p><strong>Primary calls to action.</strong> Partner door converts on <em>Join the founding partner cohort</em>. End-client door converts on <em>Book your Growth Diagnostic</em>. Softer entry: <em>Start a partner conversation</em>.</p>
+      <p><strong>Naming the engine in artwork.</strong> Where the engine is named, Maxxim is the platform, Max is the agent, the 3D Process is the method, Jewell is the method owner. Max does the words, Sal does the pixels, Pip runs social. They are endorsed features of Maxxim, never separate logos and never the accountable human. The accountable human is always the partner.</p>
+      <p><strong>Mandatory copy and the hard rules a designer must not break.</strong></p>
+      <ul>
+        <li>The business is <strong>Jewell</strong>. Never set or proof "Joule Projects", "Jewell Projects", or any other corruption of the name in any artwork.</li>
+        <li>No em dashes and no exclamation marks anywhere in set type, including pull quotes and captions.</li>
+        <li>Partner economics appear as structure only. Never typeset a floor, clip, finder's-fee rate, or split as a number. The only settled prices that may appear are the $4,950 Growth Diagnostic, the $25,000 to $250,000 band with a recent run near $80,000, and the specialist add-on around $1,500.</li>
+        <li>The 3 July showcase promise line is a placeholder until Clent finalises it. Lay out a slot for it; do not commit wording.</li>
+        <li>Proof clearance: Pottsville only in public artwork. Do not place OTR Earthmover, Hidrive, Beyond the Clinic, or Jewell Tyres in any public-facing piece. Jewell's own named results stay under Jewell's banner and are not re-used as Maxxim's public proof.</li>
+        <li>Ownership line, where used, is Clent and Raef only. Two owners, no board.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Deliverables List</h2>
+      <p>Every asset Maxxim needs near term, grouped by category. Each carries a name, purpose, dimensions or format, and usage context. The priority map after the table shows what must exist before 3 July.</p>
+
+      <h3>Asset inventory and priority map</h3>
+      <figure>
+        <figcaption>The collateral inventory, ordered by priority against the 3 July founding meeting. P1 is required before the showcase; P2 supports the follow-up and recruitment window; P3 builds the ongoing system. The deck, the partner map board, and the leave-behind are the non-negotiable showcase set.</figcaption>
+<pre><code>
+   MAXXIM COLLATERAL INVENTORY  (priority vs 3 July showcase)
+
+   PRIORITY   ASSET                                  NEEDED BY
+   --------   -----------------------------------    -----------
+   [ P1 ]     3 JULY SHOWCASE DECK                   before 3 Jul
+   |          run-of-show spine, 7 proof points,
+   |          live-Max holding slides, promise slot
+   |
+   [ P1 ]     PARTNER MAP BOARD (template)           before 3 Jul
+   |          shared digital board, filled live;
+   |          who / door / vertical / referral links
+   |
+   [ P1 ]     LEAVE-BEHIND ONE-PAGER                 before 3 Jul
+   |          model summary, two doors, Pottsville,
+   |          structure-only economics, cadence invite
+   |
+   [ P1 ]     CORE BRAND APPLICATION KIT             before 3 Jul
+   |          colour + type rules, name-badge,
+   |          slide master (light + dark), doc master,
+   |          social master, primary + reversed mark
+   |
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   [ P2 ]     PARTNER PROSPECTUS  (multi-page)       Jul-Sep
+   |          the deeper two-door document for 1:1s
+   |
+   [ P2 ]     POTTSVILLE CASE-STUDY LAYOUT           Jul-Sep
+   |          the cleared-proof shell; reusable
+   |
+   [ P2 ]     SOCIAL TEMPLATE SET (LinkedIn-led)     Jul onward
+   |          single-claim posts, quote cards,
+   |          proof posts, event profile posts
+   |          (Pip drafts + publishes on approval)
+   |
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   [ P3 ]     EMAIL HEADER / SIGNATURE BLOCKS        Jul onward
+   [ P3 ]     PARTNER-HUB AVATAR + BANNER            with hub
+   [ P3 ]     CASE-STUDY FACTORY TEMPLATE (reuse)    Q4 onward
+   [ P3 ]     REGIONAL MEETUP / OFFSITE KIT          later
+</code></pre>
+      </figure>
+
+      <h3>Showcase collateral (3 July, P1)</h3>
+      <table>
+        <thead>
+          <tr><th>Asset</th><th>Purpose and usage</th><th>Dimensions / format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Showcase deck</strong></td><td>The visual spine of the founding meeting. Follows the run of show; each section maps to one or more of the seven v2.1 proof points. Holding and framing slides around the live Max run, not a replacement for it. Light content slides carry the primary Signal Blue mark and Ink type; dark title and section-divider slides carry the reversed white mark and white type. Shown on a screen in the room and streamed to virtual attendees.</td><td>16:9, 1920 by 1080 px. On-screen presentation, in person plus virtual stream.</td></tr>
+          <tr><td><strong>Promise slot slide</strong></td><td>A single framing slide that holds the showcase promise. Wording is OPEN and Clent's to finalise, so the slide is laid out as a strong type slot with placeholder copy.</td><td>16:9. Part of the deck; one editable text slot.</td></tr>
+          <tr><td><strong>Partner map board template</strong></td><td>The shared digital board filled live as the partner map is built, the stated output of the session. Captures who is in the room, door preference (license or refer), vertical strength, and referral links. Visible to in-person and virtual attendees at once.</td><td>Digital whiteboard or large-format board, landscape, designed to project legibly and fill live.</td></tr>
+          <tr><td><strong>Leave-behind one-pager</strong></td><td>The single-page take-away handed at close. Model summary, the two doors, Pottsville as the cleared proof, the structure-only economics, the cadence invitation. The follow-up hook.</td><td>A4 portrait, print and PDF. 300dpi print, RGB PDF for email.</td></tr>
+          <tr><td><strong>Name badges</strong></td><td>Warm, restrained, on-brand badges for the room. Set the table feel from arrival. A reverse option on a solid Signal Blue field carries the reversed white mark.</td><td>Standard badge, 90 by 54 mm or A7. 300dpi print.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Partner recruitment collateral (P2)</h3>
+      <table>
+        <thead>
+          <tr><th>Asset</th><th>Purpose and usage</th><th>Dimensions / format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Partner one-pager</strong></td><td>The standalone summary of the partner offer for warm outreach and the 1:1 follow-up. The two-door model, the 80/20 thesis, the human at the gate, Pottsville, the cadence. Economics as structure only.</td><td>A4 portrait, print and PDF. May share the leave-behind layout or extend it.</td></tr>
+          <tr><td><strong>Partner prospectus</strong></td><td>The deeper, multi-page document for serious 1:1 conversations. Expands the two doors (license to deliver, refer for an optional finder's fee), the method, the community compact, and the proof. May cite Jewell as the live partner running the whole model, with Jewell's named results left under Jewell's banner. Read on screen and printed for a meeting.</td><td>A4 portrait, multi-page, print and interactive PDF. 300dpi print master; screen-optimised PDF.</td></tr>
+          <tr><td><strong>Pottsville case-study layout</strong></td><td>The cleared-proof presentation. A reusable shell that future cleared cases drop into. Full 3D run, launched site the client owns outright. The lead case across the partner hub, the prospectus, and the deck.</td><td>A4 portrait print master plus a web/PDF variant. Designed as a repeatable template, not a one-off.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Social and ongoing collateral (P2 to P3)</h3>
+      <p>The social set is the format Pip works inside. Pip drafts posts in the Social Studio and publishes them only on approval, so these templates are the guardrails Pip runs to. Publishing goes through Buffer once approved. Every template carries the no-exclamation-mark rule, so emphasis comes from the claim and the type weight.</p>
+      <table>
+        <thead>
+          <tr><th>Asset</th><th>Purpose and usage</th><th>Dimensions / format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>LinkedIn single-claim post</strong></td><td>The lead format. One sharp, true claim per post, founder led, no exclamation marks. Profiles the category and the moment without opening the showcase to the public.</td><td>1200 by 1200 px square and 1200 by 1500 px portrait. RGB PNG, 72dpi (screen).</td></tr>
+          <tr><td><strong>LinkedIn quote card</strong></td><td>Founder framing on the 80/20 cap and the human at the wheel. A speaker line set as a typographic quote.</td><td>1200 by 1200 px square. RGB PNG.</td></tr>
+          <tr><td><strong>Proof post (Pottsville)</strong></td><td>The cleared proof as a single social tile, pointing to the case. Used at the consideration boundary.</td><td>1200 by 1200 px square and 1080 by 1920 px story. RGB PNG.</td></tr>
+          <tr><td><strong>Event profile post</strong></td><td>Profiles the founding meeting before and after, no named attendees without consent. LinkedIn-led.</td><td>1200 by 627 px link image and 1200 by 1200 px square. RGB PNG.</td></tr>
+          <tr><td><strong>Email header and signature</strong></td><td>Consistent header band and signature block for partner nurture and end-client email. Reversed white mark where the email theme is dark.</td><td>600 px wide header; signature block to platform spec. RGB PNG / HTML-safe.</td></tr>
+          <tr><td><strong>Partner-hub avatar and banner</strong></td><td>The hub identity: icon-only monogram avatar in a circle and square crop, reversed white on a Signal Blue field, plus a banner. The always-on home of the community.</td><td>Avatar 400 by 400 px; banner to hub spec. RGB PNG / SVG mark.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. Creative Direction</h2>
+      <p>The emotional territory is calm authority. Modern and precise, warm only at the edges, never cute, never hyped. The design should look like infrastructure a serious operator would trust, not a startup competing for attention. The same restraint the logo brief sets for the mark governs every surface here.</p>
+
+      <h3>Colour palette</h3>
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Value</th><th>Usage guidance</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Primary, Signal Blue</td><td>#2D5BFF</td><td>The single locked brand colour. Headlines, key blocks, the mark, reversed fields, the one accent that carries the identity. Use it with intent and contrast, not as a wash.</td></tr>
+          <tr><td>Reverse, white</td><td>#FFFFFF</td><td>Type and mark reversed out of Signal Blue or a dark field; clean ground for positive layouts.</td></tr>
+          <tr><td>Ink (near-black)</td><td>#0A0A0A, recommended neutral</td><td>Body text on white, the single-colour mono mark, and the dark ground for the reversed white mark. A calm near-black, not pure black.</td></tr>
+          <tr><td>Mist</td><td>#F5F6F8, recommended neutral</td><td>Quiet surface tint for panels, cards, and section bands, without introducing a second brand colour.</td></tr>
+          <tr><td>Line</td><td>#C7CCD6, recommended neutral</td><td>Rules, dividers, borders, and table lines. Structure without weight.</td></tr>
+          <tr><td>Slate</td><td>#6B7280, recommended neutral</td><td>Secondary text, captions, labels, and metadata. Recedes behind Ink and Signal Blue.</td></tr>
+        </tbody>
+      </table>
+      <p>No gradients, no glows, no two-tone treatments. The palette stays high-contrast and legible, in keeping with a Sage brand that values legibility over decoration. Signal Blue is the only brand colour; the neutrals are recommended structure only. Never set body copy in Ink on Signal Blue; keep white on Signal Blue for the reverse treatment and white on Ink for dark surfaces.</p>
+
+      <h3>Typography</h3>
+      <p>Poppins throughout, locked. Build emphasis from weight and hierarchy, not ornament. Follow the Brand Guidelines type scale: Display and H1 in SemiBold (600) for hero and cover statements, H2 in SemiBold for sections, H3 and H4 in Medium (500), Body in Regular (400), Caption in Regular set in Slate. Tight, deliberate letter-spacing on display type; generous clear space around it. Because the style strips out exclamation marks, the claim must carry the weight, so size and contrast the headline confidently. Keep line lengths readable and the scale consistent across the deck, the documents, and the social set so the whole system reads as one hand. Where Jewell is referenced in a lockup, it is Jewell, never any corruption of the name.</p>
+
+      <h3>Imagery style</h3>
+      <p>Real over illustrated, candid over staged, outcome over abstract. Show real launched work and real people accountable for it: the Pottsville site, the named human, the partner at the table. Where the engine is shown, show the structured output and the gate, and Max, Sal, and Pip as a legible system, not a black box. For the universal-organisation aperture, imagery should flex across a tradie, a not-for-profit, and a government context without feeling like a single vertical. Photography of the table at the showcase is candid and real, used only with attendee consent. On dark imagery, the reversed white mark and white type are the correct overlay, on a holding shape where the field is busy; on light imagery, the primary Signal Blue mark and Ink type, again on a holding shape where the field is busy.</p>
+
+      <h3>How the visuals are produced (the swappable engines behind Sal)</h3>
+      <p>Sal produces the pixels in the Design Studio using the right tool for each job, and the tool is swappable, so brief the intent, not the model. Photographic and raster imagery is generated with OpenAI GPT-image. Flat and vector work, logos and icons, uses Recraft. Video, which animates a still, uses Google Veo. Premium hero imagery, where it is warranted, is Midjourney and manual only. What matters for this brief is that the direction is consistent regardless of engine: real over abstract, Signal Blue as the accent, calm and high-contrast, no AI cliche. This brief is saved to Maxxim's secure storage so the Studio generates against it rather than re-deriving direction.</p>
+
+      <h3>Reference direction (for the team, not to copy)</h3>
+      <p>The restraint and typographic confidence of Linear. The trustworthy, systemised feel of Stripe. The clean, standard-setting calm of Vercel. The common thread is geometric sans confidence, a disciplined single-accent colour, and surfaces that read as infrastructure rather than promotion. The Maxxim collateral should sit comfortably beside those and feel like a standard, not a campaign.</p>
+
+      <h3>What to avoid</h3>
+      <ul>
+        <li>The Blue Frog, or any animal, creature, or mascot, in any form.</li>
+        <li>Generic AI and tech clichés: glowing brains, circuit boards, neural-net nodes, hexagon meshes, abstract gradient orbs. They undercut the human-at-the-wheel position.</li>
+        <li>Marketing-agency clichés: the megaphone, the speech bubble, the growth rocket, the upward-arrow-as-mountain, the swoosh.</li>
+        <li>Over-claim and spectacle: transformation imagery, magic, hype. The trust gap punishes exactly this.</li>
+        <li>Exclamation marks and em dashes in any set copy. Decorative gradients, glows, drop shadows, and bevels.</li>
+        <li>Stock abstraction standing in for real, owned outcomes. If the brand sells finished work, the imagery should show finished work.</li>
+        <li>The reversed white mark on white, light, or mid-tone grounds, where it loses contrast. Switch to the primary Signal Blue mark there.</li>
+      </ul>
+
+      <h3>Where the identity shows up</h3>
+      <figure>
+        <figcaption>The brand-application map. Signal Blue, Poppins, Edition 03, real-over-abstract imagery, and the locked mark, primary and reversed, flow into every surface from one core kit. The showcase set, the recruitment documents, the social set, and the hub all draw from the same system so the brand reads as one disciplined hand.</figcaption>
+<pre><code>
+   BRAND APPLICATION MAP  (one system, every surface)
+
+                  +------------------------------+
+                  |   CORE BRAND APPLICATION KIT  |
+                  |   Signal Blue #2D5BFF         |
+                  |   Poppins  |  Edition 03      |
+                  |   locked mark (logo brief):   |
+                  |   primary + reversed variant  |
+                  |   real-over-abstract imagery  |
+                  +------------------------------+
+                              |
+       +----------------+-----+------+----------------+
+       |                |            |                |
+       v                v            v                v
+  +-----------+   +-----------+ +-----------+  +-------------+
+  | SHOWCASE  |   | RECRUIT   | | SOCIAL    |  | HUB + EMAIL |
+  | (3 Jul)   |   | DOCS      | | (LinkedIn |  |             |
+  |           |   |           | |  -led)    |  |             |
+  | deck      |   | one-pager | | claim     |  | avatar      |
+  | (light +  |   | prospectus| | post      |  | (reversed   |
+  |  dark)    |   | Pottsville| | quote     |  |  on blue)   |
+  | map board |   | case      | | card      |  | banner      |
+  | leave-    |   | layout    | | proof     |  | email       |
+  | behind    |   |           | | post      |  | header +    |
+  | badges    |   |           | |(Pip runs) |  | signature   |
+  +-----------+   +-----------+ +-----------+  +-------------+
+       |                |            |                |
+       +----------------+-----+------+----------------+
+                              |
+                   MARK USAGE PER SURFACE
+                   header / cover : horizontal lockup
+                   square / vert  : stacked lockup
+                   tiny / cropped : icon (mark only)
+                   light ground   : primary (blue on white)
+                   dark / blue     : reversed (white knockout)
+                   no colour       : mono near-black (Ink)
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>7. Mandatory Elements</h2>
+      <p>Non-negotiable inclusions and rules. A designer should never discover one of these in a revision round.</p>
+      <h3>Logo usage (from the locked logo brief and brand guidelines)</h3>
+      <ul>
+        <li><strong>Lockups.</strong> Horizontal lockup is the default for covers, headers, and document tops. Stacked lockup for square and vertical contexts and for the showcase. Icon-only mark for favicon, app icon, hub avatar, and social avatar.</li>
+        <li><strong>Primary and reversed treatment per ground.</strong> On white or light grounds use the primary mark, Signal Blue on white. On Signal Blue fields or dark grounds use the reversed, or inverse, variant, the white maxxim wordmark knocked out. Where a colour is unavailable, use the single-colour mono mark in the near-black Ink value. Never the reversed white mark on white or light grounds.</li>
+        <li><strong>The reversed variant is a real asset, not a re-tint.</strong> It is served as a transparent SVG at <code>https://assets.maxxim.ai/maxxim/inverse/78512f900b9d.svg</code>, the white maxxim logotype for dark grounds and Signal Blue fields. Because it ships transparent, the field it sits on must carry the contrast. On a busy dark field, place it on a solid Signal Blue or Ink holding shape so the white knockout holds against its whole footprint.</li>
+        <li><strong>Clear space.</strong> Protect clear space equal to the cap-height of the wordmark on every side, for the primary and the reversed variant alike. No type, image, or edge enters that border.</li>
+        <li><strong>Minimum sizes.</strong> Horizontal lockup min 120px wide on screen / 24mm print. Stacked lockup min 80px / 18mm. Icon-only min 16px (favicon floor). Below 120px wide, drop the wordmark and use the icon alone. Test the reversed variant at the floor sizes specifically and thicken any fine strokes that thin out white-on-dark.</li>
+        <li><strong>Contrast.</strong> White on Signal Blue #2D5BFF clears the WCAG AA threshold for graphical objects and is the intended reverse pairing; white on Ink is stronger still. Do not place the reversed mark on a tinted or lightened blue where contrast falls below the threshold.</li>
+        <li><strong>Colour treatments and misuse.</strong> Every form exists in Signal Blue on white (positive), white on Signal Blue or dark (reverse), and single-colour mono (print fallback). No gradients, recolouring outside the palette, stretching, skewing, rotating, or crowding the mark, in either treatment.</li>
+      </ul>
+      <h3>Regulatory, legal, and clearance</h3>
+      <ul>
+        <li><strong>Proof clearance.</strong> Pottsville Acupuncture is the only case cleared for public display and leads. OTR Earthmover is internal only. Hidrive is percentages only and only with sign-off. Beyond the Clinic and Jewell Tyres are held back until cleared. Jewell's own named results stay under Jewell's banner and are not re-used as Maxxim's public proof. No named partner or client appears in public artwork without consent.</li>
+        <li><strong>Economics discipline.</strong> No open partner economic (floor, clip, finder's-fee rate, split, cap) is ever typeset as a number. Only the settled prices may appear: $4,950 Growth Diagnostic, the $25,000 to $250,000 band with a recent run near $80,000, and the specialist add-on around $1,500.</li>
+        <li><strong>Public-sector overlay.</strong> Where collateral addresses government or not-for-profit buyers, lean on documented, defensible, probity-friendly framing. Claims stay method-led, not case-led, because no public-sector run is yet cleared as proof.</li>
+      </ul>
+      <h3>Co-branding and naming</h3>
+      <ul>
+        <li><strong>Jewell endorsement.</strong> Jewell is the method owner and may be referenced as the endorsing parent ("the engine for Jewell's 3D Process"), as the first exemplar partner, and as a live partner now running the whole model in market. Where a Jewell reference appears in a lockup, it is Jewell, correctly spelled, never any corruption of the name. Max, Sal, and Pip are endorsed features of Maxxim, never separate logos.</li>
+        <li><strong>House vocabulary.</strong> Maxxim is the platform, Max is the agent, the 3D Process is the method, Jewell is the method owner. Max does the words, Sal does the pixels, Pip runs social. Phases keep their names: Discover, Design, Deploy, Deepen.</li>
+        <li><strong>Ownership line.</strong> Where ownership is stated, it is Clent and Raef only.</li>
+      </ul>
+      <h3>Brand guidelines to follow</h3>
+      <p>Apply the <a href="/3d-process/design/brand-guidelines/">brand-guidelines.html</a>, the <a href="/3d-process/design/brand-strategy/">brand-strategy.html</a> (Visual Identity Direction), the <a href="/3d-process/design/logo-brief/">logo-brief.html</a>, and the Copy Deck as the governing references. This brief sits on top of them and does not override them.</p>
+    </section>
+
+    <section>
+      <h2>8. Technical Specifications</h2>
+      <table>
+        <thead>
+          <tr><th>Deliverable category</th><th>File format</th><th>Resolution</th><th>Colour mode</th><th>Bleed / safe zone</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Showcase deck and promise slide</td><td>Editable source (Keynote / PowerPoint / Figma) plus exported PDF</td><td>1920 by 1080 px, 16:9</td><td>RGB</td><td>Keep key content inside a safe margin for projection crop</td></tr>
+          <tr><td>Partner map board</td><td>Digital whiteboard template plus a flat image / PDF backup</td><td>Large-format, legible when projected</td><td>RGB</td><td>Safe zone for live fill; leave room to add nodes</td></tr>
+          <tr><td>Leave-behind, one-pager, prospectus, case study (print)</td><td>Layered source (InDesign / AI) plus print-ready PDF/X</td><td>300dpi</td><td>CMYK for print; spot Signal Blue as a Pantone match where a press run warrants it</td><td>3mm bleed, 5mm safe margin</td></tr>
+          <tr><td>Same documents (screen / email
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/deploy/website-brief/"><span class="lbl">← Previous</span><span class="ttl">Website Brief</span></a>
+<a href="/3d-process/deploy/case-study/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">Case Study Framework: Pottsville Acupuncture</span></a></div>
+</div></div>
+</body>
+</html>

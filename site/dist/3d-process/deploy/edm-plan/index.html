@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDM Plan · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%2290%22%20height%3D%2290%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Cpath%20d%3D%22M27%2071%20V33%20L50%2057%20L73%2033%20V71%22%20stroke%3D%22%23fff%22%20stroke-width%3D%229%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc current" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">03 · Deploy</span>
+    <h1>EDM Plan</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this plan</h2>
+      <p>This is the email direct marketing plan for Maxxim, produced in the Deploy phase against Master Briefing v2.1, the Gate 1 decisions of 27 June 2026, and the 1 July refresh that folded in the 29 June product mechanics and the live Jewell partner site. It is the execution blueprint for email: list management, automation workflows, segmentation, deliverability, compliance, and measurement. It briefs whoever stands up and runs the email programme, and it reads directly off the <a href="/3d-process/design/marketing-plan/">marketing-plan.html</a> always-on email streams, the <a href="/3d-process/design/copy-deck/">copy-deck.html</a> voice and CTA library, and the <a href="/3d-process/design/customer-profile/">customer-profile.html</a> journeys.</p>
+      <p>Growth is the frame and the lead word. Every email Maxxim sends exists to move one of three programmes forward, and all three ladder back to the single growth motion the marketing plan sets out: recruit a founding cohort of trusted operators, equip them to sell the Growth Diagnostic to their own clients, and hold the community together so the engine compounds. The primary lifecycle audience is the trusted operator, the Client Partner. Maxxim does not email end clients at scale; end-client sequences are partner-mediated and co-sent under the partner's name and relationship.</p>
+      <p>Three email programmes, not one broadcast list:</p>
+      <ul>
+        <li><strong>Programme 1, PARTNER nurture.</strong> Recruit the founding cohort (the named pipeline and the 3 July session invitees), then onboard signed partners onto the platform and the standards. This is the near-term front door and the priority programme.</li>
+        <li><strong>Programme 2, END-CLIENT nurture.</strong> Built around the $4,950 Growth Diagnostic and the move into the 3D engagement. Partner-mediated and co-sendable, so a partner can carry it to a client they already hold, under their own name.</li>
+        <li><strong>Programme 3, PARTNER COMMUNITY communications.</strong> The cadence that keeps the community alive: weekly table note, monthly business review, quarterly strategy and showcase, annual offsite. This is the retention and compounding engine, not a campaign.</li>
+      </ul>
+      <p>What the email programme markets is a real, showable engine, not a promise. Three named specialists, each a process, make the method concrete, and email uses them as proof rather than as a feature list. <strong>Max</strong> does the words in Claude Cowork (strategy, plans, copy, briefs, summaries), and Max drafts most of this programme's email copy. <strong>Sal</strong> does the pixels in the Design Studio (any header mark or proof image an email needs). <strong>Pip</strong> runs the Social Studio and is a sibling channel, not an email tool. The method is 3D plus Deepen (Discover, Design, Deploy, then the compounding loop), gated end to end, and the gates are the visible answer to the trust gap that sits under every send: can AI hit a standard I will put my name on. Email closes that gap with a gated method, AI speed, a named human, and Pottsville as the cleared proof.</p>
+      <p>The same discipline as every upstream document applies. Real anchors are stated as real: the Growth Diagnostic at $4,950 credited forward, the premium band of $25,000 to $250,000 with a recent run near $80,000, the specialist module near $1,500. Every partner economic, every list-size assumption, and every benchmark is illustrative, pending pilots, and requires Clent sign-off before it is treated as locked or used externally. Open items are carried, not invented: Maxxim's category lead word stays open, the front-door product stays open, the fractional CMO model stays open for Maxxim (it is how Jewell packages the method as a partner, not a Maxxim fact), and the 3 July session promise wording stays Clent's. Proof respects clearance: Pottsville Acupuncture is the only cleared public Maxxim example, and Jewell's own named results stay under Jewell's banner and are never re-used as Maxxim's own public proof. Ownership is Clent and Raef only. House style is locked and hard: no em dashes, no exclamation marks, Australian English, the business is Jewell and never Joule. No email goes out externally without Clent sign-off, and the sending posture is deliberately conservative: a human approves every send.</p>
+      <p>Where a list count, an open rate, or an ESP detail was not supplied, the plan states the assumption inline and keeps recommendations platform-agnostic. <em>[Assumption: Maxxim is pre-scale; the partner pipeline is a small, named, high-trust list in the low tens, not a bought audience. Baselines are set by the founding cohort, not assumed.]</em></p>
+    </section>
+
+    <section>
+      <h2>The three programmes mapped to the lifecycle</h2>
+      <p>Before the sections, the shape. Email serves a partner lifecycle and an end-client lifecycle that run on the same 3D spine. The map below shows the lifecycle stages each programme covers and where the automations fire. Jewell is the live worked example of the partner lifecycle run end to end; Pottsville is the cleared example of the end-client outcome.</p>
+      <figure>
+        <figcaption>Lifecycle stages across the two layers, with the three email programmes overlaid and the trigger points marked.</figcaption>
+<pre><code>
+   LIFECYCLE STAGES (the spine email serves)
+
+   PARTNER LAYER (Programme 1 nurture + Programme 3 community)
+   AWARE -> CONSIDER -> DECIDE -> ONBOARD -> ACTIVE -> ADVOCATE
+     |          |         |         |          |          |
+   invite    session    sign     platform   runs       refers,
+   to the    nurture    the      + stand-   client,    shares
+   session   sequence   cohort   ards       sells      a win
+     |       (Max,Sal,  (a door)  onboard   Diagnostic   |
+     |        Pip live) |         |          |          |
+   [P1 welcome/recruit]--[P1 onboard]------[P3 community cadence]--->
+                                              weekly / monthly /
+                                              quarterly / annual
+
+   END-CLIENT LAYER (Programme 2, partner-mediated, co-sent)
+   AWARE -> CONSIDER ----> DECIDE -----> ONBOARD -> RETAIN -> ADVOCATE
+     |         |             |             |          |          |
+   partner   Diagnostic    book the      Discover   launched   testimonial,
+   intro     interest      $4,950        + gates    OWNED      referral
+     |        (the offer)  Diagnostic    fast; Ari  asset +      |
+     |         |             |           portal     Deepen      |
+   [P2 lead nurture]--[P2 Diagnostic-to-engagement]--[P2 post-launch/Deepen]-->
+
+   TRUST GAP runs under every stage on both layers:
+   "can AI hit a standard I will put my name on"
+   Every email is written to close it: gated 3D method, AI speed
+   via Max/Sal/Pip, a named human at every gate, Pottsville as
+   the cleared proof, Jewell live as the working pattern.
+
+   NORTH STAR (not built here): a self-serve portal opens a direct
+   end-client front door; email shifts to a product-led onboarding
+   motion. Ownership-at-portal-entry is OPEN. [Flagged, not designed.]
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>1. EDM Objectives</h2>
+      <p>Five objectives, each tied to a marketing plan objective and stated against the partner-led motion. Targets are directional and require Clent sign-off; Maxxim is pre-scale, so several baselines are set by the founding cohort rather than assumed.</p>
+
+      <h3>Objective 1: List growth, the right list not the big list</h3>
+      <ul>
+        <li><strong>Target.</strong> Build a clean, consented partner-pipeline list to at least 40 to 60 qualified operators by 30 September 2026, seeded by the named pipeline (Alex and 3P with around 36 opportunities, Arran Aitken with a tradie database, Greg Johnson, Christy Kilmartin) and grown by warm operator-to-operator referral and LinkedIn. <em>[Illustrative milestone; the value is fit, not volume.]</em></li>
+        <li><strong>Target.</strong> A separate end-client list grown only through partners, never bought, reaching a first cohort of co-sendable contacts as partners run their first Diagnostics. Jewell, already live, is the reference for how a partner brings clients onto the motion.</li>
+      </ul>
+
+      <h3>Objective 2: Engagement benchmarks by email type</h3>
+      <ul>
+        <li><strong>Target.</strong> Because the list is small, named, and high-trust, hold partner-nurture open rates well above generic B2B norms: an illustrative 55 to 70 percent open and 8 to 15 percent click on recruitment nurture; community-cadence opens of 60 percent or higher. End-client nurture, co-sent by a partner the contact already trusts, should hold 45 to 60 percent opens. <em>[Illustrative; confirm the real baseline from the first cohort sends.]</em></li>
+      </ul>
+
+      <h3>Objective 3: Revenue attribution</h3>
+      <ul>
+        <li><strong>Target.</strong> Email is a support and rhythm channel near term, not the primary revenue driver, because the partner deal turns on a near-solo decision and a direct founder relationship, and the end-client deal turns on the partner relationship. The honest target is influence, not last-click revenue: email should be a confirmed touch on the majority of session registrations and on every Diagnostic booked through the co-send sequence. Revenue attribution is set against the commercial lead-source rule (partner-sourced, Maxxim-sourced, referred), not a marketing last-click model, because that tag drives the clip and the finder's fee. <em>[No revenue percentage is invented; the cohort sets it.]</em></li>
+      </ul>
+
+      <h3>Objective 4: Automation coverage</h3>
+      <ul>
+        <li><strong>Target.</strong> At least the four core flows live before the founding-cohort window opens, covering recruitment, onboarding, end-client lead nurture, and re-engagement, so that no lifecycle stage on either layer is left to manual sends alone. Triggered automations carry the repeatable rhythm; broadcasts carry only the timely, human, community moments. Consistent with the product posture, every automated send is queued for human approval before it goes, not auto-fired blind.</li>
+      </ul>
+
+      <h3>Objective 5: Deliverability and compliance foundation</h3>
+      <ul>
+        <li><strong>Target.</strong> SPF, DKIM, and DMARC authenticated on the sending domain before the first external send; a documented warm-up; Australian Spam Act compliance on every email from send one. Deliverability is the invisible foundation: the best session invitation is worthless in a spam folder.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. List Strategy</h2>
+
+      <h3>Acquisition sources</h3>
+      <ul>
+        <li><strong>Partner list.</strong> The named founder pipeline (direct, consented at the relationship); warm operator-to-operator referral; the 3 July session registration form; LinkedIn organic inbound directed to a partner-interest form on maxxim.ai. The maxxim.ai contact form (the embedded app now live in the delivery stack) is the capture surface, feeding the ESP with consent and source logged. No purchased lists, ever.</li>
+        <li><strong>End-client list.</strong> Grown only through partners. A partner adds a client they already hold, with the client's consent, via a co-send permission flow. A vertical database such as Arran's tradie list is the partner's asset and is mailed by the partner under the partner's own consent and sender identity, not merged into a central Maxxim blast.</li>
+        <li><strong>Community list.</strong> A subset of the partner list: signed and onboarded partners who have opted into the cadence at the session or during onboarding.</li>
+      </ul>
+
+      <h3>Opt-in approach</h3>
+      <p><strong>Double opt-in for the partner list, single opt-in acceptable for warm, named, individually known contacts.</strong> Rationale: double opt-in protects deliverability and proves consent under the Spam Act, which matters most for the session form and any LinkedIn-driven sign-ups where the relationship is newer. For the named pipeline, where Clent or a partner already has an express, recorded relationship, a single confirmed opt-in with a logged consent source is defensible and lower friction. End-client co-send contacts must be double opt-in or carry a documented partner-captured consent, because the contact's primary relationship is with the partner, not Maxxim.</p>
+
+      <h3>Segmentation model overview</h3>
+      <p>High level here, detailed in Section 5. The list segments first by <strong>programme</strong> (partner, end client, community), then by <strong>door</strong> within the partner layer (license, refer, specialist), then by <strong>lifecycle stage</strong> (pipeline, registered, signed, active, lapsed). The single most important tag is the <strong>lead-source tag</strong> carried from the marketing plan, because it drives both end-client treatment and the commercial economics.</p>
+
+      <h3>List hygiene practices</h3>
+      <ul>
+        <li>Hard bounces suppressed immediately and permanently.</li>
+        <li>Soft bounces retried to a capped count, then suppressed.</li>
+        <li>Inactive partner contacts (no open or click across a defined window, illustratively 90 days for the small list) routed to the re-engagement flow before any further promotional send.</li>
+        <li>The list is small and named, so hygiene is also relational: a contact who has gone cold is often a conversation Clent or a partner should have directly, not just an automated win-back.</li>
+        <li>Quarterly manual review of the partner list against the live pipeline tracker, because a named B2B list drifts through job changes and relationship shifts.</li>
+      </ul>
+
+      <h3>Suppression rules</h3>
+      <ul>
+        <li>Unsubscribes suppressed globally and immediately, honoured within the legally required window and in practice at once.</li>
+        <li>Hard bounces and repeated soft bounces suppressed.</li>
+        <li>Spam complaints suppressed permanently and flagged for review, because on a small high-trust list a complaint is a serious relationship signal.</li>
+        <li>Role-based addresses (info@, admin@, sales@) avoided for nurture; reach the named human, not the inbox.</li>
+        <li>Suppression is global across all three programmes by default, with a documented exception only where a contact has separately and explicitly consented to a different stream.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Email Types and Cadence</h2>
+      <p>Each type below names frequency, purpose, and audience. The cadence is deliberately light and sustainable, consistent with the business plan warning that the community must stay a flywheel, not a support burden. Where the work is production rather than judgement, Max drafts the copy and a human approves before send, which is the model marketing itself.</p>
+
+      <h3>Newsletter and community notes (Programme 3)</h3>
+      <ul>
+        <li><strong>Weekly table note.</strong> A short prompt and recap around the weekly open table. Audience: signed community partners. Purpose: compounding knowledge, belonging, one shared learning.</li>
+        <li><strong>Monthly business review note.</strong> Pipeline, active engagements, Diagnostics sold, and one product-roadmap line (how Max, Sal, and Pip are improving from partner friction). Audience: community partners. Purpose: performance and a direct line into the roadmap.</li>
+        <li><strong>Quarterly strategy and session invitation.</strong> Audience: community partners and warm pipeline. Purpose: the case-study factory and the economics review, where illustrative numbers move toward locked.</li>
+      </ul>
+
+      <h3>Promotional and recruitment campaigns (Programmes 1 and 2)</h3>
+      <ul>
+        <li><strong>Session recruitment sends.</strong> Invitation, reminder, and follow-up around 3 July. Audience: partner pipeline. Seasonal anchor: the founding-cohort window, July to September 2026. The session is run as partner discovery and alignment, so copy invites rather than sells, and the promise wording stays directional pending Clent.</li>
+        <li><strong>Cohort offer sends.</strong> The founding-table invitation to license or refer. Audience: registered and warm operators. Economics stated in structure only, never a number.</li>
+        <li><strong>End-client Diagnostic prompts.</strong> Co-sendable sequence introducing the $4,950 Growth Diagnostic. Audience: partner-held end clients, sent under the partner relationship and name.</li>
+      </ul>
+
+      <h3>Lifecycle emails (Programmes 1 and 2, triggered)</h3>
+      <ul>
+        <li>Welcome and recruit (partner), onboarding (signed partner), end-client lead nurture, Diagnostic-to-engagement, post-launch and Deepen, re-engagement. All defined in Section 4. Every triggered send queues for human approval before it fires.</li>
+      </ul>
+
+      <h3>Transactional emails</h3>
+      <ul>
+        <li>Session registration confirmation; partner onboarding access notice (dashboard and Cowork workspace ready); Growth Diagnostic booking confirmation and the credited-forward receipt; gate sign-off notifications as each 3D phase pauses for approval; end-client portal access notice when a read-only portal with Files, Help, and the assistant Ari is provisioned. These are plain, exact, and especially careful around the Diagnostic credit, so the buyer always sees the $4,950 is credited toward the engagement. Transactional sends carry no marketing and are exempt from promotional suppression, but still identify the sender and respect unsubscribe on any non-essential content. They never expose costs, per the product rule that no one on either layer sees costs.</li>
+      </ul>
+
+      <h3>Send calendar overview</h3>
+      <figure>
+        <figcaption>Weekly and monthly send calendar across the three programmes, light by design.</figcaption>
+<pre><code>
+   SEND CALENDAR (illustrative, founding-cohort window)
+
+   PRE-3 JUL (recruitment ramp)
+   weekly: session recruitment send (invite -> remind -> follow-up)
+   triggered: welcome/recruit fires on every new pipeline opt-in
+              (human-approved before send)
+
+   3 JUL: session = founding meeting (event, not a send);
+          live walkthrough of Max, Sal, Pip; Jewell as the example
+   +1 wk: session follow-up + cohort offer to attendees
+
+   JUL -> SEP (cohort window)
+   WEEKLY    community table note (signed partners)               [P3]
+   WEEKLY    recruitment nurture step (warm, unsigned pipeline)   [P1]
+   MONTHLY   business review note (community)                     [P3]
+   TRIGGERED onboarding flow on each partner sign                 [P1]
+   TRIGGERED end-client lead nurture as partners co-send          [P2]
+
+   QUARTERLY strategy + session invitation                        [P3]
+   ANNUAL    offsite invitation (beyond this window)              [P3]
+
+   Rule of thumb: no contact receives more than ONE promotional
+   send per week. Community notes and transactional sends sit
+   outside that cap. Triggered flows respect a global frequency
+   guard so a contact in two flows is not double-sent. Every
+   automated send is queued for human approval, never auto-fired.
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>4. Automation Workflows</h2>
+      <p>Six workflows across the three programmes. Each names its trigger, sequence, timing, branching, and exit. The four core flows (welcome and recruit, onboarding, end-client lead nurture, re-engagement) are the Objective 4 minimum; the Diagnostic-to-engagement and post-launch flows complete the picture. Copy is drafted by Max off the <a href="/3d-process/design/copy-deck/">copy-deck.html</a> hierarchy and CTA library, and a human approves every send before it goes.</p>
+
+      <h3>Programme 1 automation flows (partner)</h3>
+      <figure>
+        <figcaption>Partner recruitment and onboarding flows, with the 3 July session as the hinge.</figcaption>
+<pre><code>
+   FLOW A: WELCOME + RECRUIT (Programme 1)
+   TRIGGER: new partner-pipeline opt-in (session form, referral,
+            LinkedIn partner-interest form, or named-pipeline add)
+
+   [E1] day 0   Welcome. "You can win the work. Delivering it all
+                is the problem." What Maxxim is: the engine for
+                your judgement. CTA: See how it works.
+       |
+       v
+   [E2] day 2   Proof. Pottsville, launched and owned. The gates
+                close the trust gap because the product enforces
+                them. CTA: Read the Pottsville story.
+       |
+       +--- branch: has the contact registered for the session?
+       |        YES -> jump to Flow B (session nurture)
+       |        NO  -> continue
+       v
+   [E3] day 5   The table, not a tool. Invite to the 3 July session
+                as discovery + alignment; a live look at Max, Sal,
+                and Pip running the method, Jewell as the example.
+                CTA: register.
+       |
+       v
+   [E4] day 9   The 80/20, compressed. Max, Sal, and Pip run the
+                80 percent; you own the 20 that pays. The engine
+                behind the partner, not the name on the door.
+                CTA: start a partner conversation (softer door
+                for refer/specialist).
+       |
+       v
+   EXIT WHEN: registers for the session (-> Flow B), or books a
+   founder conversation, or signs (-> Flow C), or hits the
+   re-engagement guard (Flow F). Hard exit on unsubscribe.
+
+   --------------------------------------------------------------
+
+   FLOW B: SESSION NURTURE (Programme 1, time-boxed to 3 Jul)
+   TRIGGER: session registration confirmed
+   [E1] on register  Confirmation + what to expect (transactional)
+   [E2] T-3 days      Reminder + "bring one client challenge"
+   [E3] T-1 day       Logistics + the live Max/Sal/Pip walkthrough
+                      teaser + Jewell as the working example
+   [E4] T+1 day       Thank you + cohort offer + partner-map next step
+   BRANCH: attended? YES -> cohort offer (toward Flow C).
+                     NO  -> "what you missed" recap + 1:1 offer.
+   EXIT: books founder conversation, signs, or opts out.
+
+   --------------------------------------------------------------
+
+   FLOW C: PARTNER ONBOARDING (Programme 1)
+   TRIGGER: partner signs (license or refer door)
+   [E1] day 0   Welcome to the table + platform/standards access.
+                Dashboard (admin) and Cowork workspace ready
+                (transactional + warm). Membership compact: what
+                you give, what you get. One named partner owns
+                each client relationship, always.
+       |
+       v
+   [E2] day 1   Standards + the gates. How the gating unlocks
+                creative only as its briefs exist, and how you
+                put your name on the output. First-client setup
+                checklist.
+       |
+       v
+   [E3] day 3   Sell your first Growth Diagnostic. The enablement
+                kit: the one-pager, the Pottsville case, the gate
+                deck, the read-only portal + Ari as a soft demo.
+       |
+       v
+   [E4] day 7   Join the weekly table (-> Programme 3 community).
+                Pair up with a cohort peer for the first run.
+                Jewell is the pattern to onboard against.
+       |
+       v
+   [E5] day 14  Check-in. Stuck anywhere on the first run?
+                Branch: first Diagnostic sold?
+                  YES -> congratulate, feed the win to proof loop.
+                  NO  -> founder/peer nudge, light human follow-up.
+   EXIT: enrolled into Programme 3 community cadence. Onboarding
+   completes; the partner now lives in the community list.
+</code></pre>
+      </figure>
+
+      <h3>Programme 2 automation flows (end client)</h3>
+      <figure>
+        <figcaption>End-client lead nurture and the Diagnostic-to-engagement flow, co-sent under the partner.</figcaption>
+<pre><code>
+   FLOW D: END-CLIENT LEAD NURTURE (Programme 2, partner co-send)
+   TRIGGER: partner adds a consented end-client contact, OR a
+            client opens the Diagnostic one-pager and does not book
+   [E1] day 0   From the partner (named human). "Growth, finished
+                and owned, in days." What the Diagnostic is.
+       |
+       v
+   [E2] day 3   Proof + trust. Pottsville owns their site outright,
+                on their own domain. A named human at every gate.
+                CTA: Book your Growth Diagnostic ($4,950, credited
+                forward).
+       |
+       v
+   [E3] day 6   Risk reversal. The $4,950 is credited toward the
+                engagement, so the first step is low risk.
+       |
+       +--- branch: booked the Diagnostic?
+       |        YES -> exit to Flow E (Diagnostic-to-engagement)
+       |        NO  -> continue
+       v
+   [E4] day 10  Consequence of inaction. Every month of slow,
+                opaque, unowned work is growth not banked.
+                Soft CTA: a 15-minute call with the partner.
+   EXIT: books Diagnostic (-> Flow E), books a call, or goes
+   quiet (-> light partner-owned follow-up, not an automated blast).
+
+   --------------------------------------------------------------
+
+   FLOW E: DIAGNOSTIC-TO-ENGAGEMENT (Programme 2)
+   TRIGGER: Growth Diagnostic booked/paid
+   [E1] day 0   Booking confirmation + credited-forward receipt
+                (transactional, exact on the $4,950 credit, no
+                costs shown beyond the client's own price).
+   [E2] during  "What happens in your sprint" + the gates you will
+                see. Max runs Discover with your partner; speed is
+                the delighter, days not months. Ari + read-only
+                portal give calm line of sight.
+   [E3] at gate Diagnostic findings ready + the engagement path.
+                CTA: continue into the 3D engagement (credit
+                applied). Bands shown as real anchors only
+                (tradie/local, SME-mid, premium $25K-$250K).
+   BRANCH: continued to engagement?
+       YES -> hand to Flow G (post-launch/Deepen) at launch.
+       NO  -> "your Diagnostic is yours" + a 30-day re-offer,
+              then exit to the partner relationship, no pressure.
+   EXIT: engagement signed, or graceful close to the partner.
+</code></pre>
+      </figure>
+
+      <h3>Programme 1 and 2 re-engagement, and Programme 2 retention</h3>
+      <figure>
+        <figcaption>The win-back flow (both layers) and the post-launch / Deepen retention flow.</figcaption>
+<pre><code>
+   FLOW F: RE-ENGAGEMENT / WIN-BACK (Programmes 1 + 2)
+   TRIGGER: no open or click across the inactivity window
+            (illustratively 90 days on this small list)
+   [E1] day 0   "Still the right time?" One honest question, one
+                clear value reminder. No guilt, no hype.
+       |
+       v
+   [E2] day 7   The single best proof: Pottsville, or one cleared
+                community win. One CTA only.
+       |
+       v
+   [E3] day 14  Permission reset. "Want to stay on the table?"
+                Explicit keep-or-go choice.
+   BRANCH: re-engaged (open/click)? YES -> return to prior segment.
+           NO -> suppress from promotional sends; flag named
+           contacts for a direct human note instead of more email.
+   EXIT: re-engaged, or suppressed and flagged. Protects sender
+   reputation by removing the unengaged before they sour it.
+
+   --------------------------------------------------------------
+
+   FLOW G: POST-LAUNCH + DEEPEN (Programme 2 retention)
+   TRIGGER: end-client asset launched (engagement delivered)
+   [E1] day 0   "It is finished and it is yours." Ownership
+                confirmation + how to use the launched, owned
+                asset (hosted, locked by default, unlockable to
+                hand-editable HTML as a one-way door).
+   [E2] day 14  Early results check-in (from the partner).
+   [E3] day 30  Deepen, the Pottsville pattern: improvement that
+                compounds, not an open-ended retainer.
+   BRANCH: Deepen taken? YES -> light ongoing partner cadence.
+           NO -> quarterly value note + a clear re-open path.
+   EXIT: into Deepen, or a low-frequency owner-relationship cadence.
+   Advocacy hook: a cleared, named testimonial request once the
+   client is happy (clearance required; Pottsville pattern).
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>5. Segmentation Model</h2>
+      <p>Segmentation is the difference between relevance and spam. On a small, named, high-trust list it matters even more, because a mistimed or mis-targeted send is a relationship cost, not just a metric. Each segment below gets a different treatment and a frequency adjustment. Segments map to the <a href="/3d-process/design/customer-profile/">customer-profile.html</a> personas.</p>
+
+      <figure>
+        <figcaption>Segmentation map: programme, then door or value tier, then lifecycle and engagement state. The lead-source tag cuts across the end-client layer.</figcaption>
+<pre><code>
+   SEGMENTATION MAP
+
+                        MAXXIM EMAIL AUDIENCE
+                                |
+        +-----------------------+------------------------+
+        |                       |                        |
+   PARTNER (P1/P3)        END CLIENT (P2)          COMMUNITY (P3)
+        |                       |                  (signed partners,
+   by DOOR:                by VALUE TIER:           opted into cadence)
+   +----+-----+----+       +----+------+-----+            |
+   |    |     |    |       |    |      |     |        weekly table
+  S1   S2    S3   ...     S5   S6     S7    ...       monthly review
+  Lic  Refer Spec         SME/ Tradie Public          quarterly
+  ense                    Corp /local sector          annual offsite
+   |    |     |            |    |      |
+   +----+-----+            +----+------+
+        |                       |
+   by LIFECYCLE STAGE:     by LIFECYCLE STAGE:
+   pipeline -> registered  aware -> Diagnostic
+   -> signed -> active     -> engaged -> launched
+   -> lapsed               -> Deepen -> lapsed
+        |                       |
+   by ENGAGEMENT STATE     LEAD-SOURCE TAG (cross-cutting,
+   (cross-cutting both):   end-client only): partner-sourced /
+   active / at-risk /      Maxxim-sourced / referred. Drives the
+   inactive                clip + finder's fee, set before send.
+</code></pre>
+      </figure>
+
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Basis</th><th>Personalisation approach</th><th>Frequency adjustment</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>S1 License-door operator (Operator Owen)</strong></td>
+            <td>Door + lifecycle. The primary partner segment.</td>
+            <td>Operator-to-operator, plain and direct. The engine for your judgement, the 80/20 via Max, Sal, and Pip, keep your margin and relationship. Jewell as the live pattern. Demonstration over claims.</td>
+            <td>Highest-touch nurture pre-sign (roughly weekly); then community cadence.</td>
+          </tr>
+          <tr>
+            <td><strong>S2 Refer-door connector (Connector Carol)</strong></td>
+            <td>Door + lifecycle.</td>
+            <td>Light, relationship-led, reputation-first. Refer and earn, no delivery, a named human owns and stands behind every engagement. One clear page in feel.</td>
+            <td>Lightest cadence. A few touches, then occasional. Never heavy.</td>
+          </tr>
+          <tr>
+            <td><strong>S3 Specialist (Specialist Sasha)</strong></td>
+            <td>Door + lifecycle, pulled by demand.</td>
+            <td>Craft-respecting and precise. Scoped briefs tied to the gate that unlocks the module, fair fee near $1,500, slots beside Sal or Pip, no ownership creep. Pulled, not pushed.</td>
+            <td>Demand-led, not scheduled. Mailed when a module is needed.</td>
+          </tr>
+          <tr>
+            <td><strong>S4 Signed community partner</strong></td>
+            <td>Lifecycle (active) + community opt-in.</td>
+            <td>Reciprocal, belonging-led. Wins, friction, shared learning, deal flow, and how the compounding loop is improving the engine. The membership compact made concrete.</td>
+            <td>Weekly table note, monthly review, quarterly, annual. The rhythm itself.</td>
+          </tr>
+          <tr>
+            <td><strong>S5 SME and corporate end client (Director Diane)</strong></td>
+            <td>Value tier + lifecycle, partner-mediated.</td>
+            <td>Outcome-led and accountable, slightly more polished. Agency-grade, owned outright, a named human at every gate, a read-only portal and Ari for calm line of sight. Lead with Pottsville.</td>
+            <td>Co-sent by the partner. Nurture then quarterly value notes.</td>
+          </tr>
+          <tr>
+            <td><strong>S6 Tradie and local SME end client</strong></td>
+            <td>Value tier + lifecycle, partner-mediated, vertical.</td>
+            <td>Plain and outcome-led. Done for you, owned by you, live in days, a real person behind it. Growth without a retainer.</td>
+            <td>Short, low-frequency, partner-owned sends. Diagnostic-led.</td>
+          </tr>
+          <tr>
+            <td><strong>S7 Public-sector and not-for-profit end client (Procurement Pat)</strong></td>
+            <td>Value tier + overlay, committee-shaped.</td>
+            <td>Formal, documented, evidence-first. Probity, accountability, ownership, accessibility, a defensible paper trail (the gated method and signed deliverables in secure storage help). Method-led, not case-led (no cleared public-sector proof yet).</td>
+            <td>Slow, evidence-heavy, low-frequency. Sequenced later via a vertical-strong partner.</td>
+          </tr>
+          <tr>
+            <td><strong>Cross-cut: engagement state (active / at-risk / inactive)</strong></td>
+            <td>Open and click behaviour across any segment.</td>
+            <td>At-risk contacts get the single best proof and one CTA; inactive contacts route to Flow F before any further promotional send.</td>
+            <td>Suppress inactive from promotional sends; protect deliverability.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. Content and Design Framework</h2>
+
+      <h3>Template requirements</h3>
+      <ul>
+        <li><strong>Header.</strong> Minimal, Signal Blue #2D5BFF accent, Poppins, the Maxxim wordmark. On dark or Signal Blue header grounds, use the reversed logo variant so the mark holds contrast. No heavy hero imagery; the audience trusts substance over polish. Any header mark or proof image is produced by Sal in the Design Studio, off the Brand Guidelines and a locked logo.</li>
+        <li><strong>Body.</strong> Single clear idea, short paragraphs, one primary CTA. Plain-text-feeling layout for partner nurture, because operator-to-operator email should read like a real person wrote it, not a marketing template.</li>
+        <li><strong>CTA.</strong> One primary button or link per email, lifted from the <a href="/3d-process/design/copy-deck/">copy-deck.html</a> CTA library. Partner converts on "Join the founding partner cohort"; end client converts on "Book your Growth Diagnostic".</li>
+        <li><strong>Footer.</strong> Sender identity (Jewell, never Joule), a physical or business address, a one-click unsubscribe, and a plain statement of why the contact is receiving this. Ownership line: Clent and Raef only. No costs anywhere.</li>
+      </ul>
+
+      <h3>Content guidelines per email type</h3>
+      <ul>
+        <li><strong>Partner nurture.</strong> Operator-to-operator, plain, evidence-led, no hype. Short. One claim, one proof, one step. Name Max, Sal, and Pip when it makes the engine concrete, and keep them subordinate to Maxxim and never the accountable human.</li>
+        <li><strong>End-client nurture.</strong> Outcome-led and reassuring, co-sent under the partner voice. Lead with the owned outcome and the named human.</li>
+        <li><strong>Community notes.</strong> Warm, reciprocal, light. A real recap and a real prompt, not a polished bulletin.</li>
+        <li><strong>Transactional.</strong> Plain and exact, especially the Diagnostic credit. No marketing payload, no costs.</li>
+      </ul>
+
+      <h3>Subject line frameworks with examples</h3>
+      <table>
+        <thead>
+          <tr><th>Email type</th><th>Framework</th><th>Example subject (house style, no em dashes, no exclamation marks)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Partner welcome/recruit</td><td>Name the cap</td><td>You can win the work. Delivering it all is the problem.</td></tr>
+          <tr><td>Partner proof</td><td>Social proof</td><td>Pottsville launched a site they own outright</td></tr>
+          <tr><td>Session invite</td><td>The table, not a tool</td><td>An invitation to the founding table, 3 July</td></tr>
+          <tr><td>The seam</td><td>Live-partner line</td><td>The engine behind the partner, not the name on the door</td></tr>
+          <tr><td>Cohort offer</td><td>Benefit-led</td><td>Run agency-grade growth under your own name</td></tr>
+          <tr><td>Onboarding</td><td>Next clear step</td><td>Your first Growth Diagnostic, step by step</td></tr>
+          <tr><td>End-client nurture</td><td>Outcome-led</td><td>Growth, finished and owned, in days</td></tr>
+          <tr><td>Diagnostic risk reversal</td><td>Risk reversal</td><td>Your $4,950 is credited toward the engagement</td></tr>
+          <tr><td>Community weekly</td><td>Plain recap</td><td>This week at the table</td></tr>
+          <tr><td>Win-back</td><td>One honest question</td><td>Still the right time?</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Preview text approach</h3>
+      <p>Preview text extends the subject, it does not repeat it. Carry the second half of the claim or the proof. Example pairing: subject "Growth, finished and owned, in days" with preview "Pottsville got a launched site they own outright. The same gated method is open to you." Always set preview text explicitly so the inbox does not pull a raw first line.</p>
+
+      <h3>Mobile-first design principles</h3>
+      <ul>
+        <li>Single column, always.</li>
+        <li>Body text no smaller than 16px, headings no smaller than 22px.</li>
+        <li>Tap targets at least 44px high with clear spacing.</li>
+        <li>Lead value in the first screen; assume the email is read on a phone between meetings.</li>
+        <li>Images supportive, never load-bearing; the message must hold with images off.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Deliverability Strategy</h2>
+      <p>Deliverability is the invisible foundation. The list is small and high-trust, which helps, but a cold start on a new domain can still land in spam, so authentication and warm-up are non-negotiable. Email runs on Cloudflare routing (free forwarding) or Google Workspace, per the delivery stack, with no bespoke sending build.</p>
+
+      <h3>Authentication setup</h3>
+      <ul>
+        <li><strong>SPF.</strong> A published SPF record authorising the ESP and any other legitimate senders on the sending domain. One record, correctly scoped.</li>
+        <li><strong>DKIM.</strong> DKIM signing enabled at the ESP with the published public key on the domain, so every send is cryptographically signed.</li>
+        <li><strong>DMARC.</strong> A DMARC record published, starting at p=none with aggregate reporting to observe alignment, then tightened to p=quarantine and ultimately p=reject once SPF and DKIM alignment is confirmed clean. Use a dedicated sending subdomain (for example, mail or send) so a deliverability issue never threatens the root maxxim.ai reputation, which the proof surface and the client site depend on.</li>
+      </ul>
+
+      <h3>Warm-up plan</h3>
+      <p>For a new sending domain or subdomain, ramp volume gradually so mailbox providers build a positive reputation. Because the list is small, warm-up is fast but still staged.</p>
+      <figure>
+        <figcaption>Illustrative warm-up ramp for a new sending subdomain on a small list.</figcaption>
+<pre><code>
+   WARM-UP RAMP (illustrative; adjust to real list size + ESP)
+
+   DAY 1-2    send only to the most-engaged, known contacts
+              (the named pipeline who expect to hear from us)
+              ~10-20 sends/day, watch opens + complaints
+   DAY 3-5    add the next tier of warm contacts
+              ~30-50 sends/day, confirm DKIM/SPF alignment in DMARC
+   DAY 6-10   open to the full consented pipeline
+              full small-list volume; monitor placement
+   ONGOING    keep sending consistently; irregular bursts hurt
+              reputation more than steady low volume
+
+   GUARD: never send to unconfirmed or cold addresses during
+   warm-up. A high bounce or complaint early sets reputation back.
+</code></pre>
+      </figure>
+
+      <h3>List cleaning cadence and criteria</h3>
+      <ul>
+        <li>Suppress hard bounces immediately; suppress repeated soft bounces.</li>
+        <li>Route 90-day inactives to re-engagement; suppress from promotional sends if they do not return.</li>
+        <li>Quarterly manual reconciliation against the live pipeline tracker.</li>
+      </ul>
+
+      <h3>Engagement-based sending</h3>
+      <p>Suppress low-engagement contacts from promotional and recruitment sends; keep mailing the engaged. On a relationship list this also means a cold named contact is handed to a human for a direct note rather than mailed harder. Sending to people who do not open is the fastest way to sour a young domain's reputation.</p>
+
+      <h3>Sender reputation monitoring</h3>
+      <ul>
+        <li>Monitor DMARC aggregate reports for alignment and spoofing.</li>
+        <li>Watch bounce rate, complaint rate, and open-rate trend per send; a sudden drop signals a placement problem.</li>
+        <li>Use the ESP deliverability tools and, where available, a postmaster or reputation dashboard for the major providers.</li>
+        <li>Keep complaint rate well under the 0.1 percent threshold the major providers expect; on a small list a single complaint is a meaningful signal to act on.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. A/B Testing Plan</h2>
+      <p>Testing is constrained by list size: with a small, named list, classic split testing rarely reaches statistical significance per send, so the plan is honest about when to test statistically and when to learn qualitatively.</p>
+
+      <h3>What to test</h3>
+      <ul>
+        <li>Subject lines (the highest-leverage variable, since open is the gate).</li>
+        <li>Preview text.</li>
+        <li>Send time and day.</li>
+        <li>CTA wording and placement.</li>
+        <li>Content length (short operator note versus slightly longer proof-led email).</li>
+        <li>Personalisation elements (named partner sender versus brand sender on end-client co-sends).</li>
+      </ul>
+
+      <h3>Methodology and sample sizes</h3>
+      <ul>
+        <li>One variable at a time, always.</li>
+        <li><strong>Minimum sample.</strong> A statistically meaningful A/B subject test needs a few hundred recipients per variant to detect a typical open-rate lift at 95 percent confidence. On a list in the tens, that bar is not met, so split testing is deferred until the list crosses roughly 1,000 engaged contacts. <em>[Illustrative thresholds; confirm against the real list and ESP calculator.]</em></li>
+        <li><strong>Below that size, test sequentially and qualitatively.</strong> Send variant A this fortnight, variant B next, compare directionally, and weight what the founder and partners hear in conversation. Treat results as signal, not proof, and never over-read a small-sample win.</li>
+        <li><strong>Significance threshold.</strong> 95 percent confidence before any winning variant is declared a standard; otherwise label it a directional learning.</li>
+      </ul>
+
+      <h3>Testing cadence</h3>
+      <p>At least one structured learning per month, even while the list is small: pick one variable, run it sequentially, and log the result. As the end-client list grows through partner co-sends, move to true split tests on subject lines first.</p>
+    </section>
+
+    <section>
+      <h2>9. Compliance and Privacy</h2>
+      <p>Permission is non-negotiable and the programme is built around Australian law first, with GDPR considerations for any international subscriber.</p>
+
+      <h3>Australian Spam Act 2003 compliance</h3>
+      <ul>
+        <li><strong>Consent.</strong> Send only with consent, express or inferred. For the named pipeline, consent is express and recorded at the relationship. For session and form sign-ups, consent is captured at opt-in with the source and timestamp logged. Inferred consent (an existing business relationship) is used carefully and documented, never assumed for cold contacts.</li>
+        <li><strong>Sender identification.</strong> Every commercial email clearly identifies Maxxim and Jewell as the sender, with accurate business details and a valid reply path. The sender is always identifiable and never spoofed.</li>
+        <li><strong>Functional unsubscribe in every email.</strong> Every commercial send carries a working, low-friction unsubscribe that stays functional for at least 30 days after send.</li>
+      </ul>
+
+      <h3>Unsubscribe process</h3>
+      <p>One-click unsubscribe, no login or survey required. Honoured immediately in practice and within the legally required five business days at the outside. Unsubscribes suppress globally across all three programmes unless the contact has separately and explicitly consented to a distinct stream.</p>
+
+      <h3>Data handling</h3>
+      <ul>
+        <li><strong>What is collected.</strong> Name, email, organisation, door or value tier, lifecycle stage, lead-source tag, engagement history, and consent record. Nothing sensitive beyond what the relationship needs.</li>
+        <li><strong>Where it is stored.</strong> In the ESP and the light CRM or pipeline tracker, behind access controls; admin access limited to Clent and Raef and any explicitly authorised operator. Deliverables and records that surface on the dashboard are saved to Maxxim's secure storage.</li>
+        <li><strong>Retention.</strong> Hold active-contact data for the life of the relationship; review and purge unconsented or long-inactive records at the quarterly hygiene pass. Consent records retained as proof of permission.</li>
+        <li>Public-sector and not-for-profit end-client data carries the additional privacy and records obligations the customer profile flags; confirm per jurisdiction.</li>
+      </ul>
+
+      <h3>Consent management</h3>
+      <p>Opt-in preferences and source are recorded at capture and honoured at send. A contact can move stream or opt down (for example, community-only) without fully unsubscribing, recorded in the ESP. The lead-source and consent tags travel with the contact through the funnel.</p>
+
+      <h3>GDPR considerations</h3>
+      <p>For any international subscriber, apply GDPR-grade practice: a clear lawful basis (consent or legitimate interest, documented), a plain privacy notice at capture, the right to access and erasure honoured on request, and double opt-in as the default for non-Australian sign-ups. Given the partner-led, named-list model, international contacts will be rare and individually known, which makes documented consent straightforward.</p>
+    </section>
+
+    <section>
+      <h2>10. Platform and Integration</h2>
+
+      <h3>Recommended ESP features</h3>
+      <p>Platform-agnostic, because no ESP was specified. Choose a platform that offers all of the following; the recommendation is to favour a B2B-and-automation-strong ESP over a heavy e-commerce one, given the partner-led model, and one that supports a human-approval step before automated sends. <em>[Assumption: no ESP is locked. If Clent later names one, tailor this section to it.]</em></p>
+      <ul>
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/deploy/crm-plan/"><span class="lbl">← Previous</span><span class="ttl">CRM Plan</span></a>
+<a href="/3d-process/deploy/events-plan/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">Events Plan</span></a></div>
+</div></div>
+</body>
+</html>
