@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  color: #0a0a0a;
+  background: #e6e7ec;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* The desk — the grey mount the pages float on, matching the design export. */
+.desk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+  padding: 52px 40px;
+}
+
+/* A single A4-landscape page. */
+.page {
+  width: 1123px;
+  height: 794px;
+  position: relative;
+  overflow: hidden;
+  flex: none;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(10, 10, 10, 0.16);
+}
+
+/* Print / PDF export: A4 landscape, one page per sheet, no desk chrome. */
+@page {
+  size: 1123px 794px;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .desk {
+    background: #fff !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  .page {
+    box-shadow: none !important;
+    break-after: always;
+    page-break-after: always;
+  }
+}
