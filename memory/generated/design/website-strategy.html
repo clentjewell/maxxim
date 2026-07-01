@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Website Strategy, Maxxim</title>
+    <meta name="maxxim:client" content="maxxim">
+    <meta name="maxxim:phase" content="design">
+    <meta name="maxxim:skill" content="website-strategy">
+    <meta name="maxxim:generated" content="2026-07-01">
+    <meta name="maxxim:document" content="website-strategy">
+    <meta name="maxxim:generated_by" content="website-strategist">
+    <meta name="maxxim:version" content="2">
+    <meta name="maxxim:replaceable" content="true">
+    <meta name="maxxim:sources" content="brand-strategy, copy-deck, customer-profile, offer-worksheet, discover-summary, audience-teardown, competitor-analysis, discover-addendum, master-briefing-v2.1, update-brief-2026-07-01, maxxim-product-guide-2026-06-29, jewell-partner-site, USER, SOUL">
+  </head>
+  <body>
+    <h1>Website Strategy</h1>
+
+    <section>
+      <h2>How to read this document</h2>
+      <p>This is the strategic blueprint for the refresh of maxxim.ai, produced in the Design phase against Master Briefing v2.1, the Gate 1 decisions in <a href="../discover/discover-addendum.html">discover-addendum.html</a>, and the 1 July refresh that folded in the 29 June product mechanics and the live Jewell partner site. It defines what the site must achieve, how it is structured, who travels through it and how, what each priority page must do, and how visitors convert. It is not a wireframe or a visual design, and it is not finished copy. It is the structure the Deploy-phase build and copy teams work from. It sits alongside <a href="brand-strategy.html">brand-strategy.html</a>, <a href="copy-deck.html">copy-deck.html</a>, <a href="customer-profile.html">customer-profile.html</a>, and <a href="../discover/offer-worksheet.html">offer-worksheet.html</a>, and hands forward to <a href="website-brief.html">website-brief.html</a> in Deploy.</p>
+      <p>The site already exists, and since the 27 June version we now know exactly what it is built on. maxxim.ai is a live Astro site hosted on Cloudflare Pages, the same delivery stack every Maxxim client site ships on. The live pages are Home, How it works, For Partners, About, Work, Start, Contact, Privacy, and Terms. This strategy does not start from a blank canvas. It does two things at once: it sets the strategic direction for the refreshed site, and it carries the four required fixes from the live-site audit (Master Briefing Section 16) into the information architecture and the content plan so they are corrected by design rather than as an afterthought.</p>
+      <p>Two framing decisions from Gate 1 govern everything here. First, the <strong>partner is the primary front door now</strong>, so the site needs a strong, unambiguous For Partners path, with Jewell as the first and live exemplar partner, while the site still has to serve the universal end-client audience the partner commercialises. Second, the <strong>self-serve portal is the north star, a roadmap item, not a current page</strong>. It is named on the site as a direction of travel, never built or linked as if it exists.</p>
+      <p>Three guardrails are absolute throughout. The business is <strong>Jewell</strong>, never "Joule", in any live-copy recommendation. Ownership is <strong>Clent and Raef only</strong>, and Paul Clancy is a Client Partner, never a co-founder. And all partner economics stay <strong>unquoted and illustrative</strong>. Proof respects clearance: <strong>Pottsville Acupuncture is the only public Maxxim case study</strong>. The live Jewell partner site is a valuable reference and pattern for how the seam is articulated, but Jewell's own named results stay under Jewell's banner and are never re-used as Maxxim's public proof. BTC, OTR Earthmover, Hidrive, and Jewell Tyres are not to be published as Maxxim proof.</p>
+    </section>
+
+    <section>
+      <h2>The seam the site has to make legible</h2>
+      <p>The whole business is one split, and the site's first job is to make it obvious in seconds. AI runs the repeatable 80 percent at machine speed. A human partner owns the 20 percent clients actually pay for: trust, taste, judgement, and the relationship. As of the 1 July refresh this is no longer a model on paper. The live Jewell partner runs the entire model in market, which gives the site a concrete pattern to point at and a fact to end on rather than a promise. The engine is now nameable too: Max does the words in Claude Cowork, Sal does the pixels in the Design Studio, Pip runs the Social Studio. These specialists let the site show the engine instead of asserting it, and they always stay subordinate to the accountable human, who is the partner.</p>
+      <figure>
+        <figcaption>The seam the site must make legible in seconds, and where each side of it surfaces across the pages. The human is always the hero; the machine is always the volume. Framing drawn from the trust-taste-judgement thesis (Nate B. Jones). Jewell is the live proof of the split, cited as a reference and pattern, not re-used as Maxxim's own named proof.</figcaption>
+<pre><code>
+  HUMAN 20%  (the partner owns this)     MACHINE 80%  (Maxxim runs this)
+  ----------------------------------     ----------------------------------
+  Trust, taste, judgement                Volume at machine speed
+  The Discover phase (always human)       Design and Deploy at scale
+  The client relationship                Max words, Sal pixels, Pip social
+  Sets the standard the machine meets    Meets it, human-checked at each gate
+  A named partner owns the number        The engine behind the partner
+
+  SURFACES ON:  About, For Partners       SURFACES ON:  How it works, Work
+  the named human, the ownership line     Max/Sal/Pip, the Studios, the gates
+
+  "The engine behind the partner, not the name on the door."
+</code></pre>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Section 16 fix tracker (carried into the IA and content plan)</h2>
+      <p>The four required fixes from the live-site audit are mapped to the page where each is corrected and to the section of this strategy that carries it. None is a standalone task-list item: each is built into the page brief and content requirement so the refreshed site is correct by construction.</p>
+      <table>
+        <thead>
+          <tr><th>Fix</th><th>Priority</th><th>Page</th><th>What the refresh does</th><th>Carried in</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FIX 2: global "Joule Projects" corruption</td>
+            <td>HIGH</td>
+            <td>Global (Home, How it works, About x2, For Partners)</td>
+            <td>Global find and replace so the method owner reads <strong>Jewell</strong> everywhere. No instance of "Joule" survives the refresh in any live copy. Treated as the first action because it touches every page and undermines trust if missed.</td>
+            <td>Content Requirements; every page brief</td>
+          </tr>
+          <tr>
+            <td>FIX 1: Paul Clancy listed as Co-founder</td>
+            <td>HIGH</td>
+            <td>About</td>
+            <td>Reframe Paul Clancy as <strong>Client Partner / business development</strong>, never co-founder. Ownership on the About page is stated as Clent and Raef only, two owners, no board. If his attribution cannot be confirmed in time, remove him until it is.</td>
+            <td>Page Brief: About</td>
+          </tr>
+          <tr>
+            <td>FIX 4: add Pottsville to Work</td>
+            <td>HIGH</td>
+            <td>Work</td>
+            <td>Add <strong>Pottsville Acupuncture</strong> as the first and only public case study: a full 3D run, a launched site the client owns outright, hosted on the same Astro and Cloudflare Pages stack. Do not add BTC, OTR, Hidrive, or Jewell Tyres. Other runs are referenced only as an unnamed multi-year track record.</td>
+            <td>Page Brief: Work; Content Requirements</td>
+          </tr>
+          <tr>
+            <td>FIX 3: bespoke partner framing on For Partners</td>
+            <td>MED</td>
+            <td>For Partners</td>
+            <td>Replace the undefined bespoke framing with the defined <strong>two-door model</strong>: license to deliver, or refer for an optional finder's fee. Economics are described in structure only and kept unquoted.</td>
+            <td>Page Brief: For Partners</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>1. Website Objectives</h2>
+      <p>Five objectives, each tied to a business goal from the operating model and the offer, each with a way to know whether it is met. The site is a conversion system with two front doors at very different commitment levels: a high-consideration partner enquiry, and a low-risk end-client entry product.</p>
+      <table>
+        <thead>
+          <tr><th>Objective</th><th>Business goal link</th><th>Success metric</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Make the partner the primary front door.</strong> Convert trusted operators into a partner enquiry, leading toward the founding cohort and the two-door model.</td>
+            <td>Partner-led delivery is the near-term go-to-market and proves the method and pilot economics first (Gate 1 Decision 2; founding cohort of 5 to 8, July to September 2026).</td>
+            <td>Partner enquiries submitted per month; share of enquiries that reach a partner discovery conversation; founding-cohort places filled.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Drive the end-client entry product.</strong> Give partners and direct visitors a clean way to book the $4,950 Growth Diagnostic as the universal first step.</td>
+            <td>The Growth Diagnostic is the recommended universal front-door step and the only fully settled price, generating the repeatable first sale that produces pilot data (Gate 1 Decision 3; Offer Worksheet Section 7).</td>
+            <td>Growth Diagnostic enquiries and bookings; assisted conversions where a partner uses the page to close a client.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Close the trust gap with cleared proof and a showable engine.</strong> Make the case that AI can hit a standard a partner will put their name on, using Pottsville, the gated method, and the named specialists.</td>
+            <td>The single objection under every persona on both layers is the trust gap; the highest-value brand action is closing the cleared-proof gap (Brand Strategy Section 8; Customer Profile).</td>
+            <td>Visits to and engagement with the Work and How it works pages; scroll depth on the proof block and the Max/Sal/Pip block; proof pages in the path of converting sessions.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Make the community a reason to join.</strong> Present the partner community as the human moat, not a feature, so partners stay for the table as much as the tool.</td>
+            <td>The community is the durable advantage in an age where AI commoditises the first 80 percent (Discover Summary, the human moat; Brand Strategy Pillar 3).</td>
+            <td>Engagement with the community section of For Partners; community framing cited in partner enquiry messages; showcase sign-ups.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Be correct and credible.</strong> Carry the four Section 16 fixes so the live site stops contradicting the brand truth (Jewell not Joule, Clent and Raef only, Pottsville as proof, the two-door model).</td>
+            <td>A young brand with thin public proof cannot afford factual or naming errors; correctness is a precondition for trust (Master Briefing Section 16; Brand Strategy Section 8).</td>
+            <td>Zero instances of "Joule" or "co-founder Paul Clancy" post-refresh; Pottsville live on Work; two-door model live on For Partners.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>2. Sitemap / Information Architecture</h2>
+      <p>The refresh keeps the existing page set, which is sound, and re-roles it around the partner-first front door. The mental model the navigation must match is the primary visitor's: a trusted operator deciding whether to put their name on this engine. So the primary navigation leads with the proof of how it works and what it has produced, then the partner door, then who stands behind it. The end-client entry product lives on a dedicated, linkable page (Start) that a partner can send a client straight to.</p>
+
+      <figure>
+        <figcaption>Sitemap and information architecture for the refreshed maxxim.ai. Primary nav in the top band; the two conversion pages (Start and Contact) carry the CTAs; utility pages sit in the footer. The self-serve portal is shown as a roadmap item, not a page. The whole site ships as Astro on Cloudflare Pages, with the contact form served from apps.maxxim.ai.</figcaption>
+        <pre><code>                          maxxim.ai (HOME)
+   the position, the proof in brief, two clear doors, the trust gap closed
+                                  |
+   +--------------+--------------+--------------+--------------+-------------+
+   |              |              |              |              |             |
+ HOW IT WORKS   WORK         FOR PARTNERS    ABOUT          START        CONTACT
+ the gated 3D   cleared      the two-door    Jewell owns    book the     partner
+ method +       proof:       model + the     the method;    $4,950       enquiry +
+ Deepen; the    POTTSVILLE   community as    Clent + Raef   Growth       general
+ 80/20; Max,    (only        the moat        only; Paul    Diagnostic    enquiry
+ Sal, Pip;      public       (FIX 3)         Clancy =      (end-client  (PRIMARY
+ human at       case)        |               Client        entry CTA)    partner CTA)
+ every gate     (FIX 4)      |               Partner       |             |
+ |              |            |               (FIX 1)       |             |
+ v              v            v               v             v             v
+ +-- supports --+--- supports ---+--- supports --+         CONVERSION    CONVERSION
+       all four primary pages feed the two              PAGES (no deep children)
+       conversion pages: Start and Contact
+                                  |
+                          ---- FOOTER / UTILITY ----
+                       Privacy    Terms    Contact
+                                  |
+   ROADMAP, NOT A PAGE: the end-user SELF-SERVE PORTAL is named on Home and
+   How it works as the north star. It is NOT in the nav, NOT linked, NOT built.
+
+   GLOBAL across every page above: "Joule" never appears; the method owner is
+   JEWELL (FIX 2). Ownership is Clent + Raef only. Stack: Astro on Cloudflare
+   Pages; contact form embedded from apps.maxxim.ai; images from assets.maxxim.ai.</code></pre>
+      </figure>
+
+      <h3>Primary navigation (justified)</h3>
+      <ul>
+        <li><strong>How it works.</strong> The primary partner judges the engine, not the marketing. This page shows the gated 3D method, Discover through Deepen, the 80/20 split, the three named specialists at work in the Studios, and a human signing off at every gate. It earns its top-nav place because it is where the trust gap starts to close.</li>
+        <li><strong>Work.</strong> Proof is the highest-value asset for a lightly proven brand. Pottsville is the cleared public case, a launched site the client owns outright on the same stack the visitor is looking at. Kept in the primary nav because cleared proof carries more weight than any claim.</li>
+        <li><strong>For Partners.</strong> The partner is the front door, so the partner door is prominent in the primary nav. This is where the two-door model and the community live, and where the strongest, most deliberate path on the site runs.</li>
+        <li><strong>About.</strong> Who owns and stands behind the method. Carries the ownership correction and the Paul Clancy reframe. A Sage brand needs a credible, accurate About.</li>
+        <li><strong>Start.</strong> The end-client entry page for the $4,950 Growth Diagnostic. In the nav so a partner can point a client straight to it, and so a direct end-client visitor has a clear front-door product.</li>
+        <li><strong>Contact.</strong> The partner enquiry destination and the general enquiry catch-all. Holds the primary conversion form, embedded from apps.maxxim.ai.</li>
+      </ul>
+
+      <h3>Secondary and utility pages</h3>
+      <ul>
+        <li><strong>No deep child pages are recommended for phase 1</strong>, with one optional exception: the Pottsville case may live at its own URL under Work if a dedicated case page is wanted (see Section 8). The site is otherwise ruthlessly scoped: six primary pages, two of which are conversion pages, plus legals. A two-owner operation backed by a specialist bench does not need a forty-page site, and a flat structure suits the short, decisive partner journey.</li>
+        <li><strong>Utility:</strong> Privacy and Terms in the footer, alongside a footer Contact link. These already exist and stay.</li>
+      </ul>
+
+      <h3>Rationale and what is deferred</h3>
+      <p>The hierarchy follows the primary visitor's decision sequence, not the org chart: understand the method, see the proof, choose a door, check who is behind it, then act. Two doors are deliberately separated rather than merged, because a partner enquiry and an end-client booking are different commitments at different price points and must not compete on the same button. The <strong>self-serve portal is deferred</strong> to a roadmap mention only; it is named as the north star on Home and How it works and is never linked or built. A <strong>partner hub or dashboard</strong> (the logged-in community surface, the weekly table, the deal-share board, the directory) is referenced on For Partners as what a partner gets, but the hub itself is a Deploy or post-Deploy build behind authentication, extending the existing admin.maxxim.ai dashboard, not a public page in this IA. The <strong>read-only client portal and the assistant Ari</strong> are a partner-choice surface for end clients, not a public marketing page, and are not in this nav. A future <strong>resources or insights section</strong> is a phase-2 candidate, deferred until there is cleared content and capacity to maintain it.</p>
+    </section>
+
+    <section>
+      <h2>3. User Flows</h2>
+      <p>Two primary flows, one per front door, mapped to the personas in the Customer Profile. The partner-prospect flow is the priority because the partner is the front door now. The end-client flow is partner-mediated in most cases, but the page must also serve a direct end-client visitor and, above all, give a partner a clean link to close a client.</p>
+
+      <figure>
+        <figcaption>Primary user flows. Flow A is the partner-prospect path (Operator Owen) ending in a partner enquiry. Flow B is the end-client path (Director Diane, or a tradie or local SME) ending in a Growth Diagnostic booking. Both are short by design.</figcaption>
+        <pre><code>  FLOW A: PARTNER PROSPECT  (Operator Owen, the Capacity-Capped Client Partner)
+  entry: founder network referral, the 3 July showcase invite, operator word of
+         mouth, seeing the live Jewell partner site, direct/search for maxxim.ai
+        |
+        v
+  [HOME] position + trust gap named -> [HOW IT WORKS] sees 80/20, Max/Sal/Pip in
+  the Studios, the gates, the human sign-off -> [WORK] scrutinises POTTSVILLE, the
+  cleared proof, launched and owned -> [FOR PARTNERS] the two-door model + the
+  community as the moat + Jewell as the live pattern -> [CONTACT] partner enquiry
+        |                                                            |
+        |  critical path to optimise:                               v
+        |  HOW IT WORKS -> WORK -> FOR PARTNERS -> CONTACT    *** PARTNER ENQUIRY ***
+        +----- About consulted as a side-trip to verify ownership / who is behind it
+
+
+  FLOW B: END CLIENT  (Director Diane, or a tradie / local SME; often partner-mediated)
+  entry: a trusted PARTNER sends a direct link to START; local/vertical word of
+         mouth; direct/search
+        |
+        v
+  [START] the $4,950 Growth Diagnostic, credited, low risk -> (verifies via) [WORK]
+  Pottsville, launched and owned -> back to [START] -> book / enquire
+        |                                                            |
+        |  critical path to optimise:                               v
+        |  (partner link) -> START -> book          *** BOOK GROWTH DIAGNOSTIC ***
+        +----- How it works consulted if the visitor wants to understand the method first</code></pre>
+      </figure>
+
+      <h3>Flow A: Partner prospect (primary)</h3>
+      <ul>
+        <li><strong>Persona:</strong> Operator Owen, the Capacity-Capped Client Partner (Segment A1, primary). The Networked Referrer (Connector Carol) follows a lighter version of the same flow, exiting at the refer door on For Partners.</li>
+        <li><strong>Entry point:</strong> founder-network referral, the 3 July showcase invitation, operator-to-operator word of mouth, seeing the live Jewell partner site as the worked example, and direct or search arrival at maxxim.ai. Owen trusts demonstration over decks, so he arrives ready to scrutinise.</li>
+        <li><strong>Key pages:</strong> Home, How it works, Work, For Partners, Contact. About is a side-trip to verify who is behind it.</li>
+        <li><strong>Conversion point:</strong> a partner enquiry submitted on Contact (or via the primary CTA carried through the nav), leading to a partner discovery conversation.</li>
+        <li><strong>Critical path:</strong> How it works to Work to For Partners to Contact. This sequence moves Owen from understanding the engine, to scrutinising the proof, to choosing a door, to enquiring. Optimise this path above all others.</li>
+      </ul>
+
+      <h3>Flow B: End client (partner-mediated, also serves direct)</h3>
+      <ul>
+        <li><strong>Persona:</strong> Director Diane, the growth-stage SME or corporate marketing lead (highest value), and the time-poor tradie or local SME. Procurement Pat is the public-sector and not-for-profit overlay. All usually arrive through a partner.</li>
+        <li><strong>Entry point:</strong> most often a direct link to Start sent by the partner who already holds the relationship; also local and vertical word of mouth, and direct or search arrival.</li>
+        <li><strong>Key pages:</strong> Start, Work (to verify the proof), and How it works if the visitor wants the method first.</li>
+        <li><strong>Conversion point:</strong> book or enquire for the $4,950 Growth Diagnostic on Start, credited toward the engagement.</li>
+        <li><strong>Critical path:</strong> partner link to Start to book. The single most important thing to optimise is that a partner can send a client straight to Start and the page closes the booking with Pottsville one click away as proof. For the Procurement Pat overlay in not-for-profit and government contexts, a procurement and probity overlay slows this path and adds evidence needs; the page should make the accountable named human and the owned, documented outputs easy to point a procurement reviewer at.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Page Briefs</h2>
+      <p>The six priority pages, each detailed enough for a copywriter to start writing and a designer to start wireframing. Voice follows <a href="brand-strategy.html">brand-strategy.html</a> and <a href="copy-deck.html">copy-deck.html</a>: direct, grounded, credible, calm, no em dashes, no exclamation marks, Australian English, claims sized to the proof, the human always the hero.</p>
+
+      <h3>Page brief: Home</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Land the position in seconds, name the trust gap, and route the two audiences to the right door. The partner is the lead; the end-client product is the clear secondary door.</td></tr>
+          <tr><th>Target persona</th><td>Primary: Operator Owen (partner). Secondary: a partner-mediated or direct end client.</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (the position plus the partner-first promise; candidate line "the engine behind the partner, not the name on the door"). 2. The trust gap named and answered in one line. 3. The 80/20 in brief (Max, Sal, and Pip run the repeatable 80 percent; you own the 20 percent clients pay for). 4. Cleared proof teaser (Pottsville, launched and owned) linking to Work. 5. Two doors block: For Partners and Start. 6. The community as the moat, one panel, with the live Jewell partner named as the worked example. 7. Roadmap line naming the self-serve portal as the north star. 8. Closing CTA band.</td></tr>
+          <tr><th>Primary CTA</th><td>Become a partner (to For Partners, then Contact).</td></tr>
+          <tr><th>Secondary CTA</th><td>Book a Growth Diagnostic (to Start).</td></tr>
+          <tr><th>SEO target</th><td>commercialisation engine for marketing partners; "grow agency-grade marketing without becoming an agency".</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 2 (Jewell never Joule) applies in any method-owner mention.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Page brief: How it works</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Show the engine to a sceptical operator: the gated 3D method, the 80/20 split, the three named specialists doing real production, and a named human signing off at every gate. This is where the trust gap starts to close.</td></tr>
+          <tr><th>Target persona</th><td>Operator Owen, with Director Diane as a secondary reader who wants the method before committing budget.</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (the proven method, run by a human, at AI speed). 2. The 3D Process walk-through: Discover, Design, Deploy, then Deepen, with the gate at each boundary. 3. The engine made concrete: Max does the words in Cowork, Sal does the pixels in the Design Studio, Pip runs the Social Studio, shown as a legible system, not a black box. 4. The 80/20 explained plainly. 5. The human-at-every-gate accountability block, and how gating is mechanical (creative unlocks only as its briefs exist and a logo is locked). 6. What the end client receives: a complete strategy and launched assets they own outright, on their own domain, unlockable to hand-editable HTML. 7. Roadmap line naming the self-serve portal as the future second front door. 8. CTA band.</td></tr>
+          <tr><th>Primary CTA</th><td>Become a partner (to For Partners).</td></tr>
+          <tr><th>Secondary CTA</th><td>See the proof (to Work).</td></tr>
+          <tr><th>SEO target</th><td>gated 3D marketing process; AI marketing with human sign-off.</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 2 (Jewell never Joule) wherever the method owner is named.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Page brief: Work</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Be the proof surface. Carry Pottsville as the first and only public case study, demonstrating the full promise: gated process, launched site, client owns it outright on the same stack.</td></tr>
+          <tr><th>Target persona</th><td>Both layers: Owen scrutinising whether he can put his name on the output; Diane and end clients verifying the work is real and agency-grade.</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (proof, plainly stated). 2. Pottsville Acupuncture case study: the situation, the gated 3D run, the launched owned outcome, the client's own domain. 3. An unnamed multi-year track record line (the method has run with real clients for years through Jewell) without naming any uncleared client. 4. The ownership guarantee restated (the client owns the assets outright, hosted and unlockable to hand-editable HTML). 5. CTA band.</td></tr>
+          <tr><th>Primary CTA</th><td>Become a partner (to For Partners).</td></tr>
+          <tr><th>Secondary CTA</th><td>Book a Growth Diagnostic (to Start).</td></tr>
+          <tr><th>SEO target</th><td>Pottsville Acupuncture website case study; launched marketing assets the client owns.</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 4 (add Pottsville; do not add BTC, OTR, Hidrive, or Jewell Tyres). FIX 2 globally. Jewell's own named results are not re-used here as Maxxim proof.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Page brief: For Partners</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Convert the operator. Replace the old bespoke framing with the defined two-door model and present the community as the reason to join, not a perk. This page carries the strongest, most deliberate path on the site.</td></tr>
+          <tr><th>Target persona</th><td>Operator Owen (license door, primary), Connector Carol (refer door), Specialist Sasha (specialist module, a sub-note of the license context).</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (license a proven method and run agency-grade growth under your own name). 2. The two doors, side by side: license to deliver, or refer for an optional finder's fee. Economics described in structure only, no numbers. 3. What a partner gives and gets (the membership compact), including that one named partner owns each client relationship, always. 4. The community as the moat: the weekly table, the cadence, shared deal flow, the partner directory, the annual offsite. 5. The founding cohort and the 3 July showcase as the near-term, genuine moment (run as a partner discovery and alignment session, not a demo). 6. The Jewell-as-live-exemplar line: Jewell runs the whole model on the same rails as any licensed partner, cited as the pattern to follow, with Jewell's own named results left under Jewell's banner. 7. Roadmap line: the partner hub extends the existing dashboard. 8. CTA band.</td></tr>
+          <tr><th>Primary CTA</th><td>Join the founding partner cohort (to Contact, partner enquiry).</td></tr>
+          <tr><th>Secondary CTA</th><td>See how it works (to How it works) or See the proof (to Work).</td></tr>
+          <tr><th>SEO target</th><td>license a marketing method; marketing partner program; refer and earn marketing.</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 3 (two-door model replaces bespoke framing; economics unquoted). FIX 2 globally. Economics illustrative and never stated as set; the fractional CMO model is not adopted as a Maxxim-brand fact.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Page brief: About</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Establish who owns and stands behind the method, accurately. Correct the ownership line and the Paul Clancy attribution.</td></tr>
+          <tr><th>Target persona</th><td>Operator Owen verifying who is behind the engine before he commits; Diane and procurement readers checking accountability.</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (the people and the standard behind Maxxim). 2. Jewell as the method owner and the quality bar, and now also the first live partner running on the platform. 3. Ownership stated plainly: Maxxim is owned by Clent and Raef, two owners, no board. 4. The team and roles, with Paul Clancy described as Client Partner / business development, never co-founder. 5. The accountability principle (a human stands behind every output). 6. CTA band.</td></tr>
+          <tr><th>Primary CTA</th><td>Become a partner (to For Partners).</td></tr>
+          <tr><th>Secondary CTA</th><td>Contact us (to Contact).</td></tr>
+          <tr><th>SEO target</th><td>about Maxxim; the team behind the 3D Process.</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 1 (Paul Clancy reframed as Client Partner, not co-founder; remove until confirmed if needed; ownership = Clent and Raef only). FIX 2 globally (the two "Joule" instances on this page are corrected).</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Page brief: Start (end-client entry)</h3>
+      <table>
+        <tbody>
+          <tr><th>Purpose</th><td>Convert the end-client front door: book the $4,950 Growth Diagnostic. Built so a partner can send a client straight here to close.</td></tr>
+          <tr><th>Target persona</th><td>Director Diane and the tradie or local SME (end client), usually arriving via a partner link; Procurement Pat as the public-sector overlay.</td></tr>
+          <tr><th>Key content blocks</th><td>1. Hero (the Growth Diagnostic, your low-risk first step). 2. What it is and what you get. 3. The credit mechanic stated as the headline reassurance (your Diagnostic fee comes off your engagement). 4. The named-human-at-every-gate trust line. 5. Pottsville proof teaser linking to Work. 6. The booking or enquiry form, embedded from apps.maxxim.ai. 7. A short outcome-led FAQ.</td></tr>
+          <tr><th>Primary CTA</th><td>Book your Growth Diagnostic.</td></tr>
+          <tr><th>Secondary CTA</th><td>See the proof (to Work) or Talk to us (to Contact).</td></tr>
+          <tr><th>SEO target</th><td>growth diagnostic; marketing discovery sprint; "$4,950 growth diagnostic".</td></tr>
+          <tr><th>Fixes carried</th><td>FIX 2 globally. Price anchor ($4,950) is real and may be stated; engagement-tier prices stay illustrative and are not quoted.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>5. Content Requirements</h2>
+      <p>Content types across the site, each marked as existing (needs correction in the refresh) or to be created. The defining constraint is proof clearance: only Pottsville is public.</p>
+
+      <h3>Hero sections</h3>
+      <ul>
+        <li>Six heroes, one per priority page. Messaging direction is set in each page brief. Home leads on the partner-first position; How it works on the proven-method-at-AI-speed idea with the named specialists; Work on cleared proof; For Partners on license-and-run-under-your-own-name; About on the accountable people behind it; Start on the low-risk Growth Diagnostic. <em>Existing pages, copy to be rewritten in the refresh.</em></li>
+      </ul>
+
+      <h3>Service and offer descriptions</h3>
+      <ul>
+        <li><strong>The two partner doors</strong> (license to deliver; refer for an optional finder's fee), described in structure only, economics unquoted. <em>To be created to replace the bespoke framing (FIX 3).</em></li>
+        <li><strong>The 3D method</strong> (Discover, Design, Deploy, Deepen, with the gate at each boundary) and the 80/20 split, made concrete with Max, Sal, and Pip in the Studios. <em>Existing, to be sharpened and made showable.</em></li>
+        <li><strong>The Growth Diagnostic</strong> end-client entry product at $4,950, credited. <em>Existing on Start, to be strengthened as the conversion centre.</em></li>
+        <li><strong>The ownership and delivery promise</strong> (a launched site the client owns outright, hosted, unlockable to hand-editable HTML). <em>To be created as a reusable trust block.</em></li>
+      </ul>
+
+      <h3>Case studies and success stories</h3>
+      <ul>
+        <li><strong>One public case study: Pottsville Acupuncture.</strong> Full format on Work: the situation, the gated run, the launched owned outcome. <em>To be created (FIX 4).</em></li>
+        <li>An <strong>unnamed multi-year track record</strong> line, no client named, to convey depth without breaching clearance. <em>To be created.</em></li>
+        <li>The <strong>live Jewell partner</strong> cited as the worked example that the partner model holds, attributed to Jewell, with Jewell's own named results left under Jewell's banner. <em>Reference and pattern only, not Maxxim proof.</em></li>
+        <li><strong>Do not publish</strong> BTC, Jewell Tyres, OTR Earthmover, or Hidrive in any form. Clearing more named proof beyond Pottsville is the highest-value content action and is a separate workstream, not a site task.</li>
+      </ul>
+
+      <h3>Testimonials</h3>
+      <ul>
+        <li>A single cleared, named testimonial is the target if Pottsville consent allows; otherwise an outcome statement attributed to the case rather than a named quote. No logo wall, because named partners and clients are not used publicly without consent. <em>To be created, subject to clearance.</em></li>
+      </ul>
+
+      <h3>FAQs</h3>
+      <ul>
+        <li><strong>Partner FAQ</strong> (For Partners): how the two doors work, what is mine versus the platform's, do I keep my client relationship, what is the founding cohort. Economics answered in structure, never in numbers. <em>To be created.</em></li>
+        <li><strong>End-client FAQ</strong> (Start): what the Diagnostic includes, is the fee credited, do I own the assets, who is accountable, how fast, and (for the procurement overlay) how the documented, gated method supports probity. <em>To be created.</em></li>
+      </ul>
+
+      <h3>Blog / resource categories</h3>
+      <ul>
+        <li>None in phase 1. A resources or insights section is a deferred phase-2 candidate, opened only when there is cleared content and capacity to maintain it. Avoid an empty content shell on a lightly proven site.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Conversion Strategy</h2>
+      <p>Two front doors at two commitment levels, deliberately not competing on the same button. The conversion funnel below maps each stage to the page that carries it and the CTA that moves the visitor on.</p>
+
+      <figure>
+        <figcaption>Conversion funnel mapped to pages and CTAs. The partner funnel (left) is the primary path to a partner enquiry. The end-client funnel (right) is the path to a Growth Diagnostic booking. Trust signals (Pottsville, the gates, the named human, the named specialists) sit beside each conversion point.</figcaption>
+        <pre><code>            PARTNER FUNNEL (primary)        |    END-CLIENT FUNNEL (secondary)
+                                            |
+  AWARE   Home: position + trust gap named  |   Start (often via a partner link):
+          CTA: Become a partner             |   the $4,950 Growth Diagnostic
+            |                               |     |
+  INTEREST How it works: 80/20, Max/Sal/Pip,|   Start: what it is + the credit
+          the gates, the human sign-off     |   mechanic (fee comes off engagement)
+          CTA: Become a partner             |     |
+            |                               |     |
+  EVALUATE Work: POTTSVILLE, cleared proof  |   Work: POTTSVILLE verifies it is real
+          CTA: Become a partner             |   CTA: back to Start
+            |                               |     |
+  DECIDE   For Partners: two doors +        |   Start: booking form
+          community as the moat             |     |
+          CTA: Join the founding cohort     |     |
+            |                               |     |
+  CONVERT  Contact: PARTNER ENQUIRY  <======+======>  Start: BOOK GROWTH DIAGNOSTIC
+          (primary conversion)              |   (secondary conversion)
+            |                               |     |
+  trust signals beside both points:        |   trust signals beside both points:
+  Pottsville, the gates, Max/Sal/Pip, the  |   Pottsville, the named human, the
+  named human, ownership, founding cohort  |   credit mechanic, ownership guarantee</code></pre>
+      </figure>
+
+      <ul>
+        <li><strong>Primary conversion point:</strong> the partner enquiry on Contact, reached via the primary CTA carried through the nav and the close of For Partners. It is the main goal because the partner is the front door now.</li>
+        <li><strong>Secondary conversion point:</strong> the Growth Diagnostic booking on Start, the end-client entry. Lower commitment, partner-mediated, but the engine of the pilot economics.</li>
+        <li><strong>Tertiary, low-commitment actions:</strong> a general enquiry on Contact, and a showcase or founding-cohort interest expression. No newsletter signup in phase 1 (no content programme to feed it; the newsletter app at apps.maxxim.ai is a later capability, not a phase-1 conversion point).</li>
+        <li><strong>Lead capture approach:</strong> short, single-step forms served from apps.maxxim.ai (the contact-form app; chat and newsletter apps come later). The partner enquiry form asks only name, contact, the operator's business or network, and which door interests them (license or refer), plus a free-text line. The Growth Diagnostic form asks name, contact, organisation, and whether a partner referred them (to preserve partner ownership of the relationship). Keep both short; a high-trust, founder-led sale does not need a long form, and length suppresses the partner enquiry most.</li>
+        <li><strong>Trust signals placement:</strong> Pottsville, the gates, the named specialists, the named human, and the ownership guarantee sit immediately beside every conversion point, never more than a scroll away from a CTA. For the partner funnel, the founding-cohort and 3 July showcase moment adds genuine, unmanufactured urgency beside the For Partners CTA, and the live Jewell partner is the standing proof the model holds. For the procurement overlay, the named-accountable-human and documented, owned outputs are the trust signals a reviewer needs.</li>
+        <li><strong>Exit intent and abandonment:</strong> no aggressive pop-ups, which would clash with the calm Sage tone. The recovery strategy is structural: a clear secondary CTA on every page so a visitor not ready for the primary action has a lower-commitment next step rather than a dead end. Every page ends in a CTA band; no dead ends.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Technical Requirements</h2>
+      <ul>
+        <li><strong>Platform and stack.</strong> maxxim.ai is a live <strong>Astro site hosted on Cloudflare Pages</strong>, the same stack every Maxxim client site ships on, edited through the Maxxim engine and the dashboard at admin.maxxim.ai (Clent and Raef only). Images are served from assets.maxxim.ai and embedded apps from apps.maxxim.ai. The refresh stays on this stack; this is an edit-and-restructure, not a re-platform. Sites are locked (Astro) by default and can be unlocked to hand-editable HTML, which is a one-way door, so the refresh is planned and shipped before any unlock is considered. Re-platforming is out of scope and would burn the Deploy window for no strategic gain.</li>
+        <li><strong>Integrations needed (scoped to a small team).</strong> The embedded contact-form app at apps.maxxim.ai captures partner and Diagnostic enquiries, with partner-referral capture so relationship ownership is preserved; form-to-inbox routing or a lightweight CRM behind it; a calendar or booking link for the Growth Diagnostic and the partner discovery conversation; analytics (see Section 9); transactional email via Cloudflare email routing or Google Workspace for enquiry confirmations. Keep the stack minimal and maintainable by a two-owner operation backed by the specialis
