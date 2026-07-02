@@ -13,7 +13,7 @@ export const logo = (variant, height) =>
  *  {video: {src, poster}}; video backgrounds pause under reduced motion. */
 export function heroFull({ media, eyebrow, title, lede, ctas, contentMax = 680 }) {
   const bg = media.video
-    ? `<video class="hero-full-bg" data-bg autoplay muted loop playsinline preload="auto" poster="${media.video.poster}" aria-hidden="true" tabindex="-1"><source src="${media.video.src}" type="video/mp4"></video>`
+    ? `<video class="hero-full-bg" data-bg autoplay muted loop playsinline preload="auto" poster="${media.video.poster}" aria-hidden="true" tabindex="-1"><source src="${media.video.src}" type="video/mp4"><source src="${media.video.src.replace(/\.mp4$/, '.webm')}" type="video/webm"></video>`
     : `<img class="hero-full-bg" src="${media.img}" alt="" width="2528" height="1696" fetchpriority="high">`
   return `
 <section class="hero-full">
