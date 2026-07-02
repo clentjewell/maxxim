@@ -1,0 +1,22 @@
+# Maxxim
+
+Maxxim, the agency-in-a-box, is a human-led, AI-enabled marketing delivery
+engine for growing businesses and the partners who serve them. AI does about 80 percent of the
+production. A named human partner owns the 20 percent that matters: judgement,
+quality and sign-off. Clients own the strategy, source and assets from day one.
+
+The 3D Process runs Discover (diagnosis), Design (strategy, messaging, brand,
+plans and briefs) and Deploy (production, launch, reporting and optimisation),
+with client approval checkpoints CP1, CP2 and CP3 between phases. What is
+learned in market feeds the next cycle.
+
+## Pages
+
+- https://maxxim.ai/ : What Maxxim is and how the model works
+- https://maxxim.ai/how-it-works/ : The operating model and checkpoints in depth
+- https://maxxim.ai/3d-process/ : The full 3D Process output library
+- https://maxxim.ai/for-partners/ : The delivery engine behind agencies and consultants
+- https://maxxim.ai/work/ : Proof and case studies
+- https://maxxim.ai/about/ : Why Maxxim exists and the people behind it
+- https://maxxim.ai/contact/ : Talk to a real person
+- https://maxxim.ai/start/ : Tell us about your business (start Discover)

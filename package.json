@@ -1,0 +1,12 @@
+{
+  "name": "maxxim-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Maxxim public website plus the brand-guidelines book, built to dist/ and served as Cloudflare Workers static assets.",
+  "scripts": {
+    "build:brand-guidelines": "cd brand-guidelines && npm install --no-audit --no-fund && npm run build:site",
+    "build:site": "node site/build.mjs",
+    "build": "npm run build:brand-guidelines && npm run build:site"
+  }
+}

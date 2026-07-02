@@ -1,0 +1,622 @@
+{
+  "crawledAt": "2026-07-02",
+  "baseUrl": "https://maxxim.ai",
+  "tech": {
+    "hosting": "Cloudflare (server: cloudflare, cf-ray, cf-cache-status DYNAMIC; Cloudflare email obfuscation /cdn-cgi/l/email-protection injected; NEL/report-to headers). Behaviour consistent with a Cloudflare Workers/Pages static deploy.",
+    "framework": "Astro static build (data-astro-cid-* attributes, /_astro/*.css hashed bundles). No client framework; vanilla JS for mobile menu + IntersectionObserver scroll reveal; no-JS fallbacks built in.",
+    "assets": "Images on assets.maxxim.ai (webp with -320/-640/-960/-1280 responsive variants, AI-generated filenames under /maxxim/generated/).",
+    "forms": "Custom in-house form service: https://apps.maxxim.ai/embed.js posts JSON to apps.maxxim.ai; per-site key mx_site_1c0e614947f28b300592ad27; Cloudflare Turnstile challenge + _gotcha honeypot; error codes failed_challenge/rate_limited/quota_exceeded/empty_submission.",
+    "locale": "en-AU throughout (og:locale en_AU, lang en-AU); maxxim.com.au 301s to maxxim.ai; www.maxxim.ai 301s to apex.",
+    "robots": "Cloudflare managed content-signals: search=yes, ai-train=no, use=reference.",
+    "sitemap": "9 URLs, trailing-slash canonical style, priorities 1.0 down to 0.3.",
+    "notFoundBehaviour": "No 404 page: any unknown route (/pricing/, /faq/, /3d-process/, random slugs) serves the homepage with HTTP 200 (soft-404 catch-all)."
+  },
+  "routes": [
+    {
+      "path": "/",
+      "title": "Agency-grade marketing, with a human at the wheel — Maxxim",
+      "metaDescription": "AI does 80% of the work and an expert partner owns the 20% that matters. A complete strategy and a launched website you own — in days, not months.",
+      "h1": "Agency-grade marketing. Without the agency.",
+      "sections": [
+        "Hero — 'A human at the wheel' / Agency-grade marketing. Without the agency.",
+        "Sound familiar? — You've already tried both ways. Both let you down. (agency quote card + AI-tools-second-job card)",
+        "The third option — The trustworthy middle (80/20 proof list, CP1/CP2/CP3, ownership, finished-not-busy)",
+        "One process, end to end — The 3D methodology (SVG isometric diagram: Discover 01/CP1, Design 02/CP2, Deploy 03/CP3)",
+        "What you walk away with — Finished outcomes. Owned outright. (check-list)",
+        "Proven, not theoretical — A methodology run with real clients for years (Authored / Verifiable / Demonstrated cards; Joule Projects heritage note)",
+        "Why Maxxim — Where Maxxim sits in the market (comparison table: Marketing agency vs DIY builder + AI vs Maxxim)",
+        "The honest answers — The questions you're actually asking (4 objection Q&As)",
+        "Run an agency? — Deliver more without drowning in production (partner signpost)",
+        "Ready when you are — Show us your business. We'll show you the work. (CTA band)"
+      ],
+      "ctas": [
+        "Tell us about your business -> /start/ (primary, repeated 6x)",
+        "See how it works -> /how-it-works/",
+        "See how each phase works -> /how-it-works/ (link-arrow)",
+        "For partners -> /for-partners/"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "Hero: 'AI does about 80% of the work. A named human partner owns the 20% that matters — and signs off at every step. You walk away with a complete strategy and a launched website you own outright, in days, not months.'",
+        "Hero note: 'You're not signing anything. Tell us about your business and we'll show you what the 3D process produces.'",
+        "'Between the agency you can't afford and the tools that hand the work back to you, there's a better way.'",
+        "'Nothing ships until a partner has looked at it and can say: I've checked this; it will work.'",
+        "'80 / 20, stated plainly. AI executes; the human judges.'",
+        "'A partner signs off three checkpoints. CP1 Discover, CP2 Design, CP3 Deploy — you approve before each phase moves on.'",
+        "'You own it from day one. Source, strategy and assets are yours outright. No lock-in, no ransom for your own work.'",
+        "'Finished, not busy. A plan and a launched site you can point at — not a stack of tools and process exhaust.'",
+        "3D captions: Discover 'We learn your business inside out, then return it as sharp strategy.' / Design 'Brand, message and plan, built as one connected set of decisions.' / Deploy 'The plan becomes a launched website and assets you own outright.'",
+        "'The 3D process isn't invented for a pitch. It's the same methodology Clent Jewell has refined over years of real client work at Joule Projects — now productised and scaled with AI.'",
+        "'Maxxim runs its own methodology on itself. This site was built the 3D way — a live sample of the standard we deliver.'",
+        "Heritage note: 'Client case studies are on the way. We won't publish a result, a name or a number until it's real and the client has approved it.'",
+        "Partner signpost: 'Maxxim is the delivery engine that holds your standard while you keep the client relationship.'",
+        "Footer: 'The trustworthy middle between a slow, expensive agency and a pile of AI tools you have to run yourself — agency-grade work, human-checked, owned by you.'",
+        "Footer signature: 'AI-powered marketing, with a human partner.'"
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/",
+        "ogTitle": "Agency-grade marketing, with a human at the wheel — Maxxim",
+        "ogDescription": "AI does 80% of the work and an expert partner owns the 20% that matters. A complete strategy and a launched website you own — in days, not months.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Comparison table rows: named human accountable / speed (Days, not months) / cost (Well below the agency band) / what you end up with (A launched site you own) / who owns the work (You, from day one). No pricing anywhere on site."
+    },
+    {
+      "path": "/how-it-works/",
+      "title": "How the 3D process works — Maxxim",
+      "metaDescription": "One process, end to end: Discover, Design, Deploy. AI does the work, a human partner signs off at every checkpoint, and you approve before each phase moves on.",
+      "h1": "One process, end to end. You approve every step.",
+      "sections": [
+        "Hero — One process, end to end. You approve every step.",
+        "The 80 / 20 model — AI does the work. A human decides if it's any good. (80%/20% stat panel)",
+        "Discover · Design · Deploy — Three phases. Three checkpoints you control. (summary cards)",
+        "Phase detail 01 Discover (what happens / What you get / The checkpoint CP1)",
+        "Phase detail 02 Design (What you get / CP2)",
+        "Phase detail 03 Deploy (What you get / CP3)",
+        "The checkpoint guarantee — You don't move on until you've approved this phase.",
+        "The cadence — Days, not months.",
+        "Yours from day one — What you own when it's done. (launched website / strategy & assets / a partner who stands behind it)",
+        "CTA — See what the process produces for you."
+      ],
+      "ctas": [
+        "Tell us about your business -> /start/",
+        "See our work -> /work/"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "'AI does about 80% of the production — the drafting, the structuring, the heavy lifting that an agency would bill you for by the hour.'",
+        "'The other 20% is the part that decides whether the work succeeds: judgement, taste, and the call on whether it's right for your business.'",
+        "'Nothing ships until they can say, \"I've checked this; it will work.\"'",
+        "Discover: 'We capture your business's story — by chat, a recorded call, or documents you already have. AI then turns it into an audience teardown, a competitor read, and a sharpened offer. The partner directs it; you barely lift a finger.' CP1 — you approve the direction before a single thing is designed.",
+        "Design: 'Brand, message and plan are built as one connected set of decisions... The partner reviews and refines every document so it reads like the work of a senior strategist.' CP2 — you sign off the strategy before anything is built or launched.",
+        "Deploy: 'The plan becomes real: a launched, professionally designed website and the assets around it. Version history is kept, and the source is handed to you on day one.' CP3 — you approve the build before it ships to the world.",
+        "'Every phase ends with finished work you review — never an opaque monthly report.'",
+        "'It's the opposite of the agency black box... you're always in control, and you always own what you've approved.'",
+        "'Value lands at every checkpoint, not only at the end.'"
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/how-it-works/",
+        "ogTitle": "How the 3D process works — Maxxim",
+        "ogDescription": "One process, end to end: Discover, Design, Deploy. AI does the work, a human partner signs off at every checkpoint, and you approve before each phase moves on.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Cleanest statement of the 3D + 80/20 + checkpoint model on the site. No Joule Projects reference on this page."
+    },
+    {
+      "path": "/for-partners/",
+      "title": "White-label delivery for agencies — Maxxim for Partners",
+      "metaDescription": "Run more clients without drowning in production. Maxxim is the delivery engine that holds your standard while you keep the client relationship.",
+      "h1": "Run more clients without drowning in production.",
+      "sections": [
+        "Hero — Run more clients without drowning in production.",
+        "The capacity wall — You're turning away work you could be winning.",
+        "How partnering works — The platform handles the rails. You keep the relationship. (Your standard, held / Your time, back / Your client, yours)",
+        "Control, not compromise — 'Powered by Maxxim,' not 'replaced by Maxxim.' (4 assurances: brand front of house, relationship untouched, reputation protected, economics improve)",
+        "Evidence of the standard — The proof is the work — starting with this site.",
+        "Let's talk — Talk to us about partnering. (partner enquiry form #partner-enquiry)"
+      ],
+      "ctas": [
+        "Talk to us about partnering -> #partner-enquiry",
+        "See how the 3D process works -> /how-it-works/",
+        "Start the conversation (form submit)"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "'Your ceiling isn't demand — it's your own capacity. Maxxim is the delivery engine that holds your standard while you keep the client relationship.'",
+        "'Take on more clients without the hiring risk or the midnight formatting.'",
+        "'Maxxim never disintermediates you. You keep the relationship and the brand. The platform is the engine room, not the front of house.'",
+        "'Look bigger and more capable than your headcount — credibly — with a human-accountable AI story your clients can actually trust.'",
+        "'The exact shape of the partner endorsement and commercial model is something we work out together, founder to founder. This isn't a self-serve sign-up.'",
+        "'The Maxxim engine runs quietly behind your name.'",
+        "'The methodology is Clent Jewell's, run with real clients for years through Joule Projects — proven, then scaled with AI.'",
+        "'This goes straight to a founder — we'll come back to start a real conversation, not a sales sequence.'"
+      ],
+      "forms": [
+        {
+          "id": "partner-enquiry",
+          "handler": "data-maxxim-form via https://apps.maxxim.ai/embed.js (site key mx_site_1c0e614947f28b300592ad27), Cloudflare Turnstile + _gotcha honeypot",
+          "fields": [
+            "name (text, required)",
+            "email (email, required)",
+            "agency (text, required)",
+            "message (textarea, required, label 'Tell us about your agency')",
+            "_gotcha (honeypot)"
+          ],
+          "successMessage": "Thanks — a founder will be in touch to talk partnering."
+        }
+      ],
+      "seo": {
+        "canonical": "https://maxxim.ai/for-partners/",
+        "ogTitle": "White-label delivery for agencies — Maxxim for Partners",
+        "ogDescription": "Run more clients without drowning in production. Maxxim is the delivery engine that holds your standard while you keep the client relationship.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Uses 'delivery engine' and 'engine room' language — closest existing copy to the 'human-led AI delivery engine' direction."
+    },
+    {
+      "path": "/about/",
+      "title": "About Maxxim — the people and the proven method",
+      "metaDescription": "Maxxim puts agency-grade marketing within reach of every owner who was told it wasn't for them. Meet the team and the proven 3D methodology behind it.",
+      "h1": "Agency-grade marketing, within reach of every owner who was told it wasn't for them.",
+      "sections": [
+        "Hero — Agency-grade marketing, within reach of every owner who was told it wasn't for them. (+ purpose statement)",
+        "Where the method comes from — Proven, not invented for a pitch. (3D = Clent Jewell's, Joule Projects heritage)",
+        "The people behind it — A named human, not a faceless platform. (Raef Akehurst, Paul Clancy, Clent Jewell)",
+        "What we stand for — Five commitments you can hold us to.",
+        "CTA — Let's see what we'd build for you."
+      ],
+      "ctas": [
+        "Tell us about your business -> /start/",
+        "See how it works -> /how-it-works/"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "'We turn a business's story into a complete marketing strategy and a launched website it owns outright — AI doing the 80%, an accountable human partner owning the 20% that matters — delivered in days, not months.'",
+        "Purpose: 'a market where no good business loses to a worse one simply because it couldn't afford to look the part.'",
+        "'The 3D methodology — Discover, Design, Deploy — is Clent Jewell's. He built it and sharpened it over years of real client work at Joule Projects, with documented successes long before AI entered the picture.'",
+        "'What Maxxim does is productise that method and scale it with AI.'",
+        "Team: Raef Akehurst — Co-founder · Platform & engineering ('Builds the platform that lets AI do the 80%'); Paul Clancy — Co-founder · Strategy & operations; Clent Jewell — Founding partner · Creator of the 3D methodology",
+        "Five commitments: 01 A human stands behind it / 02 Finished beats busy / 03 You own it from day one / 04 Show the work, not the smoke / 05 Earn the trust, then keep it",
+        "'We'd rather under-claim and over-deliver than market on hype. Proof, not adjectives, does the persuading.'"
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/about/",
+        "ogTitle": "About Maxxim — the people and the proven method",
+        "ogDescription": "Maxxim puts agency-grade marketing within reach of every owner who was told it wasn't for them. Meet the team and the proven 3D methodology behind it.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Only page naming the three people. Two Joule Projects mentions (method origin + Clent Jewell bio)."
+    },
+    {
+      "path": "/start/",
+      "title": "Tell us about your business — Maxxim",
+      "metaDescription": "Tell us about your business and we'll show you what the 3D process produces. No retainer to sign, no tools to learn — a human partner reviews it personally.",
+      "h1": "We'll show you what the 3D process produces.",
+      "sections": [
+        "Hero — We'll show you what the 3D process produces.",
+        "What happens next (steps after submitting)",
+        "Start here — enquiry form"
+      ],
+      "ctas": [
+        "Send / form submit",
+        "Tell us about your business (header/footer)"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "Meta: 'No retainer to sign, no tools to learn — a human partner reviews it personally.'",
+        "Form success: 'Thanks — a partner will review this personally and come back to you. Here's what happens next: we open Discover, then return real work for you to approve.'"
+      ],
+      "forms": [
+        {
+          "id": "start",
+          "handler": "data-maxxim-form via https://apps.maxxim.ai/embed.js (site key mx_site_1c0e614947f28b300592ad27), Cloudflare Turnstile + _gotcha honeypot",
+          "fields": [
+            "name (text, required)",
+            "email (email, required)",
+            "business (text, required)",
+            "message (textarea, required, label 'How can we help?')",
+            "_gotcha (honeypot)"
+          ],
+          "successMessage": "Thanks — a partner will review this personally and come back to you. Here's what happens next: we open Discover, then return real work for you to approve."
+        }
+      ],
+      "seo": {
+        "canonical": "https://maxxim.ai/start/",
+        "ogTitle": "Tell us about your business — Maxxim",
+        "ogDescription": "Tell us about your business and we'll show you what the 3D process produces. No retainer to sign, no tools to learn — a human partner reviews it personally.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Primary conversion page; every 'Tell us about your business' CTA site-wide lands here."
+    },
+    {
+      "path": "/work/",
+      "title": "Our work — case studies from the 3D process — Maxxim",
+      "metaDescription": "The proof is the work. Maxxim's case studies are built on a methodology run with real clients for years — published as real results land, never fabricated.",
+      "h1": "The proof is the work.",
+      "sections": [
+        "Hero — The proof is the work.",
+        "Case studies coming — Real results, published as they're approved. (3 placeholder cards: 'A launched website and strategy', 'A credibility-gap closed', 'Days, not months — proven' — all 'In preparation')",
+        "CTA — The best way to judge the work is to see your own."
+      ],
+      "ctas": [
+        "Tell us about your business -> /start/ (multiple)"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "'The strongest case study we have right now is the site you're reading — built the 3D way.'",
+        "'We won't put a name, a number or a result on this page until it's real and the client has signed off on it. That honesty is part of what you're buying.'",
+        "Placeholder shape: 'Client context → the challenge → what the 3D process did → the outcome.'"
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/work/",
+        "ogTitle": "Our work — case studies from the 3D process — Maxxim",
+        "ogDescription": "The proof is the work. Maxxim's case studies are built on a methodology run with real clients for years — published as real results land, never fabricated.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "No real case studies yet — three named placeholders marked 'In preparation'. Joule Projects mentioned as heritage."
+    },
+    {
+      "path": "/contact/",
+      "title": "Contact Maxxim — talk to a real human",
+      "metaDescription": "Prefer to talk before you fill anything in? Reach a real person at hello@maxxim.ai, or book a quick intro. No portals, no phone trees.",
+      "h1": "Talk to a real person.",
+      "sections": [
+        "Hero — Talk to a real person.",
+        "Email us — 'The quickest way to reach a founder.' (hello@maxxim.ai)",
+        "Book a quick intro — 'Email us and we'll find a time.' (mailto with pre-filled subject; no scheduler)"
+      ],
+      "ctas": [
+        "Request an intro -> mailto (Cloudflare-obfuscated)",
+        "Tell us about your business -> /start/"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "'The named-human promise isn't only for clients... you'll get a person, not a portal.'",
+        "'No portals, no phone trees.' (meta description)"
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/contact/",
+        "ogTitle": "Contact Maxxim — talk to a real human",
+        "ogDescription": "Prefer to talk before you fill anything in? Reach a real person at hello@maxxim.ai, or book a quick intro. No portals, no phone trees.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "No contact form and no booking tool — both paths are mailto links to hello@maxxim.ai."
+    },
+    {
+      "path": "/privacy/",
+      "title": "Privacy Policy — Maxxim",
+      "metaDescription": "How Maxxim collects, uses and protects the information you provide — including enquiries submitted through this website.",
+      "h1": "Privacy Policy",
+      "sections": [
+        "1. Who we are",
+        "2. What we collect",
+        "3. Why we collect it and how we use it",
+        "4. Where it goes",
+        "5. How long we keep it",
+        "6. Security",
+        "7. Access, correction and complaints",
+        "8. Changes to this policy"
+      ],
+      "ctas": [
+        "Tell us about your business (header/footer only)"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "Covers enquiries submitted through the website; contact for privacy matters is hello@maxxim.ai."
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/privacy/",
+        "ogTitle": "Privacy Policy — Maxxim",
+        "ogDescription": "How Maxxim collects, uses and protects the information you provide — including enquiries submitted through this website.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Standard AU-flavoured policy; eyebrow 'Legal'."
+    },
+    {
+      "path": "/terms/",
+      "title": "Terms of Use — Maxxim",
+      "metaDescription": "The terms that apply to your use of the Maxxim website. Engagement terms are agreed separately, in writing, before any work begins.",
+      "h1": "Terms of Use",
+      "sections": [
+        "1. About these terms",
+        "2. Using the site",
+        "3. Enquiries are not a contract",
+        "4. Ownership of your work",
+        "5. Our content",
+        "6. No warranty on site content",
+        "7. Liability",
+        "8. Governing law",
+        "9. Changes"
+      ],
+      "ctas": [
+        "Tell us about your business (header/footer only)"
+      ],
+      "navLinks": [
+        "/ (Home)",
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/start/ (header CTA)"
+      ],
+      "footerLinks": [
+        "/how-it-works/",
+        "/for-partners/",
+        "/about/",
+        "/work/",
+        "/contact/",
+        "hello@maxxim.ai (Cloudflare-obfuscated mailto)",
+        "https://maxxim.ai",
+        "https://maxxim.com.au",
+        "/privacy/",
+        "/terms/"
+      ],
+      "keyCopy": [
+        "Meta: 'Engagement terms are agreed separately, in writing, before any work begins.'",
+        "Section 4 'Ownership of your work' backs the day-one ownership promise contractually."
+      ],
+      "forms": [],
+      "seo": {
+        "canonical": "https://maxxim.ai/terms/",
+        "ogTitle": "Terms of Use — Maxxim",
+        "ogDescription": "The terms that apply to your use of the Maxxim website. Engagement terms are agreed separately, in writing, before any work begins.",
+        "ogImage": "https://assets.maxxim.ai/maxxim/generated/e557e33dcdcb-1280.webp",
+        "ogLocale": "en_AU",
+        "twitterCard": "summary_large_image",
+        "ldJson": "Organization schema (name Maxxim, slogan 'A human at the wheel.', email hello@maxxim.ai, sameAs maxxim.ai + maxxim.com.au)"
+      },
+      "notes": "Website terms only; governing law section present (AU)."
+    }
+  ],
+  "brokenLinks": [
+    "None found. All 9 sitemap routes, /logo.svg, /favicon.svg, assets.maxxim.ai images and apps.maxxim.ai/embed.js return 200; maxxim.com.au and www.maxxim.ai 301 to https://maxxim.ai/.",
+    "Caveat: the soft-404 catch-all (unknown paths return the homepage with 200) would mask any genuinely broken internal link, and is itself an SEO defect worth fixing."
+  ],
+  "deprecatedLanguageFound": [
+    {
+      "term": "Joule Projects",
+      "occurrences": [
+        {
+          "path": "/",
+          "context": "'It's the same methodology Clent Jewell has refined over years of real client work at Joule Projects — now productised and scaled with AI' (Proven-not-theoretical section)"
+        },
+        {
+          "path": "/about/",
+          "context": "'He built it and sharpened it over years of real client work at Joule Projects, with documented successes long before AI entered the picture' (Where the method comes from) AND Clent Jewell bio: 'refined it over years of real client work at Joule Projects — the proof beneath everything Maxxim delivers'"
+        },
+        {
+          "path": "/for-partners/",
+          "context": "'The methodology is Clent Jewell's, run with real clients for years through Joule Projects — proven, then scaled with AI' (Evidence of the standard)"
+        },
+        {
+          "path": "/work/",
+          "context": "'The methodology behind it has been run with real clients for years through Joule Projects' (hero)"
+        }
+      ]
+    },
+    {
+      "term": "Maxwell",
+      "occurrences": [],
+      "note": "Not found anywhere on the site."
+    },
+    {
+      "term": "Max OS",
+      "occurrences": [],
+      "note": "Not found."
+    },
+    {
+      "term": "KAOS",
+      "occurrences": [],
+      "note": "Not found."
+    },
+    {
+      "term": "Control Index",
+      "occurrences": [],
+      "note": "Not found."
+    },
+    {
+      "term": "governance engine",
+      "occurrences": [],
+      "note": "Not found. ('delivery engine' and 'engine room' ARE used on / and /for-partners/ — different, on-direction language.)"
+    }
+  ],
+  "preserve": [
+    "Discover / Design / Deploy naming with CP1/CP2/CP3 checkpoints — already exactly the 3D structure the new direction wants; the SVG isometric process diagram with checkpoint markers is a strong reusable pattern.",
+    "80/20 framing stated as a plain, repeated ratio ('AI does about 80% of the work; a named human partner owns the 20% that matters') and the 80%/20% stat panel on /how-it-works/.",
+    "The partner sign-off line: 'Nothing ships until a partner can say: I've checked this; it will work.' — memorable, structural, verifiable.",
+    "'A human at the wheel' slogan (also in Organization schema) and 'named human partner' accountability language.",
+    "Ownership promises: 'yours from day one', 'source and version history handed over', 'no lock-in, no ransom for your own work' — backed by Terms §4.",
+    "'Days, not months' speed claim used consistently across hero, table, and /work/ placeholder.",
+    "'Finished, not busy' / 'outcomes, not process exhaust' contrast; 'trustworthy middle' two-failure-modes narrative (agency too dear vs AI tools = second job).",
+    "Three-way comparison table (Agency vs DIY builder + AI vs Maxxim) — compact positioning device.",
+    "'The site you're reading is the proof' self-referential proof move; honest empty /work/ page ('We won't publish a result until it's real and the client has approved it').",
+    "Five commitments on /about/ (human stands behind it / finished beats busy / own it day one / show the work / earn the trust).",
+    "For-partners framing: 'delivery engine', 'engine room not front of house', 'Powered by Maxxim, not replaced by Maxxim', no-disintermediation promises — directly compatible with 'human-led AI delivery engine'.",
+    "Single dominant CTA discipline: every page funnels to /start/ with the same 'Tell us about your business' label; no-commitment reassurance copy.",
+    "Technical patterns: self-hosted form service with Turnstile + honeypot and human-voiced success messages; responsive webp asset pipeline; no-JS-safe mobile menu and reveal animations; en-AU consistency; clean per-page titles/meta/canonical/OG; Organization JSON-LD.",
+    "Voice: plain, first-person-honest, anti-hype ('under-claim and over-deliver', 'proof, not adjectives')."
+  ],
+  "conflicts": [
+    "Joule Projects is the load-bearing heritage/proof story on /, /about/, /for-partners/ and /work/ (4 pages, 5 mentions). If the new direction retires the Joule Projects name, every 'proven for years at Joule Projects' proof point needs a replacement source of credibility.",
+    "Agency-led framing vs 'AI delivery engine': the consumer-facing story is 'AI does 80%, human owns the judgement' — AI-does-the-work with human sign-off. If the new direction is explicitly HUMAN-LED delivery (human drives, AI accelerates), the hero and 80/20 sections read the opposite way round and would need re-weighting rather than just re-wording.",
+    "Single fixed deliverable vs 3D output library: the entire site promises exactly one output bundle — 'a complete marketing strategy and a launched website you own'. There is no notion of a library, catalogue or menu of 3D outputs; /how-it-works/ hard-codes website launch as the Deploy outcome. An output-library model contradicts the 'one process, one finished bundle' copy everywhere.",
+    "The methodology is credited personally to Clent Jewell ('the 3D methodology is Clent Jewell's', 'a recognised methodology creator') — if 3D becomes Maxxim's institutional engine/IP, this personal-authorship framing conflicts.",
+    "'Delivery engine' is currently positioned as the PARTNER/white-label story only (/for-partners/); the client-facing pages never use engine language. Elevating 'delivery engine' to the core brand changes the audience split the IA is built around.",
+    "No pricing, no packages, no self-serve anywhere ('This isn't a self-serve sign-up', 'founder to founder') — fine today, but conflicts with any productised/library direction that implies picking outputs.",
+    "Soft-404 catch-all returning the homepage for any path (including /pricing/, /faq/, /3d-process/) will silently swallow future routes and old links during a re-architecture; fix before restructuring.",
+    "Case-study placeholders on /work/ promise specific shapes ('Days, not months — proven') that will constrain what the first real case studies must show."
+  ]
+}
