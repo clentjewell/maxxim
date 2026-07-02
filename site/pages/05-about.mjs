@@ -8,11 +8,6 @@ const people = [
     bio: 'Builds the platform that lets AI carry the 80 percent, and keeps the engine honest, fast and secure.',
   },
   {
-    name: 'Paul Clancy',
-    role: 'Co-founder · Strategy and operations',
-    bio: 'Runs the operating model: the partners, the checkpoints and the standard the work is held to.',
-  },
-  {
     name: 'Clent Jewell',
     role: 'Founding partner · Creator of the 3D methodology',
     bio: 'Built and sharpened Discover, Design, Deploy over years of real client work at Jewell Projects, long before AI entered the picture.',
@@ -52,7 +47,7 @@ const body = `
       <p class="kicker">Where the method comes from</p>
       <h2 class="h1">Proven, not invented for a pitch.</h2>
       <p class="lede">The 3D methodology, Discover, Design, Deploy, is Clent Jewell's. He built it over years of real client work at Jewell Projects, with documented successes long before AI entered the picture.</p>
-      <p>What Maxxim does is productise that method and scale it with AI: the same structured intelligence process, the same human judgement at the gates, now delivered in days instead of months. We run the method on ourselves. The site you are reading, and the brand guidelines behind it, came through the same engine.</p>
+      <p>What Maxxim does is productise that method into the agency-in-a-box and scale it with AI: the same structured intelligence process, the same human judgement at the gates, now delivered in days instead of months. We run the method on ourselves. The site you are reading, and the brand guidelines behind it, came through the same engine.</p>
     </div>
   </div>
 </section>
@@ -60,7 +55,7 @@ const body = `
 <section class="section section--ink">
   <div class="wrap">
     <h2 class="h1">The people behind it.</h2>
-    <div class="grid-3 mt-lg">
+    <div class="grid-2 mt-lg" style="max-width:900px">
       ${people
         .map(
           (p) => `

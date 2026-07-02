@@ -64,7 +64,7 @@ const body = `
   <div class="wrap" style="max-width:820px">
     <div class="stack">
       <h2 class="h1">Not a workshop. Not a prompt stack. An operating library.</h2>
-      <p class="lede">Most marketing engagements produce a deck and a promise. The 3D Process produces a structured library of working documents, plans, briefs and assets, built in a fixed order so each output feeds the next.</p>
+      <p class="lede">Most marketing engagements produce a deck and a promise. The 3D Process produces a structured library of working documents, plans, briefs and assets, built in a fixed order so each output feeds the next. This library is what the agency-in-a-box holds.</p>
       <p>The diagnosis in Discover becomes the strategy in Design. The strategy becomes briefs. The briefs become launched work in Deploy. And what the launched work teaches us becomes the sharper next cycle. Nothing is vague because everything has a name, a place and a review gate.</p>
     </div>
   </div>

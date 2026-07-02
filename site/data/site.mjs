@@ -7,7 +7,7 @@ export const site = {
   locale: 'en-AU',
   ogLocale: 'en_AU',
   description:
-    'Agency-grade marketing, with a human at the wheel. AI does the production, a named human partner owns the judgement, and you own the work from day one.',
+    'The agency-in-a-box. Agency-grade marketing, with a human at the wheel: AI does the production, a named human partner owns the judgement, and you own the work from day one.',
 }
 
 export const nav = [

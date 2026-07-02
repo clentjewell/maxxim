@@ -266,19 +266,8 @@ p {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.18rem;
-  letter-spacing: -0.02em;
-  color: var(--ink);
   text-decoration: none;
   margin-right: auto;
-}
-
-.nav-brand svg {
-  width: 30px;
-  height: 30px;
-  color: var(--blue);
 }
 
 .nav-links {
@@ -414,6 +403,58 @@ p {
 
 .section--blue .btn-primary:hover {
   background: var(--mist);
+}
+
+/* ---------- Full-page hero (home) ---------- */
+
+.hero-full {
+  position: relative;
+  min-height: calc(100dvh - 68px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-full-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center;
+}
+
+.hero-full-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(6, 9, 20, 0.88) 0%,
+    rgba(6, 9, 20, 0.72) 42%,
+    rgba(6, 9, 20, 0.28) 100%
+  );
+}
+
+.hero-full-content {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(48px, 8vh, 96px);
+  padding-bottom: clamp(48px, 8vh, 96px);
+}
+
+.hero-full .hero-full-btn {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hero-full .hero-full-btn:hover {
+  border-color: var(--white);
+}
+
+@media (max-width: 640px) {
+  .hero-full {
+    min-height: calc(100svh - 68px);
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -966,15 +1007,6 @@ fieldset.field {
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.footer-brand svg {
-  width: 26px;
-  height: 26px;
-  color: var(--blue-tint);
 }
 
 .site-footer p {

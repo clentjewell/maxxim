@@ -69,8 +69,8 @@ ${routes
     path.join(dist, 'llms.txt'),
     `# Maxxim
 
-Maxxim is a human-led, AI-enabled marketing delivery engine for growing
-businesses and the partners who serve them. AI does about 80 percent of the
+Maxxim, the agency-in-a-box, is a human-led, AI-enabled marketing delivery
+engine for growing businesses and the partners who serve them. AI does about 80 percent of the
 production. A named human partner owns the 20 percent that matters: judgement,
 quality and sign-off. Clients own the strategy, source and assets from day one.
 

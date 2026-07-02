@@ -45,7 +45,7 @@ const body = `
     <div class="stack">
       <h2 class="h1">Why work gets stuck.</h2>
       <p>Agencies produce strategy decks that never become assets. Tools produce assets that never had a strategy. The gap between thinking and shipping is where budgets die.</p>
-      <p>Maxxim closes that gap structurally. The same engine that writes the strategy writes the briefs, and the same engine that writes the briefs builds the work. Nothing is lost in translation because nothing is handed between vendors.</p>
+      <p>Maxxim closes that gap structurally. It is the agency-in-a-box: the same engine that writes the strategy writes the briefs, and the same engine that writes the briefs builds the work. Nothing is lost in translation because nothing is handed between vendors.</p>
     </div>
     <div class="stack">
       <h2 class="h1">Speed and judgement, together.</h2>

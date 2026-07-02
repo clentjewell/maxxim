@@ -30,21 +30,17 @@ const faqs = [
 ]
 
 const body = `
-<section class="hero wrap">
-  <div class="hero-grid">
-    <div class="stack-lg">
-      <h1 class="display">Agency-grade marketing, with a human at the wheel.</h1>
-      <p class="lede">AI does the production. A named human partner owns the judgement. You own the work from day one.</p>
+<section class="hero-full">
+  <img class="hero-full-bg" src="/images/human-at-the-wheel.jpg" alt="" width="2528" height="1696" fetchpriority="high">
+  <div class="hero-full-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-full-content">
+    <div class="stack-lg" style="max-width:680px">
+      <p class="kicker" style="color:var(--blue-tint)">The agency-in-a-box</p>
+      <h1 class="display" style="color:var(--white)">Agency-grade marketing, with a human at the wheel.</h1>
+      <p class="lede" style="color:rgba(255,255,255,.88)">AI does the production. A named human partner owns the judgement. You own the work from day one.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>
-        <a class="btn btn-secondary" href="${cta.secondary.href}">${cta.secondary.label}</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <img src="/images/human-at-the-wheel.jpg" alt="A hand resting on a laptop keyboard in warm light, the human at the wheel of the engine" width="880" height="748" fetchpriority="high">
-      <div class="hero-media-card">
-        <strong>&ldquo;I've checked this; it will work.&rdquo;</strong>
-        <span>A named partner signs off at every gate.</span>
+        <a class="btn btn-secondary hero-full-btn" href="${cta.secondary.href}">${cta.secondary.label}</a>
       </div>
     </div>
   </div>
@@ -66,7 +62,7 @@ const body = `
         <p>Fast and cheap, but the work lands back on you. A pile of prompts and drafts becomes a second job, with nobody accountable.</p>
       </div>
       <div class="card card--blue reveal">
-        <h3 class="h3">Maxxim</h3>
+        <h3 class="h3">Maxxim, the agency-in-a-box</h3>
         <p>AI production speed with a named human's judgement, quality and sign-off. Finished outcomes you own, delivered in days.</p>
       </div>
     </div>
@@ -136,6 +132,13 @@ const body = `
       <div class="stack">
         <h3 class="h3">What the human owns</h3>
         <p>Reading your business correctly. Judgement calls. Quality. The decision that something is right, and the name that stands behind it at every gate.</p>
+        <div class="gate">
+          <span class="gate-code" aria-hidden="true">&#10003;</span>
+          <div>
+            <strong>&ldquo;I've checked this; it will work.&rdquo;</strong>
+            <p>A named partner signs off at every gate.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -200,11 +203,12 @@ export default {
         {
           '@type': 'Organization',
           name: 'Maxxim',
+          alternateName: 'Maxxim, the agency-in-a-box',
           url: site.origin,
           email: site.email,
           slogan: 'A human at the wheel',
           description: site.description,
-          logo: `${site.origin}/favicon.svg`,
+          logo: `${site.origin}/images/logo-ink.png`,
         },
         {
           '@type': 'WebSite',

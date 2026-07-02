@@ -6,11 +6,8 @@ import { site, nav, cta, footerNav } from '../data/site.mjs'
 export const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-export const monogram = (size = 30) => `
-<svg viewBox="0 0 100 100" width="${size}" height="${size}" fill="none" aria-hidden="true">
-  <rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/>
-  <path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+export const logo = (variant, height) =>
+  `<img src="/images/logo-${variant}.png" alt="Maxxim" width="560" height="166" style="height:${height}px;width:auto" decoding="async">`
 
 function head({ title, description, path, ogImage, jsonLd }) {
   const canonical = site.origin + path
@@ -50,7 +47,7 @@ function header(path) {
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap nav">
-    <a class="nav-brand" href="/" aria-label="Maxxim, home">${monogram(30)}<span>Maxxim</span></a>
+    <a class="nav-brand" href="/" aria-label="Maxxim, home">${logo('ink', 26)}</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -70,8 +67,8 @@ function footer() {
   <div class="wrap">
     <div class="footer-grid">
       <div class="stack">
-        <div class="footer-brand">${monogram(26)}<span>Maxxim</span></div>
-        <p>The proven method, run by a human, at AI speed. Discover, Design, Deploy, then the system learns and the next cycle gets sharper.</p>
+        <div class="footer-brand">${logo('white', 24)}</div>
+        <p>The agency-in-a-box. The proven method, run by a human, at AI speed. Discover, Design, Deploy, then the system learns and the next cycle gets sharper.</p>
         <p><a href="mailto:${site.email}" style="color:rgba(255,255,255,.85);text-decoration:none">${site.email}</a></p>
       </div>
       <nav aria-label="Footer"><h2>Explore</h2><ul>${list(footerNav.explore)}</ul></nav>

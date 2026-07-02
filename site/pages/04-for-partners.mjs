@@ -16,7 +16,7 @@ const body = `
   <div class="hero-grid">
     <div class="stack-lg">
       <h1 class="display">Run more clients without drowning in production.</h1>
-      <p class="lede">You keep the relationship and the standard. Maxxim is the delivery engine behind it.</p>
+      <p class="lede">You keep the relationship and the standard. Maxxim is the agency-in-a-box behind it.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#partner-enquiry">Talk about partnering</a>
       </div>

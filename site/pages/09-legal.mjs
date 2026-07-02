@@ -29,7 +29,7 @@ const privacyBody = legalShell(
   'June 2026',
   `
   <div class="card card--mist" role="note">
-    <p><strong>A note from Maxxim.</strong> This policy is written to be accurate to how the site works today and to Australian privacy expectations. It is a working draft for the partners (Raef / Paul) to review and finalise with legal advice before launch, particularly the entity details and any obligations under the Privacy Act 1988 (Cth) and the Australian Privacy Principles.</p>
+    <p><strong>A note from Maxxim.</strong> This policy is written to be accurate to how the site works today and to Australian privacy expectations. It is a working draft for the partners to review and finalise with legal advice before launch, particularly the entity details and any obligations under the Privacy Act 1988 (Cth) and the Australian Privacy Principles.</p>
   </div>
   <div class="stack"><h2 class="h2">1. Who we are</h2>
   <p>This website is operated by Maxxim ("Maxxim", "we", "us"). We can be reached at ${email}. We are committed to handling your personal information in accordance with the Privacy Act 1988 (Cth) and the Australian Privacy Principles.</p></div>
@@ -61,7 +61,7 @@ const termsBody = legalShell(
   'June 2026',
   `
   <div class="card card--mist" role="note">
-    <p><strong>A note from Maxxim.</strong> These terms are a working draft, written to be accurate and appropriate for an Australian business website. They are provided for the partners (Raef / Paul) to review and finalise with legal advice before launch, including the governing-jurisdiction detail and the relationship between these site terms and any separate engagement agreement.</p>
+    <p><strong>A note from Maxxim.</strong> These terms are a working draft, written to be accurate and appropriate for an Australian business website. They are provided for the partners to review and finalise with legal advice before launch, including the governing-jurisdiction detail and the relationship between these site terms and any separate engagement agreement.</p>
   </div>
   <div class="stack"><h2 class="h2">1. About these terms</h2>
   <p>These terms apply to your use of the Maxxim website at maxxim.ai (and maxxim.com.au). By using the site, you agree to them. If you don't agree, please don't use the site.</p></div>
