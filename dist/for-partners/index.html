@@ -41,17 +41,16 @@
 </header>
 <main id="main">
 
-<section class="hero wrap">
-  <div class="hero-grid">
-    <div class="stack-lg">
-      <h1 class="display">Run more clients without drowning in production.</h1>
-      <p class="lede">You keep the relationship and the standard. Maxxim is the agency-in-a-box behind it.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#partner-enquiry">Talk about partnering</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <img src="/images/partner-table.jpg" alt="Four professionals working through branded documents at a round table" width="880" height="748" fetchpriority="high">
+
+<section class="hero-full">
+  <img class="hero-full-bg" src="/images/partner-table.jpg" alt="" width="2528" height="1696" fetchpriority="high">
+  <div class="hero-full-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-full-content">
+    <div class="stack-lg" style="max-width:680px">
+      
+      <h1 class="display" style="color:var(--white)">Run more clients without drowning in production.</h1>
+      <p class="lede" style="color:rgba(255,255,255,.88)">You keep the relationship and the standard. Maxxim is the agency-in-a-box behind it.</p>
+      <div class="hero-ctas"><a class="btn btn-primary" href="#partner-enquiry">Talk about partnering</a></div>
     </div>
   </div>
 </section>
@@ -206,6 +205,12 @@
 
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

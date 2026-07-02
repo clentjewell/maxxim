@@ -41,10 +41,17 @@
 </header>
 <main id="main">
 
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:780px">
-    <h1 class="display">Within reach of every owner who was told it wasn't for them.</h1>
-    <p class="lede">Maxxim exists for a market where no good business loses to a worse one simply because it couldn't afford to look the part.</p>
+
+<section class="hero-full">
+  <img class="hero-full-bg" src="/images/og-default.jpg" alt="" width="2528" height="1696" fetchpriority="high">
+  <div class="hero-full-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-full-content">
+    <div class="stack-lg" style="max-width:780px">
+      
+      <h1 class="display" style="color:var(--white)">Within reach of every owner who was told it wasn't for them.</h1>
+      <p class="lede" style="color:rgba(255,255,255,.88)">Maxxim exists for a market where no good business loses to a worse one simply because it couldn't afford to look the part.</p>
+      
+    </div>
   </div>
 </section>
 
@@ -164,6 +171,12 @@
 
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

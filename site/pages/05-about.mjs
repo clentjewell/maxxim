@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { cta } from '../data/site.mjs'
 
 const people = [
@@ -23,12 +23,12 @@ const commitments = [
 ]
 
 const body = `
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:780px">
-    <h1 class="display">Within reach of every owner who was told it wasn't for them.</h1>
-    <p class="lede">Maxxim exists for a market where no good business loses to a worse one simply because it couldn't afford to look the part.</p>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/og-default.jpg' },
+  title: "Within reach of every owner who was told it wasn't for them.",
+  lede: "Maxxim exists for a market where no good business loses to a worse one simply because it couldn't afford to look the part.",
+  contentMax: 780,
+})}
 
 <section class="section section--mist">
   <div class="wrap grid-split">

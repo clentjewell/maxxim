@@ -1,13 +1,13 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { site, cta } from '../data/site.mjs'
 
 const body = `
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:720px">
-    <h1 class="display">Talk to a real person.</h1>
-    <p class="lede">No portals, no phone trees, no chatbots standing in for people. You will get a person.</p>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/partner-table.jpg' },
+  title: 'Talk to a real person.',
+  lede: 'No portals, no phone trees, no chatbots standing in for people. You will get a person.',
+  contentMax: 720,
+})}
 
 <section class="section section--mist">
   <div class="wrap">

@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { site, cta } from '../data/site.mjs'
 import { phases, loop, countOutputs, totalOutputs } from '../data/threeDOutputs.mjs'
 
@@ -30,21 +30,14 @@ const faqs = [
 ]
 
 const body = `
-<section class="hero-full">
-  <img class="hero-full-bg" src="/images/human-at-the-wheel.jpg" alt="" width="2528" height="1696" fetchpriority="high">
-  <div class="hero-full-scrim" aria-hidden="true"></div>
-  <div class="wrap hero-full-content">
-    <div class="stack-lg" style="max-width:680px">
-      <p class="kicker" style="color:var(--blue-tint)">The agency-in-a-box</p>
-      <h1 class="display" style="color:var(--white)">Agency-grade marketing, with a human at the wheel.</h1>
-      <p class="lede" style="color:rgba(255,255,255,.88)">AI does the production. A named human partner owns the judgement. You own the work from day one.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>
-        <a class="btn btn-secondary hero-full-btn" href="${cta.secondary.href}">${cta.secondary.label}</a>
-      </div>
-    </div>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/human-at-the-wheel.jpg' },
+  eyebrow: 'The agency-in-a-box',
+  title: 'Agency-grade marketing, with a human at the wheel.',
+  lede: 'AI does the production. A named human partner owns the judgement. You own the work from day one.',
+  ctas: `<a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>
+        <a class="btn btn-secondary hero-full-btn" href="${cta.secondary.href}">${cta.secondary.label}</a>`,
+})}
 
 <section class="section section--mist">
   <div class="wrap">

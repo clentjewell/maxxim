@@ -41,6 +41,7 @@
 </header>
 <main id="main">
 
+
 <section class="hero-full">
   <img class="hero-full-bg" src="/images/human-at-the-wheel.jpg" alt="" width="2528" height="1696" fetchpriority="high">
   <div class="hero-full-scrim" aria-hidden="true"></div>
@@ -49,10 +50,8 @@
       <p class="kicker" style="color:var(--blue-tint)">The agency-in-a-box</p>
       <h1 class="display" style="color:var(--white)">Agency-grade marketing, with a human at the wheel.</h1>
       <p class="lede" style="color:rgba(255,255,255,.88)">AI does the production. A named human partner owns the judgement. You own the work from day one.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="/start/">Tell us about your business</a>
-        <a class="btn btn-secondary hero-full-btn" href="/3d-process/">See the 3D outputs</a>
-      </div>
+      <div class="hero-ctas"><a class="btn btn-primary" href="/start/">Tell us about your business</a>
+        <a class="btn btn-secondary hero-full-btn" href="/3d-process/">See the 3D outputs</a></div>
     </div>
   </div>
 </section>
@@ -246,6 +245,12 @@
 
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

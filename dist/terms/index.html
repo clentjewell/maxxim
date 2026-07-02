@@ -99,6 +99,12 @@
 
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

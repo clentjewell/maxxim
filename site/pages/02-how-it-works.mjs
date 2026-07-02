@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { cta } from '../data/site.mjs'
 import { phases, loop, countOutputs } from '../data/threeDOutputs.mjs'
 
@@ -30,15 +30,13 @@ const phaseDetail = {
 }
 
 const body = `
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:760px">
-    <h1 class="display">Most marketing dies between the strategy and the build. Ours cannot.</h1>
-    <p class="lede">The 3D Process connects diagnosis to strategy to launched work in one engine, with a human gate between every phase.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>
-    </div>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/checkpoint-review.jpg' },
+  title: 'Most marketing dies between the strategy and the build. Ours cannot.',
+  lede: 'The 3D Process connects diagnosis to strategy to launched work in one engine, with a human gate between every phase.',
+  ctas: `<a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>`,
+  contentMax: 760,
+})}
 
 <section class="section section--mist">
   <div class="wrap grid-split">

@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { cta } from '../data/site.mjs'
 import { phases, loop, countOutputs, totalOutputs } from '../data/threeDOutputs.mjs'
 
@@ -45,20 +45,12 @@ function phaseColumn(p) {
 }
 
 const body = `
-<section class="hero wrap">
-  <div class="hero-grid">
-    <div class="stack-lg">
-      <h1 class="display">See what the 3D Process actually produces.</h1>
-      <p class="lede">${totalOutputs()} structured output types across Discover, Design and Deploy. Every output has a job. Every phase has a checkpoint.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <img src="/images/three-specialists.jpg" alt="Three monitors showing a copy document, a Signal Blue design layout and a social dashboard" width="880" height="748" fetchpriority="high">
-    </div>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/three-specialists.jpg' },
+  title: 'See what the 3D Process actually produces.',
+  lede: `${totalOutputs()} structured output types across Discover, Design and Deploy. Every output has a job. Every phase has a checkpoint.`,
+  ctas: `<a class="btn btn-primary" href="${cta.primary.href}">${cta.primary.label}</a>`,
+})}
 
 <section class="section section--mist">
   <div class="wrap" style="max-width:820px">

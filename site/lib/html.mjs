@@ -9,6 +9,27 @@ export const esc = (s) =>
 export const logo = (variant, height) =>
   `<img src="/images/logo-${variant}.png" alt="Maxxim" width="560" height="166" style="height:${height}px;width:auto" decoding="async">`
 
+/** Full-viewport hero shared by every page. media is {img} or
+ *  {video: {src, poster}}; video backgrounds pause under reduced motion. */
+export function heroFull({ media, eyebrow, title, lede, ctas, contentMax = 680 }) {
+  const bg = media.video
+    ? `<video class="hero-full-bg" data-bg autoplay muted loop playsinline preload="auto" poster="${media.video.poster}" aria-hidden="true" tabindex="-1"><source src="${media.video.src}" type="video/mp4"></video>`
+    : `<img class="hero-full-bg" src="${media.img}" alt="" width="2528" height="1696" fetchpriority="high">`
+  return `
+<section class="hero-full">
+  ${bg}
+  <div class="hero-full-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-full-content">
+    <div class="stack-lg" style="max-width:${contentMax}px">
+      ${eyebrow ? `<p class="kicker" style="color:var(--blue-tint)">${eyebrow}</p>` : ''}
+      <h1 class="display" style="color:var(--white)">${title}</h1>
+      <p class="lede" style="color:rgba(255,255,255,.88)">${lede}</p>
+      ${ctas ? `<div class="hero-ctas">${ctas}</div>` : ''}
+    </div>
+  </div>
+</section>`
+}
+
 function head({ title, description, path, ogImage, jsonLd }) {
   const canonical = site.origin + path
   return `<!doctype html>
@@ -88,6 +109,12 @@ function footer() {
 const script = `
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

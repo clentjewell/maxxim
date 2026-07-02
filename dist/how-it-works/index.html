@@ -41,12 +41,16 @@
 </header>
 <main id="main">
 
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:760px">
-    <h1 class="display">Most marketing dies between the strategy and the build. Ours cannot.</h1>
-    <p class="lede">The 3D Process connects diagnosis to strategy to launched work in one engine, with a human gate between every phase.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="/start/">Tell us about your business</a>
+
+<section class="hero-full">
+  <img class="hero-full-bg" src="/images/checkpoint-review.jpg" alt="" width="2528" height="1696" fetchpriority="high">
+  <div class="hero-full-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-full-content">
+    <div class="stack-lg" style="max-width:760px">
+      
+      <h1 class="display" style="color:var(--white)">Most marketing dies between the strategy and the build. Ours cannot.</h1>
+      <p class="lede" style="color:rgba(255,255,255,.88)">The 3D Process connects diagnosis to strategy to launched work in one engine, with a human gate between every phase.</p>
+      <div class="hero-ctas"><a class="btn btn-primary" href="/start/">Tell us about your business</a></div>
     </div>
   </div>
 </section>
@@ -229,6 +233,12 @@
 
 <script>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[data-bg]').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
   var t = document.querySelector('.nav-toggle');
   var n = document.getElementById('nav-links');
   if (t && n) t.addEventListener('click', function () {

@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { cta } from '../data/site.mjs'
 import { totalOutputs } from '../data/threeDOutputs.mjs'
 
@@ -18,12 +18,12 @@ const upcoming = [
 ]
 
 const body = `
-<section class="hero wrap">
-  <div class="stack-lg" style="max-width:760px">
-    <h1 class="display">The proof is the work.</h1>
-    <p class="lede">We won't put a name, a number or a result on this page until it is real and the client has signed off on it.</p>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/launched-site.jpg' },
+  title: 'The proof is the work.',
+  lede: "We won't put a name, a number or a result on this page until it is real and the client has signed off on it.",
+  contentMax: 760,
+})}
 
 <section class="section section--mist">
   <div class="wrap">
@@ -49,7 +49,7 @@ const body = `
 
 <section class="section">
   <div class="wrap grid-split">
-    <img src="/images/launched-site.jpg" alt="A laptop showing a launched Signal Blue branded website beside a printed proposal" loading="lazy" width="880" height="660">
+    <img src="/images/brand-flatlay.jpg" alt="Brand materials laid flat: a Signal Blue envelope, logotype card and proposal cover" loading="lazy" width="880" height="660">
     <div class="stack">
       <h2 class="h1">Structural proof, not testimonial theatre.</h2>
       <p>Some things do not need a case study to verify. The checkpoints are contractual. The ownership terms are in writing before work begins. The human sign-off is the architecture. You can test all three at CP1, on your own business, before committing further.</p>

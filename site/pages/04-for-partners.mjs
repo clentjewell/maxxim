@@ -1,4 +1,4 @@
-import { page } from '../lib/html.mjs'
+import { page, heroFull } from '../lib/html.mjs'
 import { forms } from '../data/site.mjs'
 import { phases } from '../data/threeDOutputs.mjs'
 
@@ -12,20 +12,12 @@ const handoffs = [
 ]
 
 const body = `
-<section class="hero wrap">
-  <div class="hero-grid">
-    <div class="stack-lg">
-      <h1 class="display">Run more clients without drowning in production.</h1>
-      <p class="lede">You keep the relationship and the standard. Maxxim is the agency-in-a-box behind it.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#partner-enquiry">Talk about partnering</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <img src="/images/partner-table.jpg" alt="Four professionals working through branded documents at a round table" width="880" height="748" fetchpriority="high">
-    </div>
-  </div>
-</section>
+${heroFull({
+  media: { img: '/images/partner-table.jpg' },
+  title: 'Run more clients without drowning in production.',
+  lede: 'You keep the relationship and the standard. Maxxim is the agency-in-a-box behind it.',
+  ctas: `<a class="btn btn-primary" href="#partner-enquiry">Talk about partnering</a>`,
+})}
 
 <section class="section section--mist">
   <div class="wrap grid-split">
