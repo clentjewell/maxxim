@@ -34,7 +34,7 @@ const C = {
 }
 
 const MONOGRAM = (size, cls = '') =>
-  `<svg class="${cls}" width="${size}" height="${size}" viewBox="0 0 100 100" fill="none" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="24" stroke="currentColor" stroke-width="7"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  `<svg class="${cls}" width="${size}" height="${size}" viewBox="0 0 100 100" fill="none" aria-hidden="true"><defs><mask id="mxk11"><rect x="2" y="2" width="96" height="96" rx="26" fill="#fff"/><path d="M29 69 L29 32 L50 54 L71 32 L71 69" fill="none" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></mask></defs><rect x="2" y="2" width="96" height="96" rx="26" fill="currentColor" mask="url(#mxk11)"/></svg>`
 
 /* ------------------------------------------------------------- registry */
 
@@ -86,7 +86,7 @@ const FONTS = `
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">`
 
 const FAVICON = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="5" y="5" width="90" height="90" rx="24" fill="${C.blue}"/><path d="M27 71 V33 L50 57 L73 33 V71" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="2" y="2" width="96" height="96" rx="26" fill="${C.blue}"/><path d="M29 69 L29 32 L50 54 L71 32 L71 69" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 )}">`
 
 const SHELL_CSS = `
