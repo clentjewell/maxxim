@@ -1,0 +1,60 @@
+{
+  "crawledAt": "2026-07-02",
+  "accessible": false,
+  "target": {
+    "primary": "https://admin.maxxim.ai/admin",
+    "root": "https://admin.maxxim.ai/"
+  },
+  "authLayer": {
+    "type": "Cloudflare Access (zero-trust)",
+    "teamDomain": "maxxim-partners.cloudflareaccess.com",
+    "orgName": "maxxim-partners",
+    "loginPageTitle": "Sign in ・ Cloudflare Access",
+    "loginUrlPattern": "https://maxxim-partners.cloudflareaccess.com/cdn-cgi/access/login/admin.maxxim.ai?kid=...&meta=<signedJWT>&redirect_url=...",
+    "identityAutoRedirect": false
+  },
+  "urlsTried": [
+    { "url": "https://admin.maxxim.ai/", "status": 200, "notes": "302->200, redirects to CF Access login (redirect_url=/)" },
+    { "url": "https://admin.maxxim.ai/admin", "status": 200, "notes": "302->200, redirects to CF Access login (redirect_url=/admin)" },
+    { "url": "https://admin.maxxim.ai/login", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/health", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/status", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/projects", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/brands", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/outputs", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/api/v1", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/admin/api", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/health", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/assets/index.js", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/_app", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/manifest.json", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/sitemap.xml", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/favicon.ico", "status": 200, "notes": "redirects to CF Access login" },
+    { "url": "https://admin.maxxim.ai/robots.txt", "status": 200, "notes": "served directly (NOT gated); generic Cloudflare-managed robots.txt, no app-specific info" },
+    { "url": "https://admin.maxxim.ai/cdn-cgi/access/get-identity", "status": 400, "notes": "CF Access identity endpoint; 400 with no session; confirms gate, leaks nothing" },
+    { "url": "https://assets.maxxim.ai/brand/logo.png", "status": 200, "notes": "public CDN, org logo PNG referenced by login page" },
+    { "url": "https://assets.maxxim.ai/", "status": 404, "notes": "no directory listing" },
+    { "url": "https://maxxim.ai/", "status": 200, "notes": "public marketing site, separate host, out of scope" }
+  ],
+  "pages": [],
+  "outputsCaptured": {
+    "threeDProcess": { "discover": [], "design": [], "deploy": [] },
+    "businessStrategy": [],
+    "websiteBriefs": [],
+    "brandStrategy": [],
+    "messaging": [],
+    "audienceCustomerCategory": [],
+    "designOutputs": [],
+    "deployOutputs": [],
+    "adminTaxonomy": [],
+    "routeContentStructure": []
+  },
+  "structuralHints": {
+    "framework": "unknown (origin fully hidden behind Cloudflare Access; no app HTML/JS/route manifest observable)",
+    "apiRoutes": "unknown (probed /api/* paths were uniformly gated; existence unconfirmable)",
+    "brandingCdn": "https://assets.maxxim.ai (public; e.g. /brand/logo.png)",
+    "publicMarketingSite": "https://maxxim.ai"
+  },
+  "limitation": "The entire admin.maxxim.ai surface is gated behind Cloudflare Access (zero-trust, team 'maxxim-partners'). Every path (root, /admin, /api/*, assets, etc.) redirects unauthenticated clients to the maxxim-partners.cloudflareaccess.com sign-in page and returns no application content. Only /robots.txt (generic Cloudflare-managed) is served directly. To scrape any admin content an authenticated CF Access session is required: either interactive login via an authorized identity provider (the account must be on the Access allow-list) yielding a CF_Authorization cookie, or an org-issued Cloudflare Access service token (CF-Access-Client-Id + CF-Access-Client-Secret). No unauthenticated bypass exists; none was attempted."
+}
