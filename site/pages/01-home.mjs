@@ -31,7 +31,7 @@ const faqs = [
 
 const body = `
 ${heroFull({
-  media: { img: '/images/human-at-the-wheel.jpg' },
+  media: { video: { src: '/videos/hero-loop.mp4', poster: '/videos/hero-poster.jpg' } },
   eyebrow: 'The agency-in-a-box',
   title: 'Agency-grade marketing, with a human at the wheel.',
   lede: 'AI does the production. A named human partner owns the judgement. You own the work from day one.',
