@@ -1,0 +1,110 @@
+---
+import { SITE, FOOTER_NAV, CTA } from "@lib/site";
+import Monogram from "@components/ui/Monogram.astro";
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <div class="lede">
+        <a href="/" class="brand" aria-label={`${SITE.brandName} home`}>
+          <Monogram size={30} />
+          <span>{SITE.brandName}</span>
+        </a>
+        <p class="essence">{SITE.essence}</p>
+        <a href={CTA.href} class="cta">{CTA.label} →</a>
+      </div>
+
+      <nav class="cols" aria-label="Footer">
+        <div class="col">
+          <span class="eyebrow">Explore</span>
+          {FOOTER_NAV.explore.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+        <div class="col">
+          <span class="eyebrow">The system</span>
+          {FOOTER_NAV.system.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      </nav>
+    </div>
+
+    <div class="base">
+      <span>© {SITE.copyrightYears} {SITE.legalEntity}. The human at the wheel.</span>
+      <a href={SITE.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink);
+    color: color-mix(in srgb, var(--color-white) 72%, transparent);
+    padding: clamp(56px, 8vw, 96px) 0 40px;
+    margin-top: 96px;
+  }
+  .top {
+    display: grid;
+    gap: 48px;
+    grid-template-columns: 1fr;
+    padding-bottom: 48px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-blue-tint);
+  }
+  .brand span {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+  }
+  .essence {
+    margin: 18px 0 22px;
+    font-size: var(--text-h3);
+    font-weight: 300;
+    color: color-mix(in srgb, var(--color-white) 82%, transparent);
+    max-width: 26ch;
+  }
+  .cta {
+    font-weight: 600;
+    color: var(--color-white);
+  }
+  .cta:hover { color: var(--color-blue-tint); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .col .eyebrow {
+    color: color-mix(in srgb, var(--color-white) 62%, transparent); /* AA on ink */
+    margin-bottom: 4px;
+  }
+  .col a {
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-white) 72%, transparent);
+    transition: color 0.2s var(--ease-out-quiet);
+  }
+  .col a:hover { color: var(--color-white); }
+  .base {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    font-size: var(--text-small);
+    color: var(--color-label);
+  }
+  .base a:hover { color: var(--color-white); }
+  @media (min-width: 800px) {
+    .top { grid-template-columns: 1.2fr 1fr; gap: 64px; }
+    .cols { grid-template-columns: 1fr 1fr; }
+  }
+</style>

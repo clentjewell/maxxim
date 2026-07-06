@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import CaseCard from "@components/ui/CaseCard.astro";
+import Button from "@components/ui/Button.astro";
+
+const all = await getCollection("work", ({ data }) => !data.draft);
+const cases = all.sort((a, b) => {
+  if (a.data.marquee !== b.data.marquee) return a.data.marquee ? -1 : 1;
+  if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+  return a.data.client.localeCompare(b.data.client);
+});
+const audiences = ["All", "B2B", "B2C", "Personal brands"];
+---
+
+<BaseLayout
+  title="Work"
+  description="Finished, owned outcomes powered by Maxxim. Launched work, run by a human, at AI speed."
+>
+  <PageHero
+    eyebrow="The work"
+    title="Proof, not promises."
+    intro="Every engagement ran the method. Filter by audience to find work close to yours."
+  />
+
+  <Section>
+    <div class="filter-bar" data-reveal>
+      <span class="eyebrow">Filter</span>
+      <div class="filters" role="group" aria-label="Filter work by audience">
+        {audiences.map((a, i) => (
+          <button type="button" class:list={["filter-btn", i === 0 && "is-active"]} data-filter={a}>{a}</button>
+        ))}
+      </div>
+    </div>
+
+    <h2 class="sr-only">Case studies</h2>
+    <div class="card-grid" data-work-grid>
+      {cases.map((c) => (
+        <div data-audience={c.data.audience}>
+          <CaseCard
+            slug={c.id}
+            client={c.data.client}
+            summary={c.data.summary}
+            category={c.data.category}
+            metric={c.data.results[0]?.metric}
+            metricLabel={c.data.results[0]?.label}
+            status={c.data.status}
+          />
+        </div>
+      ))}
+    </div>
+    <p class="empty" data-empty hidden>No work in that category yet. Try another filter.</p>
+  </Section>
+
+  <Section tone="ink" rule>
+    <div class="cta" data-reveal>
+      <h2>See how the engine runs.</h2>
+      <Button href="/method" variant="solid-invert">Walk the method</Button>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .filter-bar { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 44px; padding-bottom: 22px; border-bottom: 1px solid var(--color-border); }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-btn {
+    font-size: var(--text-small); font-weight: 500; background: transparent;
+    border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+    padding: 8px 16px; cursor: pointer; color: var(--color-body);
+    transition: all 0.2s var(--ease-out-quiet);
+  }
+  .filter-btn:hover { border-color: var(--color-signal); color: var(--color-signal); }
+  .filter-btn.is-active { background: var(--color-signal); border-color: var(--color-signal); color: var(--color-white); }
+  .card-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .empty { margin-top: 44px; color: var(--color-caption); }
+  @media (min-width: 700px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: var(--text-h1); margin: 0; }
+</style>
+
+<script>
+  function initWorkFilter() {
+    const grid = document.querySelector<HTMLElement>("[data-work-grid]");
+    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const empty = document.querySelector<HTMLElement>("[data-empty]");
+    if (!grid || !buttons.length) return;
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        buttons.forEach((b) => b.classList.toggle("is-active", b === btn));
+        let shown = 0;
+        grid.querySelectorAll<HTMLElement>("[data-audience]").forEach((item) => {
+          const match = filter === "All" || item.dataset.audience === filter;
+          item.hidden = !match;
+          if (match) shown++;
+        });
+        if (empty) empty.hidden = shown > 0;
+      });
+    });
+  }
+  initWorkFilter();
+  document.addEventListener("astro:page-load", initWorkFilter);
+</script>

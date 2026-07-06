@@ -1,0 +1,44 @@
+---
+interface Props {
+  href: string;
+  variant?: "solid" | "outline" | "ghost" | "solid-invert";
+  class?: string;
+  external?: boolean;
+}
+const { href, variant = "solid", class: cls = "", external = false } = Astro.props;
+const rel = external ? "noopener noreferrer" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+<a href={href} rel={rel} target={target} class:list={["btn", `btn-${variant}`, cls]}>
+  <slot />
+  <span class="arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--text-small);
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    transition:
+      filter 0.2s var(--ease-out-quiet),
+      background 0.2s var(--ease-out-quiet),
+      border-color 0.2s var(--ease-out-quiet),
+      transform 0.2s var(--ease-out-quiet);
+  }
+  .btn .arrow { transition: transform 0.2s var(--ease-out-quiet); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .btn-solid { background: var(--color-signal); color: var(--color-white); }
+  .btn-solid:hover { filter: brightness(1.08); }
+  .btn-solid-invert { background: var(--color-white); color: var(--color-ink); }
+  .btn-solid-invert:hover { filter: brightness(0.96); }
+  .btn-outline { border-color: var(--color-border); color: var(--color-ink); }
+  .btn-outline:hover { border-color: var(--color-signal); color: var(--color-signal); }
+  .btn-ghost { color: var(--color-signal); padding-inline: 4px; }
+  .btn-ghost:hover { filter: brightness(1.1); }
+</style>

@@ -1,0 +1,173 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+
+export async function getStaticPaths() {
+  const all = await getCollection("work", ({ data }) => !data.draft);
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+const phases = d.solution
+  ? [
+      { no: "01", t: "Discover", body: d.solution.discover },
+      { no: "02", t: "Design", body: d.solution.design },
+      { no: "03", t: "Deploy", body: d.solution.deploy },
+    ]
+  : [];
+---
+
+<BaseLayout title={d.client} description={d.summary} ogImage={d.heroImage ?? "/og/default.png"}>
+  <article>
+    <header class="hero">
+      <div class="container inner" data-reveal>
+        <a href="/work" class="back">← All work</a>
+        <div class="meta">
+          <span class="eyebrow">{d.category}</span>
+          {d.status === "launched"
+            ? <span class="badge live"><span class="dot" aria-hidden="true"></span>Launched</span>
+            : <span class="badge prep">Case study</span>}
+        </div>
+        <h1>{d.client}</h1>
+        <p class="summary measure">{d.summary}</p>
+        {d.liveUrl && (
+          <div class="actions"><Button href={d.liveUrl} variant="outline" external>Visit the live site</Button></div>
+        )}
+      </div>
+    </header>
+
+    {d.heroImage && (
+      <div class="container hero-img" data-reveal>
+        <picture>
+          <source srcset={d.heroImage.replace(/\.jpe?g$/i, ".webp")} type="image/webp" />
+          <img src={d.heroImage} alt={`${d.client} — brand imagery`} width="1200" height="620" decoding="async" />
+        </picture>
+      </div>
+    )}
+
+    {d.results.length > 0 && (
+      <Section>
+        <div class="results" data-reveal>
+          {d.results.map((r) => (
+            <div class="result">
+              <div class="r-metric">{r.metric}</div>
+              <div class="r-label">{r.label}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+    )}
+
+    {d.challenge && (
+      <Section tone="mist">
+        <div class="block" data-reveal>
+          <span class="eyebrow">The challenge</span>
+          <p class="lead measure">{d.challenge}</p>
+        </div>
+      </Section>
+    )}
+
+    {phases.length > 0 && (
+      <Section>
+        <div class="block" data-reveal><span class="eyebrow">The method</span><h2>Run through 3D.</h2></div>
+        <div class="phases">
+          {phases.map((p) => (
+            <div class="phase" data-reveal>
+              <span class="pno">{p.no}</span>
+              <h3>{p.t}</h3>
+              <p>{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+    )}
+
+    {(d.services.length > 0 || d.sectors.length > 0) && (
+      <Section tone="mist">
+        <div class="tags" data-reveal>
+          {d.services.length > 0 && (
+            <div><span class="eyebrow">Services</span><ul>{d.services.map((s) => <li>{s}</li>)}</ul></div>
+          )}
+          {d.sectors.length > 0 && (
+            <div><span class="eyebrow">Sectors</span><ul>{d.sectors.map((s) => <li>{s}</li>)}</ul></div>
+          )}
+        </div>
+      </Section>
+    )}
+
+    <Section>
+      <div class="body measure" data-reveal><Content /></div>
+      {d.reflection && (
+        <blockquote class="quote" data-reveal>
+          <p>“{d.reflection.quote}”</p>
+          <cite>{d.reflection.name} · {d.reflection.role}</cite>
+        </blockquote>
+      )}
+    </Section>
+
+    <Section tone="ink" rule>
+      <div class="cta" data-reveal>
+        <h2>Powered by Maxxim.</h2>
+        <div class="cta-actions">
+          <Button href="/contact" variant="solid-invert">Start a conversation</Button>
+          <Button href="/work" variant="ghost">More work →</Button>
+        </div>
+      </div>
+    </Section>
+  </article>
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(48px, 10vh, 96px) clamp(24px, 4vw, 40px); }
+  .inner { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .back { font-size: var(--text-small); color: var(--color-body); }
+  .back:hover { color: var(--color-signal); }
+  .meta { display: flex; align-items: center; gap: 12px; }
+  .badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px; }
+  .badge.live { color: var(--color-signal); border: 1px solid color-mix(in srgb, var(--color-signal) 40%, transparent); }
+  .badge.prep { color: var(--color-caption); border: 1px solid var(--color-border); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-signal); }
+  h1 { font-size: var(--text-display); line-height: var(--text-display--line-height); margin: 0; }
+  .summary { font-size: var(--text-h3); font-weight: 300; color: var(--color-body); margin: 4px 0 0; }
+  .actions { margin-top: 12px; }
+  .hero-img { margin-block: clamp(20px, 4vw, 40px); }
+  .hero-img img { width: 100%; height: clamp(240px, 40vw, 520px); object-fit: cover; border-radius: 20px; display: block; }
+
+  .results { display: grid; gap: 24px; }
+  .result { border-left: 2px solid var(--color-signal); padding-left: 20px; }
+  .r-metric { font-size: clamp(2rem, 1rem + 4vw, 3rem); font-weight: 700; letter-spacing: -0.03em; }
+  .r-label { font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 700px) { .results { grid-template-columns: repeat(3, 1fr); } }
+
+  .block .eyebrow { display: block; margin-bottom: 12px; }
+  .block h2 { font-size: var(--text-h1); margin: 0; }
+  .lead { font-size: var(--text-h3); font-weight: 300; color: var(--color-body); margin: 0; }
+
+  .phases { margin-top: 40px; display: grid; gap: 24px; }
+  .phase { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px; }
+  .phase .pno { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-signal); letter-spacing: 0.14em; }
+  .phase h3 { margin: 10px 0 8px; }
+  .phase p { margin: 0; font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 800px) { .phases { grid-template-columns: repeat(3, 1fr); } }
+
+  .tags { display: grid; gap: 32px; }
+  .tags .eyebrow { display: block; margin-bottom: 12px; }
+  .tags ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { font-size: var(--text-small); background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 13px; }
+  @media (min-width: 640px) { .tags { grid-template-columns: 1fr 1fr; } }
+
+  .body :global(p) { font-size: var(--text-body); color: var(--color-body); margin: 0 0 16px; }
+  .quote { margin: 40px 0 0; border-top: 1px solid var(--color-border); padding-top: 28px; }
+  .quote p { font-size: var(--text-h2); font-weight: 300; letter-spacing: -0.01em; max-width: 24ch; }
+  .quote cite { display: block; margin-top: 14px; font-style: normal; font-size: var(--text-small); color: var(--color-caption); }
+
+  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: var(--text-h1); margin: 0; }
+  .cta-actions { display: flex; gap: 14px; align-items: center; }
+  .cta :global(.btn-ghost) { color: var(--color-blue-tint); }
+</style>

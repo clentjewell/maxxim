@@ -1,0 +1,39 @@
+---
+/**
+ * The Maxxim mark — the gated-M in a solid squircle. currentColor.
+ * No gradients, no shadows (per the locked brand brief).
+ */
+interface Props {
+  size?: number;
+  class?: string;
+  title?: string;
+}
+const { size = 28, class: cls = "", title } = Astro.props;
+// Unique mask id per instance so multiple marks on a page don't collide.
+const uid = "mx-" + Math.random().toString(36).slice(2, 9);
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  fill="none"
+  class={cls}
+  role={title ? "img" : undefined}
+  aria-hidden={title ? undefined : "true"}
+  aria-label={title}
+>
+  <defs>
+    <mask id={uid}>
+      <rect x="2" y="2" width="96" height="96" rx="26" fill="#fff"></rect>
+      <path
+        d="M29 69 L29 32 L50 54 L71 32 L71 69"
+        fill="none"
+        stroke="#000"
+        stroke-width="9"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </mask>
+  </defs>
+  <rect x="2" y="2" width="96" height="96" rx="26" fill="currentColor" mask={`url(#${uid})`}></rect>
+</svg>
