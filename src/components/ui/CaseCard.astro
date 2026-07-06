@@ -1,0 +1,79 @@
+---
+interface Props {
+  slug: string;
+  client: string;
+  summary: string;
+  category: string;
+  metric?: string;
+  metricLabel?: string;
+  status?: "launched" | "in-preparation";
+}
+const { slug, client, summary, category, metric, metricLabel, status = "in-preparation" } = Astro.props;
+---
+
+<a href={`/work/${slug}`} class="case-card" data-reveal>
+  <div class="case-top">
+    <span class="eyebrow">{category}</span>
+    {status === "launched"
+      ? <span class="badge live"><span class="dot" aria-hidden="true"></span>Launched</span>
+      : <span class="badge prep">In preparation</span>}
+  </div>
+  <h3 class="case-client">{client}</h3>
+  <p class="case-summary">{summary}</p>
+  <div class="case-foot">
+    {metric ? (
+      <span class="case-metric"><strong>{metric}</strong> {metricLabel}</span>
+    ) : (
+      <span class="case-metric muted">Case study</span>
+    )}
+    <span class="case-arrow" aria-hidden="true">→</span>
+  </div>
+</a>
+
+<style>
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    height: 100%;
+    transition:
+      border-color 0.25s var(--ease-out-quiet),
+      transform 0.25s var(--ease-out-quiet),
+      box-shadow 0.25s var(--ease-out-quiet);
+  }
+  .case-card:hover {
+    border-color: color-mix(in srgb, var(--color-signal) 55%, var(--color-border));
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+  .case-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: var(--radius-pill);
+    padding: 4px 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge.live { color: var(--color-signal); border: 1px solid color-mix(in srgb, var(--color-signal) 40%, transparent); }
+  .badge.prep { color: var(--color-label); border: 1px solid var(--color-border); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-signal); }
+  .case-client { font-size: var(--text-h3); line-height: var(--text-h3--line-height); margin: 0; }
+  .case-summary { font-size: var(--text-small); color: var(--color-body); margin: 0; flex: 1; }
+  .case-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 16px; border-top: 1px solid var(--color-border-soft);
+  }
+  .case-metric { font-size: var(--text-small); color: var(--color-body); }
+  .case-metric strong { color: var(--color-ink); font-weight: 600; }
+  .muted { color: var(--color-label); }
+  .case-arrow { color: var(--color-signal); font-weight: 600; transition: transform 0.25s var(--ease-out-quiet); }
+  .case-card:hover .case-arrow { transform: translateX(3px); }
+</style>

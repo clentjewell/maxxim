@@ -1,0 +1,244 @@
+---
+import { getCollection } from "astro:content";
+import { SITE, SPECIALISTS } from "@lib/site";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+import CaseCard from "@components/ui/CaseCard.astro";
+import Monogram from "@components/ui/Monogram.astro";
+
+const all = await getCollection("work", ({ data }) => !data.draft);
+const marquee = all
+  .sort((a, b) => (a.data.marquee === b.data.marquee ? a.data.order - b.data.order : a.data.marquee ? -1 : 1))
+  .slice(0, 3);
+
+const values = [
+  { n: "01", t: "Fast", p: "The engine runs the repeatable volume at AI speed. No agency drag." },
+  { n: "02", t: "Accountable", p: "A named human signs off every gate. Every output carries a person." },
+  { n: "03", t: "Method-backed", p: "A proven, gated process — not a prompt and a prayer." },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">Powered by Maxxim · {SITE.positioning ? "Edition 03" : ""}</p>
+        <h1>The <em>human</em> at the wheel.</h1>
+        <p class="lede">{SITE.description}</p>
+        <div class="hero-actions">
+          <Button href="/work">See the work</Button>
+          <Button href="/method" variant="outline">How the engine runs</Button>
+        </div>
+      </div>
+      <div class="hero-vis" data-reveal>
+        <img
+          src="/images/cover-city.jpg"
+          alt="A city at dusk in the Signal Blue grade"
+          width="1120"
+          height="760"
+          fetchpriority="high"
+        />
+        <span class="wm"><Monogram size={20} /> Maxxim</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WHY -->
+  <Section tone="mist">
+    <div class="why" data-reveal>
+      <p class="eyebrow">The trust gap</p>
+      <h2>Agencies have the human without the speed. AI tools have the speed without the human.</h2>
+      <p class="measure why-sub">Maxxim exists to be fast, accountable and method-backed at the same time — so the outcome is finished, owned, and delivered at speed.</p>
+    </div>
+    <div class="values">
+      {values.map((v) => (
+        <div class="value" data-reveal>
+          <span class="vn">{v.n}</span>
+          <h3>{v.t}</h3>
+          <p>{v.p}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- THE SEAM 80/20 -->
+  <Section>
+    <div class="seam" data-reveal>
+      <p class="eyebrow">The seam</p>
+      <h2>AI runs the repeatable 80%. The human owns the 20% clients pay for.</h2>
+      <div class="seam-bar" role="img" aria-label="Twenty percent human, eighty percent machine, human-checked at every gate">
+        <div class="human"><span class="pct">20%</span><span class="lbl">Human · trust, taste, judgement</span></div>
+        <div class="machine"><span class="pct">80%</span><span class="lbl">Machine · the repeatable volume, checked at every gate</span></div>
+      </div>
+      <p class="measure seam-note">Human in the loop is the point, not a limitation. The gate is the quality bar — no phase proceeds until the prior one is signed off.</p>
+    </div>
+  </Section>
+
+  <!-- THE METHOD -->
+  <Section tone="ink">
+    <div class="method-head" data-reveal>
+      <p class="eyebrow">The method</p>
+      <h2>3D <span class="plus">+</span> Deepen</h2>
+      <p class="measure">Discover, then Design, then Deploy, then the compounding loop once the engine is live. Enforced by the product: creative unlocks only as its briefs exist.</p>
+    </div>
+    <div class="phases">
+      {[
+        { no: "01", t: "Discover", d: "Always human. Context, audience, the real problem — mapped before a pixel is drawn." },
+        { no: "02", t: "Design", d: "Strategy, positioning, identity and assets — signed off at the gate." },
+        { no: "03", t: "Deploy", d: "Live work, owned by the client, on their own domain." },
+        { no: "04", t: "Deepen", d: "The compounding loop that keeps the engine sharp." },
+      ].map((p) => (
+        <div class="phase" data-reveal>
+          <span class="pno">{p.no}</span>
+          <h3>{p.t}</h3>
+          <p>{p.d}</p>
+        </div>
+      ))}
+    </div>
+    <div class="method-cta" data-reveal>
+      <Button href="/method" variant="solid-invert">Walk the method</Button>
+    </div>
+  </Section>
+
+  <!-- SPECIALISTS -->
+  <Section tone="mist">
+    <div class="spec-head" data-reveal>
+      <p class="eyebrow">The method, made visible</p>
+      <h2>Three named specialists.</h2>
+    </div>
+    <div class="specs">
+      {SPECIALISTS.map((s) => (
+        <div class="spec" data-reveal>
+          <span class="spec-mono"><Monogram size={22} /></span>
+          <div class="spec-name">{s.name}</div>
+          <div class="spec-role">{s.role}</div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- WORK -->
+  <Section rule>
+    <div class="work-head" data-reveal>
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2>Finished, owned outcomes.</h2>
+      </div>
+      <Button href="/work" variant="ghost">All work</Button>
+    </div>
+    <div class="work-grid">
+      {marquee.map((c) => (
+        <CaseCard
+          slug={c.id}
+          client={c.data.client}
+          summary={c.data.summary}
+          category={c.data.category}
+          metric={c.data.results[0]?.metric}
+          metricLabel={c.data.results[0]?.label}
+          status={c.data.status}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section tone="ink" rule>
+    <div class="final" data-reveal>
+      <h2>The proven method, run by a human, at AI speed.</h2>
+      <p class="measure">For operators who win the work and own the relationship — and want to deliver agency-grade growth repeatably.</p>
+      <div class="final-actions">
+        <Button href="/contact" variant="solid-invert">Start a conversation</Button>
+        <Button href="/powered-by" variant="ghost">Powered by Maxxim →</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero { padding-block: clamp(48px, 8vh, 96px) clamp(40px, 6vw, 72px); }
+  .hero-inner { display: grid; gap: clamp(32px, 5vw, 64px); align-items: center; }
+  h1 {
+    font-size: var(--text-display);
+    line-height: var(--text-display--line-height);
+    margin: 16px 0 0;
+  }
+  h1 em { font-style: normal; color: var(--color-signal); }
+  .lede {
+    margin: 24px 0 30px;
+    font-size: var(--text-h3);
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--color-body);
+    max-width: 46ch;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-vis { position: relative; border-radius: 20px; overflow: hidden; }
+  .hero-vis img { width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; display: block; }
+  .wm {
+    position: absolute; right: 16px; bottom: 14px;
+    display: inline-flex; align-items: center; gap: 7px;
+    color: var(--color-white); font-weight: 700; letter-spacing: -0.02em;
+    font-size: 17px; text-shadow: 0 1px 10px color-mix(in srgb, var(--color-ink) 45%, transparent);
+  }
+  @media (min-width: 900px) { .hero-inner { grid-template-columns: 1fr 1fr; } }
+
+  h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 12px 0 0; max-width: 20ch; }
+
+  /* WHY */
+  .why h2 { max-width: 22ch; }
+  .why-sub { margin-top: 20px; font-size: var(--text-h3); font-weight: 300; color: var(--color-body); }
+  .values { margin-top: 48px; display: grid; gap: 20px; }
+  .value { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px; }
+  .value .vn { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-signal); }
+  .value h3 { margin: 10px 0 8px; font-size: var(--text-h3); }
+  .value p { color: var(--color-body); font-size: var(--text-small); margin: 0; }
+  @media (min-width: 760px) { .values { grid-template-columns: repeat(3, 1fr); } }
+
+  /* SEAM */
+  .seam-bar {
+    margin-top: 36px; display: grid; grid-template-columns: 20fr 80fr;
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--color-border);
+  }
+  .seam-bar > div { padding: 24px 22px; display: flex; flex-direction: column; gap: 6px; min-height: 116px; justify-content: center; }
+  .seam-bar .human { background: var(--color-signal); color: var(--color-white); }
+  .seam-bar .machine { background: var(--color-mist); color: var(--color-ink); }
+  .seam-bar .pct { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+  .seam-bar .lbl { font-size: var(--text-small); font-weight: 500; opacity: 0.92; }
+  .machine .lbl { color: var(--color-body); }
+  .seam-note { margin-top: 20px; color: var(--color-body); }
+
+  /* METHOD */
+  .method-head .eyebrow { color: var(--color-blue-tint); }
+  .method-head h2 .plus { color: var(--color-blue-tint); }
+  .method-head p { margin-top: 16px; color: color-mix(in srgb, var(--color-white) 78%, transparent); }
+  .phases { margin-top: 48px; display: grid; gap: 1px; background: color-mix(in srgb, var(--color-white) 12%, transparent); border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent); border-radius: 14px; overflow: hidden; }
+  .phase { background: var(--color-ink); padding: 28px; }
+  .phase .pno { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-blue-tint); letter-spacing: 0.14em; }
+  .phase h3 { margin: 10px 0 8px; font-size: var(--text-h3); color: var(--color-white); }
+  .phase p { margin: 0; font-size: var(--text-small); color: color-mix(in srgb, var(--color-white) 70%, transparent); }
+  .method-cta { margin-top: 40px; }
+  @media (min-width: 760px) { .phases { grid-template-columns: repeat(4, 1fr); } }
+
+  /* SPECIALISTS */
+  .specs { margin-top: 40px; display: grid; gap: 20px; }
+  .spec { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px; text-align: center; }
+  .spec-mono { color: var(--color-signal); display: inline-flex; }
+  .spec-name { margin-top: 12px; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+  .spec-role { font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 640px) { .specs { grid-template-columns: repeat(3, 1fr); } }
+
+  /* WORK */
+  .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
+  .work-grid { display: grid; gap: 24px; }
+  @media (min-width: 700px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .work-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* FINAL */
+  .final h2 { max-width: 24ch; }
+  .final p { margin-top: 18px; color: color-mix(in srgb, var(--color-white) 78%, transparent); }
+  .final-actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .final .eyebrow, .final :global(.btn-ghost) { color: var(--color-blue-tint); }
+</style>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  tone?: "white" | "mist" | "ink";
+  rule?: boolean;
+  id?: string;
+  class?: string;
+}
+const { tone = "white", rule = false, id, class: cls = "" } = Astro.props;
+const toneClass = `tone-${tone}`;
+---
+
+<section id={id} class:list={["section", toneClass, rule && "has-rule", cls]}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: clamp(56px, 9vw, 112px);
+  }
+  .tone-white { background: var(--color-white); color: var(--color-ink); }
+  .tone-mist { background: var(--color-mist); color: var(--color-ink); }
+  .tone-ink { background: var(--color-ink); color: var(--color-white); }
+  .has-rule { border-top: 1px solid var(--color-border-soft); }
+  .tone-ink.has-rule { border-top-color: color-mix(in srgb, var(--color-white) 12%, transparent); }
+</style>

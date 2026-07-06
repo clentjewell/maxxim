@@ -1,0 +1,83 @@
+---
+import { SITE } from "@lib/site";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+---
+
+<BaseLayout title="Contact" description="Start a conversation with Maxxim. The proven method, run by a human, at AI speed.">
+  <PageHero eyebrow="Start here" title="Start a conversation." intro="Tell us the outcome you want. A named human reads every message — and stands behind the reply." />
+
+  <Section>
+    <div class="grid">
+      <div class="details" data-reveal>
+        <span class="eyebrow">Direct</span>
+        <a class="email" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+        <p class="fine">We reply from a person, not a queue. Nothing here is stored on this site — your message opens in your own mail client.</p>
+        <div class="links">
+          <a href={SITE.linkedin} rel="noopener" target="_blank">LinkedIn →</a>
+          <a href="/powered-by">For operators & partners →</a>
+        </div>
+      </div>
+
+      <form class="form" data-contact-form data-email={SITE.contactEmail} data-reveal>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="from">Your email</label>
+          <input id="from" name="from" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="msg">What outcome do you want?</label>
+          <textarea id="msg" name="msg" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit">Send message →</button>
+        <p class="form-note" data-form-note hidden>Your mail client should have opened with the message ready to send.</p>
+      </form>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .grid { display: grid; gap: 40px; }
+  .details { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .email { font-size: var(--text-h2); font-weight: 600; letter-spacing: -0.02em; color: var(--color-signal); }
+  .fine { font-size: var(--text-small); color: var(--color-body); max-width: 34ch; margin: 0; }
+  .links { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+  .links a { font-size: var(--text-small); font-weight: 500; }
+  .links a:hover { color: var(--color-signal); }
+
+  .form { background: var(--color-mist); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 32px; display: flex; flex-direction: column; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  label { font-size: var(--text-small); font-weight: 500; }
+  input, textarea { font: inherit; font-size: var(--text-small); padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-white); color: var(--color-ink); resize: vertical; }
+  input:focus, textarea:focus { border-color: var(--color-signal); outline: none; }
+  .submit { align-self: flex-start; background: var(--color-signal); color: var(--color-white); font-weight: 600; font-size: var(--text-small); padding: 13px 22px; border: none; border-radius: var(--radius-pill); cursor: pointer; }
+  .submit:hover { filter: brightness(1.08); }
+  .form-note { font-size: var(--text-small); color: var(--color-caption); margin: 0; }
+  @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1.1fr; gap: 64px; } }
+</style>
+
+<script>
+  function initContact() {
+    const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+    if (!form) return;
+    const note = document.querySelector<HTMLElement>("[data-form-note]");
+    const to = form.dataset.email || "";
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get("name") || "");
+      const from = String(data.get("from") || "");
+      const msg = String(data.get("msg") || "");
+      const subject = encodeURIComponent(`New enquiry — ${name}`);
+      const body = encodeURIComponent(`${msg}\n\n— ${name}\n${from}`);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      if (note) note.hidden = false;
+    });
+  }
+  initContact();
+  document.addEventListener("astro:page-load", initContact);
+</script>

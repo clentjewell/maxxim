@@ -1,0 +1,47 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  tone?: "white" | "ink";
+}
+const { eyebrow, title, intro, tone = "white" } = Astro.props;
+---
+
+<header class:list={["page-hero", `tone-${tone}`]}>
+  <div class="container inner" data-reveal>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="title">{title}</h1>
+    {intro && <p class="intro measure">{intro}</p>}
+    <slot />
+  </div>
+</header>
+
+<style>
+  .page-hero {
+    padding-block: clamp(64px, 13vh, 128px) clamp(40px, 8vh, 72px);
+  }
+  .tone-white { background: var(--color-white); color: var(--color-ink); }
+  .tone-ink { background: var(--color-ink); color: var(--color-white); }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .tone-ink .eyebrow { color: var(--color-blue-tint); }
+  .title {
+    font-size: var(--text-display);
+    line-height: var(--text-display--line-height);
+    font-weight: 600;
+    max-width: 17ch;
+    margin: 0;
+  }
+  .intro {
+    font-size: var(--text-h3);
+    line-height: 1.5;
+    font-weight: 300;
+    color: color-mix(in srgb, currentColor 78%, transparent);
+    margin: 0;
+  }
+</style>

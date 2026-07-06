@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+import Monogram from "@components/ui/Monogram.astro";
+---
+
+<BaseLayout title="Not found" description="This page could not be found." noindex>
+  <Section>
+    <div class="nf" data-reveal>
+      <span class="mark"><Monogram size={40} /></span>
+      <p class="eyebrow">Error 404</p>
+      <h1>This one is off the map.</h1>
+      <p class="measure">The page you were after does not exist — or has moved. Everything worth finding is one step away.</p>
+      <div class="actions">
+        <Button href="/">Back to home</Button>
+        <Button href="/work" variant="outline">See the work</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .nf { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding-block: clamp(24px, 8vh, 80px); }
+  .mark { color: var(--color-signal); }
+  h1 { font-size: var(--text-h1); margin: 0; }
+  .nf p.measure { color: var(--color-body); margin: 0; }
+  .actions { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+</style>
