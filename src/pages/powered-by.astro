@@ -1,0 +1,80 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+import Monogram from "@components/ui/Monogram.astro";
+
+const owns = [
+  { t: "The engine", d: "Structured intelligence, repeatable frameworks, and the operating-system logic that runs the method at scale." },
+  { t: "The method", d: "3D + Deepen, enforced by the product — the gate is built in, not bolted on." },
+  { t: "The library", d: "Approved output libraries, evals and quality control, so the machine meets the human's standard." },
+  { t: "The community", d: "A partner community whose judgement beats a lone operator's." },
+];
+const you = [
+  { t: "The relationship", d: "You win the work and own the client. Maxxim is the engine behind you, never the name on the door." },
+  { t: "The judgement", d: "You hold trust, taste and judgement — the 20% clients pay for. You sign off every gate." },
+  { t: "The outcome", d: "Your client owns what gets built, outright, on their own domain." },
+];
+---
+
+<BaseLayout title="Powered by Maxxim" description="Maxxim is the engine behind the operator. You win the work and own the relationship; Maxxim delivers agency-grade growth repeatably, at AI speed.">
+  <PageHero eyebrow="For operators & partners" title="The engine behind the operator." intro="You win the work and own the relationship. Maxxim is the engine that lets you deliver agency-grade growth repeatably — fast, accountable, method-backed." />
+
+  <Section tone="mist">
+    <div class="split">
+      <div class="col" data-reveal>
+        <span class="badge"><Monogram size={18} /> Maxxim owns</span>
+        <div class="rows">{owns.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
+      </div>
+      <div class="col" data-reveal>
+        <span class="badge you">You own</span>
+        <div class="rows">{you.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
+      </div>
+    </div>
+    <p class="note measure" data-reveal>The engine enables. The human delivers. The engine creates leverage; the human creates trust. Maxxim never overshadows the operator in front of the client.</p>
+  </Section>
+
+  <Section>
+    <div class="steps-head" data-reveal><p class="eyebrow">How it works</p><h2>Plug the engine in behind you.</h2></div>
+    <div class="steps">
+      {[
+        { no: "01", t: "Bring the relationship", d: "You hold the client and run the always-human Discover." },
+        { no: "02", t: "Run the method", d: "The engine drafts Design and Deploy at AI speed; you sign off each gate." },
+        { no: "03", t: "Ship it owned", d: "The client gets finished work they own. You get repeatable capacity." },
+      ].map((s) => (
+        <div class="step" data-reveal><span class="sno">{s.no}</span><h3>{s.t}</h3><p>{s.d}</p></div>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="ink" rule>
+    <div class="cta" data-reveal>
+      <h2>Become a scaled partner, not a stuck one.</h2>
+      <Button href="/contact" variant="solid-invert">Start a conversation</Button>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: 24px; }
+  .col { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 32px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: var(--text-eyebrow); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-signal); }
+  .badge.you { color: var(--color-ink); }
+  .rows { margin-top: 22px; display: grid; gap: 20px; }
+  .row h3 { font-size: var(--text-h3); margin: 0 0 6px; }
+  .row p { font-size: var(--text-small); color: var(--color-body); margin: 0; }
+  .note { margin-top: 28px; color: var(--color-body); }
+  @media (min-width: 820px) { .split { grid-template-columns: 1.3fr 1fr; } }
+
+  .steps-head h2 { font-size: var(--text-h1); margin: 12px 0 0; }
+  .steps { margin-top: 40px; display: grid; gap: 24px; }
+  .step { border-top: 2px solid var(--color-signal); padding-top: 20px; }
+  .sno { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-signal); letter-spacing: 0.14em; }
+  .step h3 { margin: 10px 0 8px; font-size: var(--text-h3); }
+  .step p { margin: 0; font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+
+  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: var(--text-h1); margin: 0; max-width: 20ch; }
+</style>

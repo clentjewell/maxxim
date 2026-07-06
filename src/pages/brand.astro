@@ -1,0 +1,95 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+import Monogram from "@components/ui/Monogram.astro";
+
+const editions = [
+  { t: "Brand Guidelines", d: "The authored 22-page brand book: strategy foundation, logo system, Signal Blue, the Poppins scale, voice, imagery and applications.", href: "/3d-process/design/brand-guidelines/", cta: "Open the guidelines" },
+  { t: "Brand Book — web", d: "The single scrolling web edition. The canonical record, at a glance.", href: "/3d-process/design/brand-book/", cta: "Read the web edition" },
+  { t: "Brand Book — print", d: "The 22-page A4-landscape print edition, ready to export as PDF.", href: "/book/", cta: "Open the print edition" },
+];
+const swatches = [
+  { name: "Signal Blue", hex: "#2D5BFF", key: "signal" },
+  { name: "Ink", hex: "#0A0A0A", key: "ink" },
+  { name: "White", hex: "#FFFFFF", key: "white" },
+  { name: "Mist", hex: "#F5F6F8", key: "mist" },
+];
+---
+
+<BaseLayout title="Brand" description="The Maxxim brand system: Signal Blue, Poppins, the gated-M mark, and the flagship brand book.">
+  <PageHero eyebrow="The system" title="Calm, credible, high-contrast." intro="The brand earns trust through legibility and restraint, not decoration. Signal Blue is the only locked colour." />
+
+  <Section>
+    <div class="tokens" data-reveal>
+      <div class="colours">
+        <span class="eyebrow">Colour</span>
+        <div class="swatches">
+          {swatches.map((s) => (
+            <div class="swatch">
+              <div class:list={["chip", `chip-${s.key}`]}></div>
+              <div class="s-name">{s.name}</div>
+              <div class="s-hex">{s.hex}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="type">
+        <span class="eyebrow">Type</span>
+        <div class="type-demo">
+          <div class="td-a">Aa</div>
+          <div>
+            <div class="td-name">Poppins</div>
+            <div class="td-note">Display and body — the shared family spine.</div>
+            <div class="td-mono">IBM Plex Mono · eyebrows &amp; codes</div>
+          </div>
+        </div>
+      </div>
+      <div class="mark">
+        <span class="eyebrow">The mark</span>
+        <div class="mark-demo"><Monogram size={64} /><p>The gated-M in a solid squircle. No gradients, no shadows.</p></div>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="mist" rule>
+    <div class="ed-head" data-reveal><p class="eyebrow">The brand book</p><h2>Read the flagship.</h2></div>
+    <div class="editions">
+      {editions.map((e) => (
+        <div class="edition" data-reveal>
+          <h3>{e.t}</h3>
+          <p>{e.d}</p>
+          <Button href={e.href} variant="outline">{e.cta}</Button>
+        </div>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .tokens { display: grid; gap: 40px; }
+  .swatches { margin-top: 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .chip { height: 84px; border-radius: 12px; }
+  .chip-signal { background: var(--color-signal); }
+  .chip-ink { background: var(--color-ink); }
+  .chip-white { background: var(--color-white); border: 1px solid var(--color-border); }
+  .chip-mist { background: var(--color-mist); }
+  .s-name { margin-top: 10px; font-weight: 600; font-size: var(--text-small); }
+  .s-hex { font-family: var(--font-mono); font-size: 12px; color: var(--color-caption); }
+  .type-demo { margin-top: 16px; display: flex; gap: 20px; align-items: center; }
+  .td-a { font-size: 72px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+  .td-name { font-weight: 600; }
+  .td-note { font-size: var(--text-small); color: var(--color-body); }
+  .td-mono { font-family: var(--font-mono); font-size: 12px; color: var(--color-caption); margin-top: 6px; }
+  .mark-demo { margin-top: 16px; display: flex; gap: 20px; align-items: center; color: var(--color-signal); }
+  .mark-demo p { font-size: var(--text-small); color: var(--color-body); max-width: 30ch; }
+  @media (min-width: 900px) { .tokens { grid-template-columns: 1.4fr 1fr 1fr; align-items: start; } .swatches { grid-template-columns: repeat(4, 1fr); } }
+
+  .ed-head h2 { font-size: var(--text-h1); margin: 12px 0 0; }
+  .editions { margin-top: 40px; display: grid; gap: 24px; }
+  .edition { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 30px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .edition h3 { font-size: var(--text-h3); margin: 0; }
+  .edition p { font-size: var(--text-small); color: var(--color-body); margin: 0; flex: 1; }
+  @media (min-width: 800px) { .editions { grid-template-columns: repeat(3, 1fr); } }
+</style>

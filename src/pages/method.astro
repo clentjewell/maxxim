@@ -1,0 +1,79 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+
+const phases = [
+  { no: "01", t: "Discover", tag: "Always human", d: "Context, audience, competitors, the real problem and the real opportunity — mapped by a named human before anything is built. This phase never hands off to the machine.", pts: ["Business goals and constraints", "Audience and competitive set", "The problem worth solving", "Decisions needed at the gate"] },
+  { no: "02", t: "Design", tag: "Human-led, machine-assisted", d: "Discovery becomes strategy, positioning, identity, and the assets that carry it. The engine drafts at speed; the human decides and signs off at the gate.", pts: ["Strategy and positioning", "Brand identity and voice", "Website and content system", "Measurement plan"] },
+  { no: "03", t: "Deploy", tag: "Finished and owned", d: "Approved strategy becomes live work — on the client's own domain, owned outright, unlockable. Finished outcomes, not busy dashboards.", pts: ["Live website and assets", "Campaigns and automations", "Reporting the client owns", "Handover and ownership"] },
+  { no: "04", t: "Deepen", tag: "The compounding loop", d: "Once the engine is live, the loop keeps intelligence current — capturing what changed, what mattered, and what can be retired, washed back only with human approval.", pts: ["Performance and signals", "Lessons and friction", "Repeated questions", "Approved improvements"] },
+];
+---
+
+<BaseLayout title="The Method" description="3D + Deepen: Discover, Design, Deploy, then the compounding loop. The proven method, run by a human, at AI speed.">
+  <PageHero eyebrow="The method" title="3D + Deepen." intro="A proven, gated process — not a prompt and a prayer. The gate is the quality bar. No phase proceeds until the prior one is signed off." tone="ink" />
+
+  <Section>
+    <div class="seam" data-reveal>
+      <p class="eyebrow">The seam</p>
+      <div class="seam-bar" role="img" aria-label="Twenty percent human, eighty percent machine">
+        <div class="human"><span class="pct">20%</span><span class="lbl">Human · trust, taste, judgement</span></div>
+        <div class="machine"><span class="pct">80%</span><span class="lbl">Machine · the repeatable volume, checked at every gate</span></div>
+      </div>
+    </div>
+  </Section>
+
+  {phases.map((p, i) => (
+    <Section tone={i % 2 === 0 ? "white" : "mist"} rule={i === 0}>
+      <div class="phase" data-reveal>
+        <div class="phase-side">
+          <span class="pno">{p.no}</span>
+          <span class="ptag">{p.tag}</span>
+        </div>
+        <div class="phase-main">
+          <h2>{p.t}</h2>
+          <p class="measure">{p.d}</p>
+          <ul>{p.pts.map((pt) => <li>{pt}</li>)}</ul>
+        </div>
+      </div>
+    </Section>
+  ))}
+
+  <Section tone="ink" rule>
+    <div class="cta" data-reveal>
+      <h2>See the method in market.</h2>
+      <div class="cta-actions">
+        <Button href="/work" variant="solid-invert">See the work</Button>
+        <Button href="/3d-process/" variant="ghost">Open the 3D Process pack →</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .seam-bar { display: grid; grid-template-columns: 20fr 80fr; border-radius: 14px; overflow: hidden; border: 1px solid var(--color-border); }
+  .seam-bar > div { padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 108px; justify-content: center; }
+  .seam-bar .human { background: var(--color-signal); color: var(--color-white); }
+  .seam-bar .machine { background: var(--color-mist); color: var(--color-ink); }
+  .seam-bar .pct { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .seam-bar .lbl { font-size: var(--text-small); font-weight: 500; }
+  .machine .lbl { color: var(--color-body); }
+
+  .phase { display: grid; gap: 28px; }
+  .phase-side { display: flex; flex-direction: column; gap: 10px; }
+  .pno { font-family: var(--font-mono); font-size: 40px; font-weight: 500; color: var(--color-signal); line-height: 1; }
+  .ptag { font-family: var(--font-mono); font-size: var(--text-eyebrow); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-label); }
+  .phase-main h2 { font-size: var(--text-h1); margin: 0 0 16px; }
+  .phase-main p { color: var(--color-body); margin: 0; }
+  .phase-main ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .phase-main li { position: relative; padding-left: 22px; font-size: var(--text-small); color: var(--color-body); }
+  .phase-main li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 2px; background: var(--color-signal); transform: rotate(45deg); }
+  @media (min-width: 820px) { .phase { grid-template-columns: 220px 1fr; gap: 48px; } .phase-main ul { grid-template-columns: 1fr 1fr; } }
+
+  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: var(--text-h1); margin: 0; }
+  .cta-actions { display: flex; gap: 14px; align-items: center; }
+  .cta :global(.btn-ghost) { color: var(--color-blue-tint); }
+</style>

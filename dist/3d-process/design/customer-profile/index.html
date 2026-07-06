@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer Profile · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Csvg%20x%3D%2218%22%20y%3D%2218%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%2273%200%2058%2058%22%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(81.0711%2C%2022.0711)%20rotate(45)%20translate(-81.0711%2C%20-22.0711)%22%20x%3D%2276.0710678%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(88.0711%2C%2029.0711)%20rotate(45)%20translate(-88.0711%2C%20-29.0711)%22%20x%3D%2283.0710678%22%20y%3D%2224.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(95.0711%2C%2036.0711)%20rotate(45)%20translate(-95.0711%2C%20-36.0711)%22%20x%3D%2290.0710678%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(81.0711%2C%2036.0711)%20rotate(45)%20translate(-81.0711%2C%20-36.0711)%22%20x%3D%2276.0710678%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(109.0711%2C%2036.0711)%20rotate(45)%20translate(-109.0711%2C%20-36.0711)%22%20x%3D%22104.071068%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(123.0711%2C%2036.0711)%20rotate(45)%20translate(-123.0711%2C%20-36.0711)%22%20x%3D%22118.071068%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(95.0711%2C%2022.0711)%20rotate(45)%20translate(-95.0711%2C%20-22.0711)%22%20x%3D%2290.0710678%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(116.0711%2C%2029.0711)%20rotate(45)%20translate(-116.0711%2C%20-29.0711)%22%20x%3D%22111.071068%22%20y%3D%2224.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(123.0711%2C%2022.0711)%20rotate(45)%20translate(-123.0711%2C%20-22.0711)%22%20x%3D%22118.071068%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(102.0711%2C%2015.0711)%20rotate(45)%20translate(-102.0711%2C%20-15.0711)%22%20x%3D%2297.0710678%22%20y%3D%2210.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(109.0711%2C%2022.0711)%20rotate(45)%20translate(-109.0711%2C%20-22.0711)%22%20x%3D%22104.071068%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(95.0711%2C%2050.0711)%20rotate(45)%20translate(-95.0711%2C%20-50.0711)%22%20x%3D%2290.0710678%22%20y%3D%2245.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(102.0711%2C%2043.0711)%20rotate(45)%20translate(-102.0711%2C%20-43.0711)%22%20x%3D%2297.0710678%22%20y%3D%2238.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(109.0711%2C%2050.0711)%20rotate(45)%20translate(-109.0711%2C%20-50.0711)%22%20x%3D%22104.071068%22%20y%3D%2245.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(109.0711%2C%208.0711)%20rotate(45)%20translate(-109.0711%2C%20-8.0711)%22%20x%3D%22104.071068%22%20y%3D%223.07106781%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(95.0711%2C%208.0711)%20rotate(45)%20translate(-95.0711%2C%20-8.0711)%22%20x%3D%2290.0710678%22%20y%3D%223.07106781%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3C%2Fsvg%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="/fonts/legacy.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="73 0 58 58" aria-hidden="true"><rect fill-opacity="0.9" fill="currentColor" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect><rect fill="currentColor" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="currentColor" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="currentColor" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="currentColor" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#83A1FF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect><rect fill="currentColor" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#83A1FF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc current" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">02 · Design</span>
+    <h1>Customer Profile</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this</h2>
+      <p>This document goes deeper than the Audience Teardown. The teardown named the segments. This profile maps the full journey each one travels, builds the personas in the round, names the jobs they are really hiring Maxxim to do, and shows who holds the pen in a deal. It is built for the Design phase and is canonical input for brand strategy, the offer, and the showcase narrative. See <em>audience-teardown.html</em> for the segments and <em>discover-summary.html</em> for the Gate 1 position it reads against.</p>
+      <p>Version 2 folds in two things known since the 27 June version. First, the real product mechanics from the 29 June guide: three named specialists, each a process, running the work; a gated Discover to Design to Deploy to Deepen method; mechanical gating that unlocks creative only as its briefs exist; a read-only client portal with a private assistant called Ari; and a delivery stack that ships real, owned websites in days. Second, the live Jewell partner site, the first working proof that the partner model holds. Jewell is used throughout as the concrete reference-implementation of the ideal partner: a 35-year operator who owns the client and the human 20 percent, and runs Maxxim as the machine 80 percent.</p>
+      <p>Three Gate 1 decisions govern this profile. They are set, so this document reads against them rather than around them.</p>
+      <ul>
+        <li><strong>Two customer layers, not one.</strong> The <strong>partner layer</strong> is the near-term front door: Client Partner or licensee, Referrer, and Specialist. The <strong>end-client layer</strong> is served through partners, never around them. Jewell is the first and exemplar partner, the worked example every other partner is shown.</li>
+        <li><strong>The end-client layer is universal.</strong> The engine suits every kind of organisation, across all sizes and sectors: personal brand, solo operator, small and medium business, corporate organisation, not for profit, and all levels of government. Government and not for profit add a procurement and probity overlay on top of the same core journey.</li>
+        <li><strong>One objection sits under every persona, on both layers.</strong> The trust gap: can AI hit a standard I will put my name on. Every job-to-be-done, pain, and gain in this document ladders up to closing that gap. The lever that closes it is constant: a proven gated method, AI speed through Max, Sal and Pip, and an accountable human who signs the work at every gate, with Pottsville Acupuncture as the cleared public proof.</li>
+      </ul>
+      <p><strong>The product, named.</strong> Three specialists carry the machine 80 percent, each a repeatable process the partner drives and checks. <strong>Max</strong> does the words in Claude Cowork: strategy, plans, copy, briefs, summaries. <strong>Sal</strong> does the pixels in the dashboard Design Studio: logos, brand imagery, collateral, video. <strong>Pip</strong> runs the Social Studio: drafts and, on approval, publishes posts. The work is gated end to end, and creative unlocks only as the briefs it depends on exist: a logo needs its Logo Brief, collateral needs Brand Guidelines and a locked logo, the Social Studio unlocks once the Social Strategy exists. Deliverables save to Maxxim's secure storage and surface on the dashboard. Client websites ship as owned, hosted assets, locked by default and unlockable to hand-editable HTML as a one-way door. End clients can be given a cut-down, read-only portal with Files, Help, and a private business assistant called Ari. Nobody on either layer sees costs. These are product facts, and they change the texture of every journey below.</p>
+      <p><strong>North star, noted not built here.</strong> An end-user self-serve portal is a future second, direct route to the end-client layer. Near term, the route is partner-mediated. Where a journey stage would change under the portal, that is flagged as a future-state note, not designed. Ownership-at-portal-entry stays OPEN.</p>
+      <p>Assumptions are flagged inline with <em>[Assumption]</em>. Partner economics are illustrative throughout and are never stated as set. Open items from Gate 1 are carried, not resolved: Maxxim's visibility to end clients and end-client ownership per lead source stay open.</p>
+    </section>
+
+    <section>
+      <h2>The two layers and the universal end-client range</h2>
+      <p>Before the journey, the shape of the audience. Maxxim sells to a partner layer that delivers to a universal end-client layer. The map below holds both, and shows where the trust gap and the procurement and probity overlay sit.</p>
+
+      <figure>
+        <figcaption>Audience map: two layers, the partner doors, and the universal end-client range</figcaption>
+        <pre><code>                          MAXXIM AUDIENCE
+                                |
+        +-----------------------+------------------------+
+        |                                                |
+   LAYER A: PARTNER                              LAYER B: END CLIENT
+   (near-term front door)                        (served through a partner)
+        |                                                |
+   +----+--------+----------+                 +----------+-----------+
+   |             |          |                 |  universal range,    |
+ A1 Client     A2 Refer   A3 Specialist       |  one core journey    |
+ Partner       Referrer    (scoped module,    +----------+-----------+
+ (license,     (refer and  slots next to                 |
+  owns +        earn, no    Sal or Pip,   +-------+-------+-------+-------+-------+
+  runs client)  delivery)   no ownership) |       |       |       |       |       |
+        |             |          |        B-pb    B-solo  B-sme   B-corp  B-nfp   B-gov
+        |             |          |       personal solo   small/  corporate not-for all
+        |             |          |       brand   operator medium           profit  govt
+        +------+------+----------+          |       |       |       |       |       |
+               |                            +-------+---+---+-------+---+---+-------+
+        Jewell = first and                              |               |
+        exemplar partner: a 35-yr                standard overlay   PROCUREMENT +
+        operator who owns the                    (the core journey  PROBITY OVERLAY
+        human 20% and runs Maxxim                 applies as-is)    (panels, tenders,
+        as the machine 80%.                                          conflict, audit,
+        Pottsville is the                                            value-for-money)
+        cleared public proof.
+               |
+               v
+        TRUST GAP runs under every box on both layers:
+        "can AI hit a standard I will put my name on"
+               |
+        future-state: an end-user SELF-SERVE PORTAL becomes a
+        second, direct front door to Layer B once the partner
+        motion is proven. [North star, not built here. Ownership
+        at portal entry is OPEN.]</code></pre>
+      </figure>
+      <p><strong>Reading the range.</strong> The constant across every end-client type is the core question Maxxim answers: a proven, gated method plus AI speed plus an accountable human. The variable is context, tier, and compliance. A personal brand and a solo operator buy a fast, owned outcome at the entry tier. An SME or a corporate buys a complete strategy and launched assets, often with a Deepen retainer. A not for profit and a government body buy the same outcome but carry a procurement and probity overlay: panels and tenders, conflict-of-interest declarations, value-for-money tests, records and audit, and accessibility obligations. That overlay reshapes the consideration and decision stages of their journey, not the value itself.</p>
+      <p><strong>Jewell as the reference-implementation.</strong> Where a partner journey needs a concrete anchor, this profile uses Jewell, because Jewell now runs the whole model live. Jewell enters and owns the client, keeps Discover human, and hands Design and Deploy to the Maxxim engine at scale with human checks at every stage. Jewell packages the method its own way, a Growth Diagnostic then a Fractional CMO engine then Maxxim at scale, but that packaging and Jewell's own named results (Hidrive and others) sit under Jewell's banner, not Maxxim's. The fractional CMO model and the front-door product stay OPEN for Maxxim. Jewell is the pattern, not a settled Maxxim fact.</p>
+    </section>
+
+    <section>
+      <h2>Section 1: Customer Journey Map</h2>
+      <p>The 3D Process is the spine of every journey: Pre-3D, Discover, Design, Deploy, then Deepen, with a partner sign-off gate at each phase boundary. Below, that spine is shown once with both layers running along it, then each key segment is mapped through the standard six journey stages with touchpoints, emotions, pain points, and opportunities.</p>
+
+      <figure>
+        <figcaption>Journey map: the 3D spine plus Deepen, with partner and end-client touchpoints and the gates</figcaption>
+        <pre><code> STAGE:   PRE-3D        DISCOVER       DESIGN         DEPLOY         DEEPEN
+          intake,       audience,      strategy,      launch site,   compounding
+          scope,        competitor,    brief,         proof, owned    improvement
+          payment       offer,         personas,      asset, portal   loop, retainer
+          |             killer Qs      logo lock      + Ari           |
+          |             |              |              |              |
+ GATE:    [G:ready]====[G1 sign-off]==[G2 sign-off]==[G3 sign-off]==[ongoing]
+          |             |              |              |              |
+ +--------+-------------+--------------+--------------+--------------+----------+
+ |                                                                              |
+ | PARTNER (A1/A2/A3): onboards to platform + standards, then RUNS the spine    |
+ |  for the end client. Max writes the words, Sal makes the pixels in the       |
+ |  Design Studio, Pip runs the Social Studio. Creative unlocks only as its     |
+ |  briefs exist. The partner owns the relationship and signs the 20% that      |
+ |  carries their name.                                                        |
+ |   touchpoints: founder network, 3 July showcase, dashboard (admin), the     |
+ |   Cowork workspace, the Studios, sign-off gates, deliverables in storage.   |
+ |   A2 Referrer touches PRE-3D only (warm intro) then exits to a fee.         |
+ |   A3 Specialist touches DESIGN/DEPLOY only (one scoped module, beside       |
+ |   Sal or Pip), pulled in when a gate unlocks their brief.                   |
+ |                                                                              |
+ | END CLIENT (B-*): experiences the spine THROUGH the partner.                |
+ |   touchpoints: the partner (named human), the diagnostic, gate reviews,      |
+ |   the launched OWNED asset (hosted, locked by default), an optional          |
+ |   read-only portal (Files, Help, and the assistant Ari), the Deepen rhythm. |
+ |   Nobody sees costs.                                                         |
+ |   NFP/GOV add: procurement gate BEFORE Pre-3D (panel/quote/tender, probity   |
+ |   sign-off) and an audit/records overlay across every gate.                 |
+ |                                                                              |
+ +------------------------------------------------------------------------------+
+   future-state: SELF-SERVE PORTAL lets a B-* client run Discover themselves
+   and output their own 3D deliverables; ownership-at-portal-entry is OPEN.</code></pre>
+      </figure>
+
+      <h3>1A. Client Partner journey (Segment A1, the licence door, primary audience)</h3>
+      <p>Jewell is the worked example of this journey run end to end: a 35-year operator who came in through the founder relationship, kept ownership of the client and the standard, and now runs the machine 80 percent live. Every other Client Partner is shown that shape.</p>
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Touchpoints</th><th>Emotions</th><th>Pain points</th><th>Opportunities</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Awareness</strong></td>
+            <td>Founder network; operator-to-operator referral; the 3 July showcase invitation; a live partner (Jewell) visible in market as the reference.</td>
+            <td>Recognition and a little relief. Someone has named the cap they feel daily, and a peer is already running the answer.</td>
+            <td>They feel the capacity ceiling but do not know this category exists. They reach for white-label and agency-in-a-box first.</td>
+            <td>Name the cap precisely. Lead with the machine for your judgement, not a tool pitch. Use the showcase and the Jewell reference to make the category visible.</td>
+          </tr>
+          <tr>
+            <td><strong>Consideration</strong></td>
+            <td>The showcase run as a discovery and alignment session; a live look at Max writing the words and Sal producing pixels in the Design Studio; the gates unlocking as briefs are signed; Pottsville as proof; the partner economics conversation.</td>
+            <td>Sharp scrutiny. They judge the engine, not the marketing. Hope mixed with the trust gap.</td>
+            <td>Can AI hit a standard I will put my name on. Will the economics leave me a margin. Does the method bend to my client. Am I locked in if the site ships locked. Does the platform reach my client behind me.</td>
+            <td>Show the gates and the 80/20 split working on a real business. Let them watch the human sign-off and the mechanical gating hold quality. Point to Jewell running it live. Make the proof do the talking.</td>
+          </tr>
+          <tr>
+            <td><strong>Decision</strong></td>
+            <td>Direct conversation with Clent or a founding-cohort offer; the membership compact; the floor-plus-clip structure <em>[illustrative]</em>; the standing rule that one named partner owns each client relationship.</td>
+            <td>Calculated confidence. They are saying yes to a model, not a brochure.</td>
+            <td>Uncertainty on economics that are still being proven. Fear the relationship leaks to Maxxim. Wants the deal clean and the ownership rule explicit.</td>
+            <td>Frame as joining a founding table, not buying a tool. Make ownership of the client relationship the explicit, protected, public rule. Keep costs invisible to them by design.</td>
+          </tr>
+          <tr>
+            <td><strong>Onboarding</strong></td>
+            <td>Platform and standards onboarding; the admin dashboard and the Cowork workspace; first client run through Pre-3D and Discover with Max; the weekly table.</td>
+            <td>Eagerness with a steep-curve wobble. Wants an early, clean win.</td>
+            <td>Learning the rails while delivering live. Risk of quality drift if the standard is not yet internalised. Learning where each Studio unlocks.</td>
+            <td>Engineer a fast first-value moment: one clean first sale via the Growth Diagnostic, run on the rails. Pair them at the table so they are not alone. Let the gating teach the standard.</td>
+          </tr>
+          <tr>
+            <td><strong>Retention</strong></td>
+            <td>The cadence (weekly, monthly, quarterly, annual offsite); the compounding loop; the deal-share board; the Deepen retainers they run for their own clients; the engine visibly improving as friction is fed back.</td>
+            <td>Belonging. They stay for the people and the sharpening engine as much as the tool.</td>
+            <td>If the table goes quiet or the standard slips, the moat thins. Support burden if facilitation is heavy.</td>
+            <td>Keep the table light and no-sell. Feed their client friction back into Max, Sal and Pip so the engine visibly improves for them.</td>
+          </tr>
+          <tr>
+            <td><strong>Advocacy</strong></td>
+            <td>Quarterly showcase of a client win; the partner directory; referring deal flow to and from other partners; Jewell as the standard-bearer.</td>
+            <td>Pride and reciprocity. Their win becomes the community's proof.</td>
+            <td>Confidentiality nerves about sharing named client specifics without consent and clearance.</td>
+            <td>Run a case-study factory off the quarterly, inside clearance. Make shared deal flow the tangible payoff of belonging.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>1B. Referrer journey (Segment A2, the refer door)</h3>
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Touchpoints</th><th>Emotions</th><th>Pain points</th><th>Opportunities</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Awareness</strong></td><td>Founder network; the showcase as a soft introduction to the model.</td><td>Mild curiosity. Low effort is the appeal.</td><td>They do not know there is a clean way to monetise their network without delivery risk.</td><td>Position refer and earn as the lightest door. One intro, one fee.</td></tr>
+          <tr><td><strong>Consideration</strong></td><td>A direct conversation; the finder's-fee arrangement <em>[illustrative]</em>; evidence the delivery side will not embarrass them, anchored by the one-partner-owns-the-relationship rule.</td><td>Protective. Their name rides on it.</td><td>Will my contact be looked after to a standard that protects my name. Is the fee worth it. Is this clean or a tangle.</td><td>Lead with reputation protection: a named human owns and stands behind every engagement. Document the fee terms up front.</td></tr>
+          <tr><td><strong>Decision</strong></td><td>A documented one-off finder's-fee agreement on conversion.</td><td>Easy yes once the arrangement is clean.</td><td>Ambiguity on whether the fee trails and on the window.</td><td>Make the arrangement a single clear page: who referred, fee, one-off or trailing, window.</td></tr>
+          <tr><td><strong>Onboarding</strong></td><td>None in the delivery sense. The single act is a warm introduction handed to a partner.</td><td>Detached and comfortable. They have handed off.</td><td>No visibility into how the contact is treated unless given a light line of sight.</td><td>Offer a light status courtesy: a note that their contact was looked after. Protects the relationship.</td></tr>
+          <tr><td><strong>Retention</strong></td><td>Repeat introductions; staying inside the trusted-operator circle.</td><td>Trust, renewed by a clean first experience.</td><td>One bad referral experience ends the behaviour permanently.</td><td>Treat the first referred client immaculately. The referrer is retained by the end client's experience, not their own.</td></tr>
+          <tr><td><strong>Advocacy</strong></td><td>Telling other well-networked operators it is a clean earn.</td><td>Quiet confidence in recommending it.</td><td>Will not advocate if the arrangement felt loose.</td><td>The clean, paid, documented experience is itself the advocacy trigger.</td></tr>
+        </tbody>
+      </table>
+      <p><em>[Assumption: referrer triggers and objections are partly inferred from the live example (Greg Johnson) and the Christy Kilmartin referrer hat, kept strictly separate from her specialist hat; confirm with a recorded founder interview. The referrer-versus-specialist pay rule is OPEN.]</em></p>
+
+      <h3>1C. Specialist journey (Segment A3, the specialist door)</h3>
+      <p>The specialist slots alongside Sal in the Design Studio or Pip in the Social Studio, contributing craft to a gated module rather than running the engagement. The gate is their signal: their module unlocks only when the brief it depends on exists.</p>
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Touchpoints</th><th>Emotions</th><th>Pain points</th><th>Opportunities</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Awareness</strong></td><td>The partner network that pulls them in; a live engagement that needs their module.</td><td>Interest, on their own terms. They want the craft, not the ownership.</td><td>Their best work is buried in full agency jobs, or sold as loose freelance hours with no system.</td><td>Position the door as scoped craft inside a system that protects quality. No engagement ownership.</td></tr>
+          <tr><td><strong>Consideration</strong></td><td>A scoped brief tied to the gate that unlocks it (collateral needs Brand Guidelines and a locked logo; campaign pieces need the Design Brief); the fee anchor around the $1,500 add-on.</td><td>Reassured by a fixed edge. Wary of scope creep.</td><td>Is the scope really fixed. Is the fee fair for the craft. Will I be blended into things I did not agree to.</td><td>Make the gate the guarantee of scope: the brief defines the module and the handoff. Fee respects the craft.</td></tr>
+          <tr><td><strong>Decision</strong></td><td>Acceptance of a single scoped module at a clear fee, sourced by the partner or by Maxxim.</td><td>Clean yes when the boundary is explicit.</td><td>Fear of being pulled into ownership they did not sign up for.</td><td>One module, one fee, one handoff. Maxxim clips a packaging margin only when it sources the work.</td></tr>
+          <tr><td><strong>Onboarding</strong></td><td>The brief lands; they work beside Sal or Pip in the relevant Studio; they deliver into the gate.</td><td>In their element. Craft-focused.</td><td>Friction if the brief is thin or the handoff is unclear.</td><td>A clean brief and a clean handoff beat a glossy onboarding. Let the system route them clean work.</td></tr>
+          <tr><td><strong>Retention</strong></td><td>Repeat modules pulled by engagement volume as gates unlock across the partner network.</td><td>Trust that the work is scoped and paid cleanly.</td><td>If scope creeps once, the trust in the system erodes.</td><td>Protect the scope every time. Retention is demand-pulled, not pushed.</td></tr>
+          <tr><td><strong>Advocacy</strong></td><td>Telling peer specialists the system routes clean, scoped, paid work.</td><td>Quiet confidence in a system that respects the craft.</td><td>Will not advocate if a module blurred into ownership.</td><td>Clean scope, clean fee, clean handoff is the advocacy trigger.</td></tr>
+        </tbody>
+      </table>
+      <p><em>[Assumption: specialist triggers and objections are partly inferred from the Christy Kilmartin specialist hat and the $1,500 anchor; confirm with a recorded founder interview.]</em></p>
+
+      <h3>1D. End-client journey (Segment B, universal range, mapped on the SME shape with the NFP and government overlay called out)</h3>
+      <p>Pottsville Acupuncture is the cleared example of the outcome this journey produces: a full 3D run and a launched site the client owns outright, with the Deepen pattern following the launch. The product experience below is what the end client actually meets, through the partner.</p>
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Touchpoints</th><th>Emotions</th><th>Pain points</th><th>Opportunities</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Awareness</strong></td>
+            <td>The partner who already holds the relationship; a vertical database such as the tradie list; local word of mouth.</td>
+            <td>Frustration carried in from past spend. Cautious interest.</td>
+            <td>They think in terms of a website or an agency, not a gated method. They may have been burned before.</td>
+            <td>Meet them where they are: the phone rings, you own the asset. Let the trusted partner make the introduction.</td>
+          </tr>
+          <tr>
+            <td><strong>Consideration</strong></td>
+            <td>The Growth Diagnostic at $4,950, credited toward the engagement; Pottsville proof; the partner walking them through the gates; the promise of an owned, hosted asset.</td>
+            <td>Hope undercut by AI wariness. They want someone accountable.</td>
+            <td>Can I trust AI output without a person behind it. Will I own it or be locked in. Is it really done for me.</td>
+            <td>The diagnostic lowers risk and qualifies fit. The named human at every gate closes the trust gap. Lead with Pottsville. Costs stay invisible to them.</td>
+          </tr>
+          <tr>
+            <td><strong>Decision</strong></td>
+            <td>The $4,950 sprint as the low-risk entry, credited forward, then the core engagement; the partner as the single accountable owner.</td>
+            <td>Relief at a clear, finite first step. Confidence in a named owner.</td>
+            <td>Price sensitivity at the entry tiers. Need certainty on ownership and outcome.</td>
+            <td>Credit the sprint toward the engagement so the first yes is easy. One named human accountable for the result.</td>
+          </tr>
+          <tr>
+            <td><strong>Onboarding</strong></td>
+            <td>Discover run with the partner and Max; gate reviews; Sal producing brand and site assets; rapid movement to Design and Deploy; an optional read-only portal (Files, Help, and the assistant Ari).</td>
+            <td>Surprise at the speed. Days, not months.</td>
+            <td>Past experience of slow, opaque agencies makes them brace for delay and black boxes.</td>
+            <td>Speed is the delighter. Make each gate a visible, accountable checkpoint. The portal and Ari give a calm, read-only line of sight without exposing the engine or costs.</td>
+          </tr>
+          <tr>
+            <td><strong>Retention</strong></td>
+            <td>The launched, owned asset (hosted, locked by default, unlockable to hand-editable HTML); the Deepen retainer (the Pottsville pattern); Pip running social on approval; the ongoing partner relationship.</td>
+            <td>Satisfaction that compounds. They own the result.</td>
+            <td>A one-off launch with no follow-through stalls the relationship.</td>
+            <td>Position Deepen as improvement that compounds, not an open-ended retainer. The asset they own is the anchor; the portal keeps it close.</td>
+          </tr>
+          <tr>
+            <td><strong>Advocacy</strong></td>
+            <td>Local word of mouth; a named, cleared testimonial; referral to peers in the same vertical.</td>
+            <td>Pride in an owned, working asset.</td>
+            <td>Only Pottsville is cleared for public proof today, which caps visible advocacy.</td>
+            <td>Make clearing more named proof the highest-value action. Happy owners refer within tight vertical networks.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Procurement and probity overlay (B-nfp and B-gov).</strong> For not for profit and government end clients, two stages change shape. Before Pre-3D, a <strong>procurement gate</strong> appears: panel membership, quotes or a tender, conflict-of-interest declarations, and a value-for-money test. Across every gate, an <strong>audit and records overlay</strong> applies: decisions must be documented and defensible, accessibility obligations (such as WCAG for public-facing assets) must be met, and data handling must satisfy public-sector privacy rules. The value Maxxim offers is unchanged, and the gated method plus signed deliverables in secure storage actually help the paper trail. The buying motion is slower, more committee-shaped, and more evidence-hungry. <em>[Assumption: specific procurement thresholds and panel routes vary by jurisdiction and agency; confirm per opportunity. No government or not-for-profit run is yet in the proof library.]</em></p>
+    </section>
+
+    <section>
+      <h2>Section 2: Detailed Buyer Personas</h2>
+      <p>Five personas span the two layers and the universal range. Two are drawn in full depth as the SKILL requires (Operator Owen and Director Diane), because they carry the most strategic weight: the primary partner door and the highest-value end-client shape. Connector Carol, Specialist Sasha, and Procurement Pat are drawn in working depth to cover the refer door, the specialist door, and the public-sector overlay. Jewell is the live reference behind Owen.</p>
+
+      <h3>Persona 1: Operator Owen, the Capacity-Capped Client Partner (Layer A, primary)</h3>
+      <p><strong>Day in the life.</strong> Owen runs a respected one-to-few marketing and growth operation on reputation and relationship. He is the live shape of Alex and 3P, sitting on a stack of named opportunities, roughly thirty-six, that he cannot personally serve. His morning is three client calls he is good at and one proposal he will not send because he has no hours to deliver it. By mid-afternoon he turns away work he could win, which is the worst part of his day. He has tried bolting AI tools onto his process and they are fast but unaccountable, and he will not put his name on raw AI output. When he looks at Jewell, a 35-year operator running the whole model live, owning the client and letting the machine carry the volume, he sees where he could be. He goes home knowing his ceiling is himself.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Decision criteria (ranked)</strong></td><td>1. Can the output hit a standard I will sign. 2. Do I keep the client relationship and the margin. 3. Does the method bend to my client without breaking. 4. Are the economics real for me <em>[illustrative until pilots]</em>. 5. Am I free of lock-in and invisible to my client behind the engine.</td></tr>
+          <tr><td><strong>Information sources</strong></td><td>Trusted operators in his network; the founder (Clent) directly; a live partner (Jewell) he can scrutinise; live proof and a real run he can watch; the 3 July showcase. He trusts demonstration over decks.</td></tr>
+          <tr><td><strong>Objection patterns</strong></td><td>Can AI really do this to a standard I can put my name on (the trust gap, the core one). Will the floor-plus-clip leave me a margin. Will a productised method handle my client's specifics. What happens to my relationship if Maxxim is visible to my client. Am I locked in if the site ships locked as Astro.</td></tr>
+          <tr><td><strong>Communication preferences</strong></td><td>Operator to operator, plain and direct. Live walkthroughs of Max, Sal and Pip over slideware. Short, substantive written follow-ups. No hype, no em dashes.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Persona 2: Director Diane, the Growth-Stage SME or Corporate Marketing Lead (Layer B, highest value)</h3>
+      <p><strong>Day in the life.</strong> Diane leads marketing for an established business with real budget and a growth target her in-house team cannot hit alone. She is the shape behind the mid and premium tiers, including the recent full run at roughly eighty thousand dollars within the twenty-five-to-two-hundred-and-fifty-thousand band. Her day is a standup, a board-deck request she has no fresh assets for, and a frustrating check-in with a current agency that is slow, expensive, and opaque. She has watched cheap AI-built sites flood her category and does not trust them for a brand with real money on the line. She wants one accountable owner of the outcome, a launched asset she truly owns, and to see progress without being handed a black box. She is tired of not having any of it.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Decision criteria (ranked)</strong></td><td>1. Is the quality genuinely agency-grade. 2. Who is single-point accountable when it matters. 3. Does the method handle the specifics of my business. 4. Speed to launched, owned assets. 5. Is the premium price justified and does improvement compound through Deepen.</td></tr>
+          <tr><td><strong>Information sources</strong></td><td>Peers and other owners; the partner who introduced her; cleared, named proof (Pottsville today); benchmarks against full-service agencies. She scrutinises method and accountability, not the brochure.</td></tr>
+          <tr><td><strong>Objection patterns</strong></td><td>Can a productised method handle my business. Is the quality really agency-grade or AI filler. Who owns the outcome when it goes wrong. Do I actually own the asset or am I locked in. Is the premium justified. Will this be a one-off or keep improving.</td></tr>
+          <tr><td><strong>Communication preferences</strong></td><td>Evidence-led and accountable. A clear gated process she can see, with a read-only portal and Ari for calm line of sight. A named human she can call. Outcomes over sizzle.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Persona 3: Connector Carol, the Networked Referrer (Layer A, refer door)</h3>
+      <p><strong>Day in the life.</strong> Carol has a deep, trusted network and no desire to deliver anything. People come to her for introductions. She is the shape of Greg Johnson and the referrer hat Christy Kilmartin wears, kept strictly separate from any specialist work. Today she will have coffee with a business owner who plainly needs growth help, and she would happily point them somewhere, if pointing them did not put her name at risk.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Decision criteria (ranked)</strong></td><td>1. Will my contact be looked after to a standard that protects my name. 2. Is the arrangement clean and documented. 3. Is the fee worth the introduction <em>[illustrative]</em>. 4. Zero delivery burden.</td></tr>
+          <tr><td><strong>Information sources</strong></td><td>Her own trusted circle; the founder directly; the showcase as a soft introduction.</td></tr>
+          <tr><td><strong>Objection patterns</strong></td><td>Will a referral embarrass me. Is this a clean arrangement or a tangle. Is the fee fair for one introduction.</td></tr>
+          <tr><td><strong>Communication preferences</strong></td><td>Light, relationship-led, low effort. One clear page on the fee. Reassurance that a named human owns the work and stands behind it.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Persona 4: Specialist Sasha, the Scoped Specialist (Layer A, specialist door)</h3>
+      <p><strong>Day in the life.</strong> Sasha is excellent at one thing, brand and campaign work being the clearest example, and is tired of that work being buried inside full agency engagements she does not want to run, or sold as loose freelance hours with no system around her. She wants a clean, scoped brief, a fair fee around the fifteen-hundred-dollar add-on anchor, and no ownership of the whole engagement. When she plugs into the Design Studio beside Sal, the gate tells her exactly what her module is and where it ends.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Decision criteria (ranked)</strong></td><td>1. Is the scope genuinely fixed by the brief and the gate. 2. Is the fee fair for the craft. 3. Will I be pulled into ownership I did not sign up for. 4. Does the system route me clean work.</td></tr>
+          <tr><td><strong>Information sources</strong></td><td>The partner network that pulls her in; direct relationships; live engagements that need her module.</td></tr>
+          <tr><td><strong>Objection patterns</strong></td><td>Is the scope really fixed or will it creep. Is the fee fair. Will I be blended into things I did not agree to.</td></tr>
+          <tr><td><strong>Communication preferences</strong></td><td>Clear scoped briefs, clean handoffs, craft-respecting tone. Pulled by demand, not pushed.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Persona 5: Procurement Pat, the Public-Sector and Not-for-Profit Buyer (Layer B, overlay)</h3>
+      <p><strong>Day in the life.</strong> Pat manages an engagement for a council, agency, or sizeable not for profit. Pat believes in the outcome but cannot simply buy it. The day is a panel check, a conflict-of-interest form, a value-for-money justification a finance officer will read, and an accessibility requirement for a public-facing asset. Pat needs the same fast, accountable outcome the SME wants, but wrapped in defensible process and a paper trail.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Decision criteria (ranked)</strong></td><td>1. Probity and a defensible, documented process. 2. Value for money against panel or quote rules. 3. Accountability and a named owner. 4. Accessibility and privacy compliance. 5. Speed, within the rules.</td></tr>
+          <tr><td><strong>Information sources</strong></td><td>Approved panels and registers; internal procurement and finance; references from comparable bodies; documented method and evidence.</td></tr>
+          <tr><td><strong>Objection patterns</strong></td><td>Does this satisfy procurement rules. Can AI output be defended at audit. Who is accountable on the record. Is it accessible and privacy-compliant. <em>[Assumption: confirm per jurisdiction; no public-sector run is yet cleared as proof.]</em></td></tr>
+          <tr><td><strong>Communication preferences</strong></td><td>Formal, documented, evidence-first. Written method and compliance statements over conversation. Records that survive an audit; signed deliverables in secure storage help here.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Section 3: Jobs-to-be-Done Analysis</h2>
+      <p>Every job below ladders up to the one objection that sits under all of them: can AI hit a standard I will put my name on. The functional job is the task, the emotional job is the trust gap itself, and the social job is reputation. Maxxim wins by being hired for all three at once.</p>
+
+      <h3>Operator Owen (Client Partner)</h3>
+      <table>
+        <thead><tr><th>Job type</th><th>Job statement</th><th>Current solution and its pain</th><th>Desired outcome</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Functional</strong></td>
+            <td>When I win more work than I can personally deliver, I want a repeatable engine to run the standard 80 percent at speed, so I can serve my whole pipeline without hiring a team.</td>
+            <td>Hand-building every engagement, or bolting on AI tools and white-label platforms. Tools without a method, no quality bar, growth capped by his own hours.</td>
+            <td>A gated engine (Max on words, Sal on pixels, Pip on social) runs the repeatable work; he serves the full pipeline and keeps quality. Jewell is the proof it runs.</td>
+          </tr>
+          <tr>
+            <td><strong>Emotional</strong></td>
+            <td>When AI produces the first draft, I want to trust it enough to put my name on it, so I can stop being the bottleneck without lying awake about quality.</td>
+            <td>Reviewing raw AI output line by line, or refusing to use it. Anxiety that speed comes at the cost of the standard.</td>
+            <td>Confidence that a human signs every gate and mechanical gating holds the standard, so speed and quality hold together. The trust gap closed.</td>
+          </tr>
+          <tr>
+            <td><strong>Social</strong></td>
+            <td>When peers and clients judge my work, I want to be seen as an operator who scaled without becoming a commodity agency, so I can keep my reputation as the trusted name.</td>
+            <td>Either staying small to protect quality, or scaling by hiring and diluting the brand he built.</td>
+            <td>Recognised as scaling on judgement, inside a community of operators who hold the same bar, the way Jewell does in market.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Director Diane (Growth-Stage SME or Corporate)</h3>
+      <table>
+        <thead><tr><th>Job type</th><th>Job statement</th><th>Current solution and its pain</th><th>Desired outcome</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Functional</strong></td>
+            <td>When I have a growth target my team cannot hit, I want a complete strategy and launched assets fast, so I can move without a six-month agency build.</td>
+            <td>A slow, expensive, opaque agency, or a risky DIY and AI stack. Real money on the line and no single owner.</td>
+            <td>Agency-grade strategy and assets she owns outright, hosted and unlockable, delivered in days, with one accountable owner.</td>
+          </tr>
+          <tr>
+            <td><strong>Emotional</strong></td>
+            <td>When I commit budget to AI-assisted work, I want to feel certain someone is accountable for the result, so I can avoid the fear of unaccountable output.</td>
+            <td>Cheap AI sites she does not trust, or agency hours she cannot scrutinise. Unease about who owns the outcome.</td>
+            <td>Certainty that a named human stands behind every gate, with a read-only portal and Ari for calm line of sight. The trust gap closed at the budget level.</td>
+          </tr>
+          <tr>
+            <td><strong>Social</strong></td>
+            <td>When the board and my peers assess my call, I want to be seen as the leader who backed a smart, accountable, modern approach, so I can be credited for the growth.</td>
+            <td>Defending a slow agency spend, or being blamed for a cheap-looking AI build.</td>
+            <td>Credited for an outcome that is fast, owned, accountable, and clearly agency-grade.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Connector Carol (Referrer), Specialist Sasha (Specialist), and Procurement Pat (public sector), condensed</h3>
+      <table>
+        <thead><tr><th>Persona and job type</th><th>Job statement</th><th>Current pain</th><th>Desired outcome</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Carol, functional</strong></td><td>When a contact needs growth help, I want to point them somewhere and earn cleanly, so I can monetise my network without delivering.</td><td>A valuable network sitting idle with no low-risk earn.</td><td>One warm intro, one clean fee, zero delivery.</td></tr>
+          <tr><td><strong>Carol, emotional and social</strong></td><td>When I make an introduction, I want to feel my name is safe, so I can be seen as a connector whose recommendations are reliable.</td><td>Reputation exposure if a referral is handled badly.</td><td>A named human owns and stands behind it; her recommendation enhances her standing.</td></tr>
+          <tr><td><strong>Sasha, functional</strong></td><td>When an engagement needs my craft, I want a scoped module and a clean handoff, so I can do my one thing brilliantly without owning the whole job.</td><td>Craft buried in full agency work, or loose freelance hours with no system and scope creep.</td><td>A gate-defined brief beside Sal or Pip, a fair fee, no ownership burden.</td></tr>
+          <tr><td><strong>Sasha, emotional and social</strong></td><td>When I take on a module, I want to feel my scope is protected, so I can be seen as the specialist whose work always lands.</td><td>Being blended into ownership she never agreed to.</td><td>A system that respects the craft and routes clean, scoped, paid work.</td></tr>
+          <tr><td><strong>Pat, functional</strong></td><td>When my organisation needs growth assets, I want a fast accountable outcome inside procurement rules, so I can deliver without breaching probity.</td><td>Agencies that are slow and dear, or tools that cannot be defended at audit.</td><td>The same outcome, documented, value-for-money, accessible, and defensible.</td></tr>
+          <tr><td><strong>Pat, emotional and social</strong></td><td>When auditors and stakeholders review the spend, I want to feel it is unimpeachable, so I can be seen as a careful steward of public or donor money.</td><td>Fear that AI output or a fast process will not survive scrutiny.</td><td>A paper trail (gated method, signed deliverables in secure storage) and named accountability that protect Pat at audit.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Section 4: Empathy Map (primary persona, Operator Owen)</h2>
+      <p>Built on the live shape of Alex and 3P, the Jewell reference, and the partner pains in the teardown and dataset. Specific where the data supports it, flagged where it is inferred.</p>
+      <table>
+        <thead><tr><th>Quadrant</th><th>What is going on</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Think</strong></td><td>I am the bottleneck I was trying to escape. There are thirty-six opportunities I cannot serve. If I hire, I become the agency I never wanted to be. Can I really trust AI on work that carries my name
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/design/copy-deck/"><span class="lbl">← Previous</span><span class="ttl">Copy Deck</span></a>
+<a href="/3d-process/design/business-plan/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">Business Plan</span></a></div>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import Seo from "@components/Seo.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Assistant from "@components/Assistant.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+const { title, description, ogImage, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Preload the two above-the-fold weights. -->
+    <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin />
+
+    <Seo title={title} description={description} ogImage={ogImage} noindex={noindex} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <Assistant />
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: 16px;
+        top: -48px;
+        z-index: 100;
+        background: var(--color-ink);
+        color: var(--color-white);
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: var(--text-small);
+        transition: top 0.2s var(--ease-out-quiet);
+      }
+      .skip-link:focus {
+        top: 16px;
+      }
+    </style>
+
+    <!-- Reveal-on-scroll. Motion-safe, progressive enhancement only. -->
+    <script>
+      function initReveal() {
+        const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+        if (!els.length) return;
+        // Motion off, or no IntersectionObserver: leave everything visible.
+        if (
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          !("IntersectionObserver" in window)
+        ) {
+          return;
+        }
+        const threshold = window.innerHeight * 0.92;
+        const pending: HTMLElement[] = [];
+        els.forEach((el) => {
+          // Only hide items that are below the fold — above-fold content never
+          // flashes, and nothing is hidden if this script never runs.
+          if (el.getBoundingClientRect().top > threshold) {
+            el.classList.add("reveal-hidden");
+            pending.push(el);
+          }
+        });
+        function show(el: HTMLElement) {
+          el.classList.remove("reveal-hidden");
+          el.classList.add("reveal-in");
+        }
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                show(e.target as HTMLElement);
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          // Fire as soon as any pixel enters, a touch before the bottom edge.
+          { rootMargin: "0px 0px -40px 0px", threshold: 0 }
+        );
+        pending.forEach((el) => io.observe(el));
+        // Safety net: never strand content. If anything is still hidden a few
+        // seconds after load (observer edge cases, print, odd viewports), show it.
+        window.setTimeout(() => pending.forEach(show), 2500);
+      }
+      initReveal();
+      document.addEventListener("astro:page-load", initReveal);
+    </script>
+  </body>
+</html>

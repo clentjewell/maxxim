@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events Plan · Maxxim 3D Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%232D5BFF%22%2F%3E%3Csvg%20x%3D%2218%22%20y%3D%2218%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%2273%200%2058%2058%22%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(81.0711%2C%2022.0711)%20rotate(45)%20translate(-81.0711%2C%20-22.0711)%22%20x%3D%2276.0710678%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(88.0711%2C%2029.0711)%20rotate(45)%20translate(-88.0711%2C%20-29.0711)%22%20x%3D%2283.0710678%22%20y%3D%2224.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(95.0711%2C%2036.0711)%20rotate(45)%20translate(-95.0711%2C%20-36.0711)%22%20x%3D%2290.0710678%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(81.0711%2C%2036.0711)%20rotate(45)%20translate(-81.0711%2C%20-36.0711)%22%20x%3D%2276.0710678%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(109.0711%2C%2036.0711)%20rotate(45)%20translate(-109.0711%2C%20-36.0711)%22%20x%3D%22104.071068%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(123.0711%2C%2036.0711)%20rotate(45)%20translate(-123.0711%2C%20-36.0711)%22%20x%3D%22118.071068%22%20y%3D%2231.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(95.0711%2C%2022.0711)%20rotate(45)%20translate(-95.0711%2C%20-22.0711)%22%20x%3D%2290.0710678%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(116.0711%2C%2029.0711)%20rotate(45)%20translate(-116.0711%2C%20-29.0711)%22%20x%3D%22111.071068%22%20y%3D%2224.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(123.0711%2C%2022.0711)%20rotate(45)%20translate(-123.0711%2C%20-22.0711)%22%20x%3D%22118.071068%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.95%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(102.0711%2C%2015.0711)%20rotate(45)%20translate(-102.0711%2C%20-15.0711)%22%20x%3D%2297.0710678%22%20y%3D%2210.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%23FFFFFF%22%20transform%3D%22translate(109.0711%2C%2022.0711)%20rotate(45)%20translate(-109.0711%2C%20-22.0711)%22%20x%3D%22104.071068%22%20y%3D%2217.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(95.0711%2C%2050.0711)%20rotate(45)%20translate(-95.0711%2C%20-50.0711)%22%20x%3D%2290.0710678%22%20y%3D%2245.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(102.0711%2C%2043.0711)%20rotate(45)%20translate(-102.0711%2C%20-43.0711)%22%20x%3D%2297.0710678%22%20y%3D%2238.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.9%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(109.0711%2C%2050.0711)%20rotate(45)%20translate(-109.0711%2C%20-50.0711)%22%20x%3D%22104.071068%22%20y%3D%2245.0710678%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(109.0711%2C%208.0711)%20rotate(45)%20translate(-109.0711%2C%20-8.0711)%22%20x%3D%22104.071068%22%20y%3D%223.07106781%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3Crect%20fill-opacity%3D%220.85%22%20fill%3D%22%2383A1FF%22%20transform%3D%22translate(95.0711%2C%208.0711)%20rotate(45)%20translate(-95.0711%2C%20-8.0711)%22%20x%3D%2290.0710678%22%20y%3D%223.07106781%22%20width%3D%2210%22%20height%3D%2210%22%3E%3C%2Frect%3E%3C%2Fsvg%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="/fonts/legacy.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2D5BFF;--blue-tint:#7D9BFF;--blue-soft:#C7D2FF;
+  --ink:#0A0A0A;--mist:#F5F6F8;--body:#3A3D46;--caption:#6A6F7B;
+  --label:#8A8F9C;--border:#E4E6EC;--border-soft:#EEF0F4;
+  --sans:'Poppins',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:#fff;border-right:1px solid var(--border);
+  padding:28px 24px;display:flex;flex-direction:column;overflow-y:auto;z-index:10}
+.sidebar .mark{display:flex;align-items:center;gap:9px;color:var(--blue)}
+.sidebar .mark span{font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+.sidebar .eyebrow{margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;color:var(--label);text-transform:uppercase}
+.sidebar nav{margin-top:26px;flex:1}
+.sidebar .phase{margin-bottom:18px}
+.sidebar .phase>.plabel{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:8px;display:block}
+.sidebar .doc{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:13px;font-weight:500;color:var(--body)}
+.sidebar .doc:hover{color:var(--blue);text-decoration:none}
+.sidebar .doc.current{color:var(--blue);font-weight:600}
+.sidebar .doc .n{font-family:var(--mono);font-size:10px;color:var(--label);flex:none}
+.sidebar .foot{margin-top:22px;font-size:11px;color:var(--label);line-height:1.5}
+.sidebar .back{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:12.5px;font-weight:600}
+
+.main{margin-left:236px;min-height:100vh}
+.content{max-width:1080px;padding:56px 64px 96px}
+
+@media(max-width:960px){
+  .sidebar{position:static;width:auto;border-right:none;border-bottom:1px solid var(--border);
+    flex-direction:column;padding:20px 22px}
+  .sidebar nav{margin-top:16px;display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+  .sidebar .phase{margin-bottom:0;min-width:180px}
+  .main{margin-left:0}
+  .content{padding:36px 22px 72px}
+}
+
+.doc-head .phase-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);
+  background:var(--mist);border:1px solid var(--border);border-radius:999px;padding:6px 14px}
+.doc-head h1{margin-top:18px;font-size:46px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.doc-head .rule{margin-top:22px;height:2px;background:var(--blue)}
+.doc-body{margin-top:34px}
+.doc-body section{margin:0 0 44px}
+.doc-body h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:44px 0 14px;color:var(--ink)}
+.doc-body h3{font-size:19px;font-weight:600;margin:28px 0 10px}
+.doc-body h4{font-size:16px;font-weight:600;margin:22px 0 8px}
+.doc-body p{font-size:15.5px;line-height:1.7;color:var(--body);margin:0 0 14px;max-width:76ch}
+.doc-body ul,.doc-body ol{margin:0 0 16px 22px}
+.doc-body li{font-size:15.5px;line-height:1.65;color:var(--body);margin-bottom:8px;max-width:72ch}
+.doc-body table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;line-height:1.5}
+.doc-body th{text-align:left;background:var(--ink);color:#fff;font-weight:600;padding:11px 14px;font-size:13px}
+.doc-body th:first-child{border-radius:10px 0 0 0}
+.doc-body th:last-child{border-radius:0 10px 0 0}
+.doc-body td{padding:11px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--body)}
+.doc-body tr:nth-child(even) td{background:var(--mist)}
+.doc-body figure{margin:20px 0 26px}
+.doc-body figure img{max-width:100%;border-radius:14px;border:1px solid var(--border)}
+.doc-body figcaption{margin-top:8px;font-size:12.5px;color:var(--label)}
+.doc-body strong{color:var(--ink)}
+.doc-end{margin-top:56px;border-top:1px solid var(--border);padding-top:18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--label);text-transform:uppercase}
+.doc-end.trunc{color:#B4841F}
+.doc-nav{margin-top:26px;display:flex;justify-content:space-between;gap:16px}
+.doc-nav a{display:inline-flex;flex-direction:column;gap:3px;border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;min-width:200px}
+.doc-nav a:hover{border-color:var(--blue);text-decoration:none}
+.doc-nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--label);text-transform:uppercase}
+.doc-nav .ttl{font-size:14px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="mark" href="/"><svg class="" width="26" height="26" viewBox="73 0 58 58" aria-hidden="true"><rect fill-opacity="0.9" fill="currentColor" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect><rect fill="currentColor" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="currentColor" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="currentColor" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="currentColor" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="currentColor" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#83A1FF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect><rect fill="currentColor" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#83A1FF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect></svg><span>Maxxim</span></a>
+  <span class="eyebrow">3D Process</span>
+  <nav><div class="phase"><span class="plabel">01 Discover</span>
+<a class="doc" href="/3d-process/discover/discover-summary-deck/"><span class="n">▸</span>Gate 1 Deck</a>
+<a class="doc" href="/3d-process/discover/discover-summary/"><span class="n">·</span>Discovery Summary (CP1)</a>
+<a class="doc" href="/3d-process/discover/discover-addendum/"><span class="n">·</span>Discovery Addendum (Gate 1 Decisions)</a>
+<a class="doc" href="/3d-process/discover/audience-teardown/"><span class="n">·</span>Audience Teardown</a>
+<a class="doc" href="/3d-process/discover/competitor-analysis/"><span class="n">·</span>Competitor Analysis</a>
+<a class="doc" href="/3d-process/discover/offer-worksheet/"><span class="n">·</span>Offer Worksheet</a></div>
+<div class="phase"><span class="plabel">02 Design</span>
+<a class="doc" href="/3d-process/design/brand-book/"><span class="n">★</span>Brand Book</a>
+<a class="doc" href="/3d-process/design/strategy-summary/"><span class="n">·</span>Strategy Summary (CP2)</a>
+<a class="doc" href="/3d-process/design/brand-strategy/"><span class="n">·</span>Brand Strategy</a>
+<a class="doc" href="/3d-process/design/brand-guidelines/"><span class="n">·</span>Brand Guidelines</a>
+<a class="doc" href="/3d-process/design/logo-brief/"><span class="n">·</span>Logo Brief</a>
+<a class="doc" href="/3d-process/design/copy-deck/"><span class="n">·</span>Copy Deck</a>
+<a class="doc" href="/3d-process/design/customer-profile/"><span class="n">·</span>Customer Profile</a>
+<a class="doc" href="/3d-process/design/business-plan/"><span class="n">·</span>Business Plan</a>
+<a class="doc" href="/3d-process/design/marketing-plan/"><span class="n">·</span>Marketing Plan</a>
+<a class="doc" href="/3d-process/design/social-strategy/"><span class="n">·</span>Social Strategy</a>
+<a class="doc" href="/3d-process/design/website-strategy/"><span class="n">·</span>Website Strategy</a></div>
+<div class="phase"><span class="plabel">03 Deploy</span>
+<a class="doc" href="/3d-process/deploy/imc-summary/"><span class="n">·</span>IMC Summary (CP3)</a>
+<a class="doc" href="/3d-process/deploy/website-brief/"><span class="n">·</span>Website Brief</a>
+<a class="doc" href="/3d-process/deploy/design-brief/"><span class="n">·</span>Design Brief</a>
+<a class="doc" href="/3d-process/deploy/case-study/"><span class="n">·</span>Case Study Framework: Pottsville Acupuncture</a>
+<a class="doc" href="/3d-process/deploy/crm-plan/"><span class="n">·</span>CRM Plan</a>
+<a class="doc" href="/3d-process/deploy/edm-plan/"><span class="n">·</span>EDM Plan</a>
+<a class="doc current" href="/3d-process/deploy/events-plan/"><span class="n">·</span>Events Plan</a>
+<a class="doc" href="/3d-process/deploy/paid-media-plan/"><span class="n">·</span>Paid Media Plan</a>
+<a class="doc" href="/3d-process/deploy/photo-video-brief/"><span class="n">·</span>Photo and Video Brief</a>
+<a class="doc" href="/3d-process/deploy/pr-plan/"><span class="n">·</span>PR Plan</a>
+<a class="doc" href="/3d-process/deploy/seo-strategy/"><span class="n">·</span>SEO Strategy</a>
+<a class="doc" href="/3d-process/deploy/traditional-media-plan/"><span class="n">·</span>Traditional Media Plan</a></div></nav>
+  <div class="foot"><a class="back" href="/">← Pack home</a><br>Edition 03 · 2026</div>
+</aside>
+<div class="main"><div class="content">
+  <header class="doc-head">
+    <span class="phase-chip">03 · Deploy</span>
+    <h1>Events Plan</h1>
+    <div class="rule"></div>
+  </header>
+  <div class="doc-body">
+
+    
+
+    <section>
+      <h2>How to read this plan</h2>
+      <p>This is the Events Plan for Maxxim, produced in the Deploy phase against Master Briefing v2.1, the Gate 1 decisions of 27 June 2026, and the 1 July refresh that folded in the 29 June product mechanics and the live Jewell partner site. It turns <a href="/3d-process/design/marketing-plan/">marketing-plan.html</a> into an event programme, sitting on <a href="/3d-process/discover/discover-summary/">discover-summary.html</a> and <a href="/3d-process/design/customer-profile/">customer-profile.html</a>. Unlike a conventional events plan, the centre of gravity here is not a calendar of conferences and trade shows. It is two strands the strategy demands.</p>
+      <p>The first strand is a single founding moment: the <strong>3 July session, run as a partner discovery and alignment session, not a demo</strong>, whose output is a partner map. This is Campaign 1 of the marketing plan, the Founding Table. The second strand is the <strong>community operating rhythm</strong> itself, treated as a recurring event programme: a weekly open table, a monthly business review, a quarterly strategy and showcase, an annual offsite, and regional meetups. The community is not a side benefit of the events; in this model the community is the event programme, because the business plan and the brand strategy both name it as the human moat and a first-order growth engine, and the marketing plan makes it the strategic centre.</p>
+      <p>Two facts known since the 27 June version sharpen this plan. First, the real product mechanics from the 29 June guide give the founding session something concrete to show: three named specialists, each a process (Max does the words in Claude Cowork, Sal does the pixels in the Design Studio, Pip runs the Social Studio), a gated Discover to Design to Deploy to Deepen method, mechanical gating that unlocks creative only as its briefs exist, finished websites the client owns, and a read-only client portal with a private assistant called Ari. The live proof in the room is the engine running on a real business, not a slide about it. Second, the live Jewell partner is used as a proof exhibit for the session: a 35-year operator running the whole model in market, the first working evidence that the partner model holds. Jewell is shown as evidence and pattern; Jewell's own named results stay under Jewell's banner and are not re-used as Maxxim's own public proof.</p>
+      <p>The same discipline as every upstream document applies. Real pricing anchors are stated as real: the Growth Diagnostic at $4,950 credited forward, the premium engagement band of $25,000 to $250,000 with a recent run near $80,000, the specialist module near $1,500. Every budget figure, partner economic, and percentage here is <strong>illustrative, pending pilots</strong>, and must be confirmed by Clent before it is treated as locked or used externally. Proof respects clearance: Pottsville Acupuncture is the only cleared public example and the cleared external proof for the session; OTR Earthmover is internal only; Hidrive is percentages only. The exact session promise wording is OPEN and Clent's to finalise; this plan offers options and does not lock it. Ownership is Clent and Raef only; Paul Clancy is a Client Partner, not a co-founder. Australian English throughout, no em dashes, no exclamation marks.</p>
+    </section>
+
+    <section>
+      <h2>1. Events Objectives</h2>
+      <p>Five objectives, each tied to a specific marketing plan goal with a measurable target. The headline numbers mirror <a href="/3d-process/design/marketing-plan/">marketing-plan.html</a> and the business plan leading indicators; where a baseline is directional it requires Clent sign-off before it is treated as a commitment.</p>
+
+      <h3>Objective 1: Open the partner community at the 3 July session</h3>
+      <ul>
+        <li><strong>Objective statement.</strong> Run the 3 July session as a partner discovery and alignment session that opens the founding community, and produce a partner map on the day.</li>
+        <li><strong>Linked marketing objective.</strong> Marketing Plan Objective 1 (open the partner community at the 3 July session) and Campaign 1 (the Founding Table).</li>
+        <li><strong>Measurable target.</strong> At least 8 to 12 qualified operators engaged, a completed partner map produced on the day, and at least 6 operators opting into the weekly table, by 3 July 2026.</li>
+      </ul>
+
+      <h3>Objective 2: Prove the seven points of v2.1 Section 10 in the room</h3>
+      <ul>
+        <li><strong>Objective statement.</strong> Use the session to prove the seven required points: that Maxxim can run 3D on a real business, that the human partner stays at the wheel, that the platform produces structured outputs, that the process has gates, that the method improves commercial clarity, that the partner model makes economic sense, and that the audience can see how they would use it with their own clients.</li>
+        <li><strong>Linked marketing objective.</strong> Marketing Plan Objective 1 and the business plan proof path.</li>
+        <li><strong>Measurable target.</strong> All seven points addressed in the run of show, evidenced by a live run of Max, Sal, and Pip on a real business, the mechanical gates holding, and the cleared Pottsville proof, confirmed in the post-event review against a simple seven-point checklist.</li>
+      </ul>
+
+      <h3>Objective 3: Convert the room into the founding cohort pipeline</h3>
+      <ul>
+        <li><strong>Objective statement.</strong> Turn session attendance into booked follow-up conversations and door selections (license to deliver or refer for a fee) that feed the founding cohort.</li>
+        <li><strong>Linked marketing objective.</strong> Marketing Plan Objective 2 (sign the founding cohort, 5 to 8 by 30 September 2026) and Campaign 2 (the Founding Cohort).</li>
+        <li><strong>Measurable target.</strong> A follow-up conversation booked with every qualified attendee within 48 hours, and a stated door preference captured for each, contributing to 5 to 8 signed founding partners by 30 September 2026.</li>
+      </ul>
+
+      <h3>Objective 4: Stand up the community rhythm as a retention and deal-flow engine</h3>
+      <ul>
+        <li><strong>Objective statement.</strong> Launch the recurring community programme (weekly, monthly, quarterly, annual) from the founding session onward, so partners stay for the people and the network creates shared deal flow.</li>
+        <li><strong>Linked marketing objective.</strong> Marketing Plan Objective 5 (build the proof surface and the partner hub) and the community-as-growth-engine loop that is the strategic centre of the marketing plan.</li>
+        <li><strong>Measurable target.</strong> Weekly table running by mid-July 2026; the partner hub operating by end of July 2026; a baseline weekly-table participation rate set in the first month; first deals shared on the deal-share board by end of the first quarter.</li>
+      </ul>
+
+      <h3>Objective 5: Make every event a content and proof factory</h3>
+      <ul>
+        <li><strong>Objective statement.</strong> Extract cleared, reusable content and proof from each event, anchored to the quarterly showcase as a case-study factory.</li>
+        <li><strong>Linked marketing objective.</strong> Marketing Plan Objective 4 (close the cleared-proof gap) and Campaign 3 (Proof and Position).</li>
+        <li><strong>Measurable target.</strong> At least five content pieces captured per event (see Section 8), and a contribution toward at least two additional cleared case studies beyond Pottsville by 31 December 2026, honouring clearance rules.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Event Strategy Overview</h2>
+      <p>The strategy follows the model, not events convention. Maxxim is recruiting a small, high-trust founding cohort through demonstration and relationship, then keeping that cohort together as a compounding community. So the recommended event types are intimate, partner-facing, and rhythm-based, not broad, public, and spend-based. This matches the marketing plan's roughly 70 percent brand-and-community to 30 percent direct-response emphasis: the trust gap is closed by proof and a human, not by a click.</p>
+
+      <h3>Event types recommended, and why</h3>
+      <ul>
+        <li><strong>The founding session (owned, one-off, anchor event).</strong> The 3 July session. An intimate, invitation-only partner discovery and alignment session. This is the single highest-leverage event in the whole plan, because it opens the community and produces the partner map. Recommended without reservation.</li>
+        <li><strong>The recurring community programme (owned, the operating rhythm).</strong> Weekly open table, monthly business review, quarterly strategy and showcase, annual offsite. This is the heart of the plan: the community treated as a standing event programme. Recommended as the core ongoing investment.</li>
+        <li><strong>Regional meetups (owned, light, in person).</strong> Small, partner-led, in-person gatherings between offsites, to build local belonging and seed regional deal flow. Recommended at low cost, partner facilitated.</li>
+        <li><strong>The quarterly showcase as a case-study factory (owned, content-led).</strong> A recurring owned event where partners present a client win, which doubles as the case-study production engine for Campaign 3. Recommended because it solves the cleared-proof gap and the community direction in one moment.</li>
+      </ul>
+
+      <h3>Event types explicitly NOT recommended now, and why</h3>
+      <ul>
+        <li><strong>Large public conferences or trade-show booths.</strong> Not recommended near term. The audience is a named, small set of operators reached one to one and through the founder network, not a hall of strangers. A booth would spend brand budget against the wrong funnel stage. Revisit only if and when the self-serve portal opens a product-led front door to end clients, which is OPEN.</li>
+        <li><strong>Public webinars at volume.</strong> Not recommended as a primary tactic now. Operators trust demonstration over a generic webinar, and end-client demand generation is the partner's job in the partner-led model. A private, invitation-only walkthrough of Max, Sal, and Pip (the session) does the demonstration job better. A light recorded walkthrough may be repurposed as an asset, but not run as a public lead-magnet series yet.</li>
+        <li><strong>Paid sponsorship of third-party events.</strong> Not recommended near term, for the same budget and audience reasons. The proof-led, partner-led model does not need bought reach. Carried as a later option once cleared proof and the category lead word (OPEN) are settled.</li>
+        <li><strong>Gala or hospitality-led events.</strong> Not recommended. The brand is grounded, plain-spoken, substance over spectacle. A gala would read as over-claim, exactly what the trust gap punishes. The annual offsite is the one warm, in-person, relationship moment, and it is family glue, not spectacle.</li>
+      </ul>
+      <p><strong>Strategic rationale in one line.</strong> Spend the event energy where the model actually moves: an intimate founding moment, then a sustained community rhythm. Demonstration and belonging, not reach and spectacle.</p>
+    </section>
+
+    <section>
+      <h2>3. Event Calendar</h2>
+      <p>The recommended calendar for the engagement period, prioritised by impact and feasibility. The founding session is the anchor; the recurring programme begins from it; the quarterly showcase and the annual offsite extend beyond the founding-cohort window. All budgets are illustrative, pending Clent sign-off, and are deliberately modest because the model is proof-led and partner-led.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Timing</th>
+            <th>Target audience</th>
+            <th>Primary objective</th>
+            <th>Estimated budget (illustrative)</th>
+            <th>Expected outcomes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>The Founding Table (3 July session)</strong></td>
+            <td>Owned, anchor, one-off</td>
+            <td>3 July 2026</td>
+            <td>Operator Owen (license door) primary; Connector Carol (refer door) secondary; the named pipeline as the seed list</td>
+            <td>Open the community; produce the partner map; prove the seven points</td>
+            <td>Low. Venue or platform, materials, live Max, Sal, and Pip walkthrough prep. The cost is facilitation time, not media.</td>
+            <td>Partner map; 8 to 12 qualified attendees; 6 plus weekly-table opt-ins; follow-ups booked; 5 plus content pieces</td>
+          </tr>
+          <tr>
+            <td><strong>Weekly open table</strong></td>
+            <td>Owned, recurring, virtual (async option)</td>
+            <td>Weekly from mid-July 2026</td>
+            <td>Signed and onboarding founding partners</td>
+            <td>Compounding knowledge and trust; light, no sell</td>
+            <td>Very low. Video platform and light facilitation time only.</td>
+            <td>Participation baseline; shared learnings into the hub library; one client challenge solved per session</td>
+          </tr>
+          <tr>
+            <td><strong>Monthly business review</strong></td>
+            <td>Owned, recurring, virtual</td>
+            <td>Monthly from August 2026</td>
+            <td>Active partners</td>
+            <td>Performance, deal matching, roadmap line into Max, Sal, and Pip</td>
+            <td>Very low. Platform and prep time; doubles as the monthly reporting meeting.</td>
+            <td>Pipeline visibility; deals matched; product roadmap input; Diagnostics sold tracked</td>
+          </tr>
+          <tr>
+            <td><strong>Quarterly strategy and showcase</strong></td>
+            <td>Owned, recurring, hybrid</td>
+            <td>Quarterly from Q4 2026</td>
+            <td>Active partners; invited prospective partners</td>
+            <td>Case-study factory; set next vertical; review pilot economics</td>
+            <td>Low to modest. Light production for the hybrid stream and case-study capture.</td>
+            <td>One cleared case study per quarter; next vertical set; economics reviewed toward locked</td>
+          </tr>
+          <tr>
+            <td><strong>Regional meetups</strong></td>
+            <td>Owned, recurring, in person, partner-led</td>
+            <td>Between offsites, as partners cluster</td>
+            <td>Local partner clusters</td>
+            <td>Belonging and regional deal flow</td>
+            <td>Low, partner hosted. Venue and refreshments only, often partner absorbed.</td>
+            <td>Local relationships; regional referrals; retention</td>
+          </tr>
+          <tr>
+            <td><strong>Annual offsite</strong></td>
+            <td>Owned, annual, in person</td>
+            <td>Annually (first one beyond the founding window)</td>
+            <td>The full partner community</td>
+            <td>The family glue: vision, recognition, co-creating the next year</td>
+            <td>Modest, the largest single event line, scaled to cohort size and confirmed by Clent.</td>
+            <td>Retention; recognition; next-year plan co-created; strongest content and testimonial capture</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Priority.</strong> The 3 July founding session is first and non-negotiable. The weekly table is second, because it is the cheapest, highest-frequency retention act and it keeps the founding energy alive. The monthly review and quarterly showcase follow. The annual offsite is the highest-cost event and is deliberately sequenced beyond the founding-cohort window so it lands when there is a cohort worth gathering and wins worth recognising.</p>
+    </section>
+
+    <section>
+      <h2>4. Owned Event Plans</h2>
+
+      <h3>4.1 The Founding Table: the 3 July session</h3>
+
+      <h4>Concept and theme</h4>
+      <p>This is the founding meeting of the partner community, framed as discovery and alignment, not a demo. The frame the room should feel: you are not being sold a tool, you are being invited to a table where trust, taste, and judgement are shared, and everyone is stronger for it. The proof in the room is the engine run live on a real business, the honest evidence that Max, Sal, and Pip do the machine 80 percent while the human signs the 20, supported by Pottsville Acupuncture as the cleared external proof and by the live Jewell partner as the working example of an operator already running the whole model. The exact promise wording is OPEN and Clent's to finalise; three framings are offered in Section 5 of this plan and below, none locked.</p>
+
+      <h4>Format</h4>
+      <p>Intimate, invitation only, in person preferred with a tight virtual option for distributed operators (so the founding session itself models the weekly table's async inclusivity). Roughly two to three hours, run as a facilitated session with structured participation, not a lecture. The seven points of v2.1 Section 10 are the spine of the run of show.</p>
+
+      <h4>The run of show</h4>
+      <p>The timeline below is the recommended shape. It deliberately spends the most time on the live proof and on the partner mapping, because the output is a partner map and the job is alignment, not presentation.</p>
+      <figure>
+        <figcaption>The 3 July run of show. Each block maps to one or more of the seven v2.1 Section 10 proof points (shown as P1 to P7). The live proof is the engine run on a real business; Pottsville is the cleared external proof; Jewell is the live partner exhibit. The output is a partner map.</figcaption>
+<pre><code>
+   3 JULY SESSION -- RUN OF SHOW  (founding meeting, ~2.5 hrs)
+
+   TIME   BLOCK                                          PROVES
+   -----  ---------------------------------------------  ----------
+   0:00   ARRIVE + WELCOME                               sets frame
+          Name badges, warm welcome, the table is set.
+          Frame: "a discovery + alignment session, not
+          a demo." Promise stated [WORDING OPEN].
+                                                         |
+   0:15   THE CAP WE ALL FEEL  (open the problem)        P5
+          Clent names the founder-capacity cap and the
+          80/20 thesis. Operator-to-operator, no slides
+          as hero. "Someone named the cap I feel daily."
+                                                         |
+   0:30   LIVE PROOF: THE ENGINE ON A REAL BUSINESS      P1,P2,P3,P4
+          Live run of the 3D spine: Max writes the words
+          in Cowork, Sal makes pixels in the Design
+          Studio, Pip drafts social. Show the gates hold
+          (creative unlocks only as its briefs exist);
+          show the human SIGN the gate; show a phase NOT
+          proceed until signed. Human visibly at wheel.
+                                                         |
+   1:05   CLEARED EXTERNAL PROOF: POTTSVILLE             P1,P5
+          Pottsville Acupuncture: full 3D run, launched
+          site the client OWNS outright (hosted, theirs).
+          The only cleared public proof. (OTR internal
+          only -- not shown. Hidrive percentages only --
+          not shown.)
+                                                         |
+   1:20   THE LIVE PARTNER: JEWELL                       P6,P7
+          Jewell shown as the working example: a 35-yr
+          operator running the whole model live, owning
+          the human 20% with Maxxim as the machine 80%.
+          Evidence the partner model holds. (Jewell's
+          named results stay under Jewell's banner.)
+                                                         |
+   1:35   THE PARTNER MODEL + THE TWO DOORS              P6
+          Land + expand: Growth Diagnostic $4,950 ->
+          3D engagement -> Deepen. Two doors: license
+          to deliver / refer for a fee. Economics:
+          STRUCTURE shown, NUMBERS not stated (OPEN).
+                                                         |
+   1:50   "HOW WOULD YOU USE THIS?"  (the discovery)     P7
+          Round-table: each operator names a client or
+          vertical they would run this on. This is the
+          alignment work, and it builds the partner map
+          in real time.
+                                                         |
+   2:10   BUILD THE PARTNER MAP  (the output)            output
+          On a shared board: who is in the room, door
+          preference (license / refer / specialist),
+          vertical strength, who they could refer to.
+          The partner map is produced ON THE DAY.
+                                                         |
+   2:25   THE INVITATION + NEXT STEP                     close
+          Invite into the cadence (weekly table opt-in).
+          Book the 1:1 follow-up. No hard close; the
+          door is open, the table is set.
+   2:30   CLOSE
+</code></pre>
+      </figure>
+
+      <h4>Agenda</h4>
+      <table>
+        <thead>
+          <tr><th>Block</th><th>What happens</th><th>Owner</th><th>Section 10 point proved</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Welcome and frame</td><td>Set the table; state the promise (wording OPEN); make clear this is discovery and alignment, not a demo</td><td>Clent</td><td>Sets the frame for all seven</td></tr>
+          <tr><td>The cap we all feel</td><td>Name the founder-capacity cap and the 80/20 thesis, operator to operator</td><td>Clent</td><td>P5 (method improves commercial clarity)</td></tr>
+          <tr><td>Live proof: the engine on a real business</td><td>Live run of the 3D spine, Max on words in Cowork, Sal on pixels in the Design Studio, Pip on social; the gates hold and unlock creative only as briefs exist; the human signs the gate; a phase does not proceed until signed</td><td>Clent, with Raef on the platform</td><td>P1, P2, P3, P4</td></tr>
+          <tr><td>Cleared external proof</td><td>Pottsville Acupuncture, launched and owned. OTR and Hidrive not shown (clearance)</td><td>Clent</td><td>P1, P5</td></tr>
+          <tr><td>The live partner: Jewell</td><td>Jewell shown as the working example of an operator running the whole model live; evidence the partner model holds; Jewell's named results stay under Jewell's banner</td><td>Clent</td><td>P6, P7</td></tr>
+          <tr><td>The model and the two doors</td><td>Land and expand funnel; license and refer doors; economics structure shown, numbers OPEN</td><td>Clent</td><td>P6 (partner model makes economic sense)</td></tr>
+          <tr><td>How would you use this</td><td>Round table: each operator names a client or vertical they would run it on</td><td>Facilitated, all attendees</td><td>P7 (audience sees how they would use it)</td></tr>
+          <tr><td>Build the partner map</td><td>Capture who is in the room, door preference, vertical strength, referral links, on a shared board</td><td>Clent and Raef</td><td>The output</td></tr>
+          <tr><td>Invitation and next step</td><td>Invite into the weekly table; book the 1:1 follow-up</td><td>Clent</td><td>Close into Objective 3</td></tr>
+        </tbody>
+      </table>
+
+      <h4>What to show</h4>
+      <ul>
+        <li><strong>Live proof: the engine run on a real business.</strong> The strongest demonstration of the seven points is to run the 3D spine live and let the room watch Max write the words in Cowork, Sal produce pixels in the Design Studio, and Pip draft social. This proves Max can run 3D on a real business (P1), shows the human at the wheel signing the gate (P2), shows structured outputs being produced and saved (P3), and shows the mechanical gates holding a phase until sign-off and unlocking creative only as its briefs exist (P4). The most honest, most available real business to run on is Maxxim itself.</li>
+        <li><strong>Cleared external proof: Pottsville Acupuncture.</strong> The only cleared public example. A full Discover, Design, Deploy run that produced a launched site the client owns outright, hosted and theirs. Use it to prove the method works when a human runs it for an outside client.</li>
+        <li><strong>The live partner exhibit: Jewell.</strong> Jewell is shown as the working example that the partner model is real and not aspirational: a 35-year operator who enters and owns the client, keeps Discover human, and runs Maxxim as the machine 80 percent with human checks at every stage. This lands P6 (the model makes economic sense, because a real operator runs it) and P7 (the audience can see how they would use it, because a peer already does). Jewell's own named results stay under Jewell's banner and are not presented as Maxxim's own public proof.</li>
+        <li><strong>Not shown, by clearance rule.</strong> OTR Earthmover is internal only and must not be displayed. Hidrive is percentages only and must not be shown as a named public case. Beyond the Clinic and Jewell Tyres are internal demos and are not used publicly without confirmed clearance.</li>
+      </ul>
+
+      <h4>Venue and platform</h4>
+      <p>A quiet, professional, intimate room that suits a facilitated round table, with reliable Wi-Fi and a screen for the live run of Max, Sal, and Pip, plus a clear connection for the virtual attendees. A simple shared digital board (visible to in-person and virtual attendees) hosts the partner map as it is built. Avoid a large auditorium; the room should feel like a table, not a stage.</p>
+
+      <h4>Speaker and content needs</h4>
+      <p>Clent leads as the founder and gate-holder; Raef supports on the platform for the live run. No outside speakers; the room is operator to operator. Content needs: the live Cowork and Studio environment ready to run the 3D spine; the Pottsville case ready to show; the Jewell partner exhibit ready to reference; a one-page partner-model summary with the two doors and the structure-only economics; the shared partner-map board template; name badges; a one-page leave-behind that invites into the cadence. The maxxim.ai site fixes (Section 6) must be live so attendees who check the site find a credible proof surface.</p>
+
+      <h4>Promotion plan</h4>
+      <p>See Section 6. In short: founder network and warm 1:1 invitation, an email invitation sequence to the named pipeline, and LinkedIn organic to profile the moment without making it a public open invite. The site fixes must be live before 3 July so attendees who check maxxim.ai find a credible proof surface (Jewell not "Joule", Paul Clancy as Client Partner, Pottsville added, two-door framing).</p>
+
+      <h4>Registration approach</h4>
+      <p>Invitation only, with a simple RSVP that captures name, organisation, role, the kind of clients they serve, and likely door interest (license, refer, specialist, undecided). This pre-seeds the partner map and lets the run of show be tuned to the room.</p>
+
+      <h4>Expected attendance</h4>
+      <p>8 to 12 qualified operators, seeded by the named pipeline (Alex and 3P with around 36 opportunities, Arran Aitken with a tradie database, Greg Johnson, Christy Kilmartin) plus warm founder referrals. Intimate by design; the goal is alignment and a partner map, not a full room.</p>
+
+      <h3>4.2 The recurring community programme</h3>
+      <p>The operating rhythm is itself an owned event programme. It begins at the founding session and runs continuously. The diagram shows the four cadences and how they nest. The brand discipline is light facilitation: the community must stay a flywheel, not a support burden, exactly as the business plan and marketing plan warn.</p>
+      <figure>
+        <figcaption>The community event rhythm. Four nested cadences, partner-led with light facilitation, beginning at the founding session. Each cadence has a single clear purpose so the rhythm stays light.</figcaption>
+<pre><code>
+   THE COMMUNITY EVENT RHYTHM  (partner-led, light facilitation)
+
+   WEEKLY  -- OPEN TABLE  (30-45 min, async option)
+   +-------------------------------------------------------+
+   | Wins | friction | ONE shared learning | ONE client    |
+   | challenge put to the group. Light. No sell.           |
+   | PURPOSE: compounding knowledge + trust                |
+   +-------------------------------------------------------+
+        | rolls up into
+        v
+   MONTHLY -- BUSINESS REVIEW
+   +-------------------------------------------------------+
+   | Pipeline + active engagements + what Max, Sal and Pip |
+   | should improve. Doubles as the monthly reporting mtg. |
+   | PURPOSE: performance, deal matching, roadmap line     |
+   +-------------------------------------------------------+
+        | rolls up into
+        v
+   QUARTERLY -- STRATEGY + SHOWCASE
+   +-------------------------------------------------------+
+   | A partner presents a CLIENT WIN -> case study factory.|
+   | Set the next focus vertical. Review pilot economics   |
+   | toward locking floor, clip, cap.                      |
+   | PURPOSE: direction + proof + economics                |
+   +-------------------------------------------------------+
+        | rolls up into
+        v
+   ANNUAL -- OFFSITE  (in person, the family glue)
+   +-------------------------------------------------------+
+   | Vision | recognition | relationships | co-create the  |
+   | next year. The relationship moment, together.         |
+   | PURPOSE: belonging + retention + next-year plan       |
+   +-------------------------------------------------------+
+
+   OVERLAY -- REGIONAL MEETUPS  (between offsites, partner-hosted)
+   small, local, in person -> local belonging + regional deal flow
+
+   HOME BASE -- THE PARTNER HUB (online, extends the dashboard):
+   method library | weekly-table channel | deal-share board |
+   partner directory by specialty
+</code></pre>
+      </figure>
+      <ul>
+        <li><strong>Weekly open table.</strong> Format: 30 to 45 minutes, virtual, with an async option for distributed partners. Agenda: wins, friction, one shared learning, one client challenge put to the group. Kept light and no sell. Speaker and content needs: a rotating light facilitator and a simple shared prompt; the partner hub channel as the async home. Promotion: the email community-rhythm stream carries the weekly prompt. Expected participation: a baseline set in the first month, tracked as a forward signal of retention.</li>
+        <li><strong>Monthly business review.</strong> Format: virtual, structured. Agenda: pipeline and active engagements, Diagnostics sold, and what Max, Sal, and Pip should improve, fed straight into the product roadmap. This event doubles as the monthly marketing and commercial reporting meeting, so reporting and the community rhythm are the same meeting. Content needs: a simple pipeline view from the partner hub and the lead-source-tagged engagement data.</li>
+        <li><strong>Quarterly strategy and showcase.</strong> Format: hybrid. Agenda: a partner presents a client win (the case-study factory), the next focus vertical is set, and the pilot economics are reviewed against the four unit economics toward locking the floor, the clip, and the cap. Content needs: case-study capture (see Section 8) and a clearance check before any win is used publicly. This is also the recurring case-study production engine for Campaign 3.</li>
+        <li><strong>Annual offsite.</strong> Format: in person, the one warm relationship anchor. Agenda: vision, recognition, relationships, and co-creating the next year. Content and proof capture is richest here; it is also the strongest testimonial and case-study moment. Sequenced beyond the founding-cohort window. Budget is the largest single event line and is confirmed by Clent.</li>
+        <li><strong>Regional meetups.</strong> Format: small, in person, partner hosted, between offsites. Purpose: local belonging and regional deal flow. Light cost, often partner absorbed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Sponsorship and Speaking Strategy</h2>
+      <p>Near term, Maxxim does not sponsor third-party events or chase external speaking slots, for the reasons in Section 2: the audience is a named, small set of operators reached through the founder network and the founding session, not a public hall. The proof-led, partner-led model does not need bought reach. This section therefore frames the selection criteria for when the position is ready, and treats the founding session and the quarterly showcase as Maxxim's own speaking platforms.</p>
+
+      <h3>Selection criteria for any future sponsorship or speaking</h3>
+      <ul>
+        <li><strong>Audience alignment.</strong> The room must contain trusted operators (license door) or growth-stage and public-sector buyers reachable only through a partner. Operator density beats raw headcount.</li>
+        <li><strong>Reach quality, not reach volume.</strong> A small room of the right operators outranks a large room of strangers, because the model recruits a small high-trust cohort.</li>
+        <li><strong>Cost against the model.</strong> No paid sponsorship until the cleared-proof gap is closed and Maxxim's own category lead word (OPEN) is settled, because the spend would be against a position that is not yet armed.</li>
+      </ul>
+
+      <h3>Maxxim's own speaking platforms</h3>
+      <ul>
+        <li><strong>The founding session (3 July).</strong> Clent's primary speaking moment, operator to operator. Authority area: the 80/20 thesis and the human at the wheel.</li>
+        <li><strong>The quarterly showcase.</strong> A recurring platform where partners, not just Clent, present client wins. This builds the community's shared authority and produces cleared proof.</li>
+      </ul>
+
+      <h3>Speaking topic proposals tied to the brand authority areas</h3>
+      <ul>
+        <li><strong>The human at the wheel.</strong> Why, in an age where AI commoditises the first 80 percent, the durable advantage is the accountable human and a community that holds trust, taste, and judgement.</li>
+        <li><strong>Finished, not busy.</strong> Selling launched, owned outcomes on the client's own domain instead of hours, dashboards, and activity.</li>
+        <li><strong>Keep the gate.</strong> How a gated, human-signed method, enforced mechanically by the product, lets an operator trust a machine with the repeatable 80 percent.</li>
+      </ul>
+
+      <h3>The session promise: framed options, not locked</h3>
+      <p>The exact promise wording is OPEN and Clent's to finalise. Three framings, offered as options, each true to the community direction and the locked external style (no em dashes, no exclamation marks). Clent chooses or rewrites.</p>
+      <ul>
+        <li><strong>Option A, the table framing.</strong> "You are not buying a tool. You are joining a table where trust, taste, and judgement are shared, and everyone is stronger for it."</li>
+        <li><strong>Option B, the moat framing.</strong> "Alone, your judgement is capped by your hours. Together, it compounds. This is the engine, and the community, that lets it."</li>
+        <li><strong>Option C, the proof framing.</strong> "A proven method, run by a human, at AI speed. Come and see it run, then tell us how you would use it with your own clients."</li>
+      </ul>
+      <p>Expected return from these owned platforms: the founding session returns a partner map and the cohort pipeline; the quarterly showcase returns cleared case studies and direction. Both are far higher return than any near-term paid sponsorship, because a single signed partner unlocks a delivery channel and recurring floor-plus-clip revenue (rates illustrative, pending pilots).</p>
+    </section>
+
+    <section>
+      <h2>6. Event Promotion</h2>
+      <p>Promotion is lean, warm, and proof-led, matching the marketing plan. The founding session is promoted by relationship, not by media. The recurring programme is promoted through the email community-rhythm stream and the partner hub.</p>
+
+      <h3>Promotion timeline for the 3 July session</h3>
+      <ul>
+        <li><strong>Lead time.</strong> Promotion for an intimate, invitation-only founding session runs on warm channels and a short, sharp window. The named pipeline already exists, so the job is invitation and confirmation, not awareness building. Begin invitations as early as possible and confirm attendance in the week before. This is the deliberate exception to the usual six-week owned-event lead time, because the guest list is warm and named rather than cold and public.</li>
+        <li><strong>Gating milestone.</strong> The maxxim.ai site fixes (Jewell not "Joule", Paul Clancy as Client Partner, Pottsville added, two-door framing) must be live before 3 July, so any attendee who checks the site finds a credible proof surface.</li>
+      </ul>
+
+      <h3>Channel strategy</h3>
+      <ul>
+        <li><strong>Founder network and warm 1:1 (primary).</strong> Clent invites the named pipeline (Alex and 3P, Arran Aitken, Greg Johnson, Christy Kilmartin) and warm referrals directly, operator to operator. The trust gap closes person to person.</li>
+        <li><strong>Email invitation sequence.</strong> A recruitment nurture to invitees: invite, confirm, pre-event context (what to expect, that it is discovery and alignment not a demo), and a reminder. Personal in tone, light in volume. Runs on Cloudflare routing or Google Workspace, no bespoke build.</li>
+        <li><strong>LinkedIn organic.</strong> Profile the moment and the category without opening it to the public. Founder-led, one true claim per post, no exclamation marks. Pip may draft, a human approves before publish via Buffer.</li>
+        <li><strong>maxxim.ai as the proof surface.</strong> Not a registration funnel; the credibility anchor attendees check before they say yes. Astro on Cloudflare, fast and clean.</li>
+      </ul>
+
+      <h3>Promotion of the recurring programme</h3>
+      <ul>
+        <li><strong>Email community-rhythm stream.</strong> Carries the weekly-table prompt, the monthly-review note, and the quarterly-showcase invitation. Segmented by door (license, refer, specialist) and by stage (pipeline, attended session, signed partner).</li>
+        <li><strong>The partner hub.</strong> The weekly-table channel, the deal-share board, and the directory keep the rhythm visible between events. The hub is the catch that turns the session opt-ins into sustained participation. It extends the existing dashboard rather than being a new build.</li>
+      </ul>
+
+      <h3>Registration funnel and conversion assumptions</h3>
+      <ul>
+        <li><strong>Funnel.</strong> Invited (named pipeline plus warm referrals) to RSVP (with door interest captured) to attended to follow-up booked to door selected. The partner map is built from the attended stage; the cohort is built from the follow-up and door-selection stages.</li>
+        <li><strong>Conversion assumptions (directional, sign-off).</strong> Because invitations are warm and personal, expect a high RSVP-to-attendance rate, well above the 40 to 50 percent rule of thumb for open public events. Plan for 8 to 12 qualified attendees from a slightly larger invited set, and aim for a follow-up booked with every qualified attendee within 48 hours.</li>
+        <li><strong>Urgency tactics.</strong> No discounting or early-bird mechanics, which would cheapen a founding moment. The natural urgency is the founding cohort itself: a limited founding table, with founding-partner status and a role in shaping the economics nobody else will get to shape.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Attendee Experience</h2>
+      <p>Every touchpoint is intentional, because for a grounded, credible brand the experience details shape perception. The journey below covers the 3 July session from invitation to follow-up, and applies, lightly, to the recurring programme. The brand register is warmer and more reciprocal here than on the website: this is the table, not a pitch.</p>
+      <figure>
+        <figcaption>The attendee journey and follow-up flow for the 3 July session. Each touchpoint carries the warm, reciprocal session register. The 48-hour follow-up is non-negotiable; after 72 hours momentum is lost.</figcaption>
+<pre><code>
+   ATTENDEE JOURNEY + FOLLOW-UP FLOW  (3 July session)
+
+   BEFORE
+   [1] WARM INVITATION  (founder, 1:1)
+        "A founding table. Discovery + alignment, not a demo."
+            |
+            v
+   [2] RSVP  -> captures: org, role, client types, door interest
+            |   (pre-seeds the partner map)
+            v
+   [3] CONFIRMATION + PRE-EVENT CONTEXT
+        what to expect | how to join (in person / virtual) |
+        a light prompt: "bring one client you'd run this on"
+            |
+            v
+   ====================== ON THE DAY ======================
+   [4] ARRIVE: name badge, warm welcome, the table is set
+   [5] THE SESSION: cap -> live engine (Max/Sal/Pip) ->
+        Pottsville -> Jewell as live partner -> model + two
+        doors -> "how would you use this" ->
+        BUILD THE PARTNER MAP -> invitation
+   [6] IN-ROOM EXPERIENCE: operator-to-operator, round-table,
+        every voice heard; structured participation, not a lecture
+   =======================================================
+            |
+            v
+   AFTER  (the conversion engine)
+   [7] WITHIN 24 HRS: thank-you + the partner map shared back
+        + the leave-behind (model summary, two doors, Pottsville)
+            |
+            v
+   [8] WITHIN 48 HRS: 1:1 FOLLOW-UP BOOKED with every
+        qualified attendee  <-- NON-NEGOTIABLE
+        (after 72 hrs momentum is lost)
+            |
+            v
+   [9] WEEK 1: door conversation (license / refer / specialist)
+        + weekly-table opt-in confirmed -> into the partner hub
+            |
+            v
+   [10] ONGOING: the community rhythm catches them
+        (weekly table -> monthly review -> quarterly showcase)
+</code></pre>
+      </figure>
+      <ul>
+        <li><strong>Invitation and confirmation.</strong> A personal founder invitation, then an RSVP that captures door interest, then a confirmation with pre-event context that sets the frame (discovery and alignment, not a demo) and a light prompt to bring one client they would run this on. The prompt primes the "how would you use this" round table.</li>
+        <li><strong>On the day.</strong> Name badges, a warm welcome, a room set as a table. Reliable Wi-Fi and a clean screen for the live run of Max, Sal, and Pip. The session runs operator to operator with structured participation so every voice is heard. The branded elements are restrained and on brand: Signal Blue #2D5BFF, Poppins, real over abstract imagery, no glowing-brain stock. The reversed wordmark is available for any dark-ground or Signal Blue field.</li>
+        <li><strong>Networking facilitation.</strong> The "how would you use this" round table and the partner-map building are the networking; they are designed so operators discover each other's strengths and possible referrals in the room.</li>
+        <li><strong>Virtual parity.</strong> The virtual attendees see the live run, hear the room, and contribute to the shared partner-map board. The founding session models the weekly table's async inclusivity rather than treating remote attendees as second class.</li>
+        <li><strong>Immediate post-event communication.</strong> Within 24 hours, a thank you, the partner map shared back, and the leave-behind. Within 48 hours, a booked 1:1 with every qualified attendee. This is where the return is realised.</li>
+        <li><strong>Recurring programme experience.</strong> The same warmth, lighter touch. The weekly table is deliberately low friction (30 to 45 minutes, async option). The partner hub is the always-on home that makes belonging tangible between events.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Content Capture</h2>
+      <p>Each event is a content and proof factory. The table below identifies at least five content pieces extractable from each event type, with format and responsibility, all subject to clearance. The single discipline that governs all of it: nothing client-specific or partner-named is used publicly without consent, and Pottsville is the only cleared public case (OTR internal only, Hidrive percentages only, Jewell's own named results under Jewell's banner). Where the work is production rather than judgement, Max drafts the words and Pip drafts the social, and a human signs off, which is the model producing its own content.</p>
+
+      <h3>From the 3 July session (at least five pieces)</h3>
+      <table>
+        <thead>
+          <tr><th>Content piece</th><th>Format</th><th>Responsibility</th><th>Clearance note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1. The live engine walkthrough (Max, Sal, Pip)</td><td>Screen recording of the live run, edited into a short reusable proof clip</td><td>Raef captures, ops edits</td><td>Run on Maxxim itself, self-owned, freely usable</td></tr>
+          <tr><td>2. The partner map</td><td>The structured output, anonymised into a community-shape graphic</td><td>Clent and Raef</td><td>No named partner used publicly without consent</td></tr>
+          <tr><td>3. Founder framing on the 80/20 cap</td><td>Short speaker quote and a LinkedIn post</td><td>Clent, ops repurposes (Pip drafts, human approves)</td><td>Founder voice, freely usable</td></tr>
+          <tr><td>4. The category and community story</td><td>A blog recap of the founding session (no named attendees without consent)</td><td>Ops, Max drafts, Clent sign-off</td><td>Generalised; consent for any names</td></tr>
+          <tr><td>5. Pottsville as the cleared proof moment</td><td>Refreshed case reference repurposed from the session use</td><td>Ops</td><td>Pottsville public, cleared</td></tr>
+          <tr><td>6. Photography of the table (optional)</td><td>Candid, real over staged, on-brand imagery</td><td>Ops, with attendee consent</td><td>Consent required before any face is used</td></tr>
+        </tbody>
+      </table>
+      <p>Note: the Jewell live-partner exhibit is powerful in the room but is not repurposed as Maxxim's own public content; Jewell's material stays under Jewell's banner.</p>
+
+      <h3>From the recurring programme</h3>
+      <ul>
+        <li><strong>Quarterly showcase (the case-study factory).</strong> Each quarter yields, at minimum: a cleared case study from the presented client win (once clearance is granted); a partner testimonial; a speaker quote; a LinkedIn proof post; and a method learning written up for the hub library. This is the recurring engine for Campaign 3 and the cleared-proof gap.</li>
+        <li><strong>Annual offsite.</strong> The richest capture: highlight reel, multiple partner testimonials, recognition moments, photography, and at least one deep case study, all consent governed.</li>
+        <li><strong>Weekly and monthly.</strong> Light by design. The valuable capture here is the shared learnings into the hub method library, which feed the compounding loop that improves Max, Sal, and Pip, rather than outward-facing content.</li>
+      </ul>
+      <p><strong>Responsibility model.</strong> Raef owns platform and live-run capture; ops owns editing, repurposing, and the hub library, with Max drafting words and Pip drafting social; Clent owns method authority, sign-off, and any external send (no external send without Clent sign-off). Consent and clearance are checked before any partner or client is named publicly.</p>
+    </section>
+
+    <section>
+      <h2>9. Lead Capture and Follow Up</h2>
+      <p>Post-event follow-up is where the return is realised. The discipline is fixed: a follow-up within 48 hours, because after 72 hours momentum is lost. For Maxxim, lead capture is partner-recruitment data, and the most important data discipline is the lead-source rule the business plan and marketing plan both require.</p>
+
+      <h3>Registration and in-event data collection</h3>
+      <ul>
+        <li><strong>At RSVP.</strong> Name, organisation, role, the kind of clients they serve, and door interest (license, refer, specialist, undecided). This pre-seeds the partner map.</li>
+        <li><strong>In the room.</strong> Door preference confirmed or revised, vertical strength, and referral links between attendees (who could refer to whom). Captured live on the partner-map board.</li>
+        <li><strong>Engagement signals.</strong> Who spoke, who named a specific client for the "how would you use this" round, who opted into the weekly table. These are the qualification signals.</li>
+      </ul>
+
+      <h3>Lead scoring adjustments based on event engagement</h3>
+      <ul>
+        <li><strong>Higher priority.</strong> Named a specific client they would run it on; expressed a clear license-door preference; opted into the weekly table on the day.</li>
+        <li><strong>Nurture priority.</strong> Attended and engaged but undecided on a door, or leaning refer rather than license.</li>
+        <li><strong>Light touch.</strong> RSVP without attendance, or attended without naming a use case; keep warm through the email rhythm.</li>
+      </ul>
+
+      <h3>Post-event nurture sequence</h3>
+      <ul>
+        <li><strong>Within 24 hours.</strong> A thank you, the partner map shared back, and the leave-behind (model summary, two doors, Pottsville).</li>
+        <li><strong>Within 48 hours.</strong> A booked 1:1 follow-up with every qualified attendee. Non-negotiable.</li>
+        <li><strong>Week 1.</strong> The door conversation (license, refer, or specialist) and confirmed weekly-table opt-in, with the attendee added to the partner hub.</li>
+        <li><strong>Ongoing.</strong> The community rhythm catches them: weekly table, monthly review, quarterly showcase. The email community-rhythm stream sustains the cadence between events.</li>
+      </ul>
+
+      <h3>Sales handoff criteria</h3>
+      <p>There is no separate sales team near term; the founder is the close. The handoff is from event follow-up into the founding-cohort recruitment (Marketing Plan Campaign 2). An attendee is ready for the cohort conversation when they have named a door preference and a client or vertical they would run it on. The decisive commercial discipline at engagement time is the documented lead-source rule: every future engagement is tagged partner-sourced, Maxxim-sourced, or referred before delivery begins, because that tag drives the clip scaling and the finder's fee. This rule must be a simple written rule in place before the first Maxxim-sourced deal.</p>
+
+      <h3>CRM and tooling requirements</h3>
+      <ul>
+        <li>A light CRM or pipeline tracker for the named recruitment pipeline and partner status, carrying first-touch source confirmed at sign.</li>
+        <li>The partner hub (extended dashboard) as the catch for opt-ins and the home of the weekly table, deal-share board, and directory.</li>
+        <li>A simple lead-source tagging mechanism on every engagement, the commercial spine of the measurement, supporting clean clip scaling.</li>
+        <li>The email platform (Cloudflare routing or Google Workspace) for the recruitment nurture and the community-rhythm streams, segmented by door and stage.</li>
+        <li>Per-action cost logging (owners only) so the cost side of each engagement feeds the unit economics; partners and clients never see costs.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>10. Budget Framework</h2>
+      <p>The events budget is deliberately modest, because the model is proof-led and partner-led, and the highest-leverage events (the founding session and the weekly table) cost facilitation time, not media. <strong>Every figure below is illustrative, pending pilots, and requires Clent sign-off.</strong> Within the marketing plan budget, events draw chiefly on the 3 July session and founding-event line (around 25 percent of the marketing budget, illustrative) and the partner hub and community-facilitation line (around 20 percent, illustrative); the recurring programme is funded mostly by the community-facilitation line.</p>
+
+      <h3>Cost categories by event type</h3>
+      <table>
+        <thead>
+          <tr><th>Event</th><th>Main cost categories</th><th>Estimated spend (illustrative)</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>3 July session</strong></td>
+            <td>Venue or room hire; AV and screen; Wi-Fi; name badges and printed leave-behind; light catering; the live Cowork and Studio environment prep; facilitation time</td>
+            <td>Low, illustrative, pending sign-off</td>
+            <td>The cost is preparation and facilitation, not media. The single highest-leverage spend in the plan.</td>
+          </tr>
+          <tr>
+            <td><strong>Weekly open table</stron
+  </div>
+  <div class="doc-end trunc">Source capture ends here — full document held in the Maxxim engine</div>
+  <div class="doc-nav"><a href="/3d-process/deploy/edm-plan/"><span class="lbl">← Previous</span><span class="ttl">EDM Plan</span></a>
+<a href="/3d-process/deploy/paid-media-plan/" style="text-align:right"><span class="lbl">Next →</span><span class="ttl">Paid Media Plan</span></a></div>
+</div></div>
+</body>
+</html>

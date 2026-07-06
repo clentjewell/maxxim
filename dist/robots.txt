@@ -1,0 +1,9 @@
+# Maxxim
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Machine-readable summary for AI agents:
+# https://maxxim.ai/llms.txt
+
+Sitemap: https://maxxim.ai/sitemap-index.xml

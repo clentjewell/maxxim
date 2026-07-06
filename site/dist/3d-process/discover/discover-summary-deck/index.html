@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discovery Summary CP1, Maxxim</title>
+    <meta name="maxxim:client" content="maxxim" />
+    <meta name="maxxim:phase" content="discover" />
+    <meta name="maxxim:skill" content="presentation" />
+    <meta name="maxxim:source" content="discover-summary.html" />
+    <meta name="maxxim:checkpoint" content="CP1" />
+    <meta name="maxxim:generated" content="2026-07-01" />
+    <link rel="stylesheet" href="reveal/reveal.css" />
+    <link rel="stylesheet" href="reveal/theme/white.css" id="theme" />
+    <link
+      rel="stylesheet"
+      href="/fonts/legacy.css"
+    />
+    <style>
+      :root {
+        --signal: #2d5bff; --ink: #0a0a0a; --slate: #6b7280;
+        --line: #c7ccd6; --mist: #f5f6f8; --paper: #fff;
+      }
+      .reveal { font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
+                font-size: 34px; color: var(--ink); font-weight: 400; }
+      .reveal .slides { text-align: left; }
+      .reveal .slides section { padding: 0 10px; }
+      .reveal h1, .reveal h2, .reveal h3 { font-family: 'Poppins'; color: var(--ink);
+        font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; text-transform: none; margin: 0 0 .35em; }
+      .reveal h1 { font-size: 1.95em; }
+      .reveal h2 { font-size: 1.4em; }
+      .reveal h3 { font-size: 1.0em; font-weight: 600; color: var(--slate); letter-spacing: 0; }
+      .reveal p { line-height: 1.5; margin: 0 0 .55em; }
+      .reveal ul, .reveal ol { display: block; width: 100%; margin: .2em 0 .6em; }
+      .reveal ul { list-style: none; padding-left: 0; }
+      .reveal ul li { position: relative; padding-left: 1em; margin: .34em 0; line-height: 1.38; }
+      .reveal ul li::before { content: ''; position: absolute; left: 0; top: .52em;
+        width: .42em; height: .42em; background: var(--signal); border-radius: 50%; }
+      .reveal ol { padding-left: 1.2em; } .reveal ol li { margin: .34em 0; line-height: 1.38; }
+      .reveal strong { color: var(--signal); font-weight: 600; }
+      .reveal em { color: var(--signal); font-style: normal; font-weight: 600; }
+      .reveal a { color: var(--signal); text-decoration: none; }
+      .reveal .eyebrow { text-transform: uppercase; letter-spacing: .22em; font-size: .46em;
+        font-weight: 700; color: var(--signal); margin: 0 0 .7em; }
+      .reveal .lead { font-size: 1.1em; color: var(--slate); font-weight: 400; }
+      .reveal .stat { font-size: 3.1em; font-weight: 700; color: var(--signal);
+        letter-spacing: -0.03em; line-height: 1; margin: 0 0 .1em; }
+      .reveal .rule { width: 64px; height: 4px; background: var(--signal); border-radius: 2px; margin: .55em 0 .7em; }
+      .reveal .cols { display: flex; gap: 1.2em; align-items: flex-start; }
+      .reveal .cols > * { flex: 1; }
+      .reveal blockquote { border-left: 4px solid var(--signal); background: var(--mist);
+        padding: .55em 1em; color: var(--ink); font-style: normal; box-shadow: none; width: auto; border-radius: 0 8px 8px 0; font-size: .92em; }
+      .reveal table { font-size: .54em; border-collapse: collapse; width: 100%; }
+      .reveal table th, .reveal table td { text-align: left; padding: .42em .6em; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .reveal table th { color: var(--slate); text-transform: uppercase; font-size: .82em; letter-spacing: .04em; font-weight: 600; }
+      .reveal .slide-number { background: transparent; color: var(--slate); font-size: 14px; right: 26px; bottom: 18px; }
+      .brandmark { position: fixed; left: 28px; bottom: 18px; z-index: 31;
+        font-size: 12px; letter-spacing: .18em; font-weight: 700; color: var(--slate); opacity: .55; }
+      /* Plate slides */
+      .reveal section.cover, .reveal section.divider, .reveal section.plate { color: #fff; }
+      .reveal section.cover h1, .reveal section.divider h2, .reveal section.plate h2 { color: #fff; }
+      .reveal section.cover .lead, .reveal section.divider .lead, .reveal section.plate .lead { color: #d6e0ff; }
+      .reveal section.divider.dark .lead, .reveal section.plate.dark .lead { color: #cfd3db; }
+      .reveal section.cover .meta { color: #aebfff; font-size: .6em; margin-top: 1em; }
+      .reveal section.cover .wordmark { font-weight: 700; letter-spacing: .04em; font-size: .7em; color: #fff; margin-bottom: 2em; }
+      .reveal section.divider .eyebrow, .reveal section.plate .eyebrow { color: #cfe0ff; }
+      .reveal section.divider ul li::before, .reveal section.plate ul li::before { background: #fff; }
+      .reveal section.divider strong, .reveal section.plate strong { color: #fff; }
+      .reveal section.divider em, .reveal section.plate em { color: #cfe0ff; }
+      /* Cover reversed logo */
+      .cover-logo { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 1.4em; }
+      .cover-logo img { width: 300px; max-width: 55vw; height: auto; }
+      /* Seam split panel */
+      .seam { display: flex; gap: 0; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+      .seam > div { flex: 1; padding: .95em 1.05em; }
+      .seam .human { background: var(--mist); }
+      .seam .machine { background: var(--signal); color: #fff; }
+      .seam .pct { font-family: 'Poppins'; font-weight: 700; font-size: 1.5em; letter-spacing: -0.03em; line-height: 1; margin-bottom: .12em; }
+      .seam .human .pct { color: var(--signal); }
+      .seam .machine .pct { color: #fff; }
+      .seam .lbl { font-size: .5em; text-transform: uppercase; letter-spacing: .12em; font-weight: 600; margin-bottom: .45em; }
+      .seam .human .lbl { color: var(--slate); }
+      .seam .machine .lbl { color: #cfe0ff; }
+      .seam .txt { font-size: .58em; line-height: 1.45; }
+      .seam .machine .txt { color: #eef2ff; }
+      /* Engine grid */
+      .engine-grid { display: flex; gap: .8em; width: 100%; margin-top: .2em; }
+      .engine-card { flex: 1; border: 1px solid var(--line); border-radius: 12px; padding: .8em .85em; background: #fff; }
+      .engine-card .who { font-family: 'Poppins'; font-weight: 700; color: var(--signal); font-size: .92em; letter-spacing: -0.02em; }
+      .engine-card .role { font-size: .5em; color: var(--slate); text-transform: uppercase; letter-spacing: .1em; font-weight: 600; margin: .1em 0 .5em; }
+      .engine-card .does { font-size: .58em; color: var(--ink); line-height: 1.45; }
+      .engine-foot { font-size: .56em; color: var(--slate); margin-top: .7em; }
+      /* Quadrant */
+      .quad { display: grid; grid-template-columns: 1fr 1fr; gap: .7em; width: 100%; margin-top: .2em; }
+      .quad .cell { border: 1px solid var(--line); border-radius: 10px; padding: .6em .75em; background: #fff; }
+      .quad .cell.win { border-color: var(--signal); background: var(--signal); color: #fff; }
+      .quad .cell .h { font-family: 'Poppins'; font-weight: 600; font-size: .62em; margin-bottom: .2em; }
+      .quad .cell.win .h { color: #fff; }
+      .quad .cell .d { font-size: .5em; color: var(--slate); line-height: 1.4; }
+      .quad .cell.win .d { color: #dbe4ff; }
+      /* Proof ladder */
+      .proof { display: flex; gap: .7em; width: 100%; margin-top: .2em; }
+      .proof .p { flex: 1; border: 1px solid var(--line); border-radius: 10px; padding: .6em .7em; background: #fff; }
+      .proof .p .t { font-family: 'Poppins'; font-weight: 600; font-size: .58em; color: var(--ink); margin-bottom: .2em; }
+      .proof .p .s { font-size: .46em; color: var(--slate); line-height: 1.4; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+      .proof .p.lead-p { border-color: var(--signal); }
+      .proof .p.lead-p .s { color: var(--signal); }
+      .note-tag { font-size: .5em; color: var(--slate); margin-top: .5em; }
+      /* Synthesis chips */
+      .syn { display: flex; flex-wrap: wrap; gap: .55em; width: 100%; margin-top: .2em; }
+      .syn .row { flex: 1 1 46%; border: 1px solid var(--line); border-radius: 10px; padding: .55em .75em; background: #fff; }
+      .syn .row .k { font-size: .46em; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--signal); margin-bottom: .18em; }
+      .syn .row .v { font-size: .56em; color: var(--ink); line-height: 1.42; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Cover -->
+        <section class="cover" data-background-color="#2d5bff">
+          <div class="cover-logo">
+            <img src="https://assets.maxxim.ai/maxxim/inverse/78512f900b9d.svg" alt="Maxxim reversed logo, white wordmark for dark grounds" />
+          </div>
+          <div class="eyebrow" style="color:#fff">Discover · Checkpoint 1</div>
+          <h1>Discovery Summary</h1>
+          <div class="rule" style="background:#fff"></div>
+          <p class="lead">Maxxim running the 3D Process on itself. The gate before Design.</p>
+          <p class="meta">1 July 2026 · Prepared by Maxxim</p>
+          <aside class="notes">Thanks for the time. This is the Checkpoint 1 gate for Maxxim running the 3D Process on itself. It pulls together the three Discover deliverables, the audience teardown, the competitor analysis, and the offer worksheet, into one place, states the killer questions that define the business, takes a defended position on what Maxxim is becoming, and sets out exactly what you need to confirm before Design begins. All three upstream pieces are complete and were refreshed on the first of July on a sharper evidence base: the twenty-ninth of June product guide, which gives us the real day-to-day mechanics, and the live Jewell partner site, which is the first proof the partner model works in market. The Gate 1 decisions you gave on the twenty-seventh of June are held and carried, not reopened. Economic figures stay illustrative until the founding-cohort pilots set them. And proof is governed by clearance: Pottsville is the only public proof, and Jewell's own named results stay under Jewell's banner. I will walk the position first, then the evidence, then the decisions still live for you.</aside>
+        </section>
+
+        <!-- The one line -->
+        <section class="plate" data-background-color="#2d5bff">
+          <div class="eyebrow">The core question, answered</div>
+          <h2>What Maxxim is becoming</h2>
+          <div class="rule" style="background:#fff"></div>
+          <blockquote style="border-left-color:#fff;background:rgba(255,255,255,.12);color:#fff;font-size:1.05em">
+            Maxxim is a commercialisation engine, delivered as a platform for operator-led businesses.
+          </blockquote>
+          <p class="lead">A licensable engine that lets trusted operators run a proven gated method under their own relationship. Maxxim productises the method. Jewell owns the standard.</p>
+          <aside class="notes">If you take one line from this deck, take this one. Version two point one asked what Maxxim is actually becoming, and gave five candidate readings: a product company, a partner network, a commercialisation engine, a software-assisted agency, or a platform for operator-led businesses. The Discovery evidence, now sharpened by known product mechanics and a live partner in market, points to one defensible position. Maxxim is a commercialisation engine, delivered as a platform for operator-led businesses. It is a licensable engine that lets trusted operators run a proven gated method under their own relationship. Maxxim productises the method, and Jewell owns the standard. This was endorsed at Gate 1 with a wider aperture than SME, and it is carried here, not reopened. The next slide shows why this reading beats the others, because a defended position is only as strong as the readings it defeats.</aside>
+        </section>
+
+        <!-- Why this position holds -->
+        <section>
+          <div class="eyebrow">The position defended</div>
+          <h2>Why this reading beats the others</h2>
+          <div class="cols">
+            <div>
+              <ul>
+                <li><strong>Not a generic software product.</strong> The value is the method, not the tools. Only the thin layer, Max plus the engine, is built in-house; everything else is deliberately leaned on.</li>
+                <li><strong>Not an agency selling hours.</strong> Revenue is a platform floor plus a per-engagement clip scaled by lead source, not billable time. The partner carries the client.</li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li><strong>Not self-serve SaaS without judgement.</strong> A named human owns the twenty per cent and signs off at every gate. Remove the human and it collapses into the AI-tool category it beats.</li>
+                <li><strong>More than a partner network alone.</strong> The network is the scale mechanism and the moat, but the engine and the method are what the network licenses.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note-tag">Endorsed at Gate 1 with the universal-audience aperture. Carried, not reopened.</p>
+          <aside class="notes">Here is why the position holds against the four readings it could be mistaken for. It is not a generic software product, because the value is not the tools. Only the thin layer, Max and the engine, is built in-house; everything else is deliberately leaned on, which is a strength, not a gap. What is sold is a method the tools serve, enforced by mechanical gating a tool vendor does not have. It is not an agency selling hours, because revenue is a platform floor plus a per-engagement clip scaled by lead source, not billable time, and the partner, not Maxxim, carries the client relationship. It is not self-serve software without judgement, because a named human owns the twenty per cent and signs off at every gate; take the human out and the whole proposition falls into the AI-tool category it is built to beat. And it is more than a room of partners, because the network is the scale mechanism and the moat, but it is the engine and the method that the network licenses. Maxxim is the engine behind the partner, not only the partners. This was endorsed at Gate 1 with the wider aperture, and it is carried, not relitigated.</aside>
+        </section>
+
+        <!-- The seam: 20/80 -->
+        <section>
+          <div class="eyebrow">The seam, made concrete</div>
+          <h2>Human twenty, machine eighty, proven by a live partner</h2>
+          <div class="seam">
+            <div class="human">
+              <div class="pct">20%</div>
+              <div class="lbl">Human · the partner</div>
+              <div class="txt">Trust, taste, judgement, and the relationship. Discover is always human. The client always enters through the partner. AI proposes, the human decides and signs off.</div>
+            </div>
+            <div class="machine">
+              <div class="pct">80%</div>
+              <div class="lbl">Machine · the engine</div>
+              <div class="txt">The repeatable volume at machine speed. Design and Deploy at scale once the judgement work is set, human-checked at every stage.</div>
+            </div>
+          </div>
+          <p class="note-tag">Jewell is the name on the door. Maxxim is the engine behind it. One named partner owns each client relationship, the single non-negotiable public rule.</p>
+          <aside class="notes">This split is the whole business, and it is now embodied by a live partner rather than asserted on a slide. The human holds the twenty per cent that clients actually pay for: trust, taste, judgement, and the relationship. AI runs the repeatable eighty per cent at speed. On the live Jewell site you can see exactly how it flows: the client enters through Jewell, the Discover phase is always human, and Design and Deploy hand off to the Maxxim engine at scale, human-checked at every stage. Jewell is the name on the door; Maxxim is the engine behind it. The old good, fast, cheap trade-off is broken on purpose by keeping the human exactly where quality is decided. And the one public rule that never moves is that one named partner owns each client relationship. Jewell runs on the same rails as any licensed partner, which is what turns the model from a claim into proof.</aside>
+        </section>
+
+        <!-- The engine: Max / Sal / Pip -->
+        <section>
+          <div class="eyebrow">The engine, made concrete</div>
+          <h2>Three named specialists, always under the human</h2>
+          <div class="engine-grid">
+            <div class="engine-card">
+              <div class="who">Max</div>
+              <div class="role">The words · Cowork</div>
+              <div class="does">Strategy, plans, copy, briefs, and summaries. Drives the tools.</div>
+            </div>
+            <div class="engine-card">
+              <div class="who">Sal</div>
+              <div class="role">The pixels · Design Studio</div>
+              <div class="does">Logos, brand imagery, collateral, and video.</div>
+            </div>
+            <div class="engine-card">
+              <div class="who">Pip</div>
+              <div class="role">Social · Social Studio</div>
+              <div class="does">Drafts posts and, on approval, publishes them.</div>
+            </div>
+          </div>
+          <p class="engine-foot">The method is 3D plus Deepen, gated and mechanical. Creative unlocks only as its briefs exist and a logo is locked. The gates are the moat.</p>
+          <aside class="notes">The product mechanics are now known, so the engine can be shown as a legible system rather than a black box. The method is carried by three named specialists, each one a process. Max does the words in Cowork: strategy, plans, copy, briefs, and summaries, and drives the tools. Sal does the pixels in the Design Studio: logos, brand imagery, collateral, and video. Pip runs the Social Studio, drafting posts and publishing them only on approval. They are always subordinate to the accountable human, who is the partner, and they are never separate products. The method is 3D plus Deepen: Discover, Design, Deploy, then Deepen, the compounding loop once the engine is live. The gating is real and mechanical, not a promise: creative unlocks only as the briefs it depends on exist and a logo is locked, and the Social Studio unlocks only once the Social Strategy exists. That enforcement is the moat, because a competitor cannot assemble it quickly, and protecting the gates is protecting the differentiator.</aside>
+        </section>
+
+        <!-- Killer questions divider -->
+        <section class="divider" data-background-color="#0a0a0a">
+          <div class="eyebrow">Section</div>
+          <h2>The killer questions</h2>
+          <div class="rule"></div>
+          <p class="lead">The truths that define Maxxim. Read only these and you understand the business.</p>
+          <aside class="notes">These are the killer questions, the truths that define Maxxim, distilled from the Discovery Dataset, the twenty-ninth of June product guide, the live Jewell site, and the version two point one strategic spine. If someone read only the next two slides, they would understand the business. I will keep each to a line and let the picture add up.</aside>
+        </section>
+
+        <!-- Killer questions 1 -->
+        <section>
+          <div class="eyebrow">Killer questions · 1 of 2</div>
+          <h2>What is true, and cannot be argued away</h2>
+          <ul>
+            <li><strong>Maxxim is the machine for an operator's judgement.</strong> AI runs the repeatable eighty per cent through Max, Sal and Pip. An accountable human owns the twenty per cent clients pay for. That split is the whole business.</li>
+            <li><strong>One engine, two problems.</strong> Operators have judgement without a machine, or tools without a method. Jewell's direct delivery is capped by personal capacity. Maxxim is the unlock for both, and Jewell now runs live on it.</li>
+            <li><strong>The partner is the customer, the client is the output.</strong> The trusted operator is the primary audience and the scale mechanism, reached through two doors: license to deliver, or refer for a finder's fee.</li>
+            <li><strong>Built for any organisation, delivered through a human.</strong> The method reads across personal brands, SMEs, corporates, not-for-profits and government. The constant is method plus AI speed plus an accountable human.</li>
+            <li><strong>An empty quadrant, owned.</strong> No competitor pairs AI speed with a proven gated method and a named human. Agencies lack the speed, tools lack the human, enablement lacks the method.</li>
+          </ul>
+          <aside class="notes">Five truths on this slide. First, Maxxim is the machine for an operator's judgement: AI runs the repeatable eighty per cent through three named specialists, and an accountable human owns the twenty per cent clients actually pay for. Second, one engine solves two problems: the partner problem, where skilled operators have judgement without a machine or tools without a method, and the Jewell problem, where direct delivery is capped by Clent's personal capacity. Jewell now runs live on the engine as the proof. Third, the partner is the customer and the client is the output: the trusted operator is the primary audience and the scale mechanism, reached through two doors, license or refer. Fourth, the engine is built for any organisation but always delivered through a human; the constant is the method plus AI speed plus an accountable person, and the variable is context, tier, and compliance. Fifth, Maxxim owns an empty quadrant, fast and accountable and method-backed, that no competitor category occupies. I will finish the set on the next slide.</aside>
+        </section>
+
+        <!-- Killer questions 2 -->
+        <section>
+          <div class="eyebrow">Killer questions · 2 of 2</div>
+          <h2>Proven, owned, and built to compound</h2>
+          <ul>
+            <li><strong>The method is proven and enforced by the product.</strong> The 3D Process has run with real clients for years through Jewell, and the platform now enforces it mechanically. The gates are the moat.</li>
+            <li><strong>The central objection is trust, not price.</strong> Can AI do this to a standard I will put my name on. The human at every gate is the answer, but it must be proven. Maxxim has one cleared public case study of its own.</li>
+            <li><strong>The clients own what they buy.</strong> A complete strategy plus launched, owned assets, in days not months, on their own domain and unlockable to hand-editable HTML. Pottsville is the live proof.</li>
+            <li><strong>The engagement compounds, it does not end at launch.</strong> The Deepen loop is the recurring line agencies rarely systematise and tools do not offer. Across the partner community it becomes a flywheel.</li>
+            <li><strong>The community of partners is the durable moat.</strong> The human layer held by a network, not one operator: shared learning, deal flow, and a quality bar. Ownership stays Clent and Raef, two owners, no board.</li>
+          </ul>
+          <aside class="notes">The remaining five truths. First, the method is proven and enforced by the product, not just promised: it has run with real clients for years through Jewell, and the platform now enforces it mechanically, so the gates are the moat. Second, the central buying objection is trust, not price. The question every buyer asks is whether AI can do this to a standard they will put their name on, and the human at every gate is the structural answer, but it must be proven rather than asserted. This is also the standout vulnerability, because the Maxxim brand has exactly one cleared public case study of its own. Third, the clients own what they buy: a complete strategy plus launched assets they own outright, in days not months, hosted on their own domain and unlockable to hand-editable HTML, with a named human accountable at each gate. Pottsville is the live proof of that promise. Fourth, the engagement compounds through the Deepen loop, the recurring-revenue line that agencies rarely systematise and tools do not offer, which becomes a flywheel across the partner community. Fifth, that community of partners is the durable moat, the human layer held by a network rather than one operator, and ownership stays Clent and Raef, two owners, no board.</aside>
+        </section>
+
+        <!-- Competitive quadrant -->
+        <section>
+          <div class="eyebrow">Competitor analysis</div>
+          <h2>The empty quadrant, fast and accountable and method-backed</h2>
+          <div class="quad">
+            <div class="cell">
+              <div class="h">Small agencies and web developers</div>
+              <div class="d">Human expertise and a tangible deliverable, but slow, expensive, opaque, founder-capped, and no ongoing growth.</div>
+            </div>
+            <div class="cell">
+              <div class="h">DIY plus general AI tools</div>
+              <div class="d">Cheapest and instant, but offload the work and judgement onto the owner and feel unaccountable. The AI-fatigue counter-trend.</div>
+            </div>
+            <div class="cell">
+              <div class="h">Enablement and self-assembled toolchains</div>
+              <div class="d">Reach and ready tooling, but no method and no quality bar, so output rests entirely on the operator.</div>
+            </div>
+            <div class="cell win">
+              <div class="h">Maxxim</div>
+              <div class="d">AI speed, a proven gated method enforced by the product, and a named human accountable at every gate. Finished outcomes the client owns.</div>
+            </div>
+          </div>
+          <p class="note-tag">Named threats: agencies adopting AI to move faster, and enablement platforms moving upmarket into method. The defence is the combination plus enforced gates plus cleared proof.</p>
+          <aside class="notes">Competition is by category on two layers, not a single named rival. On the client layer, small agencies and web developers bring human expertise and a tangible deliverable, but they are slow, expensive, opaque, founder-capped, and stop at launch. Also on the client layer, DIY plus general AI tools are the cheapest and most instant option, but they offload the work and the judgement back onto the owner and feel unaccountable, which is exactly the AI-fatigue counter-trend Maxxim exploits. On the partner layer, enablement platforms and self-assembled toolchains bring reach and ready tooling, but no method and no quality bar, so the output rests entirely on the operator. Maxxim sits in the empty quadrant none of them occupy: AI speed, a proven gated method enforced by the product rather than the tooling, and a named human accountable at every gate, producing finished outcomes the client owns. The named threats are agencies adopting AI to move faster and enablement platforms moving upmarket into method. The defence is the combination itself, plus the enforced gates, plus cleared proof, none of which a competitor can assemble quickly.</aside>
+        </section>
+
+        <!-- Audience -->
+        <section>
+          <div class="eyebrow">Audience teardown</div>
+          <h2>Two stacked audiences, the partner first</h2>
+          <div class="cols">
+            <div>
+              <h3>Layer A · the partner, primary</h3>
+              <ul>
+                <li><strong>A1 Capacity-Capped Operator</strong> licenses to deliver. Judgement without a machine; the primary audience and scale mechanism.</li>
+                <li><strong>A2 Networked Referrer</strong> refers for a finder's fee. A network sitting idle.</li>
+                <li><strong>A3 Scoped Specialist</strong> plugs into a defined module alongside Sal or Pip without owning the client.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Layer B · the client, through the partner</h3>
+              <ul>
+                <li><strong>B1 and B2</strong> time-poor tradies and local SMEs, plus growth-stage and premium organisations.</li>
+                <li>They meet Max, Sal and Pip only through the partner, with an optional read-only portal and the assistant Ari.</li>
+                <li>Primary persona: <strong>Operator Owen</strong>, the capacity-capped Client Partner, signing at principal level.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note-tag">Resolved at Gate 1: the partner is the front door now; an end-user self-serve portal is the north star, sequenced after the partner motion is proven.</p>
+          <aside class="notes">Two stacked audiences. Layer A is the partner side, and it is primary. A1 is the Capacity-Capped Operator who licenses to deliver: a skilled operator with a network but no repeatable machine, whose trigger is hitting the capacity wall or seeing a peer like Jewell run the full model in market. This is the primary audience and the scale mechanism. A2 is the Networked Referrer who introduces clients for a finder's fee. A3 is the Scoped Specialist who plugs into a defined module alongside Sal or Pip without owning the client. Layer B is the client served through the partner: time-poor tradies and local SMEs in B1, growth-stage and premium organisations in B2. Crucially, they meet Max, Sal and Pip only through the partner, with an optional read-only portal and the private assistant Ari. The Gate 1 aperture is wider than SME, because the engine reads across every organisation type, but it is always delivered through a partner. The primary persona is Operator Owen, the capacity-capped Client Partner who signs at principal level. And it was resolved at Gate 1 that the partner is the front door now, with the self-serve portal as the north star sequenced later.</aside>
+        </section>
+
+        <!-- Offer -->
+        <section>
+          <div class="eyebrow">Offer worksheet</div>
+          <h2>One front door, credited forward</h2>
+          <div class="cols">
+            <div>
+              <h3>The offer</h3>
+              <ul>
+                <li>A gated 3D engagement, Discover, Design, Deploy, Deepen, producing a complete strategy plus launched, owned assets in days not months.</li>
+                <li>Sold to operators through two doors, license or refer, with a named human accountable at every gate.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Price and structure</h3>
+              <ul>
+                <li><strong>Growth Diagnostic $4,950</strong>, credited toward the engagement. The universal, repeatable front-door product.</li>
+                <li>Premium core $25,000 to $250,000, a recent run around $80,000. Specialist add-ons around $1,500.</li>
+                <li>Platform floor plus clip scaled by lead source. Partner economics illustrative until pilots.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note-tag">Sharpest call, confirmed at Gate 1: lead with the $4,950 Growth Diagnostic. It is the only fully settled price, low risk because credited forward, and it generates the pilot data that sets the floor, clip and cap.</p>
+          <aside class="notes">Two offer surfaces, and the partner offer scales the client offer. The core offer is a gated 3D engagement, Discover, Design, Deploy and Deepen, producing a complete strategy plus launched, owned assets in days not months, run by Max, Sal and Pip with a named human accountable at every gate, and sold to operators through two doors, license or refer. On price, the Growth Diagnostic at four thousand nine hundred and fifty dollars is credited toward the engagement, and it is the universal, repeatable front-door product for every organisation type. The premium core runs from twenty-five thousand to two hundred and fifty thousand dollars, with a recent run around eighty thousand, and specialist add-ons sit around fifteen hundred. The model is a platform floor plus a clip scaled by lead source, and every partner economics figure stays illustrative until the pilots set it. The sharpest packaging call, confirmed at Gate 1, is to lead with the Growth Diagnostic. It is the only fully settled price, it is low risk because it is credited forward, it qualifies the client before a partner commits delivery time, and it generates the pilot data we need. Whether it is the front-door product or a gateway to one was recommended and accepted pending your confirmation, and Maxxim's own category lead word remains open.</aside>
+        </section>
+
+        <!-- Synthesis: 90-day proof -->
+        <section class="divider" data-background-color="#0a0a0a">
+          <div class="eyebrow">Synthesis</div>
+          <h2>The 90-day proof, July to September</h2>
+          <div class="rule"></div>
+          <p class="lead">If Maxxim has ninety days to prove itself with the founding group, here is the simplest runnable shape.</p>
+          <aside class="notes">Now the synthesis question. If Maxxim has ninety days to prove itself with the founding group, from July to September twenty twenty-six, what is the simplest runnable shape? The next slide lays it out across five dimensions: the simplest model, the partner structure, the product scope, the first vertical, and the proof path. Everything here is structure, not settled economics. The numbers come from the pilots, not from this deck.</aside>
+        </section>
+
+        <!-- Synthesis detail -->
+        <section>
+          <div class="eyebrow">Synthesis · the runnable shape</div>
+          <h2>Simplest model, founding cohort, one front door</h2>
+          <div class="syn">
+            <div class="row">
+              <div class="k">Simplest model</div>
+              <div class="v">Floor plus clip platform revenue, with the two-door partner model, license or refer. Structure set, numbers illustrative until the pilots.</div>
+            </div>
+            <div class="row">
+              <div class="k">Partner structure</div>
+              <div class="v">A founding cohort of 5 to 8 partners, run as the first meeting of a partner community, anchored by the 3 July discovery and alignment session. Jewell runs on the same rails.</div>
+            </div>
+            <div class="row">
+              <div class="k">Product scope</div>
+              <div class="v">The gated 3D engagement, entered through the $4,950 Growth Diagnostic credited toward the engagement. The consistent, repeatable first sale.</div>
+            </div>
+            <div class="row">
+              <div class="k">First vertical</div>
+              <div class="v">Trades and local SMEs, where a partner already owns the audience, with Pottsville's allied-health pattern as the proven shape. The engine is universal; the wedge is owned.</div>
+            </div>
+            <div class="row">
+              <div class="k">Proof path</div>
+              <div class="v">Lead every external claim with Pottsville, run the cohort to generate real pilot data, and clear additional named results to widen the Maxxim-brand proof base.</div>
+            </div>
+          </div>
+          <aside class="notes">Here is the shape across five dimensions. The simplest model is floor plus clip platform revenue, with the two-door partner model, license to deliver or refer for a finder's fee. The structure is set and the numbers stay illustrative until the pilots set them. The partner structure is a founding cohort of five to eight partners, run as the first meeting of a partner community, anchored by the third of July partner discovery and alignment session, with named live channels including Alex and 3P, Arran Aitken, Greg Johnson, and Christy Kilmartin. Jewell runs on the same rails as any licensed partner, so the model is proven rather than asserted. The product scope is the gated 3D engagement entered through the Growth Diagnostic, the consistent first sale every partner can run while the economics are still open. The first vertical is trades and local SMEs, where a partner already owns the audience, Arran's tradie database, with Pottsville's allied-health pattern as the proven shape; the engine is universal, but the wedge is a vertical a partner already commands. And the proof path is to lead every external claim with Pottsville, run the cohort to generate real pilot data, and clear additional named results so the Maxxim-brand proof base widens beyond a single case study.</aside>
+        </section>
+
+        <!-- Proof clearance -->
+        <section>
+          <div class="eyebrow">Proof and clearance</div>
+          <h2>Lead with Pottsville. Jewell's proof stays under Jewell's banner.</h2>
+          <div class="proof">
+            <div class="p lead-p">
+              <div class="t">Pottsville Acupuncture</div>
+              <div class="s">Public · cleared · lead with it</div>
+            </div>
+            <div class="p">
+              <div class="t">OTR Earthmover</div>
+              <div class="s">Internal only</div>
+            </div>
+            <div class="p">
+              <div class="t">Hidrive</div>
+              <div class="s">Percentages only</div>
+            </div>
+            <div class="p">
+              <div class="t">Jewell's named results</div>
+              <div class="s">Under Jewell's banner</div>
+            </div>
+          </div>
+          <p class="note-tag">Jewell as a live partner is proof the model works. Its own named results, Hidrive, Circl, Walter Wealth and the rest, live under Jewell's banner and are not re-used as Maxxim's own public proof.</p>
+          <aside class="notes">Proof is governed by clearance, and this is the single highest-value area to get right, because cleared proof closes the trust gap faster than any other action and it is also the standout competitive weakness. Pottsville Acupuncture is the only launched, cleared public proof, so we lead with it everywhere. OTR Earthmover is internal only. Hidrive is percentages only, with clearance required before any public use. And Jewell's own named results, Hidrive, Circl Group, Walter Wealth, and the rest of that library, live under Jewell's banner. Jewell as a live partner is powerful proof that the method works and that our flagship partner is a thirty-five-year operator, but that does not change Maxxim's own public proof clearance. We do not re-use Jewell's results as Maxxim's own public proof without saying so. Pottsville is Maxxim's; Jewell's proof is Jewell's under Jewell's banner. That line is a rule, not a preference.</aside>
+        </section>
+
+        <!-- Open items -->
+        <section>
+          <div class="eyebrow">Open items · Max must not invent</div>
+          <h2>Held open, carried forward</h2>
+          <table>
+            <thead>
+              <tr><th>Open item</th><th>Status after Gate 1</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Front-door product</td><td>Direction set: Growth Diagnostic as universal front door; portal as a later second door. Accepted pending Clent confirmation.</td></tr>
+              <tr><td>Maxxim's own category lead word</td><td>Still open. Not invented here.</td></tr>
+              <tr><td>Partner economics numbers</td><td>Still open. Structure set; floor, clip, finder's-fee rate, splits and caps pending pilots.</td></tr>
+              <tr><td>Self-serve portal staging and ownership</td><td>Still open. Partner route is partner-owned; the portal route stays open.</td></tr>
+              <tr><td>Fractional CMO model for Maxxim</td><td>Still open. Used by Jewell as a partner; not a Maxxim-brand fact.</td></tr>
+              <tr><td>3 July community promise</td><td>Direction set: founding meeting of the partner community; exact wording still Clent's.</td></tr>
+              <tr><td>Christy Kilmartin's role split</td><td>Still open. Referral versus specialist pay rule.</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">These are the items version two point one forbids settling, shown with their status after the Gate 1 decisions. They stay open, and each must be resolved, most of them through the founding-cohort pilots, before it drives public copy or an external commitment. The front-door product has a direction set, the Growth Diagnostic as the universal front door with the self-serve portal as a later second door, accepted pending your confirmation. Maxxim's own category lead word is still open and is not invented here; Jewell's external lead word growth is locked, but Maxxim's is not. All partner economics numbers are open: the structure is set, but the floor, clip, finder's-fee rate, lead-source splits and caps come from the pilots. The self-serve portal staging and end-client ownership rule is open. The fractional CMO model is open for Maxxim; it is how Jewell packages the method as a partner, not a Maxxim-brand fact, and we attribute it to Jewell where cited. The third of July community promise has a direction but the exact wording stays yours. And Christy Kilmartin's role split, referral versus specialist pay, is open. I will not resolve any of these; I flag them.</aside>
+        </section>
+
+        <!-- Locked decisions -->
+        <section>
+          <div class="eyebrow">Locked · do not relitigate</div>
+          <h2>The ground we build on</h2>
+          <div class="cols">
+            <div>
+              <ul>
+                <li>Maxxim name and maxxim.ai; Max as the agent; the 3D Process; Jewell owns the method.</li>
+                <li>Ownership: Clent and Raef, two owners, no board. Paul Clancy is a Client Partner, not a co-founder.</li>
+                <li>Open partner model: license to deliver, refer for a finder's fee. One named partner owns each client.</li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>Human at the wheel; stage-gated process; web is one output path.</li>
+                <li>Brand: Signal Blue #2D5BFF; Poppins; Edition 03; Blue Frog removed. The reversed wordmark is a variant within the locked identity.</li>
+                <li>Work-layer only; nothing external without Clent sign-off. Jewell lead word: growth. No em dashes, no exclamation marks.</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">A quick pass over the locked ground, so Design builds on it rather than reopening it. The Maxxim name and maxxim dot ai, Max as the agent, the 3D Process, and Jewell owning the method are locked. Ownership is Clent and Raef, two owners, no board, and Paul Clancy is a Client Partner and business development, never a co-founder. The open partner model, license to deliver or refer for an optional finder's fee, is locked in shape, with one named partner owning each client relationship as the single public rule. Human at the wheel, a stage-gated process, and web as one output path are locked. The brand is locked: Signal Blue, Poppins, Edition 03, Blue Frog removed, and the reversed wordmark you saw on the cover is a variant within that identity, not a re-opening of it. And the working rules hold: work-layer only, nothing external without your sign-off, Jewell's external lead word is growth, and the house voice carries no em dashes and no exclamation marks. None of this is up for debate at this gate.</aside>
+        </section>
+
+        <!-- Gate 1 recommendation / close -->
+        <section class="cover" data-background-color="#2d5bff">
+          <div class="eyebrow" style="color:#fff">Gate 1 recommendation</div>
+          <h2>Five confirmations to hold into Design</h2>
+          <div class="rule" style="background:#fff"></div>
+          <ul>
+            <li><strong style="color:#fff">Hold the position.</strong> A commercialisation engine, delivered as a platform for operator-led businesses.</li>
+            <li><strong style="color:#fff">Hold the front door.</strong> The partner now, with Jewell as the exemplar; the self-serve portal sequenced later.</li>
+            <li><strong style="color:#fff">Hold the front-door product.</strong> The $4,950 Growth Diagnostic, with 3D and Deepen as the expand step.</li>
+            <li><strong style="color:#fff">Authorise the proof path.</strong> Lead with Pottsville; direct the clearance review of additional runs.</li>
+            <li><strong style="color:#fff">Hold the open economics.</strong> Illustrative until the pilots, nothing published as locked without sign-off.</li>
+          </ul>
+          <p class="meta">Three still live for Clent: the category lead word; the portal staging and ownership rule; which runs beyond Pottsville can be cleared as Maxxim's own proof.</p>
+          <aside class="notes">To close, here is the Gate 1 recommendation. Discovery is complete and coherent across audience, competition and offer, and it now rests on known product mechanics and a live partner in market. The direction was given on the twenty-seventh of June, and this refresh carries it forward on a sharper evidence base. Nothing here commits an open economic figure or an external claim. Five confirmations to hold into Design. Hold the core-question position, a commercialisation engine delivered as a platform for operator-led businesses. Hold the front door, the partner now with Jewell as the exemplar and the self-serve portal sequenced after the partner motion is proven. Hold the front-door product, the Growth Diagnostic, with the 3D engagement and Deepen as the expand step. Authorise the proof path, leading with Pottsville and directing the clearance review of additional runs, since cleared Maxxim-brand proof is the single highest-value action. And hold the open economics, illustrative until the pilots, with nothing published as locked without your sign-off. Three decisions stay live for you: confirm Maxxim's own category lead word or name it as the first thing Design must force; confirm the staging and ownership rule for the self-serve portal; and direct which runs beyond Pottsville can be cleared as Maxxim's own public proof. That is the gate. Over to you.</aside>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="brandmark">MAXXIM</div>
+
+    <script src="reveal/reveal.js"></script>
+    <script src="reveal/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        controls: true,
+        progress: true,
+        center: false,
+        transition: 'fade',
+        width: 1280,
+        height: 720,
+        margin: 0.06,
+        plugins: [RevealNotes]
+      });
+    </script>
+  </body>
+</html>

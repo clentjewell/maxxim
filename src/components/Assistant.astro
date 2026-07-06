@@ -1,0 +1,211 @@
+---
+/**
+ * Ask Maxxim — a lightweight, self-contained assistant.
+ *
+ * Answers ONLY from an approved, source-grounded knowledge base (below).
+ * No network calls, no model, no data collection — CSP-safe and private.
+ * Anything it cannot answer from source escalates to /contact. This mirrors
+ * the "answer from approved source material only, escalate when uncertain"
+ * rule for Ask functions.
+ */
+const KB = [
+  {
+    q: "What is Maxxim?",
+    keys: ["what", "maxxim", "who", "about"],
+    a: "Maxxim is the commercialisation engine that runs a proven, gated method at AI speed, with an accountable human at every gate. It is a method, not a magic box.",
+  },
+  {
+    q: "What is the method?",
+    keys: ["method", "3d", "process", "deepen", "how"],
+    a: "3D + Deepen: Discover, then Design, then Deploy, then the compounding loop once the engine is live. No phase proceeds until the prior one is signed off.",
+  },
+  {
+    q: "Who stays accountable?",
+    keys: ["human", "accountable", "who", "gate", "trust"],
+    a: "A named human stays at the wheel. AI carries the repeatable 80%; the human owns the 20% clients pay for — trust, taste and judgement — and signs off every gate.",
+  },
+  {
+    q: "What does the client own?",
+    keys: ["own", "client", "asset", "domain"],
+    a: "The client owns what gets built — assets owned outright, on their own domain, unlockable. Finished, owned outcomes, never spectacle.",
+  },
+  {
+    q: "Can I see the work?",
+    keys: ["work", "case", "proof", "example", "portfolio"],
+    a: "Yes — the Work page shows launched, owned outcomes powered by Maxxim, with Pottsville Acupuncture as the cleared public proof.",
+  },
+  {
+    q: "How do I start?",
+    keys: ["start", "contact", "talk", "engage", "book", "partner"],
+    a: "Start a conversation from the Contact page. Partners and operators can also see how the engine works on the Powered by Maxxim page.",
+  },
+];
+---
+
+<div class="assistant" data-assistant>
+  <button class="launcher" data-assistant-open aria-expanded="false" aria-controls="mx-assistant-panel">
+    <span class="pulse" aria-hidden="true"></span>
+    Ask Maxxim
+  </button>
+
+  <div class="panel" id="mx-assistant-panel" role="dialog" aria-label="Ask Maxxim" aria-modal="false" data-assistant-panel hidden>
+    <div class="panel-head">
+      <span class="eyebrow">Ask Maxxim · answers from approved source only</span>
+      <button class="close" data-assistant-close aria-label="Close">×</button>
+    </div>
+    <div class="log" data-assistant-log aria-live="polite">
+      <p class="msg bot">Ask about the method, accountability, ownership, or the work. I answer only from Maxxim's approved material — anything else, I'll point you to a human.</p>
+    </div>
+    <div class="chips">
+      {KB.map((item) => <button class="chip" data-assistant-q={item.q}>{item.q}</button>)}
+    </div>
+    <form class="ask" data-assistant-form>
+      <input type="text" name="q" placeholder="Type a question…" autocomplete="off" aria-label="Your question" data-assistant-input />
+      <button type="submit" aria-label="Send">→</button>
+    </form>
+  </div>
+</div>
+
+<script type="application/json" data-assistant-kb set:html={JSON.stringify(KB)} />
+
+<script>
+  interface Entry { q: string; keys: string[]; a: string }
+  function init() {
+    const root = document.querySelector<HTMLElement>("[data-assistant]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "1";
+    const kbEl = document.querySelector<HTMLElement>("[data-assistant-kb]");
+    const KB: Entry[] = kbEl ? (JSON.parse(kbEl.textContent || "[]") as Entry[]) : [];
+    const open = root.querySelector<HTMLButtonElement>("[data-assistant-open]");
+    const close = root.querySelector<HTMLButtonElement>("[data-assistant-close]");
+    const panel = root.querySelector<HTMLElement>("[data-assistant-panel]");
+    const log = root.querySelector<HTMLElement>("[data-assistant-log]");
+    const form = root.querySelector<HTMLFormElement>("[data-assistant-form]");
+    const input = root.querySelector<HTMLInputElement>("[data-assistant-input]");
+    if (!open || !close || !panel || !log || !form || !input) return;
+
+    function toggle(show: boolean) {
+      if (!panel || !open || !input) return;
+      if (show) panel.removeAttribute("hidden");
+      else panel.setAttribute("hidden", "");
+      open.setAttribute("aria-expanded", String(show));
+      if (show) input.focus();
+    }
+    open.addEventListener("click", () => toggle(panel.hasAttribute("hidden")));
+    close.addEventListener("click", () => toggle(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggle(false);
+    });
+
+    function add(text: string, who: "user" | "bot") {
+      if (!log) return;
+      const p = document.createElement("p");
+      p.className = "msg " + who;
+      p.textContent = text;
+      log.appendChild(p);
+      log.scrollTop = log.scrollHeight;
+    }
+    function answer(q: string): string {
+      const t = q.toLowerCase();
+      let best: Entry | null = null;
+      let score = 0;
+      for (const item of KB) {
+        const s = item.keys.reduce((n, k) => n + (t.includes(k) ? 1 : 0), 0);
+        if (s > score) {
+          score = s;
+          best = item;
+        }
+      }
+      if (best && score > 0) return best.a;
+      return "I can only answer from Maxxim's approved material. For anything else, the best next step is to start a conversation — head to the Contact page.";
+    }
+    function submit(q: string) {
+      if (!q.trim()) return;
+      add(q, "user");
+      window.setTimeout(() => add(answer(q), "bot"), 120);
+    }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      submit(input.value);
+      input.value = "";
+    });
+    root.querySelectorAll<HTMLButtonElement>("[data-assistant-q]").forEach((b) => {
+      b.addEventListener("click", () => submit(b.getAttribute("data-assistant-q") || ""));
+    });
+  }
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>
+
+<style>
+  .assistant { position: fixed; right: 20px; bottom: 20px; z-index: 60; }
+  .launcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--color-ink);
+    color: var(--color-white);
+    font-size: var(--text-small);
+    font-weight: 600;
+    padding: 12px 18px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--color-ink) 22%, transparent);
+    transition: transform 0.2s var(--ease-out-quiet);
+  }
+  .launcher:hover { transform: translateY(-2px); }
+  .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--color-blue-tint);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-signal) 60%, transparent);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-signal) 55%, transparent); }
+    70% { box-shadow: 0 0 0 9px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+  .panel {
+    position: absolute;
+    right: 0; bottom: 56px;
+    width: min(360px, calc(100vw - 40px));
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--color-ink) 18%, transparent);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: min(70vh, 560px);
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+  .close { background: none; border: none; font-size: 22px; line-height: 1; cursor: pointer; color: var(--color-label); }
+  .log { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+  .msg { font-size: var(--text-small); line-height: 1.55; padding: 10px 13px; border-radius: 12px; max-width: 90%; margin: 0; }
+  .msg.bot { background: var(--color-mist); color: var(--color-ink); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.user { background: var(--color-signal); color: var(--color-white); align-self: flex-end; border-bottom-right-radius: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
+  .chip {
+    font-size: 12px; background: var(--color-white);
+    border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+    padding: 6px 11px; cursor: pointer; color: var(--color-body);
+    transition: border-color 0.2s var(--ease-out-quiet), color 0.2s;
+  }
+  .chip:hover { border-color: var(--color-signal); color: var(--color-signal); }
+  .ask { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--color-border-soft); }
+  .ask input {
+    flex: 1; font: inherit; font-size: var(--text-small);
+    padding: 10px 12px; border: 1px solid var(--color-border);
+    border-radius: 10px; background: var(--color-white); color: var(--color-ink);
+  }
+  .ask button {
+    background: var(--color-signal); color: var(--color-white);
+    border: none; border-radius: 10px; width: 42px; cursor: pointer; font-size: 18px;
+  }
+</style>
