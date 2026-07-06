@@ -15,7 +15,8 @@ results:
     label: "site architecture"
   - metric: "In market"
     label: "content and news layer"
-heroImage: "/images/s6-cat2.jpg"
+heroImage: "../../assets/images/s6-cat2.jpg"
+heroAlt: "Laptop with a live site beside a printed proposal and phone"
 status: "in-preparation"
 order: 45
 ---

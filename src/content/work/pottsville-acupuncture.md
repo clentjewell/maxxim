@@ -21,7 +21,8 @@ reflection:
   quote: "The brand finally feels like it reflects the quality of care we deliver."
   name: "Dr. Mal McKay"
   role: "Founder, Pottsville Acupuncture"
-heroImage: "/images/mx-audience.jpg"
+heroImage: "../../assets/images/mx-audience.jpg"
+heroAlt: "Three people at a table reviewing a printed Signal Blue brand book"
 liveUrl: "https://pottsvilleacupuncture.com.au"
 status: "launched"
 marquee: true

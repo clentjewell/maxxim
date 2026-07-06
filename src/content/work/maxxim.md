@@ -17,7 +17,8 @@ results:
     label: "the method, enforced by the product"
   - metric: "Live"
     label: "at maxxim.ai"
-heroImage: "/images/cover-city.jpg"
+heroImage: "../../assets/images/cover-city.jpg"
+heroAlt: "City at dusk in the Signal Blue grade"
 liveUrl: "https://maxxim.ai"
 status: "launched"
 marquee: true

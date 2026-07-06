@@ -43,7 +43,7 @@ try {
 }
 
 // 3. Copy the legacy artifacts into public/ (Astro serves them verbatim).
-const COPY = ["3d-process", "brand-guidelines", "book", "images"];
+const COPY = ["3d-process", "book", "images"];
 for (const name of COPY) {
   const from = join(LEGACY, name);
   if (!existsSync(from)) continue;
@@ -62,5 +62,8 @@ if (existsSync(packHome)) {
   cpSync(packHome, join(PUBLIC, "3d-process", "index.html"));
   console.log("[fold-legacy] public/3d-process/index.html");
 }
+
+// 4. Cap and recompress the folded photography for the web.
+run("node scripts/optimize-images.mjs", ROOT);
 
 console.log("[fold-legacy] done");

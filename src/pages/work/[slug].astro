@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Picture, getImage } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Section from "@components/ui/Section.astro";
 import Button from "@components/ui/Button.astro";
@@ -13,6 +14,11 @@ const { entry } = Astro.props;
 const d = entry.data;
 const { Content } = await render(entry);
 
+// Social crawlers want a plain, reasonably-sized JPEG.
+const og = d.heroImage
+  ? await getImage({ src: d.heroImage, width: 1200, height: 630, fit: "cover", format: "jpg" })
+  : null;
+
 const phases = d.solution
   ? [
       { no: "01", t: "Discover", body: d.solution.discover },
@@ -22,7 +28,7 @@ const phases = d.solution
   : [];
 ---
 
-<BaseLayout title={d.client} description={d.summary} ogImage={d.heroImage ?? "/og/default.png"}>
+<BaseLayout title={d.client} description={d.summary} ogImage={og?.src ?? "/og/default.png"}>
   <article>
     <header class="hero">
       <div class="container inner" data-reveal>
@@ -43,7 +49,16 @@ const phases = d.solution
 
     {d.heroImage && (
       <div class="container hero-img" data-reveal>
-        <img src={d.heroImage} alt={`${d.client} — brand imagery`} width="1200" height="620" />
+        <Picture
+          src={d.heroImage}
+          alt={d.heroAlt ?? `${d.client} — brand imagery`}
+          formats={["avif", "webp"]}
+          widths={[480, 800, 1200, 1600]}
+          sizes="(min-width: 1160px) 1096px, 92vw"
+          width={1600}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     )}
 
@@ -133,7 +148,7 @@ const phases = d.solution
   .summary { font-size: var(--text-h3); font-weight: 300; color: var(--color-body); margin: 4px 0 0; }
   .actions { margin-top: 12px; }
   .hero-img { margin-block: clamp(20px, 4vw, 40px); }
-  .hero-img img { width: 100%; height: clamp(240px, 40vw, 520px); object-fit: cover; border-radius: 20px; display: block; }
+  .hero-img :global(img) { width: 100%; height: clamp(240px, 40vw, 520px); object-fit: cover; border-radius: 20px; display: block; }
 
   .results { display: grid; gap: 24px; }
   .result { border-left: 2px solid var(--color-signal); padding-left: 20px; }

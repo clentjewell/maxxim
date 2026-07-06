@@ -15,7 +15,8 @@ results:
     label: "storefront, owned by the client"
   - metric: "Premium"
     label: "positioning, end to end"
-heroImage: "/images/s4-flatlay.jpg"
+heroImage: "../../assets/images/s4-flatlay.jpg"
+heroAlt: "Brand flat lay with the logotype on its holding shape"
 liveUrl: "https://ultimatelabs.com.au"
 status: "launched"
 order: 30

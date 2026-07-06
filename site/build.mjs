@@ -81,9 +81,7 @@ const DOCS = [
 /* ------------------------------------------------------------ shared css */
 
 const FONTS = `
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">`
+<link rel="stylesheet" href="/fonts/legacy.css">`
 
 const FAVICON = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="${C.blue}"/><svg x="18" y="18" width="64" height="64" viewBox="73 0 58 58"><rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect><rect fill="#FFFFFF" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#83A1FF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect><rect fill="#FFFFFF" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#83A1FF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect></svg></svg>`
@@ -327,7 +325,7 @@ ${sidebar({ home: true })}
     <p>The complete Maxxim strategy pack: Discover, Design and Deploy, produced by the engine and
        signed off by the accountable human at every gate. Start with the brand book, then work
        through each phase in order.</p>
-    <a class="cta" href="/brand-guidelines/">Open the Brand Guidelines →</a>
+    <a class="cta" href="/3d-process/design/brand-book/">Open the Brand Book →</a>
   </div>
 
   <div class="keyvis">
@@ -341,7 +339,7 @@ ${sidebar({ home: true })}
       <h2>The Maxxim Brand Book</h2>
       <p>Strategy foundation, logo system, Signal Blue, the Poppins scale, voice, imagery and
          applications — the canonical record of the brand, with the Edition 03 photography.</p>
-      <a class="cta" href="/brand-guidelines/">Read it →</a>
+      <a class="cta" href="/3d-process/design/brand-book/">Read it →</a>
     </div>
     <img src="/images/s4-flatlay.jpg" alt="Maxxim brand materials flat lay">
   </div>
@@ -368,11 +366,27 @@ DOCS.forEach((doc, i) => {
   writeFileSync(join(dir, 'index.html'), docPage(doc, DOCS[i - 1], DOCS[i + 1]))
 })
 
-// Gate 1 deck, complete and self-contained — served raw.
+// Gate 1 deck — served raw, but with its CDN dependencies rewritten to
+// self-hosted copies (reveal.js from node_modules, fonts from /fonts/) so the
+// deck works under the same no-external-origins CSP as the rest of the site.
 {
   const dir = join(OUT, '3d-process', 'discover', 'discover-summary-deck')
-  mkdirSync(dir, { recursive: true })
-  cpSync(join(SRC, 'discover', 'discover-summary.deck.html'), join(dir, 'index.html'))
+  mkdirSync(join(dir, 'reveal', 'theme'), { recursive: true })
+  const REVEAL = join(ROOT, 'node_modules', 'reveal.js')
+  cpSync(join(REVEAL, 'dist', 'reveal.css'), join(dir, 'reveal', 'reveal.css'))
+  cpSync(join(REVEAL, 'dist', 'reveal.js'), join(dir, 'reveal', 'reveal.js'))
+  cpSync(join(REVEAL, 'dist', 'theme', 'white.css'), join(dir, 'reveal', 'theme', 'white.css'))
+  cpSync(join(REVEAL, 'dist', 'theme', 'fonts'), join(dir, 'reveal', 'theme', 'fonts'), { recursive: true })
+  cpSync(join(REVEAL, 'plugin', 'notes', 'notes.js'), join(dir, 'reveal', 'notes.js'))
+
+  const deck = readFileSync(join(SRC, 'discover', 'discover-summary.deck.html'), 'utf8')
+    .replace('https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css', 'reveal/reveal.css')
+    .replace('https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css', 'reveal/theme/white.css')
+    .replace('https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js', 'reveal/reveal.js')
+    .replace('https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js', 'reveal/notes.js')
+    .replace(/^\s*<link rel="preconnect"[^>]*\/>\s*$\n/gm, '')
+    .replace(/https:\/\/fonts\.googleapis\.com\/css2[^"]*/g, '/fonts/legacy.css')
+  writeFileSync(join(dir, 'index.html'), deck)
 }
 
 // Brand photography.
@@ -383,17 +397,7 @@ cpSync(join(ROOT, 'brand-guidelines', 'public', 'images'), join(OUT, 'images'), 
   const dir = join(OUT, '3d-process', 'design', 'brand-book')
   mkdirSync(dir, { recursive: true })
   cpSync(join(ROOT, 'site', 'templates', 'brand-book.html'), join(dir, 'index.html'))
-}
-
-// Official Brand Guidelines — the authored Bundled Page, with its
-// image-slots wired to the Edition 03 photography and a self-hosted
-// React/Babel runtime (so it never depends on a public CDN).
-{
-  const dir = join(OUT, 'brand-guidelines')
-  mkdirSync(dir, { recursive: true })
-  cpSync(join(ROOT, 'site', 'templates', 'brand-guidelines.html'), join(dir, 'index.html'))
-  cpSync(join(ROOT, 'brand-guidelines', 'public', 'images'), join(dir, 'images'), { recursive: true })
-  cpSync(join(ROOT, 'site', 'vendor'), join(dir, 'vendor'), { recursive: true })
+  cpSync(join(ROOT, 'site', 'templates', 'brand-book.js'), join(dir, 'brand-book.js'))
 }
 
 // A4 print edition (built separately with base=/book/).

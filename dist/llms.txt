@@ -7,7 +7,7 @@
 - Essence: the human at the wheel. It is a method, not a magic box.
 - Seam: AI runs the repeatable 80%; a named human owns the 20% clients pay for (trust, taste, judgement) and signs off every gate.
 - Method: 3D + Deepen — Discover, Design, Deploy, then the compounding loop.
-- Positioning: The only AI-powered marketing platform combining a proven method, a named human at every gate, and a partner community — so outcomes are finished, owned, and delivered at speed.
+- Positioning: A proven, gated method run at AI speed, a named human at every gate, and a partner community behind the work — finished, owned outcomes, delivered fast.
 
 ## Pages
 - [The Method](https://maxxim.ai/method)

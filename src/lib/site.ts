@@ -11,7 +11,7 @@ export const SITE = {
   tagline: "The human at the wheel.",
   essence: "The proven method, run by a human, at AI speed.",
   positioning:
-    "The only AI-powered marketing platform combining a proven method, a named human at every gate, and a partner community — so outcomes are finished, owned, and delivered at speed.",
+    "A proven, gated method run at AI speed, a named human at every gate, and a partner community behind the work — finished, owned outcomes, delivered fast.",
   description:
     "Maxxim is the commercialisation engine that runs a proven, gated method at AI speed, with an accountable human at every gate. Finished, owned outcomes — never spectacle.",
   linkedin: "https://www.linkedin.com/company/maxxim",
@@ -42,7 +42,7 @@ export const FOOTER_NAV = {
   ],
   system: [
     { label: "3D Process pack", href: "/3d-process/" },
-    { label: "Brand Guidelines", href: "/brand-guidelines/" },
+    { label: "Brand Book", href: "/3d-process/design/brand-book/" },
     { label: "Brand Book (print)", href: "/book/" },
     { label: "For AI agents", href: "/llms.txt" },
   ],

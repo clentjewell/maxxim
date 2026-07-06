@@ -15,7 +15,8 @@ results:
     label: "flow, end to end"
   - metric: "In market"
     label: "and run by the team"
-heroImage: "/images/s8-monitors.jpg"
+heroImage: "../../assets/images/s8-monitors.jpg"
+heroAlt: "Three monitors showing copy, design and social output side by side"
 status: "in-preparation"
 order: 40
 ---

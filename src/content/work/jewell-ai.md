@@ -15,7 +15,8 @@ results:
     label: "near-zero-JS, built to last"
   - metric: "Portal"
     label: "and assistant, in market"
-heroImage: "/images/s1-desk.jpg"
+heroImage: "../../assets/images/s1-desk.jpg"
+heroAlt: "Focused operator at a desk with a marketing dashboard"
 status: "in-preparation"
 order: 46
 ---

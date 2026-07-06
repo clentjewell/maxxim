@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import coverCity from "@assets/images/cover-city.jpg";
 import { SITE, SPECIALISTS } from "@lib/site";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Section from "@components/ui/Section.astro";
@@ -33,11 +35,14 @@ const values = [
         </div>
       </div>
       <div class="hero-vis" data-reveal>
-        <img
-          src="/images/cover-city.jpg"
+        <Picture
+          src={coverCity}
           alt="A city at dusk in the Signal Blue grade"
-          width="1120"
-          height="760"
+          formats={["avif", "webp"]}
+          widths={[480, 760, 1120, 1520]}
+          sizes="(min-width: 900px) 50vw, 100vw"
+          width={1520}
+          loading="eager"
           fetchpriority="high"
         />
         <span class="wm"><Monogram size={20} /> Maxxim</span>
@@ -176,7 +181,7 @@ const values = [
   }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .hero-vis { position: relative; border-radius: 20px; overflow: hidden; }
-  .hero-vis img { width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; display: block; }
+  .hero-vis :global(img) { width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; display: block; }
   .wm {
     position: absolute; right: 16px; bottom: 14px;
     display: inline-flex; align-items: center; gap: 7px;
