@@ -78,6 +78,9 @@ const DOCS = [
   { phase: 'deploy', file: 'traditional-media-plan.html', slug: 'traditional-media-plan' },
 ]
 
+// slug → the phase it actually lives in, for resolving cross-doc links.
+const SLUG_PHASE = new Map(DOCS.map(d => [d.slug, d.phase]))
+
 /* ------------------------------------------------------------ shared css */
 
 const FONTS = `
@@ -181,14 +184,18 @@ function readDoc(doc) {
   const complete = /<\/html>\s*$/.test(raw)
   let body = raw.replace(/^[\s\S]*?<body>/, '').replace(/<\/body>[\s\S]*$/, '')
   body = body.replace(/<h1>[\s\S]*?<\/h1>/, '') // shell renders the title
-  // Re-point cross-doc links at pack URLs.
-  body = body.replace(/href="(?:\.\.\/)?(discover|design|deploy)\/([a-z0-9-]+)\.html"/g, 'href="/3d-process/$1/$2/"')
-  for (const p of PHASES) {
-    body = body.replace(
-      new RegExp(`href="([a-z0-9-]+)\\.html"`, 'g'),
-      (m, slug) => (DOCS.some(d => d.phase === doc.phase && d.slug === slug) ? `href="/3d-process/${doc.phase}/${slug}/"` : m)
-    )
-  }
+  // Re-point cross-doc links at pack URLs. The source docs sometimes name the
+  // wrong phase (e.g. discover/customer-profile when it lives under design) or
+  // link to a doc that does not exist (e.g. deploy/social-post). Resolve every
+  // link to the phase the slug actually lives in, and unwrap any link whose
+  // target does not exist, so the pack never ships a broken internal link.
+  const linkRe =
+    /<a\b([^>]*?)\shref="(?:\.\.\/)?(?:discover\/|design\/|deploy\/)?([a-z0-9-]+)\.html(#[^"]*)?"([^>]*)>([\s\S]*?)<\/a>/g
+  body = body.replace(linkRe, (match, pre, slug, frag = '', post, inner) => {
+    const phase = SLUG_PHASE.get(slug)
+    if (!phase) return inner // dangling target → unwrap to plain text
+    return `<a${pre} href="/3d-process/${phase}/${slug}/${frag}"${post}>${inner}</a>`
+  })
   return { title, complete, body }
 }
 
