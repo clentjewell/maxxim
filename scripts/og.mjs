@@ -24,8 +24,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
     <rect x="2" y="2" width="96" height="96" rx="26" fill="#2d5bff" mask="url(#m)"/>
     <text x="120" y="72" font-family="Poppins" font-weight="600" font-size="52" fill="#ffffff">Maxxim</text>
   </g>
-  <text x="80" y="360" font-family="Poppins" font-weight="600" font-size="88" fill="#ffffff">The human at the wheel.</text>
-  <text x="80" y="440" font-family="Poppins" font-weight="400" font-size="34" fill="#7d9bff">The proven method, run by a human, at AI speed.</text>
+  <text x="80" y="360" font-family="Poppins" font-weight="600" font-size="78" fill="#ffffff">A whole agency, in a box.</text>
+  <text x="80" y="440" font-family="Poppins" font-weight="400" font-size="34" fill="#7d9bff">AI does the work. A named human signs it off.</text>
   <text x="80" y="560" font-family="Poppins" font-weight="400" font-size="26" fill="#8a8f9c">maxxim.ai</text>
 </svg>`;
 

@@ -13,7 +13,7 @@ const marquee = all
   .slice(0, 3);
 
 const values = [
-  { n: "01", t: "Fast", p: "The engine runs the repeatable volume at AI speed. No agency drag." },
+  { n: "01", t: "Fast", p: "AI runs the repeatable volume at speed. No agency drag." },
   { n: "02", t: "Accountable", p: "A named human signs off every gate. Every output carries a person." },
   { n: "03", t: "Method-backed", p: "A proven, gated process — not a prompt and a prayer." },
 ];
@@ -24,12 +24,12 @@ const values = [
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy" data-reveal>
-        <p class="eyebrow">Powered by Maxxim · {SITE.positioning ? "Edition 03" : ""}</p>
-        <h1>The <em>human</em> at the wheel.</h1>
-        <p class="lede">{SITE.description}</p>
+        <p class="eyebrow">AI-powered · Human-approved</p>
+        <h1>A whole agency, <em>in a box</em>.</h1>
+        <p class="lede">Maxxim is a complete marketing agency in a box. AI does the work of a full agency, strategy, brand, website, content and campaigns, and a named human signs off every piece before it ships.</p>
         <div class="hero-actions">
           <Button href="/work">See the work</Button>
-          <Button href="/method" variant="outline">How the engine runs</Button>
+          <Button href="/method" variant="outline">How it works</Button>
         </div>
       </div>
       <div class="hero-vis" data-reveal>
@@ -49,12 +49,35 @@ const values = [
     </div>
   </section>
 
+  <!-- WHAT YOU GET -->
+  <Section rule>
+    <div class="get-head" data-reveal>
+      <p class="eyebrow">What you get</p>
+      <h2>The work of a full agency, delivered as finished assets you own.</h2>
+    </div>
+    <div class="gets">
+      {[
+        { n: "01", t: "Strategy", p: "Positioning and a plan you can act on." },
+        { n: "02", t: "Brand", p: "Identity, voice and guidelines, locked." },
+        { n: "03", t: "Website", p: "Launched live on your own domain." },
+        { n: "04", t: "Content", p: "Written, designed and scheduled." },
+        { n: "05", t: "Campaigns", p: "Run, measured and refined." },
+      ].map((g) => (
+        <div class="get" data-reveal>
+          <span class="gn">{g.n}</span>
+          <h3>{g.t}</h3>
+          <p>{g.p}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
   <!-- THE WHY -->
   <Section tone="mist">
     <div class="why" data-reveal>
       <p class="eyebrow">The trust gap</p>
-      <h2>Agencies have the human without the speed. AI tools have the speed without the human.</h2>
-      <p class="measure why-sub">Maxxim exists to be fast, accountable and method-backed at the same time — so the outcome is finished, owned, and delivered at speed.</p>
+      <h2>Agencies are human but slow. AI tools are fast but unaccountable.</h2>
+      <p class="measure why-sub">Maxxim is built to be both at once, so the work arrives fast, accountable and finished.</p>
     </div>
     <div class="values">
       {values.map((v) => (
@@ -76,7 +99,7 @@ const values = [
         <div class="human"><span class="pct">20%</span><span class="lbl">Human · trust, taste, judgement</span></div>
         <div class="machine"><span class="pct">80%</span><span class="lbl">Machine · the repeatable volume, checked at every gate</span></div>
       </div>
-      <p class="measure seam-note">Human in the loop is the point, not a limitation. The gate is the quality bar — no phase proceeds until the prior one is signed off.</p>
+      <p class="measure seam-note">Human in the loop is the point, not a limitation. No phase moves until a named person has signed it off.</p>
     </div>
   </Section>
 
@@ -85,7 +108,7 @@ const values = [
     <div class="method-head" data-reveal>
       <p class="eyebrow">The method</p>
       <h2>3D <span class="plus">+</span> Deepen</h2>
-      <p class="measure">Discover, then Design, then Deploy, then the compounding loop once the engine is live. Enforced by the product: creative unlocks only as its briefs exist.</p>
+      <p class="measure">Discover, Design, Deploy, then the Deepen loop once the engine is live. Each phase is gated: nothing proceeds until a named human signs it off.</p>
     </div>
     <div class="phases">
       {[
@@ -150,8 +173,8 @@ const values = [
   <!-- CTA -->
   <Section tone="ink" rule>
     <div class="final" data-reveal>
-      <h2>The proven method, run by a human, at AI speed.</h2>
-      <p class="measure">For operators who win the work and own the relationship — and want to deliver agency-grade growth repeatably.</p>
+      <h2>The whole agency, in a box, with a human at the wheel.</h2>
+      <p class="measure">Strategy to campaigns, done at AI speed and signed off by a named person. Yours from day one.</p>
       <div class="final-actions">
         <Button href="/contact" variant="solid-invert">Start a conversation</Button>
         <Button href="/powered-by" variant="ghost">Powered by Maxxim →</Button>
@@ -190,6 +213,16 @@ const values = [
   @media (min-width: 900px) { .hero-inner { grid-template-columns: 1fr 1fr; } }
 
   h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 12px 0 0; max-width: 20ch; }
+
+  /* WHAT YOU GET */
+  .get-head h2 { max-width: 26ch; }
+  .gets { margin-top: 40px; display: grid; gap: 20px; }
+  .get { border-top: 2px solid var(--color-signal); padding-top: 18px; }
+  .get .gn { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-signal); letter-spacing: 0.14em; }
+  .get h3 { margin: 8px 0 6px; font-size: var(--text-h3); }
+  .get p { margin: 0; font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 640px) { .gets { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .gets { grid-template-columns: repeat(5, 1fr); } }
 
   /* WHY */
   .why h2 { max-width: 22ch; }

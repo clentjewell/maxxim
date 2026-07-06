@@ -9,11 +9,11 @@ export const SITE = {
   contactEmail: "hello@maxxim.ai",
   legalEntity: "Maxxim",
   tagline: "The human at the wheel.",
-  essence: "The proven method, run by a human, at AI speed.",
+  essence: "A complete marketing agency in a box, with the human at the wheel.",
   positioning:
-    "The only AI-powered marketing platform combining a proven method, a named human at every gate, and a partner community — so outcomes are finished, owned, and delivered at speed.",
+    "Maxxim is the complete marketing agency in a box: AI does the work of a full agency, a named human signs off every gate, and clients own the finished outcome.",
   description:
-    "Maxxim is the commercialisation engine that runs a proven, gated method at AI speed, with an accountable human at every gate. Finished, owned outcomes — never spectacle.",
+    "Maxxim is a complete marketing agency in a box. Strategy, brand, website, content and campaigns at AI speed, with a named human signing off every gate.",
   linkedin: "https://www.linkedin.com/company/maxxim",
   copyrightYears: "2026",
 } as const;
