@@ -5,7 +5,7 @@
   "private": true,
   "description": "Maxxim. The showcase site. The proven method, run by a human, at AI speed.",
   "scripts": {
-    "prebuild": "node scripts/fold-legacy.mjs && node scripts/og.mjs",
+    "prebuild": "node scripts/fold-legacy.mjs && node scripts/images.mjs && node scripts/og.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

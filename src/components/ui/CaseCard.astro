@@ -16,7 +16,7 @@ const { slug, client, summary, category, metric, metricLabel, status = "in-prepa
     <span class="eyebrow">{category}</span>
     {status === "launched"
       ? <span class="badge live"><span class="dot" aria-hidden="true"></span>Launched</span>
-      : <span class="badge prep">In preparation</span>}
+      : <span class="badge prep">Case study</span>}
   </div>
   <h3 class="case-client">{client}</h3>
   <p class="case-summary">{summary}</p>
@@ -63,7 +63,7 @@ const { slug, client, summary, category, metric, metricLabel, status = "in-prepa
     gap: 6px;
   }
   .badge.live { color: var(--color-signal); border: 1px solid color-mix(in srgb, var(--color-signal) 40%, transparent); }
-  .badge.prep { color: var(--color-label); border: 1px solid var(--color-border); }
+  .badge.prep { color: var(--color-caption); border: 1px solid var(--color-border); }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-signal); }
   .case-client { font-size: var(--text-h3); line-height: var(--text-h3--line-height); margin: 0; }
   .case-summary { font-size: var(--text-small); color: var(--color-body); margin: 0; flex: 1; }
@@ -73,7 +73,7 @@ const { slug, client, summary, category, metric, metricLabel, status = "in-prepa
   }
   .case-metric { font-size: var(--text-small); color: var(--color-body); }
   .case-metric strong { color: var(--color-ink); font-weight: 600; }
-  .muted { color: var(--color-label); }
+  .muted { color: var(--color-caption); }
   .case-arrow { color: var(--color-signal); font-weight: 600; transition: transform 0.25s var(--ease-out-quiet); }
   .case-card:hover .case-arrow { transform: translateX(3px); }
 </style>

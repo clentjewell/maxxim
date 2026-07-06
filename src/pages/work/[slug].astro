@@ -31,7 +31,7 @@ const phases = d.solution
           <span class="eyebrow">{d.category}</span>
           {d.status === "launched"
             ? <span class="badge live"><span class="dot" aria-hidden="true"></span>Launched</span>
-            : <span class="badge prep">In preparation</span>}
+            : <span class="badge prep">Case study</span>}
         </div>
         <h1>{d.client}</h1>
         <p class="summary measure">{d.summary}</p>
@@ -43,7 +43,10 @@ const phases = d.solution
 
     {d.heroImage && (
       <div class="container hero-img" data-reveal>
-        <img src={d.heroImage} alt={`${d.client} — brand imagery`} width="1200" height="620" />
+        <picture>
+          <source srcset={d.heroImage.replace(/\.jpe?g$/i, ".webp")} type="image/webp" />
+          <img src={d.heroImage} alt={`${d.client} — brand imagery`} width="1200" height="620" decoding="async" />
+        </picture>
       </div>
     )}
 
@@ -127,7 +130,7 @@ const phases = d.solution
   .meta { display: flex; align-items: center; gap: 12px; }
   .badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 4px 9px; display: inline-flex; align-items: center; gap: 6px; }
   .badge.live { color: var(--color-signal); border: 1px solid color-mix(in srgb, var(--color-signal) 40%, transparent); }
-  .badge.prep { color: var(--color-label); border: 1px solid var(--color-border); }
+  .badge.prep { color: var(--color-caption); border: 1px solid var(--color-border); }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-signal); }
   h1 { font-size: var(--text-display); line-height: var(--text-display--line-height); margin: 0; }
   .summary { font-size: var(--text-h3); font-weight: 300; color: var(--color-body); margin: 4px 0 0; }

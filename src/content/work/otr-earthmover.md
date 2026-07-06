@@ -3,21 +3,25 @@ client: "OTR Earthmover"
 category: "Industrial"
 audience: "B2B"
 sectors: ["Mining", "Earthmover tyres", "Industrial"]
-services: ["Brand", "Website", "Content"]
-summary: "Heavy-industry credibility, presented with clarity."
-challenge: "A specialist industrial supplier whose digital presence did not match its standing in the field."
+services: ["Brand", "Website", "Content system"]
+summary: "Heavy-industry authority, presented with the clarity specifiers actually need."
+challenge: "A specialist industrial supplier whose standing in the field was not matched by its digital presence. Serious buyers had to work too hard to find the specification confidence they needed to act."
 solution:
-  discover: "The buyer, the specification pressure, and the trust signals that matter in earthmoving."
-  design: "A confident, legible identity and a site structured around real specifier needs."
-  deploy: "A news and content layer that keeps the brand current between campaigns."
+  discover: "The specifier and the buyer, the specification pressure they work under, and the trust signals that decide a sale in earthmoving — mapped before the build."
+  design: "A confident, legible identity and a site architecture organised around real specifier needs, so the right information is one step away, not buried."
+  deploy: "A live site with a news and content layer that keeps the brand current and credible between campaigns."
 results:
   - metric: "Specifier-first"
     label: "site architecture"
   - metric: "In market"
     label: "content and news layer"
+  - metric: "Credible"
+    label: "at the standard buyers expect"
 heroImage: "/images/s6-cat2.jpg"
 status: "in-preparation"
 order: 45
 ---
 
-Industrial authority, made legible. Full write-up in preparation.
+Industrial authority, made legible. The site meets serious buyers with the
+specification confidence they need, and stays current between campaigns. Full
+public write-up in preparation.

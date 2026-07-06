@@ -33,13 +33,17 @@ const values = [
         </div>
       </div>
       <div class="hero-vis" data-reveal>
-        <img
-          src="/images/cover-city.jpg"
-          alt="A city at dusk in the Signal Blue grade"
-          width="1120"
-          height="760"
-          fetchpriority="high"
-        />
+        <picture>
+          <source srcset="/images/cover-city.webp" type="image/webp" />
+          <img
+            src="/images/cover-city.jpg"
+            alt="A city at dusk in the Signal Blue grade"
+            width="1120"
+            height="760"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <span class="wm"><Monogram size={20} /> Maxxim</span>
       </div>
     </div>
