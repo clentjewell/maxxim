@@ -19,11 +19,13 @@
 - Behind the four names sits a roster of forty-three focused specialists: Makers produce deliverables; Advisors review.
 
 ## Pages
+- [Home](https://maxxim.ai/)
 - [The Method](https://maxxim.ai/method)
 - [Work](https://maxxim.ai/work)
 - [Powered by Maxxim](https://maxxim.ai/powered-by)
 - [Contact](https://maxxim.ai/contact)
 - [Brand system](https://maxxim.ai/brand)
+- [Brand Guidelines](https://maxxim.ai/brand-guidelines/)
 - [The 3D Process — method + open documents](https://maxxim.ai/3d-process/)
 
 ## Work (powered by Maxxim)

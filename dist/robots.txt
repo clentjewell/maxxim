@@ -1,6 +1,7 @@
 # Maxxim
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # Machine-readable summary for AI agents:
 # https://maxxim.ai/llms.txt
