@@ -5,6 +5,7 @@ audience: "B2B"
 sectors: ["AI", "Professional services", "Operating system"]
 services: ["Brand", "Website", "Portal", "Assistant"]
 summary: "A human-centred, AI-enabled commercialisation engine, given its front door."
+claim: "An operating system, given its front door."
 challenge: "Turn a proven way of working into a brand and a platform — without losing the named human who stands behind the outcome at every gate."
 solution:
   discover: "The operator, the client, and the seam between human judgement and machine volume — named clearly so the product could enforce it."

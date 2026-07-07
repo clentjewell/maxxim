@@ -5,6 +5,7 @@ audience: "B2C"
 sectors: ["Supplements", "Performance", "E-commerce"]
 services: ["Brand", "Website", "Growth"]
 summary: "A performance-nutrition brand rebuilt as a system, not a splash."
+claim: "Performance nutrition, rebuilt as a system."
 challenge: "A credible product with a presence that undersold it. The brand needed to read as premium and convert online."
 solution:
   discover: "Audience, positioning, and the competitive set — mapped by a human before the build."

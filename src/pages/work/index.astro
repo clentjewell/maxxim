@@ -3,52 +3,99 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHero from "@components/ui/PageHero.astro";
 import Section from "@components/ui/Section.astro";
-import CaseCard from "@components/ui/CaseCard.astro";
 import Button from "@components/ui/Button.astro";
 
 const all = await getCollection("work", ({ data }) => !data.draft);
-const cases = all.sort((a, b) => {
-  if (a.data.marquee !== b.data.marquee) return a.data.marquee ? -1 : 1;
-  if (a.data.order !== b.data.order) return a.data.order - b.data.order;
-  return a.data.client.localeCompare(b.data.client);
-});
-const audiences = ["All", "B2B", "B2C", "Personal brands"];
+const bySlug = (slug: string) => all.find((c) => c.id === slug);
+
+// The three that ran the method end to end, in the order they should read.
+const FLAGSHIP_SLUGS = ["pottsville-acupuncture", "maxxim", "ultimate-labs"];
+const flagship = FLAGSHIP_SLUGS.map(bySlug).filter((c): c is NonNullable<typeof c> => Boolean(c));
+const archive = all
+  .filter((c) => !FLAGSHIP_SLUGS.includes(c.id))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const audiences = ["All", "B2B", "B2C"];
+const webp = (path: string) => path.replace(/\.(jpe?g|png)$/i, ".webp");
 ---
 
 <BaseLayout
   title="Work"
-  description="Finished, owned outcomes powered by Maxxim. Launched work, run by a human, at AI speed."
+  description="Real work across strategy, brand, websites, platforms and growth. Different sectors. Same method: Discover, Design, Deploy — signed off at every gate."
 >
   <PageHero
-    eyebrow="The work"
-    title="Proof, not promises."
-    intro="Every engagement ran the method. Filter by audience to find work close to yours."
-  />
+    eyebrow="PROOF SYSTEM"
+    title="The work, not the pitch."
+    intro="Real work across strategy, brand, websites, platforms and growth. Different sectors. Same method: Discover, Design, Deploy — signed off at every gate."
+  >
+    <div class="hero-cta">
+      <Button href="/contact">Start a conversation</Button>
+      <Button href="/method" variant="outline">See the method</Button>
+    </div>
+  </PageHero>
 
-  <Section>
-    <div class="filter-bar" data-reveal>
-      <span class="eyebrow">Filter</span>
-      <div class="filters" role="group" aria-label="Filter work by audience">
-        {audiences.map((a, i) => (
-          <button type="button" class:list={["filter-btn", i === 0 && "is-active"]} data-filter={a}>{a}</button>
-        ))}
-      </div>
+  <!-- FLAGSHIP -->
+  <Section rule>
+    <div class="cs-head" data-reveal>
+      <div class="section-index"><span class="idx">01</span><p class="eyebrow">Flagship work</p></div>
+      <h2 class="cs-h2">A few that show <span class="hl">the whole system.</span></h2>
+      <p class="cs-lead measure">Each of these ran the method end to end — strategy, build and launch.</p>
     </div>
 
-    <h2 class="sr-only">Case studies</h2>
-    <div class="card-grid" data-work-grid>
-      {cases.map((c) => (
-        <div data-audience={c.data.audience}>
-          <CaseCard
-            slug={c.id}
-            client={c.data.client}
-            summary={c.data.summary}
-            category={c.data.category}
-            metric={c.data.results[0]?.metric}
-            metricLabel={c.data.results[0]?.label}
-            status={c.data.status}
-          />
-        </div>
+    <div class="hero-cases">
+      {flagship.map((c, i) => (
+        <a class:list={["hc", i === 0 && "hc-feature"]} href={`/work/${c.id}`} data-reveal>
+          <div class="hc-media">
+            <picture>
+              {c.data.heroImage && <source srcset={webp(c.data.heroImage)} type="image/webp" />}
+              <img src={c.data.heroImage} alt={c.data.client} loading="lazy" decoding="async" />
+            </picture>
+            {c.data.results[0] && (
+              <span class="card-metric"><strong>{c.data.results[0].metric}</strong><span>{c.data.results[0].label}</span></span>
+            )}
+          </div>
+          <div class="hc-meta">
+            <span class="hc-idx">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="hc-claim">{c.data.claim}</h3>
+            <p class="hc-client">{c.data.client} · {c.data.category}</p>
+            <span class="card-go">View case <span class="go-arrow" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <!-- ARCHIVE -->
+  <Section tone="mist" rule>
+    <div class="cs-head" data-reveal>
+      <div class="section-index"><span class="idx">02</span><p class="eyebrow">More from the box</p></div>
+      <h2 class="cs-h2">The rest of <span class="hl">the work.</span></h2>
+    </div>
+
+    <div class="filters" data-filters role="group" aria-label="Filter work by audience">
+      {audiences.map((a, i) => (
+        <button type="button" class:list={["filter", i === 0 && "is-active"]} data-filter={a}>{a}</button>
+      ))}
+    </div>
+
+    <div class="lib-grid" data-archive-grid>
+      {archive.map((c) => (
+        <a class="lib-card" href={`/work/${c.id}`} data-audience={c.data.audience} data-reveal>
+          <div class="lib-media">
+            <picture>
+              {c.data.heroImage && <source srcset={webp(c.data.heroImage)} type="image/webp" />}
+              <img src={c.data.heroImage} alt={c.data.client} loading="lazy" decoding="async" />
+            </picture>
+            {c.data.results[0] && (
+              <span class="card-metric"><strong>{c.data.results[0].metric}</strong><span>{c.data.results[0].label}</span></span>
+            )}
+          </div>
+          <div class="lib-body">
+            <h3 class="lib-client">{c.data.client}</h3>
+            <p class="lib-claim">{c.data.claim}</p>
+            <span class="card-go">View case <span class="go-arrow" aria-hidden="true">→</span></span>
+          </div>
+        </a>
       ))}
     </div>
     <p class="empty" data-empty hidden>No work in that category yet. Try another filter.</p>
@@ -62,32 +109,89 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
     </a>
   </Section>
 
+  <!-- CLOSE -->
   <Section tone="ink" rule>
-    <div class="cta" data-reveal>
-      <h2>See how the engine runs.</h2>
-      <Button href="/method" variant="solid-invert">Walk the method</Button>
+    <div class="close" data-reveal>
+      <p class="eyebrow">Start here</p>
+      <h2 class="close-h">Want this <span class="hl-dark">for your business?</span></h2>
+      <div class="close-actions">
+        <Button href="/contact" variant="solid-invert">Start a conversation</Button>
+        <Button href="/powered-by" variant="ghost">Powered by Maxxim</Button>
+      </div>
     </div>
   </Section>
 </BaseLayout>
 
 <style>
-  .filter-bar { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 44px; padding-bottom: 22px; border-bottom: 1px solid var(--color-border); }
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-  .filter-btn {
-    font-size: var(--text-small); font-weight: 500; background: transparent;
-    border: 1px solid var(--color-border); border-radius: var(--radius-pill);
-    padding: 8px 16px; cursor: pointer; color: var(--color-body);
-    transition: all 0.2s var(--ease-out-quiet);
-  }
-  .filter-btn:hover { border-color: var(--color-signal); color: var(--color-signal); }
-  .filter-btn.is-active { background: var(--color-signal); border-color: var(--color-signal); color: var(--color-white); }
-  .card-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  .empty { margin-top: 44px; color: var(--color-caption); }
-  @media (min-width: 700px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
-  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .cta h2 { font-size: var(--text-h1); margin: 0; }
+  .hero-cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
 
+  /* Section heads, consistent across the page. */
+  .cs-head { margin-bottom: clamp(36px, 5vw, 56px); max-width: 780px; }
+  .section-index { display: flex; align-items: center; gap: 12px; }
+  .idx { font-family: var(--font-mono); font-size: var(--text-eyebrow); letter-spacing: 0.14em; color: var(--color-signal); }
+  .cs-h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 14px 0 0; letter-spacing: -0.01em; }
+  .hl { color: var(--color-signal); }
+  .hl-dark { color: var(--color-blue-tint); }
+  .cs-lead { margin: 16px 0 0; font-size: var(--text-body); line-height: 1.55; color: var(--color-body); }
+
+  /* ---- Shared card pieces ---- */
+  .hc-media, .lib-media { position: relative; overflow: hidden; border-radius: var(--radius-card); background: var(--color-mist); }
+  .hc-media picture, .lib-media picture, .hc-media img, .lib-media img { display: block; width: 100%; height: 100%; }
+  .hc-media img, .lib-media img { object-fit: cover; }
+  .hc-media { aspect-ratio: 4 / 3; }
+  .hc-feature .hc-media { aspect-ratio: 16 / 10; }
+  .lib-media { aspect-ratio: 16 / 10; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hc-media img, .lib-media img { transition: transform 0.6s var(--ease-out-quiet); }
+    .hc:hover .hc-media img, .lib-card:hover .lib-media img { transform: scale(1.05); }
+  }
+
+  .card-metric {
+    position: absolute; top: 14px; right: 16px; z-index: 2;
+    display: flex; flex-direction: column; align-items: flex-end; text-align: right; line-height: 1;
+    color: var(--color-white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85), 0 2px 14px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+  }
+  .card-metric strong { font-weight: 700; letter-spacing: -0.02em; font-size: 1.4rem; }
+  .card-metric span { margin-top: 6px; font-size: 10px; letter-spacing: 0.02em; max-width: 22ch; color: color-mix(in srgb, var(--color-white) 85%, transparent); }
+
+  .card-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: var(--text-small); font-weight: 500; color: var(--color-signal); }
+  .go-arrow { display: inline-block; }
+  @media (prefers-reduced-motion: no-preference) {
+    .go-arrow { transition: transform 0.3s var(--ease-out-quiet); }
+    .hc:hover .go-arrow, .lib-card:hover .go-arrow { transform: translateX(4px); }
+  }
+
+  /* ---- Flagship grid ---- */
+  .hero-cases { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 4vw, 48px); }
+  .hc { text-decoration: none; color: var(--color-ink); display: flex; flex-direction: column; gap: 18px; }
+  .hc-meta { display: flex; flex-direction: column; }
+  .hc-idx { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--color-caption); }
+  .hc-claim { font-size: var(--text-h2); line-height: 1.1; letter-spacing: -0.01em; margin: 8px 0 6px; }
+  .hc-client { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-caption); margin: 0; }
+
+  /* ---- Library cards (archive) ---- */
+  .lib-grid { display: grid; grid-template-columns: 1fr; gap: clamp(20px, 3vw, 28px); }
+  .lib-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; text-decoration: none; color: var(--color-ink); display: flex; flex-direction: column; transition: transform var(--dur-quick) var(--ease-out-quiet), box-shadow var(--dur-quick) var(--ease-out-quiet), border-color var(--dur-quick) var(--ease-out-quiet); }
+  .lib-card[hidden] { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .lib-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px color-mix(in srgb, var(--color-ink) 8%, transparent); }
+  }
+  .lib-card:hover { border-color: color-mix(in srgb, var(--color-signal) 45%, var(--color-border)); }
+  .lib-media { border-radius: 0; }
+  .lib-body { display: flex; flex-direction: column; gap: 6px; padding: 22px 22px 24px; flex: 1; }
+  .lib-client { font-size: var(--text-h3); margin: 0; }
+  .lib-claim { margin: 0; font-size: var(--text-small); line-height: 1.5; color: var(--color-body); flex: 1; }
+
+  /* ---- Filters ---- */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(28px, 4vw, 40px); }
+  .filter { font-size: var(--text-small); font-weight: 500; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 9px 16px; cursor: pointer; color: var(--color-body); transition: background 0.2s var(--ease-out-quiet), color 0.2s var(--ease-out-quiet), border-color 0.2s var(--ease-out-quiet); }
+  .filter:hover { border-color: var(--color-signal); color: var(--color-signal); }
+  .filter.is-active { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-white); }
+  .empty { margin-top: 44px; color: var(--color-caption); }
+
+  /* ---- Brand link ---- */
   .brand-link {
     margin-top: 48px;
     display: flex;
@@ -97,6 +201,7 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     padding: 28px;
+    background: var(--color-white);
     color: var(--color-ink);
     transition:
       border-color 0.2s var(--ease-out-quiet),
@@ -121,11 +226,32 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
   @media (prefers-reduced-motion: no-preference) {
     .brand-link:hover .brand-link-arrow { transform: translateX(4px); }
   }
+
+  /* ---- Close ---- */
+  .close { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .close .eyebrow { color: var(--color-blue-tint); }
+  .close-h { font-size: var(--text-h1); line-height: var(--text-h1--line-height); color: var(--color-white); margin: 8px 0 0; max-width: 20ch; }
+  .close-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+  .close :global(.btn-ghost) { color: var(--color-blue-tint); }
+
+  @media (min-width: 680px) {
+    .hero-cases { grid-template-columns: 1fr 1fr; }
+    .hc-feature { grid-column: 1 / -1; }
+    .lib-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .hc-feature { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 4vw, 56px); align-items: center; }
+    .hc-feature .hc-claim { font-size: var(--text-h1); }
+    .hc-feature .card-metric strong { font-size: 1.75rem; }
+  }
+  @media (min-width: 1040px) {
+    .lib-grid { grid-template-columns: repeat(3, 1fr); }
+  }
 </style>
 
 <script>
   function initWorkFilter() {
-    const grid = document.querySelector<HTMLElement>("[data-work-grid]");
+    const grid = document.querySelector<HTMLElement>("[data-archive-grid]");
     const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
     const empty = document.querySelector<HTMLElement>("[data-empty]");
     if (!grid || !buttons.length) return;

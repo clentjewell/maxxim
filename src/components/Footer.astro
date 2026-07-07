@@ -1,6 +1,6 @@
 ---
 import { SITE, FOOTER_NAV, CTA } from "@lib/site";
-import Monogram from "@components/ui/Monogram.astro";
+import Wordmark from "@components/ui/Wordmark.astro";
 ---
 
 <footer class="site-footer">
@@ -8,8 +8,7 @@ import Monogram from "@components/ui/Monogram.astro";
     <div class="top">
       <div class="lede">
         <a href="/" class="brand" aria-label={`${SITE.brandName} home`}>
-          <Monogram size={30} />
-          <span>{SITE.brandName}</span>
+          <Wordmark scale="md" />
         </a>
         <p class="essence">{SITE.essence}</p>
         <a href={CTA.href} class="cta">{CTA.label} →</a>
@@ -51,13 +50,6 @@ import Monogram from "@components/ui/Monogram.astro";
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: var(--color-blue-tint);
-  }
-  .brand span {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
     color: var(--color-white);
   }
   .essence {

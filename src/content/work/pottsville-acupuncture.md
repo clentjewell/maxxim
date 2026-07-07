@@ -5,6 +5,7 @@ audience: "B2C"
 sectors: ["Healthcare", "Allied health", "Wellness"]
 services: ["Brand identity", "Website", "Content system"]
 summary: "Two practices unified under one calm, credible brand — launched and owned by the client."
+claim: "Two practices, one calm brand — launched and owned."
 challenge: "Strong clinical reputation, no coherent brand presence. Separate identities, no digital strategy, and a patient base that was not converting online."
 solution:
   discover: "The always-human phase: patient journey, referral patterns, and the gap between clinical credibility and approachable care — mapped before a pixel was drawn."

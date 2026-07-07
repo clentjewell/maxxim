@@ -6,6 +6,7 @@ import Section from "@components/ui/Section.astro";
 import Button from "@components/ui/Button.astro";
 import CaseCard from "@components/ui/CaseCard.astro";
 import Monogram from "@components/ui/Monogram.astro";
+import Wordmark from "@components/ui/Wordmark.astro";
 import FrameDashboard from "@components/frames/FrameDashboard.astro";
 import FrameClientRoom from "@components/frames/FrameClientRoom.astro";
 import FrameBrain from "@components/frames/FrameBrain.astro";
@@ -46,7 +47,7 @@ const values = [
         <Button href="/method" variant="solid-invert">How it works</Button>
       </div>
     </div>
-    <span class="wm"><Monogram size={20} /> Maxxim</span>
+    <span class="wm"><Wordmark scale="sm" /></span>
   </section>
 
   <!-- WHAT YOU GET -->
@@ -291,9 +292,9 @@ const values = [
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .wm {
     position: absolute; z-index: 1; right: 24px; bottom: 20px;
-    display: inline-flex; align-items: center; gap: 7px;
-    color: var(--color-white); font-weight: 700; letter-spacing: -0.02em;
-    font-size: 17px; text-shadow: 0 1px 10px color-mix(in srgb, var(--color-ink) 45%, transparent);
+    display: inline-flex; align-items: center;
+    color: var(--color-white);
+    text-shadow: 0 1px 10px color-mix(in srgb, var(--color-ink) 45%, transparent);
   }
 
   h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 12px 0 0; max-width: 20ch; }

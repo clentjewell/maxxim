@@ -17,6 +17,7 @@ const work = defineCollection({
     sectors: z.array(z.string()).default([]),
     services: z.array(z.string()).default([]),
     summary: z.string(),
+    claim: z.string().optional(),
     challenge: z.string().optional(),
     solution: z
       .object({

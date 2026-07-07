@@ -5,6 +5,7 @@ audience: "B2C"
 sectors: ["Automotive", "Retail", "E-commerce"]
 services: ["Brand", "Website", "Buy-online flow", "Operations"]
 summary: "A tyre retailer given a buy-online flow that actually sells — and an admin the team can run."
+claim: "A buy-online flow that actually sells."
 challenge: "A capable retailer with deep product knowledge but no modern digital front door. Customers could not buy with confidence online, and the team had no system to manage fitment, stock and bookings behind the counter."
 solution:
   discover: "The real buying journey — the fitment problem, the questions that stall a sale, and the operational reality behind the counter — mapped with the team before anything was built."

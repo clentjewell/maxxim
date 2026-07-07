@@ -1,0 +1,43 @@
+---
+/**
+ * The official lockup — lowercase "maxxim" with the pixel double-X standing
+ * in for the "xx". The X always renders in Signal+tint regardless of the
+ * surrounding text colour, which is set by the parent via `color`.
+ */
+import Monogram from "./Monogram.astro";
+
+interface Props {
+  scale?: "sm" | "md";
+}
+const { scale = "md" } = Astro.props;
+const xSize = scale === "sm" ? 24 : 30;
+---
+
+<span class:list={["wordmark", `wm-${scale}`]}>
+  <span class="wm-txt">ma</span><Monogram size={xSize} class="wm-x" /><span class="wm-txt">im</span>
+</span>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+  .wm-txt {
+    color: inherit;
+  }
+  .wm-x {
+    flex: none;
+    margin-inline: 1px;
+    color: var(--color-signal);
+  }
+  .wm-sm {
+    font-size: 17px;
+  }
+  .wm-md {
+    font-size: 22px;
+  }
+</style>

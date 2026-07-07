@@ -1,7 +1,10 @@
 ---
 /**
- * The Maxxim mark — the gated-M in a solid squircle. currentColor.
- * No gradients, no shadows (per the locked brand brief).
+ * The Maxxim mark — the pixel double-X. A cluster of 45°-rotated squares,
+ * lifted straight from the wordmark. Main squares use currentColor (with
+ * their original fill-opacity steps); the accent squares are fixed at the
+ * brand's tint blue. No gradients, no shadows.
+ * Geometry source of truth: site/build.mjs MONOGRAM().
  */
 interface Props {
   size?: number;
@@ -9,31 +12,32 @@ interface Props {
   title?: string;
 }
 const { size = 28, class: cls = "", title } = Astro.props;
-// Unique mask id per instance so multiple marks on a page don't collide.
-const uid = "mx-" + Math.random().toString(36).slice(2, 9);
 ---
 
 <svg
   width={size}
   height={size}
-  viewBox="0 0 100 100"
+  viewBox="73 0 58 58"
   fill="none"
   class={cls}
   role={title ? "img" : undefined}
   aria-hidden={title ? undefined : "true"}
   aria-label={title}
 >
-  <defs>
-    <mask id={uid}>
-      <rect x="2" y="2" width="96" height="96" rx="26" fill="#fff"></rect>
-      <path
-        d="M29 69 L29 32 L50 54 L71 32 L71 69"
-        fill="none"
-        stroke="#000"
-        stroke-width="9"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </mask>
-  </defs>
-  <rect x="2" y="2" width="96" height="96" rx="26" fill="currentColor" mask={`url(#${uid})`}></rect>
+  <rect fill-opacity="0.9" fill="currentColor" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect>
+  <rect fill="currentColor" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.85" fill="currentColor" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.95" fill="currentColor" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.95" fill="currentColor" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.95" fill="currentColor" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.95" fill="currentColor" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.9" fill="currentColor" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.85" fill="currentColor" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.95" fill="#83A1FF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect>
+  <rect fill="currentColor" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect>
+  <rect fill="#83A1FF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect>
+  <rect fill-opacity="0.9" fill="#83A1FF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect>
+  <rect fill="#83A1FF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect>
+  <rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect>
 </svg>

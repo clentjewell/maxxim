@@ -5,10 +5,11 @@ audience: "B2B"
 sectors: ["AI", "Marketing platform", "Operating system"]
 services: ["Brand", "Platform", "Operating system"]
 summary: "The engine, built on itself — the method made into a product."
+claim: "The engine, built on itself."
 challenge: "Prove that a proven, human-led method could run at AI speed without losing the human at the wheel."
 solution:
   discover: "The trust gap, named: agencies have the human without the speed, AI tools have the speed without the human."
-  design: "A calm, high-contrast identity that earns trust through legibility and restraint — Signal Blue, Poppins, the gated-M mark."
+  design: "A calm, high-contrast identity that earns trust through legibility and restraint — Signal Blue, Poppins, the pixel double-X mark."
   deploy: "The platform, the portal, and the showcase — every output carrying a named person's accountability at the gate."
 results:
   - metric: "80 / 20"

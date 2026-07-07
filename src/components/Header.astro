@@ -1,6 +1,6 @@
 ---
 import { NAV, CTA, SITE } from "@lib/site";
-import Monogram from "@components/ui/Monogram.astro";
+import Wordmark from "@components/ui/Wordmark.astro";
 const path = Astro.url.pathname;
 const isActive = (href: string) => path === href || (href !== "/" && path.startsWith(href));
 ---
@@ -8,8 +8,7 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
 <header class="site-header">
   <div class="container bar">
     <a href="/" class="brand" aria-label={`${SITE.brandName} home`}>
-      <Monogram size={26} />
-      <span class="brand-name">{SITE.brandName}</span>
+      <Wordmark scale="sm" />
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -62,15 +61,8 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    color: var(--color-signal);
-    flex: none;
-  }
-  .brand-name {
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
     color: var(--color-ink);
+    flex: none;
   }
   .nav {
     display: none;

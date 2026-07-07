@@ -5,6 +5,7 @@ audience: "B2B"
 sectors: ["Mining", "Earthmover tyres", "Industrial"]
 services: ["Brand", "Website", "Content system"]
 summary: "Heavy-industry authority, presented with the clarity specifiers actually need."
+claim: "Heavy-industry authority, made legible."
 challenge: "A specialist industrial supplier whose standing in the field was not matched by its digital presence. Serious buyers had to work too hard to find the specification confidence they needed to act."
 solution:
   discover: "The specifier and the buyer, the specification pressure they work under, and the trust signals that decide a sale in earthmoving — mapped before the build."
