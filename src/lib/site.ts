@@ -25,7 +25,7 @@ export const NAV = [
   { label: "The Method", href: "/method" },
   { label: "Work", href: "/work" },
   { label: "Powered by Maxxim", href: "/powered-by" },
-  { label: "Guide", href: "/guide" },
+  { label: "3D Process", href: "/3d-process/" },
 ] as const;
 
 /** The one accent action. */
@@ -37,7 +37,6 @@ export const FOOTER_NAV = {
     { label: "The Method", href: "/method" },
     { label: "Work", href: "/work" },
     { label: "Powered by Maxxim", href: "/powered-by" },
-    { label: "Guide", href: "/guide" },
     { label: "Contact", href: "/contact" },
   ],
   system: [

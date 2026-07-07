@@ -22,15 +22,9 @@
 - [The Method](https://maxxim.ai/method)
 - [Work](https://maxxim.ai/work)
 - [Powered by Maxxim](https://maxxim.ai/powered-by)
-- [Guide](https://maxxim.ai/guide)
 - [Contact](https://maxxim.ai/contact)
 - [Brand system](https://maxxim.ai/brand)
-
-## Guide chapters (deep-linkable)
-- [Why humans stay in the loop](https://maxxim.ai/guide#why)
-- [The 3D method, gated](https://maxxim.ai/guide#method)
-- [The specialists](https://maxxim.ai/guide#people)
-- [The dashboard, the studios and the client portal](https://maxxim.ai/guide#product)
+- [The 3D Process — method + open documents](https://maxxim.ai/3d-process/)
 
 ## Work (powered by Maxxim)
 - [Jewell Tyres](https://maxxim.ai/work/jewell-tyres) — Automotive retail, launched. A tyre retailer given a buy-online flow that actually sells — and an admin the team can run.
