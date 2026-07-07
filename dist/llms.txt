@@ -8,6 +8,15 @@
 - Seam: AI runs the repeatable 80%; a named human owns the 20% clients pay for (trust, taste, judgement) and signs off every gate.
 - Method: 3D + Deepen — Discover, Design, Deploy, then the compounding loop.
 - Positioning: Maxxim is the complete marketing agency in a box: AI does the work of a full agency, a named human signs off every gate, and clients own the finished outcome.
+- Three surfaces: an operator dashboard (track, approve and run studios), two creative studios (Design with Sal, Social with Pip), and a read-only client portal with the client's private Brain (Ari).
+- White-label: partners can run the whole agency in a box behind their own brand ('powered by Maxxim') and keep the client relationship.
+
+## The specialists (the method made visible)
+- Max — The AI partner. Runs the 3D process, drafts every deliverable, keeps each client moving.
+- Sal — Design Studio. Generates and refines brand visuals, grounded in the client's own brief.
+- Pip — Social Studio. Drafts, schedules and publishes social — only after a human approves.
+- Ari — The Brain. Answers anything about a client, grounded in every document held.
+- Behind the four names sits a roster of forty-three focused specialists: Makers produce deliverables; Advisors review.
 
 ## Pages
 - [The Method](https://maxxim.ai/method)
@@ -15,6 +24,13 @@
 - [Powered by Maxxim](https://maxxim.ai/powered-by)
 - [Guide](https://maxxim.ai/guide)
 - [Contact](https://maxxim.ai/contact)
+- [Brand system](https://maxxim.ai/brand)
+
+## Guide chapters (deep-linkable)
+- [Why humans stay in the loop](https://maxxim.ai/guide#why)
+- [The 3D method, gated](https://maxxim.ai/guide#method)
+- [The specialists](https://maxxim.ai/guide#people)
+- [The dashboard, the studios and the client portal](https://maxxim.ai/guide#product)
 
 ## Work (powered by Maxxim)
 - [Pottsville Acupuncture](https://maxxim.ai/work/pottsville-acupuncture) — Health & wellness, launched. Two practices unified under one calm, credible brand — launched and owned by the client.

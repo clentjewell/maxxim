@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Section from "@components/ui/Section.astro";
 import Button from "@components/ui/Button.astro";
+import { SITE } from "@lib/site";
 
 export async function getStaticPaths() {
   const all = await getCollection("work", ({ data }) => !data.draft);
@@ -20,10 +21,21 @@ const phases = d.solution
       { no: "03", t: "Deploy", body: d.solution.deploy },
     ]
   : [];
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Work", item: `${SITE.url}/work` },
+    { "@type": "ListItem", position: 3, name: d.client, item: new URL(`/work/${entry.id}`, SITE.url).href },
+  ],
+};
 ---
 
 <BaseLayout title={d.client} description={d.summary} ogImage={d.heroImage ?? "/og/default.png"}>
   <article>
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
     <header class="hero">
       <div class="container inner" data-reveal>
         <a href="/work" class="back">← All work</a>

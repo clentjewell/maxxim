@@ -15,11 +15,7 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: "viewport",
   },
-  integrations: [
-    sitemap({
-      filter: (page) => !page.includes("/admin"),
-    }),
-  ],
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -25,6 +25,7 @@ const orgLd = {
   "@type": "Organization",
   name: SITE.brandName,
   url: SITE.url,
+  logo: new URL("/favicon.svg", SITE.url).href,
   description: SITE.description,
   slogan: SITE.tagline,
   sameAs: [SITE.linkedin],
@@ -34,6 +35,9 @@ const siteLd = {
   "@type": "WebSite",
   name: SITE.brandName,
   url: SITE.url,
+  description: SITE.description,
+  inLanguage: "en",
+  publisher: { "@type": "Organization", name: SITE.brandName, url: SITE.url },
 };
 ---
 

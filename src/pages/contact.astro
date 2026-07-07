@@ -20,7 +20,7 @@ import Section from "@components/ui/Section.astro";
         </div>
       </div>
 
-      <form class="form" data-contact-form data-email={SITE.contactEmail} data-reveal>
+      <form class="form" data-contact-form data-email={SITE.contactEmail} action={`mailto:${SITE.contactEmail}`} method="post" enctype="text/plain" data-reveal>
         <div class="field">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required autocomplete="name" />

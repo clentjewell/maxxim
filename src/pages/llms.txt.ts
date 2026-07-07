@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { SITE, NAV } from "@lib/site";
+import { SITE, NAV, SPECIALISTS } from "@lib/site";
 
 /**
  * llms.txt — a machine-readable, source-grounded summary for AI agents.
@@ -22,10 +22,23 @@ export const GET: APIRoute = async () => {
     "- Seam: AI runs the repeatable 80%; a named human owns the 20% clients pay for (trust, taste, judgement) and signs off every gate.",
     "- Method: 3D + Deepen — Discover, Design, Deploy, then the compounding loop.",
     "- Positioning: " + SITE.positioning,
+    "- Three surfaces: an operator dashboard (track, approve and run studios), two creative studios (Design with Sal, Social with Pip), and a read-only client portal with the client's private Brain (Ari).",
+    "- White-label: partners can run the whole agency in a box behind their own brand ('powered by Maxxim') and keep the client relationship.",
+    "",
+    "## The specialists (the method made visible)",
+    ...SPECIALISTS.map((s) => `- ${s.name} — ${s.role}. ${s.desc}`),
+    "- Behind the four names sits a roster of forty-three focused specialists: Makers produce deliverables; Advisors review.",
     "",
     "## Pages",
     ...NAV.map((n) => `- [${n.label}](${SITE.url}${n.href})`),
     `- [Contact](${SITE.url}/contact)`,
+    `- [Brand system](${SITE.url}/brand)`,
+    "",
+    "## Guide chapters (deep-linkable)",
+    `- [Why humans stay in the loop](${SITE.url}/guide#why)`,
+    `- [The 3D method, gated](${SITE.url}/guide#method)`,
+    `- [The specialists](${SITE.url}/guide#people)`,
+    `- [The dashboard, the studios and the client portal](${SITE.url}/guide#product)`,
     "",
     "## Work (powered by Maxxim)",
     ...cases.map(
