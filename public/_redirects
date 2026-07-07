@@ -1,2 +1,2 @@
 /guide /method 301
-/guide/ /method 301
+/guide/* /method 301
