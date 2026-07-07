@@ -21,6 +21,13 @@ results:
 heroImage: "/images/s1-desk.jpg"
 status: "in-preparation"
 order: 46
+heroClaim: "An operating system, given its front door."
+move:
+  discover: "The operator, the client, and the seam between human judgement and machine volume — named clearly so the product could enforce it."
+  design: "A calm, disciplined identity and a static, near-zero-JS site built to load fast and last, with a portal and an assistant layered on top."
+  deploy: "A marketing site, a client portal, and an assistant — the operating system made visible, shipped and in market."
+  deepen: "Signals from the portal and assistant wash back into the operating system."
+takeout: "An operating system with a front door — fast, disciplined, and human at the wheel."
 ---
 
 An operating system given a front door: a fast, disciplined marketing site with a

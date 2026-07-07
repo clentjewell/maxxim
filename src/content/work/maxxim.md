@@ -23,6 +23,13 @@ liveUrl: "https://maxxim.ai"
 status: "launched"
 marquee: true
 order: 20
+heroClaim: "The engine, built on itself."
+move:
+  discover: "The trust gap, named: agencies have the human without the speed, AI tools have the speed without the human."
+  design: "A calm, high-contrast identity that earns trust through legibility and restraint — Signal Blue, Poppins, the pixel double-X mark."
+  deploy: "The platform, the portal, and the showcase — every output carrying a named person's accountability at the gate."
+  deepen: "Every engagement feeds the output library, the evals and the method itself."
+takeout: "The engine is its own best case study — the method, enforced by the product that runs it."
 ---
 
 Maxxim is the commercialisation engine that runs the method at AI speed, with an

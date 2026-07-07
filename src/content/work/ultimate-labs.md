@@ -20,6 +20,13 @@ heroImage: "/images/s4-flatlay.jpg"
 liveUrl: "https://ultimatelabs.com.au"
 status: "launched"
 order: 30
+heroClaim: "Performance nutrition, rebuilt as a system."
+move:
+  discover: "Audience, positioning, and the competitive set — mapped by a human before the build."
+  design: "A disciplined, high-contrast identity and a store built to convert, signed off at the gate."
+  deploy: "A launched storefront and a growth system the client owns and can run."
+  deepen: "Store behaviour and campaign response tune the growth system."
+takeout: "Premium is a system, not a splash — built to convert and handed over owned."
 ---
 
 Performance nutrition, presented with the discipline the product deserved.

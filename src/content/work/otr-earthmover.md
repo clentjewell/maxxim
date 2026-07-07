@@ -21,6 +21,13 @@ results:
 heroImage: "/images/s6-cat2.jpg"
 status: "in-preparation"
 order: 45
+heroClaim: "Heavy-industry authority, made legible."
+move:
+  discover: "The specifier and the buyer, the specification pressure they work under, and the trust signals that decide a sale in earthmoving — mapped before the build."
+  design: "A confident, legible identity and a site architecture organised around real specifier needs, so the right information is one step away, not buried."
+  deploy: "A live site with a news and content layer that keeps the brand current and credible between campaigns."
+  deepen: "The news and content layer keeps authority current between campaigns."
+takeout: "Authority reads as clarity: the site meets serious buyers with the confidence they need."
 ---
 
 Industrial authority, made legible. The site meets serious buyers with the

@@ -38,6 +38,41 @@ const work = defineCollection({
     marquee: z.boolean().default(false),
     order: z.number().default(50),
     draft: z.boolean().default(false),
+    heroClaim: z.string().optional(),
+    whatWeSaw: z.string().optional(),
+    needs: z.array(z.string()).optional(),
+    callouts: z
+      .array(z.object({ value: z.string(), title: z.string(), line: z.string() }))
+      .optional(),
+    move: z
+      .object({
+        discover: z.string(),
+        design: z.string(),
+        deploy: z.string(),
+        deepen: z.string(),
+      })
+      .optional(),
+    whatShipped: z.array(z.string()).optional(),
+    takeout: z.string().optional(),
+    atGlance: z
+      .object({ audience: z.string().optional(), scope: z.string().optional() })
+      .optional(),
+    gallery: z
+      .array(z.object({ label: z.string(), note: z.string().optional(), image: z.string() }))
+      .optional(),
+    evidence: z
+      .array(
+        z.object({
+          discipline: z.string(),
+          label: z.string(),
+          note: z.string(),
+          url: z.string().url().optional(),
+          buttonLabel: z.string().optional(),
+          image: z.string().optional(),
+        }),
+      )
+      .optional(),
+    deepenClaim: z.string().optional(),
   }),
 });
 

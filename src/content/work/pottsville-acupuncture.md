@@ -22,11 +22,28 @@ reflection:
   quote: "The brand finally feels like it reflects the quality of care we deliver."
   name: "Dr. Mal McKay"
   role: "Founder, Pottsville Acupuncture"
-heroImage: "/images/mx-audience.jpg"
+heroImage: "/images/case-studies/pottsville-acupuncture/hero.jpg"
 liveUrl: "https://pottsvilleacupuncture.com.au"
 status: "launched"
 marquee: true
 order: 10
+heroClaim: "From respected local practice to a clearer growth pathway."
+whatWeSaw: "Protect the human care at the centre while building a more scalable commercial pathway around it."
+move:
+  discover: "Clarified the audience, the founder story, the service pathways and the business options."
+  design: "Shaped the brand and story direction, the content plan and the clinical pathway."
+  deploy: "Launched the site, the education content series and the in-clinic assets."
+  deepen: "Patient signals, enquiries and content response refine offers and education."
+whatShipped: ["Brand and story direction", "Live website", "Patient-education content series", "Social content plan", "Strategic summary"]
+takeout: "Trust was never the problem — structure was. The practice kept its human care at the centre and gained a brand, a site and a content system that carry it."
+gallery:
+  - { label: "Pottsville Acupuncture", note: "Founder-led identity", image: "/images/case-studies/pottsville-acupuncture/card.jpg" }
+  - { label: "The clinical pathway brand", note: "A scalable second brand, shaped in Design", image: "/images/case-studies/pottsville-acupuncture/gallery-1.jpg" }
+evidence:
+  - { discipline: "Website", label: "Pottsville Acupuncture, live", note: "A calm, clear home for the clinic.", url: "https://pottsvilleacupuncture.com.au", buttonLabel: "Visit the site", image: "/images/case-studies/pottsville-acupuncture/evidence-site.jpg" }
+  - { discipline: "Social", label: "The feed, run week in, week out", note: "Instagram and Facebook — planned, produced and posted.", url: "https://www.instagram.com/pottsvilleacupuncture/", buttonLabel: "See the Instagram", image: "/images/case-studies/pottsville-acupuncture/evidence-social.jpg" }
+  - { discipline: "Brand", label: "Calm and exact", note: "The brand system behind the clinic.", image: "/images/case-studies/pottsville-acupuncture/evidence-brand.jpg" }
+deepenClaim: "The engine stays on: content, signals and education, compounding."
 ---
 
 Two practices, one system. The brand now carries the clinical standard the

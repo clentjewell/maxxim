@@ -14,17 +14,21 @@ const xSize = scale === "sm" ? 24 : 30;
 ---
 
 <span class:list={["wordmark", `wm-${scale}`]}>
-  <span class="wm-txt">ma</span><Monogram size={xSize} class="wm-x" /><span class="wm-txt">im</span>
+  <span class="wm-vis" aria-hidden="true"><span class="wm-txt">ma</span><Monogram size={xSize} class="wm-x" /><span class="wm-txt">im</span></span>
+  <span class="sr-only">maxxim</span>
 </span>
 
 <style>
   .wordmark {
     display: inline-flex;
-    align-items: center;
-    gap: 2px;
     font-weight: 700;
     letter-spacing: -0.045em;
     line-height: 1;
+  }
+  .wm-vis {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
   }
   .wm-txt {
     color: inherit;
