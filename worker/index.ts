@@ -38,6 +38,12 @@ interface CopyItem {
   replace: string;
 }
 
+/** Sane bounds so a stray token (or a leaked one) can't turn every page
+ *  load into an expensive rewrite or blow up KV value size. */
+const MAX_ITEMS_PER_KEY = 300;
+const MAX_ITEMS_PER_REQUEST = 50;
+const MAX_STRING_LENGTH = 4000;
+
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -91,35 +97,92 @@ function parseItems(raw: string | null): CopyItem[] {
   }
 }
 
+/**
+ * Apply find/replace overrides to HTML, but ONLY inside genuine text-node
+ * content — never inside a tag's markup (attribute values, tag names) and
+ * never inside <script> or <style> element bodies.
+ *
+ * This matters because overrides are plain strings, not DOM references: a
+ * naive `html.split(find).join(to)` over the whole document would also
+ * rewrite any coincidental match inside an attribute value (e.g. the same
+ * word appearing in an `aria-label`, `alt`, or — critically — inside the
+ * page's own `<meta http-equiv="content-security-policy" content="...">`
+ * tag, which repeats the literal token `self` many times) or inside an
+ * inline <script>/<style> block (corrupting its source so it no longer
+ * matches the CSP's precomputed SHA-256 hash, or breaking a JS/CSS string
+ * literal outright). Because `escapeHtmlText` only encodes `& < >` — which
+ * is sufficient for text-node content but NOT for attribute-value or
+ * script-body contexts (quotes, semicolons, etc. are not encoded) — letting
+ * an override reach those other contexts is an HTML/CSP-injection path for
+ * anyone holding (or leaking) COPY_EDIT_TOKEN. So we tokenize the document
+ * into "inside a tag" vs "between tags" spans and only ever touch the
+ * latter, skipping spans that fall inside <script>/<style>.
+ */
+function replaceInTextNodesOnly(html: string, items: CopyItem[]): string {
+  // Splitting on tag boundaries keeps every attribute/tag-name span in its
+  // own (untouched) array slot; only the interleaved text spans are edited.
+  const parts = html.split(/(<[^>]*>)/);
+  let skipTag: "script" | "style" | null = null;
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (part.startsWith("<")) {
+      const m = /^<\s*(\/?)\s*([a-zA-Z][a-zA-Z0-9-]*)/.exec(part);
+      const closing = m ? m[1] === "/" : false;
+      const name = m ? (m[2].toLowerCase() as "script" | "style") : null;
+      if (name === "script" || name === "style") {
+        if (closing) {
+          if (skipTag === name) skipTag = null;
+        } else if (!/\/>\s*$/.test(part)) {
+          skipTag = name;
+        }
+      }
+      continue; // never edit tag markup itself
+    }
+    if (skipTag) continue; // inside <script> or <style> body text
+    let text = part;
+    for (const { find, replace } of items) {
+      // Plain-text replacement only: the stored text came from DOM text
+      // nodes, so escape it for HTML and try both raw and entity-encoded
+      // source forms. `&<>` encoding is safe here because this span is
+      // guaranteed to be real text-node content, never an attribute value.
+      const to = escapeHtmlText(replace);
+      const candidates = [escapeHtmlText(find), find];
+      for (const from of candidates) {
+        if (from && text.includes(from)) {
+          text = text.split(from).join(to);
+          break;
+        }
+      }
+    }
+    parts[i] = text;
+  }
+  return parts.join("");
+}
+
 async function applyCopyOverrides(request: Request, res: Response, env: Env): Promise<Response> {
   if (!env.COPY || request.method !== "GET") return res;
   const ct = res.headers.get("content-type") || "";
   if (!ct.includes("text/html")) return res;
-  const page = copyPath(new URL(request.url).pathname);
-  const [pageRaw, globalRaw] = await Promise.all([
-    env.COPY.get(`copy:${page}`),
-    env.COPY.get("copy:*"),
-  ]);
-  if (!pageRaw && !globalRaw) return res;
-  const items = [...parseItems(globalRaw), ...parseItems(pageRaw)];
-  if (items.length === 0) return res;
+  // Keep an untouched clone: on any failure below we must serve the
+  // original asset rather than let a Copy Editor bug break the site.
+  const fallback = res.clone();
+  try {
+    const page = copyPath(new URL(request.url).pathname);
+    const [pageRaw, globalRaw] = await Promise.all([
+      env.COPY.get(`copy:${page}`),
+      env.COPY.get("copy:*"),
+    ]);
+    if (!pageRaw && !globalRaw) return res;
+    const items = [...parseItems(globalRaw), ...parseItems(pageRaw)];
+    if (items.length === 0) return res;
 
-  let html = await res.text();
-  for (const { find, replace } of items) {
-    // Plain-text replacement only: the stored text came from DOM text nodes,
-    // so escape it for HTML and try both raw and entity-encoded source forms.
-    const to = escapeHtmlText(replace);
-    const candidates = [escapeHtmlText(find), find];
-    for (const from of candidates) {
-      if (from && html.includes(from)) {
-        html = html.split(from).join(to);
-        break;
-      }
-    }
+    const html = replaceInTextNodesOnly(await res.text(), items);
+    const headers = new Headers(res.headers);
+    headers.delete("content-length");
+    return new Response(html, { status: res.status, headers });
+  } catch {
+    return fallback;
   }
-  const headers = new Headers(res.headers);
-  headers.delete("content-length");
-  return new Response(html, { status: res.status, headers });
 }
 
 /** /api/copy — read overrides (public; they render into public pages anyway),
@@ -183,18 +246,28 @@ async function handleCopy(request: Request, env: Env): Promise<Response> {
     return jsonResponse({ ok: true, path: page, items: [] });
   }
 
-  const incoming = (body.items || []).filter(
-    (i) =>
-      typeof i?.find === "string" &&
-      typeof i?.replace === "string" &&
-      i.find.trim().length > 0 &&
-      i.find !== i.replace
-  );
+  const incoming = (body.items || [])
+    .slice(0, MAX_ITEMS_PER_REQUEST)
+    .filter(
+      (i) =>
+        typeof i?.find === "string" &&
+        typeof i?.replace === "string" &&
+        i.find.trim().length > 0 &&
+        i.find !== i.replace &&
+        i.find.length <= MAX_STRING_LENGTH &&
+        i.replace.length <= MAX_STRING_LENGTH
+    );
   if (incoming.length === 0) return jsonResponse({ ok: false, error: "No valid items" }, 400);
   for (const item of incoming) {
     const idx = existing.findIndex((i) => i.find === item.find);
     if (idx >= 0) existing[idx] = { find: item.find, replace: item.replace };
     else existing.push({ find: item.find, replace: item.replace });
+  }
+  if (existing.length > MAX_ITEMS_PER_KEY) {
+    return jsonResponse(
+      { ok: false, error: `Too many overrides for "${page}" (limit ${MAX_ITEMS_PER_KEY}). Delete some first.` },
+      400
+    );
   }
   await env.COPY.put(key, JSON.stringify(existing));
   return jsonResponse({ ok: true, path: page, items: existing });
