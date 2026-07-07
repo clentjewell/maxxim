@@ -1,9 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <mask id="mxfav">
-      <rect x="2" y="2" width="96" height="96" rx="26" fill="#fff"/>
-      <path d="M29 69 L29 32 L50 54 L71 32 L71 69" fill="none" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    </mask>
-  </defs>
-  <rect x="2" y="2" width="96" height="96" rx="26" fill="#2d5bff" mask="url(#mxfav)"/>
+  <rect width="100" height="100" rx="22" fill="#0A0E1A"/>
+  <svg x="14" y="18" width="72" height="64" viewBox="73 0 58 58">
+    <rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect>
+    <rect fill="#FFFFFF" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.95" fill="#7D9BFF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect>
+    <rect fill="#FFFFFF" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.85" fill="#7D9BFF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect>
+    <rect fill="#7D9BFF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect>
+    <rect fill-opacity="0.9" fill="#7D9BFF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect>
+    <rect fill="#7D9BFF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect>
+    <rect fill-opacity="0.85" fill="#7D9BFF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect>
+  </svg>
 </svg>

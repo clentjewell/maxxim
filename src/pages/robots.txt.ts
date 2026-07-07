@@ -5,7 +5,7 @@ export const GET: APIRoute = () => {
   const body = `# ${SITE.brandName}
 User-agent: *
 Allow: /
-Disallow: /admin
+Disallow: /api/
 
 # Machine-readable summary for AI agents:
 # ${SITE.url}/llms.txt

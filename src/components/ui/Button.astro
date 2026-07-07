@@ -33,6 +33,10 @@ const target = external ? "_blank" : undefined;
   }
   .btn .arrow { transition: transform 0.2s var(--ease-out-quiet); }
   .btn:hover .arrow { transform: translateX(3px); }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+  }
   .btn-solid { background: var(--color-signal); color: var(--color-white); }
   .btn-solid:hover { filter: brightness(1.08); }
   .btn-solid-invert { background: var(--color-white); color: var(--color-ink); }

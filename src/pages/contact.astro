@@ -20,7 +20,7 @@ import Section from "@components/ui/Section.astro";
         </div>
       </div>
 
-      <form class="form" data-contact-form data-email={SITE.contactEmail} data-reveal>
+      <form class="form" data-contact-form data-email={SITE.contactEmail} action={`mailto:${SITE.contactEmail}`} method="post" enctype="text/plain" data-reveal>
         <div class="field">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required autocomplete="name" />
@@ -52,10 +52,26 @@ import Section from "@components/ui/Section.astro";
   .form { background: var(--color-mist); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 32px; display: flex; flex-direction: column; gap: 18px; }
   .field { display: flex; flex-direction: column; gap: 7px; }
   label { font-size: var(--text-small); font-weight: 500; }
-  input, textarea { font: inherit; font-size: var(--text-small); padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-white); color: var(--color-ink); resize: vertical; }
-  input:focus, textarea:focus { border-color: var(--color-signal); outline: none; }
-  .submit { align-self: flex-start; background: var(--color-signal); color: var(--color-white); font-weight: 600; font-size: var(--text-small); padding: 13px 22px; border: none; border-radius: var(--radius-pill); cursor: pointer; }
+  input, textarea {
+    font: inherit; font-size: var(--text-small); padding: 12px 14px; border: 1px solid var(--color-border);
+    border-radius: 10px; background: var(--color-white); color: var(--color-ink); resize: vertical;
+    transition: border-color var(--dur-quick) var(--ease-out-quiet), box-shadow var(--dur-quick) var(--ease-out-quiet);
+  }
+  input:focus, textarea:focus {
+    border-color: var(--color-signal);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-signal) 18%, transparent);
+  }
+  .submit {
+    align-self: flex-start; background: var(--color-signal); color: var(--color-white); font-weight: 600;
+    font-size: var(--text-small); padding: 13px 22px; border: none; border-radius: var(--radius-pill); cursor: pointer;
+    transition: filter var(--dur-quick) var(--ease-out-quiet), transform var(--dur-quick) var(--ease-out-quiet);
+  }
   .submit:hover { filter: brightness(1.08); }
+  @media (prefers-reduced-motion: no-preference) {
+    .submit:hover { transform: translateY(-1px); }
+    .submit:active { transform: translateY(0) scale(0.98); }
+  }
   .form-note { font-size: var(--text-small); color: var(--color-caption); margin: 0; }
   @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1.1fr; gap: 64px; } }
 </style>

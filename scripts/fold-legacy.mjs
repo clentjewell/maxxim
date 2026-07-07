@@ -48,19 +48,12 @@ for (const name of COPY) {
   const from = join(LEGACY, name);
   if (!existsSync(from)) continue;
   const to = join(PUBLIC, name);
-  rmSync(to, { recursive: true, force: true });
+  // public/images also holds site-only photography (mx-*) that does not come
+  // from the legacy pack — merge into it rather than wiping it.
+  if (name !== "images") rmSync(to, { recursive: true, force: true });
   mkdirSync(dirname(to), { recursive: true });
-  cpSync(from, to, { recursive: true });
+  cpSync(from, to, { recursive: true, force: true });
   console.log(`[fold-legacy] public/${name}`);
-}
-
-// The pack's own landing page (the bespoke builder emits it at the root of
-// site/dist). Mount it at /3d-process/ so the pack has a home of its own,
-// separate from the Astro marketing home.
-const packHome = join(LEGACY, "index.html");
-if (existsSync(packHome)) {
-  cpSync(packHome, join(PUBLIC, "3d-process", "index.html"));
-  console.log("[fold-legacy] public/3d-process/index.html");
 }
 
 console.log("[fold-legacy] done");

@@ -1,0 +1,69 @@
+---
+/**
+ * "Inside Maxxim" frame — the Brain chat panel.
+ * Self-contained: duplicates the shared .ui chrome rules it needs.
+ */
+---
+
+<div class="ui">
+  <div class="ui-brain-head">
+    <p class="ui-h1 ui-brain-title">Brain</p>
+    <span class="ui-pill">answers from this client's documents only</span>
+  </div>
+  <div class="ui-chat">
+    <p class="b-user">How is the 3D process looking?</p>
+    <p class="b-ari">26 of 26 deliverables are complete. The site is not deployed and the brand is not locked — both are waiting on your sign-off.</p>
+  </div>
+  <div class="ui-input">
+    <span>Ask Ari anything about this client…</span>
+    <span class="ui-send">→</span>
+  </div>
+</div>
+
+<style>
+  .ui {
+    background: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
+    border-radius: var(--radius-card);
+    padding: clamp(20px, 4vw, 36px);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+  .ui-h1 {
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .ui-brain-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; }
+  .ui-brain-title { margin: 0; }
+  .ui-pill {
+    display: inline-block;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-white) 10%, transparent);
+    color: var(--color-white);
+  }
+  .ui-chat { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .b-user { background: color-mix(in srgb, var(--color-signal) 80%, var(--color-ink)); color: var(--color-white); border-radius: 14px 14px 4px 14px; padding: 10px 14px; max-width: 70%; margin: 0 0 0 auto; font-size: var(--text-small); }
+  .b-ari { background: color-mix(in srgb, var(--color-white) 8%, transparent); border-radius: 14px 14px 14px 4px; padding: 10px 14px; max-width: 80%; margin: 0; font-size: var(--text-small); }
+  .ui-input {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border: 1px solid color-mix(in srgb, var(--color-white) 14%, transparent);
+    border-radius: var(--radius-pill);
+    padding: 12px 12px 12px 18px;
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-white) 60%, transparent);
+  }
+  .ui-send {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--color-signal); color: var(--color-white); font-size: 14px;
+  }
+</style>

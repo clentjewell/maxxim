@@ -20,6 +20,11 @@ const KB = [
     a: "3D + Deepen: Discover, then Design, then Deploy, then the compounding loop once the engine is live. No phase proceeds until the prior one is signed off.",
   },
   {
+    q: "What is the 3D Process page?",
+    keys: ["3d", "process", "document", "documents", "pack", "deliverable", "deliverables"],
+    a: "The 3D Process page opens the method's real output: a phase-by-phase deliverable catalogue for Discover, Design, Deploy and Deepen, plus real sample documents from the pack you can open and read — not just a deck.",
+  },
+  {
     q: "Who stays accountable?",
     keys: ["human", "accountable", "who", "gate", "trust"],
     a: "A named human stays at the wheel. AI carries the repeatable 80%; the human owns the 20% clients pay for — trust, taste and judgement — and signs off every gate.",
@@ -33,6 +38,16 @@ const KB = [
     q: "Can I see the work?",
     keys: ["work", "case", "proof", "example", "portfolio"],
     a: "Yes — the Work page shows launched, owned outcomes powered by Maxxim, with Pottsville Acupuncture as the cleared public proof.",
+  },
+  {
+    q: "Who are the specialists?",
+    keys: ["specialist", "team", "people", "max", "sal", "pip", "ari"],
+    a: "Four named specialists front the system: Max, the AI partner, runs the 3D process; Sal runs the Design Studio; Pip runs the Social Studio; and Ari is the Brain — answering anything about a client, grounded only in their own documents. A human approves every result.",
+  },
+  {
+    q: "What is the Brain?",
+    keys: ["brain", "ari", "assistant", "documents", "portal"],
+    a: "Every client gets a Brain: Ari, an assistant grounded only in that client's documents. Clients use it in their portal; the team gets the same context in Cowork. Anything worth keeping lands in their Files.",
   },
   {
     q: "How do I start?",
@@ -180,6 +195,15 @@ const KB = [
     flex-direction: column;
     max-height: min(70vh, 560px);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .panel:not([hidden]) {
+      animation: mx-pop var(--dur-quick) var(--ease-out-quiet);
+      transform-origin: bottom right;
+    }
+    @keyframes mx-pop {
+      from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    }
+  }
   .panel-head {
     display: flex; align-items: center; justify-content: space-between;
     gap: 12px; padding: 14px 16px;
@@ -190,6 +214,12 @@ const KB = [
   .msg { font-size: var(--text-small); line-height: 1.55; padding: 10px 13px; border-radius: 12px; max-width: 90%; margin: 0; }
   .msg.bot { background: var(--color-mist); color: var(--color-ink); align-self: flex-start; border-bottom-left-radius: 4px; }
   .msg.user { background: var(--color-signal); color: var(--color-white); align-self: flex-end; border-bottom-right-radius: 4px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .msg { animation: mx-msg 0.3s var(--ease-out-quiet); }
+    @keyframes mx-msg {
+      from { opacity: 0; transform: translateY(6px); }
+    }
+  }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
   .chip {
     font-size: 12px; background: var(--color-white);

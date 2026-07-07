@@ -64,17 +64,23 @@ const DOCS = [
   { phase: 'design', file: 'social-strategy.html', slug: 'social-strategy' },
   { phase: 'design', file: 'website-strategy.html', slug: 'website-strategy' },
 
-  { phase: 'deploy', file: 'imc-summary.html', slug: 'imc-summary', feature: true },
-  { phase: 'deploy', file: 'website-brief.html', slug: 'website-brief' },
-  { phase: 'deploy', file: 'design-brief.html', slug: 'design-brief' },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'imc-summary.html', slug: 'imc-summary', feature: true },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'website-brief.html', slug: 'website-brief' },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'design-brief.html', slug: 'design-brief' },
   { phase: 'deploy', file: 'case-study.html', slug: 'case-study' },
-  { phase: 'deploy', file: 'crm-plan.html', slug: 'crm-plan' },
-  { phase: 'deploy', file: 'edm-plan.html', slug: 'edm-plan' },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'crm-plan.html', slug: 'crm-plan' },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'edm-plan.html', slug: 'edm-plan' },
   { phase: 'deploy', file: 'events-plan.html', slug: 'events-plan' },
   { phase: 'deploy', file: 'paid-media-plan.html', slug: 'paid-media-plan' },
   { phase: 'deploy', file: 'photo-video-brief.html', slug: 'photo-video-brief' },
-  { phase: 'deploy', file: 'pr-plan.html', slug: 'pr-plan' },
-  { phase: 'deploy', file: 'seo-strategy.html', slug: 'seo-strategy' },
+  // Held back from the public pack pending clearance (pricing / uncleared client names). Restore by uncommenting.
+  // { phase: 'deploy', file: 'pr-plan.html', slug: 'pr-plan' },
+  { phase: 'deploy', file: 'seo-strategy.html', slug: 'seo-strategy', feature: true },
   { phase: 'deploy', file: 'traditional-media-plan.html', slug: 'traditional-media-plan' },
 ]
 
@@ -84,9 +90,16 @@ const SLUG_PHASE = new Map(DOCS.map(d => [d.slug, d.phase]))
 /* ------------------------------------------------------------ shared css */
 
 const FONTS = `
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">`
+<style>
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url('/fonts/poppins-300.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/poppins-400.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/poppins-500.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/poppins-600.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/poppins-600.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/ibm-plex-mono-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/ibm-plex-mono-500.woff2') format('woff2')}
+</style>`
 
 const FAVICON = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="${C.blue}"/><svg x="18" y="18" width="64" height="64" viewBox="73 0 58 58"><rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(81.0711, 22.0711) rotate(45) translate(-81.0711, -22.0711)" x="76.0710678" y="17.0710678" width="10" height="10"></rect><rect fill="#FFFFFF" transform="translate(88.0711, 29.0711) rotate(45) translate(-88.0711, -29.0711)" x="83.0710678" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(95.0711, 36.0711) rotate(45) translate(-95.0711, -36.0711)" x="90.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(81.0711, 36.0711) rotate(45) translate(-81.0711, -36.0711)" x="76.0710678" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(109.0711, 36.0711) rotate(45) translate(-109.0711, -36.0711)" x="104.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(123.0711, 36.0711) rotate(45) translate(-123.0711, -36.0711)" x="118.071068" y="31.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#FFFFFF" transform="translate(95.0711, 22.0711) rotate(45) translate(-95.0711, -22.0711)" x="90.0710678" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#FFFFFF" transform="translate(116.0711, 29.0711) rotate(45) translate(-116.0711, -29.0711)" x="111.071068" y="24.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#FFFFFF" transform="translate(123.0711, 22.0711) rotate(45) translate(-123.0711, -22.0711)" x="118.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.95" fill="#83A1FF" transform="translate(102.0711, 15.0711) rotate(45) translate(-102.0711, -15.0711)" x="97.0710678" y="10.0710678" width="10" height="10"></rect><rect fill="#FFFFFF" transform="translate(109.0711, 22.0711) rotate(45) translate(-109.0711, -22.0711)" x="104.071068" y="17.0710678" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 50.0711) rotate(45) translate(-95.0711, -50.0711)" x="90.0710678" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(102.0711, 43.0711) rotate(45) translate(-102.0711, -43.0711)" x="97.0710678" y="38.0710678" width="10" height="10"></rect><rect fill-opacity="0.9" fill="#83A1FF" transform="translate(109.0711, 50.0711) rotate(45) translate(-109.0711, -50.0711)" x="104.071068" y="45.0710678" width="10" height="10"></rect><rect fill="#83A1FF" transform="translate(109.0711, 8.0711) rotate(45) translate(-109.0711, -8.0711)" x="104.071068" y="3.07106781" width="10" height="10"></rect><rect fill-opacity="0.85" fill="#83A1FF" transform="translate(95.0711, 8.0711) rotate(45) translate(-95.0711, -8.0711)" x="90.0710678" y="3.07106781" width="10" height="10"></rect></svg></svg>`

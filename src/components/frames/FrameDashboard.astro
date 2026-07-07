@@ -1,0 +1,109 @@
+---
+/**
+ * "Inside Maxxim" frame — the operator dashboard / control panel.
+ * Self-contained: duplicates the shared .ui chrome rules it needs.
+ */
+const stats = [
+  { n: "12", l: "Clients" },
+  { n: "10", l: "Website updates" },
+  { n: "4", l: "Partners" },
+  { n: "$15.46", l: "Est. AI cost" },
+];
+---
+
+<div class="ui">
+  <p class="ui-eyebrow">Control panel</p>
+  <p class="ui-h1">Welcome back, Ronnie. <span class="accent">12 clients in motion.</span></p>
+  <p class="ui-meta">12 clients · 10 website updates · $15.46 AI spend to date.</p>
+  <div class="ui-stats">
+    {stats.map((s) => (
+      <div class="ui-tile">
+        <span class="ui-tile-n">{s.n}</span>
+        <span class="ui-tile-l">{s.l}</span>
+      </div>
+    ))}
+  </div>
+  <div class="ui-cols">
+    <div class="ui-col">
+      <p class="ui-col-title">Recent activity</p>
+      <ul class="ui-list">
+        <li>IMC summary added — 2d ago</li>
+        <li>Case study added — 2d ago</li>
+        <li>Website brief added — 2d ago</li>
+      </ul>
+    </div>
+    <div class="ui-col ui-card">
+      <p class="ui-col-title">Max — your AI partner</p>
+      <p class="ui-card-line">Runs your 3D process inside Cowork — drafting deliverables and keeping every client moving.</p>
+      <span class="ui-pill">Set it up →</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ui {
+    background: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
+    border-radius: var(--radius-card);
+    padding: clamp(20px, 4vw, 36px);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+  .ui-eyebrow, .ui-col-title {
+    font-family: var(--font-mono);
+  }
+  .ui-eyebrow {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: var(--text-eyebrow);
+    color: var(--color-blue-tint);
+    margin: 0;
+  }
+  .ui-h1 {
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 10px 0 0;
+  }
+  .accent { color: var(--color-blue-tint); }
+  .ui-meta {
+    margin: 10px 0 0;
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-white) 70%, transparent);
+  }
+  .ui-stats {
+    margin-top: 24px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 560px) { .ui-stats { grid-template-columns: repeat(4, 1fr); } }
+  .ui-tile {
+    background: color-mix(in srgb, var(--color-white) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .ui-tile-n { display: block; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .ui-tile-l { display: block; margin-top: 4px; font-size: var(--text-eyebrow); color: color-mix(in srgb, var(--color-white) 65%, transparent); }
+  .ui-cols { margin-top: 28px; display: grid; gap: 16px; }
+  @media (min-width: 640px) { .ui-cols { grid-template-columns: 1fr 1fr; } }
+  .ui-col-title { margin: 0 0 12px; font-size: var(--text-eyebrow); letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--color-white) 65%, transparent); }
+  .ui-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: var(--text-small); color: color-mix(in srgb, var(--color-white) 82%, transparent); }
+  .ui-card {
+    background: color-mix(in srgb, var(--color-white) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .ui-card-line { margin: 0 0 14px; font-size: var(--text-small); color: color-mix(in srgb, var(--color-white) 82%, transparent); }
+  .ui-pill {
+    display: inline-block;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-white) 10%, transparent);
+    color: var(--color-white);
+  }
+</style>

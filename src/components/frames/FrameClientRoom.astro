@@ -1,0 +1,71 @@
+---
+/**
+ * "Inside Maxxim" frame — the per-client room ("Jewell.").
+ * Self-contained: duplicates the shared .ui chrome rules it needs.
+ */
+const modules = [
+  { t: "Onboarding", d: "Qualify the lead and run Gate 0 before delivery." },
+  { t: "3D Process", d: "Deliverables across Discover, Design & Deploy.", status: "good", s: "26 / 26 complete" },
+  { t: "Brand Assets", d: "Logo variants and the locked identity.", status: "wait", s: "Not locked yet" },
+  { t: "Website", d: "Deploys, domains and the live site.", status: "wait", s: "Not deployed" },
+  { t: "Design Studio", d: "Generate & refine brand visuals with Sal." },
+  { t: "Social Studio", d: "Draft, approve & schedule posts with Pip." },
+  { t: "Brain", d: "Ask Ari anything about this client — grounded in all their documents." },
+  { t: "Files", d: "Every document and asset we hold.", status: "good", s: "86 files" },
+];
+---
+
+<div class="ui">
+  <p class="ui-h1">Jewell.</p>
+  <p class="ui-meta">3D Process 26/26 · site not deployed · brand not locked.</p>
+  <div class="ui-modules">
+    {modules.map((m) => (
+      <div class="ui-tile ui-module">
+        <p class="ui-module-t">{m.t}</p>
+        <p class="ui-module-d">{m.d}</p>
+        {m.status === "good" && <span class="status-good">{m.s}</span>}
+        {m.status === "wait" && <span class="status-wait">{m.s}</span>}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ui {
+    background: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
+    border-radius: var(--radius-card);
+    padding: clamp(20px, 4vw, 36px);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+  .ui-h1 {
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .ui-meta {
+    margin: 10px 0 0;
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-white) 70%, transparent);
+  }
+  .ui-modules {
+    margin-top: 24px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 760px) { .ui-modules { grid-template-columns: repeat(4, 1fr); } }
+  .ui-tile {
+    background: color-mix(in srgb, var(--color-white) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .ui-module-t { margin: 0; font-size: var(--text-small); font-weight: 600; font-family: var(--font-mono); }
+  .ui-module-d { margin: 6px 0 8px; font-size: var(--text-eyebrow); color: color-mix(in srgb, var(--color-white) 65%, transparent); line-height: 1.5; }
+  /* status-good / status-wait hex colours mimic the live product UI's traffic-light states */
+  .status-good { color: #7ddb9a; font-family: var(--font-mono); font-size: 11px; }
+  .status-wait { color: #e7c46b; font-family: var(--font-mono); font-size: 11px; }
+</style>

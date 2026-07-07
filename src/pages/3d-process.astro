@@ -1,0 +1,317 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+
+// The three gated phases, plus the compounding Deepen loop. Mirrors the
+// language used on /method — this page exists to show what each phase
+// actually produces.
+const STEPS = [
+  {
+    n: "01",
+    name: "Discover",
+    line: "Define the true driver everything builds on.",
+    outcome: "A clear growth direction you can act on.",
+  },
+  {
+    n: "02",
+    name: "Design",
+    line: "Build the system that carries it.",
+    outcome: "A growth system ready to deploy.",
+  },
+  {
+    n: "03",
+    name: "Deploy",
+    line: "Ship it, and run it.",
+    outcome: "A deployed engine, running and moving the number.",
+  },
+  {
+    n: "∞",
+    name: "Deepen",
+    line: "It doesn't stop at Deploy.",
+    outcome: "What we learn compounds instead of going stale.",
+    deepen: true,
+  },
+];
+
+// What each phase actually produces. Grouped outputs, shared across the
+// method regardless of who runs it — kept verbatim.
+const DELIVERABLES = [
+  {
+    phase: "Discover",
+    desc: "We diagnose the market, customer, offer and current constraint so the strategy is grounded in evidence.",
+    groups: [
+      { title: "Audience & Market", items: ["Audience Teardown", "Customer Segments", "Customer Pain Points", "Buying Triggers & Barriers", "Jobs To Be Done"] },
+      { title: "Category & Competitors", items: ["Competitor Analysis", "Category Positioning", "Market Gaps", "Differentiation Opportunities"] },
+      { title: "Offer & Commercial Diagnosis", items: ["Offer Worksheet", "Product / Service Review", "Pricing / Packaging Notes", "Sales Process Review", "Funnel Review"] },
+      { title: "Discovery Output", output: true, items: ["Success Definition", "Objectives & Key Results", "Discover Summary", "Priority Problems To Solve", "Recommended Next Moves"] },
+    ],
+  },
+  {
+    phase: "Design",
+    desc: "We turn the discovery into strategy, messaging, brand direction, plans and briefs that can be built from.",
+    groups: [
+      { title: "Business & Growth Strategy", items: ["Business Plan / Growth Plan", "Strategic Priorities", "Growth Roadmap", "Measurement Plan"] },
+      { title: "Customer & Journey Strategy", items: ["Customer Profile", "Customer Journey", "Messaging by Stage", "Conversion Pathway"] },
+      { title: "Brand & Messaging", items: ["Brand Strategy", "Positioning", "Messaging & Offer Architecture", "Brand Guidelines", "Brand Copy Workbook"] },
+      { title: "Website & Digital Strategy", items: ["Website Strategy", "Website Brief", "Sitemap", "Page Strategy", "SEO Strategy"] },
+      { title: "Sales & Marketing Plan", note: "One parent plan, with the sub-plans below.", items: ["Social Strategy", "Content Strategy", "In-Market Activation Plan", "Paid Media Plan", "EDM Plan", "CRM Plan", "PR Plan", "Events Plan", "Partnership / Referral Plan", "Traditional Media Plan", "Campaign Calendar"] },
+      { title: "Briefing Documents", items: ["Design Brief", "Website Brief", "Photo & Video Brief", "SEO Brief", "Paid Media Brief", "EDM Brief", "CRM Brief", "PR Brief", "Events Brief"] },
+      { title: "Design Output", output: true, items: ["Strategy Summary", "IMC Summary", "Approved Roadmap", "Final Brief Pack"] },
+    ],
+  },
+  {
+    phase: "Deploy",
+    desc: "We launch the approved work, manage the activity, report on performance and improve what is working.",
+    groups: [
+      { title: "Production & Delivery", items: ["Website Build / Updates", "Landing Pages", "Creative Assets", "Social Assets", "Video Assets", "Email Templates", "Sales Collateral", "Forms & Automations", "Tracking Setup"] },
+      { title: "In-Market Activation", items: ["Campaign Launch", "Social Content Rollout", "Paid Media Launch", "EDM Deployment", "CRM Workflow Deployment", "PR Outreach", "Events Activation", "Partnership Outreach", "Traditional Media Rollout"] },
+      { title: "Reporting & Optimisation", items: ["Reporting Dashboard", "Monthly Report", "Campaign Performance Review", "Lead Quality Review", "SEO Performance Review", "Paid Media Performance Review", "CRM / EDM Performance Review", "Recommendations & Next Actions"] },
+      { title: "Deploy Output", output: true, items: ["Live Asset Links", "Reporting Pack", "Optimisation Backlog", "Next Sprint Priorities", "Case Study / Evidence Pack"] },
+    ],
+  },
+  {
+    phase: "Deepen",
+    dark: true,
+    desc: "Once the work is live, what we learn feeds back into intelligence, strategy and decisions, so the growth system gets sharper over time.",
+    groups: [
+      { title: "Intelligence Capture", items: ["Meeting Intelligence", "Decisions & Follow-Ups", "Campaign & Content Learnings", "Performance & Market Signals", "Client Feedback & Requests", "Opportunities & Risks"] },
+      { title: "Washback & Governance", note: "Learnings are promoted into strategy only after review and approval.", items: ["Weekly Washback Review", "Monthly Washback Review", "Quarterly Washback Review", "Strategic Change Log", "Client Approval Gates"] },
+      { title: "Intelligence Layers", note: "How the brief separates strategic memory from day-to-day working memory.", items: ["Approved — reviewed and signed off; the stable strategic layer", "Active — priorities, meetings and activity, updated as it happens", "Signal — an observation from reporting or the market, not yet reviewed", "Proposed Change — a learning in washback, awaiting approval"] },
+      { title: "Deepen Output", output: true, note: "A living intelligence brief that keeps the approved strategy, current priorities, meetings, performance signals and next decisions in one place.", items: ["Deepen Loop Intelligence Brief", "Strategic Intelligence Summary", "Active Intelligence Update", "Next Cycle Priorities"] },
+    ],
+  },
+];
+
+// Real sample documents from the pack, grouped by phase. These are the
+// working documents behind the method — the format every client receives.
+const DOCS = [
+  {
+    phase: "Discover",
+    docs: [
+      { label: "Discover Summary", href: "/3d-process/discover/discover-summary/", feature: true },
+      { label: "Gate 1 Deck", href: "/3d-process/discover/discover-summary-deck/" },
+      { label: "Discover Addendum", href: "/3d-process/discover/discover-addendum/" },
+      { label: "Audience Teardown", href: "/3d-process/discover/audience-teardown/" },
+      { label: "Competitor Analysis", href: "/3d-process/discover/competitor-analysis/" },
+      { label: "Offer Worksheet", href: "/3d-process/discover/offer-worksheet/" },
+    ],
+  },
+  {
+    phase: "Design",
+    docs: [
+      { label: "Strategy Summary", href: "/3d-process/design/strategy-summary/", feature: true },
+      { label: "Brand Book", href: "/3d-process/design/brand-book/", feature: true },
+      { label: "Brand Strategy", href: "/3d-process/design/brand-strategy/" },
+      { label: "Brand Guidelines", href: "/3d-process/design/brand-guidelines/" },
+      { label: "Logo Brief", href: "/3d-process/design/logo-brief/" },
+      { label: "Copy Deck", href: "/3d-process/design/copy-deck/" },
+      { label: "Customer Profile", href: "/3d-process/design/customer-profile/" },
+      { label: "Business Plan", href: "/3d-process/design/business-plan/" },
+      { label: "Marketing Plan", href: "/3d-process/design/marketing-plan/" },
+      { label: "Social Strategy", href: "/3d-process/design/social-strategy/" },
+      { label: "Website Strategy", href: "/3d-process/design/website-strategy/" },
+    ],
+  },
+  {
+    phase: "Deploy",
+    docs: [
+      { label: "SEO Strategy", href: "/3d-process/deploy/seo-strategy/", feature: true },
+      { label: "Case Study", href: "/3d-process/deploy/case-study/" },
+      { label: "Events Plan", href: "/3d-process/deploy/events-plan/" },
+      { label: "Paid Media Plan", href: "/3d-process/deploy/paid-media-plan/" },
+      { label: "Photo & Video Brief", href: "/3d-process/deploy/photo-video-brief/" },
+      { label: "Traditional Media Plan", href: "/3d-process/deploy/traditional-media-plan/" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="The 3D Process"
+  description="Discover, Design, Deploy, then Deepen. The proven method, run in three gated phases plus a compounding loop — every phase produces real documents you can open and read."
+>
+  <PageHero
+    eyebrow="THE 3D PROCESS"
+    title="Discover. Design. Deploy. Then deepen."
+    intro="A proven method, run in three gated phases, then a compounding loop. Every phase produces documents you can open and read — not just decks."
+    tone="ink"
+  >
+    <div class="hero-cta">
+      <Button href="/work" variant="solid-invert">See the method in market</Button>
+      <Button href="/method" variant="ghost">Read the full method</Button>
+    </div>
+  </PageHero>
+
+  <!-- The stepper: four tiles, Deepen accented as the ongoing loop. -->
+  <Section rule>
+    <h2 class="sr-only">The 3D Process stages</h2>
+    <div class="phases" data-reveal>
+      {STEPS.map((s) => (
+        <div class:list={["phase", "lift", s.deepen && "phase-deepen"]}>
+          <span class="pno">{s.n}</span>
+          <h3>{s.name}</h3>
+          <p>{s.line}</p>
+          <p class="outcome">{s.outcome}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- What you actually get: the shared method's real output, by phase. -->
+  <Section rule>
+    <p class="eyebrow" data-reveal>WHAT YOU ACTUALLY GET</p>
+    <h2 class="deliv-h" data-reveal>A growth system you can <span class="hl">see, approve and use.</span></h2>
+    <p class="deliv-lead measure" data-reveal>Every phase of the 3D Process produces practical documents, not just presentations. We diagnose what needs to move, design the strategy and assets around it, then deploy the work with reporting and next actions attached.</p>
+    <p class="deliv-note measure" data-reveal>Built for leaders who want clarity, momentum and a system their team can keep using.</p>
+    <div class="deliv-grid" data-reveal>
+      {DELIVERABLES.map((d) => (
+        <div class:list={["deliv-col", d.dark && "is-deepen"]}>
+          <p class="deliv-phase">{d.phase}</p>
+          <p class="deliv-desc">{d.desc}</p>
+          <div class="deliv-groups">
+            {d.groups.map((g) => (
+              <details class={`deliv-group${g.output ? " is-output" : ""}`}>
+                <summary class="deliv-gsum">
+                  <span class="deliv-gtitle">{g.title}</span>
+                  <span class="deliv-gcount">{g.items.length}</span>
+                  <svg class="deliv-chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                {g.note && <p class="deliv-gnote">{g.note}</p>}
+                <ul class="deliv-list">{g.items.map((it) => <li>{it}</li>)}</ul>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Open the documents: real samples from the pack, grouped by phase. -->
+  <Section tone="mist" rule>
+    <p class="eyebrow" data-reveal>THE PACK</p>
+    <h2 class="docs-h" data-reveal>Real documents, <span class="hl">open to read.</span></h2>
+    <p class="docs-lead measure" data-reveal>These are working documents from the engine, opened for reading — the format every client receives.</p>
+    <div class="docs-grid" data-reveal>
+      {DOCS.map((d) => (
+        <div class="docs-col">
+          <p class="docs-phase">{d.phase}</p>
+          <div class="docs-list">
+            {d.docs.map((doc) => (
+              <a class:list={["doc-card", "lift", doc.feature && "is-feature"]} href={doc.href}>
+                {doc.feature && <span class="doc-chip">Featured</span>}
+                <span class="doc-label">{doc.label}</span>
+                <span class="doc-go" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="docs-caption" data-reveal>A further set of Deploy documents is held back pending clearance.</p>
+  </Section>
+
+  <!-- Close -->
+  <Section tone="ink" rule>
+    <div class="cta" data-reveal>
+      <h2>The method, in market.</h2>
+      <div class="cta-actions">
+        <Button href="/work" variant="solid-invert">See the work</Button>
+        <Button href="/method" variant="ghost">Read the full method</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .hero-cta :global(.btn-ghost) { color: var(--color-blue-tint); }
+  .hl { color: var(--color-signal); }
+
+  /* Stepper: mirrors the "move" tile pattern used on case-study pages. */
+  .phases { display: grid; gap: 24px; }
+  .phase { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px; }
+  .phase .pno { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-signal); letter-spacing: 0.14em; }
+  .phase h3 { margin: 10px 0 8px; }
+  .phase p { margin: 0; font-size: var(--text-small); color: var(--color-body); }
+  .phase .outcome { margin-top: 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.01em; color: var(--color-caption); }
+  .phase-deepen { border-left: 3px solid var(--color-signal); }
+  @media (min-width: 800px) { .phases { grid-template-columns: repeat(3, 1fr); } .phase-deepen { grid-column: 1 / -1; } }
+  @media (min-width: 1040px) { .phases { grid-template-columns: repeat(4, 1fr); } .phase-deepen { grid-column: auto; } }
+
+  /* What you actually get: phase deliverables. */
+  .deliv-h { font-size: var(--text-h2); line-height: var(--text-h2--line-height); letter-spacing: -0.015em; margin: 18px 0 0; }
+  .deliv-lead { margin: 16px 0 0; color: var(--color-body); }
+  .deliv-note { margin: 12px 0 0; font-size: var(--text-small); color: var(--color-caption); }
+  .deliv-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: clamp(36px, 4vw, 52px); align-items: start; }
+  .deliv-col { display: flex; flex-direction: column; }
+  .deliv-phase { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-signal); margin: 0; padding-bottom: 12px; border-bottom: 1px solid color-mix(in srgb, var(--color-signal) 30%, transparent); }
+  .deliv-desc { margin: 14px 0 4px; font-size: var(--text-small); line-height: 1.55; color: var(--color-body); }
+  .deliv-groups { display: flex; flex-direction: column; margin-top: 6px; }
+  .deliv-group { border-top: 1px solid var(--color-border); }
+  .deliv-group:last-child { border-bottom: 1px solid var(--color-border); }
+  .deliv-gsum { display: flex; align-items: center; gap: 12px; padding: 14px 0; cursor: pointer; list-style: none; user-select: none; }
+  .deliv-gsum::-webkit-details-marker { display: none; }
+  .deliv-gsum:focus-visible { outline: 2px solid color-mix(in srgb, var(--color-signal) 70%, transparent); outline-offset: 3px; border-radius: 6px; }
+  .deliv-gtitle { flex: 1; font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.005em; color: var(--color-ink); line-height: 1.35; }
+  .deliv-gcount { font-family: var(--font-mono); font-size: 11px; color: var(--color-caption); flex: none; }
+  .deliv-chev { flex: none; color: var(--color-caption); transition: transform 0.25s var(--ease-out-quiet); }
+  .deliv-group[open] > .deliv-gsum .deliv-chev { transform: rotate(180deg); }
+  .deliv-gnote { margin: -4px 0 10px; font-size: 12px; line-height: 1.5; color: var(--color-caption); }
+  .deliv-list { list-style: none; margin: 0; padding: 0 0 16px; display: grid; gap: 9px; }
+  .deliv-list li { font-size: var(--text-small); line-height: 1.4; color: var(--color-body); padding-left: 16px; position: relative; }
+  .deliv-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: color-mix(in srgb, var(--color-signal) 55%, transparent); }
+  /* Output groups: the tangible take-away from each phase. */
+  .deliv-group.is-output .deliv-gtitle { color: var(--color-signal); }
+  .deliv-group.is-output .deliv-list li::before { background: var(--color-signal); }
+  @media (prefers-reduced-motion: reduce) {
+    .deliv-chev { transition: none; }
+  }
+
+  /* Deepen: the loop column on ink, so it reads as the ongoing layer. */
+  .deliv-col.is-deepen { background: var(--color-ink); color: var(--color-white); border-radius: var(--radius-card); padding: 24px; margin: -24px; }
+  .is-deepen .deliv-desc { color: color-mix(in srgb, var(--color-white) 80%, transparent); }
+  .is-deepen .deliv-group { border-top-color: color-mix(in srgb, var(--color-white) 18%, transparent); }
+  .is-deepen .deliv-group:last-child { border-bottom-color: color-mix(in srgb, var(--color-white) 18%, transparent); }
+  .is-deepen .deliv-gtitle { color: color-mix(in srgb, var(--color-white) 92%, transparent); }
+  .is-deepen .deliv-group[open] > .deliv-gsum .deliv-gtitle { color: var(--color-white); }
+  .is-deepen .deliv-gcount { color: color-mix(in srgb, var(--color-white) 60%, transparent); }
+  .is-deepen .deliv-chev { color: color-mix(in srgb, var(--color-white) 55%, transparent); }
+  .is-deepen .deliv-gnote { color: color-mix(in srgb, var(--color-white) 66%, transparent); }
+  .is-deepen .deliv-list li { color: color-mix(in srgb, var(--color-white) 82%, transparent); }
+  .is-deepen .deliv-list li::before { background: var(--color-blue-tint); }
+  .is-deepen .deliv-gsum:focus-visible { outline-color: var(--color-blue-tint); }
+  @media (max-width: 719px) { .deliv-col.is-deepen { margin: 0; } }
+
+  @media (min-width: 720px) { .deliv-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1080px) { .deliv-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+
+  /* Open the documents: real samples, by phase. */
+  .docs-h { font-size: var(--text-h2); line-height: var(--text-h2--line-height); letter-spacing: -0.015em; margin: 18px 0 0; }
+  .docs-lead { margin: 16px 0 0; color: var(--color-body); }
+  .docs-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: clamp(32px, 4vw, 48px); }
+  .docs-phase { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-caption); margin: 0 0 14px; }
+  .docs-list { display: flex; flex-direction: column; gap: 10px; }
+  .doc-card {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card);
+    padding: 14px 16px; color: var(--color-ink); text-decoration: none;
+  }
+  .doc-card.is-feature { border-color: var(--color-signal); box-shadow: 0 8px 24px -16px color-mix(in srgb, var(--color-signal) 60%, transparent); }
+  .doc-chip { flex: none; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-signal); border: 1px solid color-mix(in srgb, var(--color-signal) 45%, transparent); border-radius: var(--radius-pill); padding: 3px 8px; }
+  .doc-label { flex: 1; font-size: var(--text-small); font-weight: 500; }
+  .doc-go { flex: none; color: var(--color-signal); }
+  @media (prefers-reduced-motion: no-preference) {
+    .doc-go { transition: transform var(--dur-quick) var(--ease-out-quiet); }
+    .doc-card:hover .doc-go { transform: translateX(3px); }
+  }
+  .docs-caption { margin: clamp(24px, 3vw, 36px) 0 0; font-size: var(--text-small); color: var(--color-caption); }
+  @media (min-width: 900px) { .docs-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* Close */
+  .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: var(--text-h1); margin: 0; }
+  .cta-actions { display: flex; gap: 14px; align-items: center; }
+  .cta :global(.btn-ghost) { color: var(--color-blue-tint); }
+</style>

@@ -41,12 +41,75 @@ const phases = [
     </Section>
   ))}
 
+  <Section tone="mist" rule>
+    <p class="eyebrow" data-reveal>The gate</p>
+    <h2 data-reveal>Later work unlocks only as earlier work exists.</h2>
+
+    <div class="gate-strip" data-reveal>
+      <span class="gate-pill">Discover</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-tag">gate</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-pill">Design</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-tag">gate</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-pill">Deploy</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-tag">loop</span>
+      <span class="gate-arrow" aria-hidden="true">→</span>
+      <span class="gate-pill">Deepen</span>
+    </div>
+
+    <div class="stat-chips" data-reveal>
+      <div class="stat-chip lift"><span class="stat-n">26</span><span class="stat-l">deliverables per engagement</span></div>
+      <div class="stat-chip lift"><span class="stat-n">3</span><span class="stat-l">gated phases</span></div>
+      <div class="stat-chip lift"><span class="stat-n">1</span><span class="stat-l">sign-off at every gate</span></div>
+    </div>
+
+    <details class="more" data-reveal>
+      <summary>How gating works in detail</summary>
+      <h3>The 3D method</h3>
+      <p>Every engagement runs through three phases, in order.</p>
+      <ol class="g-list">
+        <li><strong>Discover</strong> — gather the raw intelligence: who the customer is, who the competitors are, what the offer really is. Nothing downstream is reliable until this is right, so Discover comes first and is reviewed before anything moves.</li>
+        <li><strong>Design</strong> — turn insight into strategy: the customer profile, brand strategy, the plans, and the creative briefs. The heavy-lifting phase.</li>
+        <li><strong>Deploy</strong> — produce the in-market activation work: the operational briefs and plans that take the brand to market.</li>
+      </ol>
+      <p>Each deliverable is a self-contained document. When one is produced it appears in the client's pipeline as <strong>Pending</strong> — drafted, but not yet counted. Only when a named human reviews and approves it does it become <strong>Approved</strong>. Progress is measured in approvals, not drafts. That is the discipline of the whole system: the work moves at AI speed, and the score is kept by people.</p>
+      <h3>The deliverable catalogue</h3>
+      <p>A finished engagement is a set of twenty-six documents, built up phase by phase.</p>
+      <ul class="g-list">
+        <li><strong>Discover (4):</strong> an audience teardown, a competitor analysis, an offer worksheet, and a one-page Discover summary for sign-off.</li>
+        <li><strong>Design (10):</strong> the customer profile, brand strategy and logo brief; the business, marketing, social and website plans; brand guidelines and a copy deck; and a strategy summary that distils the phase.</li>
+        <li><strong>Deploy (12):</strong> the execution layer — design, website and photo-and-video briefs, then SEO, paid media, email, CRM, PR, events and traditional media plans, an integrated communications summary, and a case study.</li>
+      </ul>
+      <p>Each phase ends with a single summary document, so sign-off is always a one-page decision, not a stack of paper.</p>
+      <h3>How gating works</h3>
+      <p>This is the most important idea in the method: later work unlocks only as earlier work exists. The creative studios will not make an asset until the document it depends on has actually been produced and saved for that client.</p>
+      <p>A logo cannot be generated until its logo brief exists. Brand imagery waits for the brand guidelines. Everyday collateral — business cards, letterheads, email signatures — waits for the guidelines <em>and</em> a formally locked logo. Campaign pieces wait for the design brief. The Social Studio stays locked until the social strategy is written.</p>
+      <p>This is not a nuisance; it is what keeps a brand consistent. Every visual is built on a brief that already exists, and nothing carries a logo that hasn't been signed off. When something is locked, the system says exactly why — and exactly what to produce first.</p>
+    </details>
+
+    <details class="more" data-reveal>
+      <summary>Why humans stay in the loop — the full reasoning</summary>
+      <p>Maxxim is built on a simple division of labour: let AI do what AI is good at, and keep humans doing what only humans can.</p>
+      <p>AI is extraordinary at the mechanical, repeatable, scalable parts of marketing — researching, drafting, generating options, producing documents, building pages. That work used to eat the hours. Maxxim automates it, so it happens in minutes.</p>
+      <p>But three things stay stubbornly human, and they are exactly what a client is really paying for. <strong>Trust</strong> — a client trusts a person, not a model. <strong>Taste</strong> — knowing which of ten good options is the right one. <strong>Judgement</strong> — what to say to a regulated client, when to push back, what matters now. This framing is drawn from the work of Nate B. Jones.</p>
+      <p>So every part of Maxxim keeps a human at the controls. AI proposes; a named person decides. Nothing counts as done, and nothing publishes, until someone signs it off. The old line was good, fast or cheap — pick two. Maxxim is built to break that trade-off: pick three.</p>
+      <h3>Why Maxxim is built this way</h3>
+      <p>Maxxim builds only what it must. Where excellent foundations already exist — the AI models, the desktop environment they run in — Maxxim leans on them and spends its own effort on the thin layer that is genuinely its own. It is the philosophy Nvidia's Jensen Huang has often described: don't build what someone else already builds well.</p>
+      <p>The second principle is the right tool for each job. Text and reasoning go to the strongest language model available. Logos are made as true vector artwork, so they scale from favicon to billboard without losing an edge. Photographic imagery goes to an engine that handles conversational refinement. Video is animated from an approved still. Which engine sits behind each job changes as the field moves — and the system is built to swap them without anyone noticing.</p>
+      <p>Finally, Maxxim absorbs the fiddly parts — hosting, publishing, scheduling — so running a roster of clients stays manageable for a small human team.</p>
+    </details>
+  </Section>
+
   <Section tone="ink" rule>
     <div class="cta" data-reveal>
       <h2>See the method in market.</h2>
       <div class="cta-actions">
         <Button href="/work" variant="solid-invert">See the work</Button>
-        <Button href="/3d-process/" variant="ghost">Open the 3D Process pack →</Button>
+        <Button href="/3d-process/" variant="ghost">Open the 3D Process pack</Button>
       </div>
     </div>
   </Section>
@@ -60,6 +123,16 @@ const phases = [
   .seam-bar .pct { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
   .seam-bar .lbl { font-size: var(--text-small); font-weight: 500; }
   .machine .lbl { color: var(--color-body); }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in .seam-bar .human { animation: mx-in-left var(--dur-soft) var(--ease-out-quiet) both; }
+    .reveal-in .seam-bar .machine { animation: mx-in-right var(--dur-soft) var(--ease-out-quiet) both; }
+    @keyframes mx-in-left {
+      from { opacity: 0; transform: translateX(-14px); }
+    }
+    @keyframes mx-in-right {
+      from { opacity: 0; transform: translateX(14px); }
+    }
+  }
 
   .phase { display: grid; gap: 28px; }
   .phase-side { display: flex; flex-direction: column; gap: 10px; }
@@ -71,6 +144,116 @@ const phases = [
   .phase-main li { position: relative; padding-left: 22px; font-size: var(--text-small); color: var(--color-body); }
   .phase-main li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 2px; background: var(--color-signal); transform: rotate(45deg); }
   @media (min-width: 820px) { .phase { grid-template-columns: 220px 1fr; gap: 48px; } .phase-main ul { grid-template-columns: 1fr 1fr; } }
+
+  /* THE GATE */
+  h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 12px 0 20px; max-width: 24ch; }
+
+  .gate-strip { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .gate-pill {
+    font-size: var(--text-small);
+    font-weight: 600;
+    padding: 10px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: var(--color-white);
+    color: var(--color-ink);
+    transition: border-color var(--dur-quick) var(--ease-out-quiet), transform var(--dur-quick) var(--ease-out-quiet);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .gate-pill:hover { transform: translateY(-1px); border-color: var(--color-signal); }
+  }
+  .gate-tag { font-family: var(--font-mono); font-size: var(--text-eyebrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-signal); }
+  .gate-arrow { font-family: var(--font-mono); color: var(--color-signal); font-size: 16px; }
+  .stat-chips { margin-top: 32px; margin-bottom: 40px; display: grid; gap: 16px; }
+  .stat-chip { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px 22px; }
+  .stat-n { display: block; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink); }
+  .stat-l { display: block; margin-top: 4px; font-size: var(--text-small); color: var(--color-body); }
+  @media (min-width: 640px) { .stat-chips { grid-template-columns: repeat(3, 1fr); } }
+
+  /* DETAILS DISCLOSURE */
+  details.more {
+    margin-top: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 18px 22px;
+    background: var(--color-white);
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-signal) 78%, var(--color-ink));
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: " +";
+    display: inline-block;
+  }
+  details[open] summary::after { content: " −"; }
+  @media (prefers-reduced-motion: no-preference) {
+    summary::after { transition: transform var(--dur-quick) var(--ease-out-quiet); }
+    details.more[open] > *:not(summary) {
+      animation: mx-fade var(--dur-soft) var(--ease-out-quiet);
+    }
+    @keyframes mx-fade {
+      from { opacity: 0; transform: translateY(6px); }
+    }
+  }
+  details.more p {
+    max-width: var(--container-measure);
+    margin: 16px 0 0;
+    color: var(--color-body);
+  }
+  details.more h3 {
+    margin: 28px 0 4px;
+    font-size: var(--text-h3);
+    color: var(--color-ink);
+  }
+  details.more .g-list { margin-top: 16px; }
+
+  /* Bulleted / numbered lists inside disclosures */
+  .g-list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    max-width: var(--container-measure);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .g-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--text-body);
+    color: var(--color-body);
+  }
+  .g-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-signal);
+    transform: rotate(45deg);
+  }
+  ol.g-list { counter-reset: step; }
+  ol.g-list li::before {
+    content: counter(step);
+    counter-increment: step;
+    top: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    transform: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    color: var(--color-signal);
+    font-weight: 700;
+  }
 
   .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .cta h2 { font-size: var(--text-h1); margin: 0; }

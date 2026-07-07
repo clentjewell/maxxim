@@ -1,7 +1,7 @@
 # Maxxim
 User-agent: *
 Allow: /
-Disallow: /admin
+Disallow: /api/
 
 # Machine-readable summary for AI agents:
 # https://maxxim.ai/llms.txt

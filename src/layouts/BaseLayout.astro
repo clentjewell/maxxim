@@ -10,8 +10,10 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  /** WebP path of the LCP hero image to preload (pages with a full-bleed hero). */
+  preloadImage?: string;
 }
-const { title, description, ogImage, noindex } = Astro.props;
+const { title, description, ogImage, noindex, preloadImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,9 +25,15 @@ const { title, description, ogImage, noindex } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Preload the two above-the-fold weights. -->
+    <!-- Preload the above-the-fold weights (500 is used by the header nav on
+         every page — skipping it causes a visible font-swap layout shift). -->
     <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-500.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin />
+
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />
+    )}
 
     <Seo title={title} description={description} ogImage={ogImage} noindex={noindex} />
   </head>
@@ -78,9 +86,23 @@ const { title, description, ogImage, noindex } = Astro.props;
             pending.push(el);
           }
         });
+        // Stagger siblings that reveal together: index within their parent,
+        // capped so a long list doesn't drag out forever.
+        const parentCounts = new Map<Element, number>();
+        pending.forEach((el) => {
+          const parent = el.parentElement;
+          const idx = parent ? parentCounts.get(parent) ?? 0 : 0;
+          if (parent) parentCounts.set(parent, idx + 1);
+          el.style.transitionDelay = `${Math.min(idx, 5) * 70}ms`;
+        });
         function show(el: HTMLElement) {
           el.classList.remove("reveal-hidden");
           el.classList.add("reveal-in");
+          // Clear the stagger delay once revealed so later hover transitions
+          // (e.g. .lift) aren't delayed too.
+          window.setTimeout(() => {
+            el.style.transitionDelay = "";
+          }, 700);
         }
         const io = new IntersectionObserver(
           (entries, obs) => {
@@ -102,5 +124,24 @@ const { title, description, ogImage, noindex } = Astro.props;
       initReveal();
       document.addEventListener("astro:page-load", initReveal);
     </script>
+
+    <!-- Header scroll state: toggles body.is-scrolled for the sticky header's
+         solid-background + shadow treatment past a small scroll offset. -->
+    <script>
+      function initScrollState() {
+        function update() {
+          document.body.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+      }
+      initScrollState();
+      document.addEventListener("astro:page-load", initScrollState);
+    </script>
+
+    <!-- Inline Copy Editor. Inert for visitors: activates only with an editor
+         token or a ?copyedit flag. Loads its own CSS as a same-origin file so
+         it respects the strict CSP. -->
+    <script defer src="/copy-edit.js" is:inline></script>
   </body>
 </html>

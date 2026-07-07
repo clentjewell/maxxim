@@ -24,11 +24,11 @@ const you = [
   <Section tone="mist">
     <h2 class="sr-only">What Maxxim owns and what you own</h2>
     <div class="split">
-      <div class="col" data-reveal>
+      <div class="col lift" data-reveal>
         <span class="badge"><Monogram size={18} /> Maxxim owns</span>
         <div class="rows">{owns.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
       </div>
-      <div class="col" data-reveal>
+      <div class="col lift" data-reveal>
         <span class="badge you">You own</span>
         <div class="rows">{you.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
       </div>
@@ -44,9 +44,67 @@ const you = [
         { no: "02", t: "Run the method", d: "The engine drafts Design and Deploy at AI speed; you sign off each gate." },
         { no: "03", t: "Ship it owned", d: "The client gets finished work they own. You get repeatable capacity." },
       ].map((s) => (
-        <div class="step" data-reveal><span class="sno">{s.no}</span><h3>{s.t}</h3><p>{s.d}</p></div>
+        <div class="step lift" data-reveal><span class="sno">{s.no}</span><h3>{s.t}</h3><p>{s.d}</p></div>
       ))}
     </div>
+  </Section>
+
+  <Section>
+    <p class="eyebrow" data-reveal>The product</p>
+    <h2 data-reveal>Three surfaces, one engine.</h2>
+    <p class="measure lead" data-reveal>The workspace where the team directs Max, the dashboard where humans approve, and the client portal where clients watch it land — with the studios and the engine underneath.</p>
+
+    <div class="studio-tiles" data-reveal>
+      <div class="tile lift">
+        <h3>Design Studio</h3>
+        <p>The Design Studio is where a client's visuals get made — logos, brand imagery, collateral, video. The designer is Sal, directed in plain English and grounded in everything the client already has: their strategy, their brand, their briefs.</p>
+      </div>
+      <div class="tile lift">
+        <h3>Social Studio</h3>
+        <p>The Social Studio is where a client's social media gets made and published, run by Pip.</p>
+      </div>
+    </div>
+
+    <details class="more" data-reveal>
+      <summary>The full product tour</summary>
+      <ul class="g-list">
+        <li><strong>The workspace.</strong> The team works by talking to Max — Maxxim's AI partner — inside a Cowork plugin. Max carries the method, drafts every document, and drives the tools. Everything it produces saves to one secure store, so the work is never trapped on one machine.</li>
+        <li><strong>The dashboard.</strong> Where humans track each client across the process, review and approve deliverables, and run the two creative studios — Design and Social.</li>
+        <li><strong>The client portal.</strong> A clean, read-only view where a client follows their own project: progress, documents, and their Brain.</li>
+      </ul>
+      <p>An engine runs quietly behind all three, handling the heavy lifting — image generation, website builds, publishing. Nobody touches it directly. The rule of thumb: Max does the words; the studios do the pixels and posts; the engine ships it all.</p>
+
+      <h3>The Design Studio</h3>
+      <p>The flow spells Sal's name. <strong>Start</strong> — choose what to make and describe it briefly; Sal expands the description using the client's brand and generates candidates to compare. <strong>Adapt</strong> — refine by plain instruction: bolder, add the wordmark, make a mono version. Versions stack, and any earlier one can be branched from. <strong>Lock</strong> — turn the approved mark into production-ready vector files, ready for anything from a favicon to print.</p>
+      <p>The Studio honours the gates: each asset type stays locked until its brief exists, and a human picks and approves every result. Sal generates; a person chooses.</p>
+
+      <h3>The Social Studio</h3>
+      <p>The process is Pip's name: <strong>Prepare</strong> — Pip drafts on-brand posts from the client's social strategy, with a tailored caption per platform and an optional on-brand image. <strong>Inspect</strong> — a human reviews every draft, tweaks the wording or swaps the image. <strong>Post</strong> — only once approved does anything publish, sensibly spaced rather than fired all at once.</p>
+      <p>Nothing goes out without sign-off. Editing an approved post returns it to draft, so a change can never sneak through unreviewed. Pip can also draft on a schedule — preparing the week ahead automatically — but the drafts always wait in the queue for a person. The AI keeps the channels fed; the human keeps them safe.</p>
+
+      <h3>The client portal</h3>
+      <p>Clients get a sign-in of their own — a clean, read-only view of exactly one thing: their project.</p>
+      <ul class="g-list">
+        <li><strong>Files</strong> — their workspace: the full 3D Process with a live progress bar, and every document produced for them, ready to open or download as a polished, branded PDF.</li>
+        <li><strong>Brain</strong> — their business's private brain: a personal assistant, Ari, that answers questions about their business, grounded in their own project documents and nothing else.</li>
+        <li><strong>Help</strong> — a short guide written for clients.</li>
+      </ul>
+      <p>The portal is deliberately calm. A deliverable reads as in progress until it is ready, then ready to view. Clients follow along in real time without wading through drafts or internal workings — and they only ever see their own work.</p>
+
+      <h3>How client websites work</h3>
+      <p>Maxxim builds, publishes and hosts each client's website, and every change is made by a person on the team — previewed privately, then promoted live. Clients follow along in their portal; they never need to touch hosting or code.</p>
+      <p>Every site lives in one of two states. <strong>Locked</strong> is the default: a modern, component-based site that the team evolves conversationally — change a shared element once and it updates everywhere. <strong>Unlocked</strong> freezes the finished site into plain, hand-editable pages for quick copy fixes and image swaps. Unlocking is a deliberate, one-way step taken when a design is settled.</p>
+      <p>The ownership story is simple. The domain is registered in the client's name. Branded email runs on it. The finished site is theirs — a real asset, live at their own address, not a rental inside someone else's platform.</p>
+
+      <h3>The roster behind the names</h3>
+      <ul class="g-list">
+        <li><strong>Max</strong> — the AI partner. Runs the engagement and does the words: strategy, plans, copy, briefs, summaries. Max's name is a process: Map, Assemble, eXecute.</li>
+        <li><strong>Sal</strong> — the designer, in the Design Studio. Makes the pixels. Sal's name is the process: Start, Adapt, Lock.</li>
+        <li><strong>Pip</strong> — the social media manager, in the Social Studio. Pip's name is the process too: Prepare, Inspect, Post.</li>
+        <li><strong>Ari</strong> — the Brain. Answers anything about a client, grounded in every document held for them.</li>
+      </ul>
+      <p>Behind the names sits a roster of forty-three focused specialists. <strong>Makers</strong> each produce one deliverable — the audience analyser writes the audience teardown, the brand strategist writes the brand strategy. <strong>Advisors</strong> review rather than write: an expert panel spanning brand consistency, behavioural psychology, growth and conversion, accessibility, analytics, legal compliance and more, brought in to pressure-test the work before or after it is made.</p>
+    </details>
   </Section>
 
   <Section tone="ink" rule>
@@ -78,4 +136,83 @@ const you = [
 
   .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .cta h2 { font-size: var(--text-h1); margin: 0; max-width: 20ch; }
+
+  /* THE PRODUCT */
+  h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 12px 0 20px; max-width: 24ch; }
+  .lead { margin-bottom: 40px; color: var(--color-body); }
+  .studio-tiles { margin-bottom: 40px; display: grid; gap: 20px; }
+  .tile { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px; }
+  .tile h3 { margin: 0 0 8px; font-size: var(--text-h3); }
+  .tile p { margin: 0; color: var(--color-body); font-size: var(--text-small); }
+  @media (min-width: 640px) { .studio-tiles { grid-template-columns: repeat(2, 1fr); } }
+
+  /* DETAILS DISCLOSURE */
+  details.more {
+    margin-top: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 18px 22px;
+    background: var(--color-white);
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--text-small);
+    color: color-mix(in srgb, var(--color-signal) 78%, var(--color-ink));
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: " +";
+    display: inline-block;
+  }
+  details[open] summary::after { content: " −"; }
+  @media (prefers-reduced-motion: no-preference) {
+    summary::after { transition: transform var(--dur-quick) var(--ease-out-quiet); }
+    details.more[open] > *:not(summary) {
+      animation: mx-fade var(--dur-soft) var(--ease-out-quiet);
+    }
+    @keyframes mx-fade {
+      from { opacity: 0; transform: translateY(6px); }
+    }
+  }
+  details.more p {
+    max-width: var(--container-measure);
+    margin: 16px 0 0;
+    color: var(--color-body);
+  }
+  details.more h3 {
+    margin: 28px 0 4px;
+    font-size: var(--text-h3);
+    color: var(--color-ink);
+  }
+  details.more .g-list { margin-top: 16px; }
+
+  /* Bulleted lists inside disclosures */
+  .g-list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    max-width: var(--container-measure);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .g-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--text-body);
+    color: var(--color-body);
+  }
+  .g-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-signal);
+    transform: rotate(45deg);
+  }
 </style>
