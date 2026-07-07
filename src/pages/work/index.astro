@@ -52,6 +52,14 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
       ))}
     </div>
     <p class="empty" data-empty hidden>No work in that category yet. Try another filter.</p>
+
+    <a href="/brand" class="brand-link" data-reveal>
+      <span class="brand-link-text">
+        <span class="eyebrow">The system behind the showcase</span>
+        <span class="brand-link-line">Every piece here was produced by the method it demonstrates — see the brand system itself.</span>
+      </span>
+      <span class="brand-link-arrow" aria-hidden="true">→</span>
+    </a>
   </Section>
 
   <Section tone="ink" rule>
@@ -79,6 +87,23 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
   @media (min-width: 1040px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
   .cta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .cta h2 { font-size: var(--text-h1); margin: 0; }
+
+  .brand-link {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 28px;
+    color: var(--color-ink);
+    transition: border-color 0.2s var(--ease-out-quiet);
+  }
+  .brand-link:hover { border-color: var(--color-signal); }
+  .brand-link-text { display: flex; flex-direction: column; gap: 8px; }
+  .brand-link-line { font-size: var(--text-h3); font-weight: 500; max-width: 46ch; }
+  .brand-link-arrow { font-size: 22px; color: var(--color-signal); flex-shrink: 0; }
 </style>
 
 <script>

@@ -48,9 +48,11 @@ for (const name of COPY) {
   const from = join(LEGACY, name);
   if (!existsSync(from)) continue;
   const to = join(PUBLIC, name);
-  rmSync(to, { recursive: true, force: true });
+  // public/images also holds site-only photography (mx-*) that does not come
+  // from the legacy pack — merge into it rather than wiping it.
+  if (name !== "images") rmSync(to, { recursive: true, force: true });
   mkdirSync(dirname(to), { recursive: true });
-  cpSync(from, to, { recursive: true });
+  cpSync(from, to, { recursive: true, force: true });
   console.log(`[fold-legacy] public/${name}`);
 }
 

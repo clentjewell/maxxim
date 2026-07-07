@@ -25,7 +25,7 @@ export const NAV = [
   { label: "The Method", href: "/method" },
   { label: "Work", href: "/work" },
   { label: "Powered by Maxxim", href: "/powered-by" },
-  { label: "Brand", href: "/brand" },
+  { label: "Guide", href: "/guide" },
 ] as const;
 
 /** The one accent action. */
@@ -37,10 +37,11 @@ export const FOOTER_NAV = {
     { label: "The Method", href: "/method" },
     { label: "Work", href: "/work" },
     { label: "Powered by Maxxim", href: "/powered-by" },
-    { label: "Brand", href: "/brand" },
+    { label: "Guide", href: "/guide" },
     { label: "Contact", href: "/contact" },
   ],
   system: [
+    { label: "Brand system", href: "/brand" },
     { label: "3D Process pack", href: "/3d-process/" },
     { label: "Brand Guidelines", href: "/brand-guidelines/" },
     { label: "Brand Book (print)", href: "/book/" },
@@ -50,7 +51,8 @@ export const FOOTER_NAV = {
 
 /** The named specialists — the method made visible. */
 export const SPECIALISTS = [
-  { name: "Max", role: "Strategy & Discover" },
-  { name: "Sal", role: "Design & brand" },
-  { name: "Pip", role: "Deploy & growth" },
+  { name: "Max", role: "The AI partner", desc: "Runs the 3D process, drafts every deliverable, keeps each client moving." },
+  { name: "Sal", role: "Design Studio", desc: "Generates and refines brand visuals, grounded in the client's own brief." },
+  { name: "Pip", role: "Social Studio", desc: "Drafts, schedules and publishes social — only after a human approves." },
+  { name: "Ari", role: "The Brain", desc: "Answers anything about a client, grounded in every document held." },
 ] as const;

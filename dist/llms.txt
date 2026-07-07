@@ -13,7 +13,7 @@
 - [The Method](https://maxxim.ai/method)
 - [Work](https://maxxim.ai/work)
 - [Powered by Maxxim](https://maxxim.ai/powered-by)
-- [Brand](https://maxxim.ai/brand)
+- [Guide](https://maxxim.ai/guide)
 - [Contact](https://maxxim.ai/contact)
 
 ## Work (powered by Maxxim)

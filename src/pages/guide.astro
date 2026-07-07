@@ -1,0 +1,235 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/ui/PageHero.astro";
+import Section from "@components/ui/Section.astro";
+import Button from "@components/ui/Button.astro";
+
+const toc = [
+  { id: "why-humans", t: "Why humans stay in the loop" },
+  { id: "how-it-fits", t: "How Maxxim fits together" },
+  { id: "why-built-this-way", t: "Why Maxxim is built this way" },
+  { id: "the-3d-method", t: "The 3D method" },
+  { id: "deliverables", t: "The deliverable catalogue" },
+  { id: "gating", t: "How gating works" },
+  { id: "specialists", t: "The specialists" },
+  { id: "design-studio", t: "The Design Studio" },
+  { id: "social-studio", t: "The Social Studio" },
+  { id: "client-portal", t: "The client portal" },
+  { id: "client-websites", t: "How client websites work" },
+];
+---
+
+<BaseLayout
+  title="The Maxxim Guide"
+  description="How a whole agency fits in a box: the method, the specialists, the studios — and the named human who signs off every gate."
+>
+  <PageHero
+    eyebrow="The system, explained"
+    title="The Maxxim Guide"
+    intro="How a whole agency fits in a box: the method, the specialists, the studios — and the named human who signs off every gate."
+  />
+
+  <Section rule>
+    <nav class="toc" aria-label="Guide contents" data-reveal>
+      {toc.map((s) => (
+        <a href={`#${s.id}`} class="toc-link">{s.t}</a>
+      ))}
+    </nav>
+
+    <figure class="band" data-reveal>
+      <picture>
+        <source srcset="/images/mx-trust.webp" type="image/webp" />
+        <img
+          src="/images/mx-trust.jpg"
+          alt="A business owner seeing their finished brand for the first time"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </figure>
+
+    <section class="g" id="why-humans" data-reveal>
+      <h2>Why humans stay in the loop</h2>
+      <p class="measure">Maxxim is built on a simple division of labour: let AI do what AI is good at, and keep humans doing what only humans can.</p>
+      <p class="measure">AI is extraordinary at the mechanical, repeatable, scalable parts of marketing — researching, drafting, generating options, producing documents, building pages. That work used to eat the hours. Maxxim automates it, so it happens in minutes.</p>
+      <p class="measure">But three things stay stubbornly human, and they are exactly what a client is really paying for. <strong>Trust</strong> — a client trusts a person, not a model. <strong>Taste</strong> — knowing which of ten good options is the right one. <strong>Judgement</strong> — what to say to a regulated client, when to push back, what matters now. This framing is drawn from the work of Nate B. Jones.</p>
+      <p class="measure">So every part of Maxxim keeps a human at the controls. AI proposes; a named person decides. Nothing counts as done, and nothing publishes, until someone signs it off. The old line was good, fast or cheap — pick two. Maxxim is built to break that trade-off: pick three.</p>
+    </section>
+
+    <section class="g" id="how-it-fits" data-reveal>
+      <h2>How Maxxim fits together</h2>
+      <p class="measure">Maxxim has three surfaces, each with one job.</p>
+      <ul class="g-list">
+        <li><strong>The workspace.</strong> The team works by talking to Max — Maxxim's AI partner — inside a Cowork plugin. Max carries the method, drafts every document, and drives the tools. Everything it produces saves to one secure store, so the work is never trapped on one machine.</li>
+        <li><strong>The dashboard.</strong> Where humans track each client across the process, review and approve deliverables, and run the two creative studios — Design and Social.</li>
+        <li><strong>The client portal.</strong> A clean, read-only view where a client follows their own project: progress, documents, and their Brain.</li>
+      </ul>
+      <p class="measure">An engine runs quietly behind all three, handling the heavy lifting — image generation, website builds, publishing. Nobody touches it directly. The rule of thumb: Max does the words; the studios do the pixels and posts; the engine ships it all.</p>
+    </section>
+
+    <section class="g" id="why-built-this-way" data-reveal>
+      <h2>Why Maxxim is built this way</h2>
+      <p class="measure">Maxxim builds only what it must. Where excellent foundations already exist — the AI models, the desktop environment they run in — Maxxim leans on them and spends its own effort on the thin layer that is genuinely its own. It is the philosophy Nvidia's Jensen Huang has often described: don't build what someone else already builds well.</p>
+      <p class="measure">The second principle is the right tool for each job. Text and reasoning go to the strongest language model available. Logos are made as true vector artwork, so they scale from favicon to billboard without losing an edge. Photographic imagery goes to an engine that handles conversational refinement. Video is animated from an approved still. Which engine sits behind each job changes as the field moves — and the system is built to swap them without anyone noticing.</p>
+      <p class="measure">Finally, Maxxim absorbs the fiddly parts — hosting, publishing, scheduling — so running a roster of clients stays manageable for a small human team.</p>
+    </section>
+
+    <section class="g" id="the-3d-method" data-reveal>
+      <h2>The 3D method</h2>
+      <p class="measure">Every engagement runs through three phases, in order.</p>
+      <ol class="g-list">
+        <li><strong>Discover</strong> — gather the raw intelligence: who the customer is, who the competitors are, what the offer really is. Nothing downstream is reliable until this is right, so Discover comes first and is reviewed before anything moves.</li>
+        <li><strong>Design</strong> — turn insight into strategy: the customer profile, brand strategy, the plans, and the creative briefs. The heavy-lifting phase.</li>
+        <li><strong>Deploy</strong> — produce the in-market activation work: the operational briefs and plans that take the brand to market.</li>
+      </ol>
+      <p class="measure">Each deliverable is a self-contained document. When one is produced it appears in the client's pipeline as <strong>Pending</strong> — drafted, but not yet counted. Only when a named human reviews and approves it does it become <strong>Approved</strong>. Progress is measured in approvals, not drafts. That is the discipline of the whole system: the work moves at AI speed, and the score is kept by people.</p>
+    </section>
+
+    <section class="g" id="deliverables" data-reveal>
+      <h2>The deliverable catalogue</h2>
+      <p class="measure">A finished engagement is a set of twenty-six documents, built up phase by phase.</p>
+      <ul class="g-list">
+        <li><strong>Discover (4):</strong> an audience teardown, a competitor analysis, an offer worksheet, and a one-page Discover summary for sign-off.</li>
+        <li><strong>Design (10):</strong> the customer profile, brand strategy and logo brief; the business, marketing, social and website plans; brand guidelines and a copy deck; and a strategy summary that distils the phase.</li>
+        <li><strong>Deploy (12):</strong> the execution layer — design, website and photo-and-video briefs, then SEO, paid media, email, CRM, PR, events and traditional media plans, an integrated communications summary, and a case study.</li>
+      </ul>
+      <p class="measure">Each phase ends with a single summary document, so sign-off is always a one-page decision, not a stack of paper.</p>
+    </section>
+
+    <section class="g" id="gating" data-reveal>
+      <h2>How gating works</h2>
+      <p class="measure">This is the most important idea in the method: later work unlocks only as earlier work exists. The creative studios will not make an asset until the document it depends on has actually been produced and saved for that client.</p>
+      <p class="measure">A logo cannot be generated until its logo brief exists. Brand imagery waits for the brand guidelines. Everyday collateral — business cards, letterheads, email signatures — waits for the guidelines <em>and</em> a formally locked logo. Campaign pieces wait for the design brief. The Social Studio stays locked until the social strategy is written.</p>
+      <p class="measure">This is not a nuisance; it is what keeps a brand consistent. Every visual is built on a brief that already exists, and nothing carries a logo that hasn't been signed off. When something is locked, the system says exactly why — and exactly what to produce first.</p>
+    </section>
+
+    <section class="g" id="specialists" data-reveal>
+      <h2>The specialists</h2>
+      <p class="measure">Four names front the system.</p>
+      <ul class="g-list">
+        <li><strong>Max</strong> — the AI partner. Runs the engagement and does the words: strategy, plans, copy, briefs, summaries. Max's name is a process: Map, Assemble, eXecute.</li>
+        <li><strong>Sal</strong> — the designer, in the Design Studio. Makes the pixels. Sal's name is the process: Start, Adapt, Lock.</li>
+        <li><strong>Pip</strong> — the social media manager, in the Social Studio. Pip's name is the process too: Prepare, Inspect, Post.</li>
+        <li><strong>Ari</strong> — the Brain. Answers anything about a client, grounded in every document held for them.</li>
+      </ul>
+      <p class="measure">Behind the names sits a roster of forty-three focused specialists. <strong>Makers</strong> each produce one deliverable — the audience analyser writes the audience teardown, the brand strategist writes the brand strategy. <strong>Advisors</strong> review rather than write: an expert panel spanning brand consistency, behavioural psychology, growth and conversion, accessibility, analytics, legal compliance and more, brought in to pressure-test the work before or after it is made.</p>
+    </section>
+
+    <section class="g" id="design-studio" data-reveal>
+      <h2>The Design Studio</h2>
+      <p class="measure">The Design Studio is where a client's visuals get made — logos, brand imagery, collateral, video. The designer is Sal, directed in plain English and grounded in everything the client already has: their strategy, their brand, their briefs. What Sal makes is on-brand by default, not generic.</p>
+      <p class="measure">The flow spells Sal's name. <strong>Start</strong> — choose what to make and describe it briefly; Sal expands the description using the client's brand and generates candidates to compare. <strong>Adapt</strong> — refine by plain instruction: bolder, add the wordmark, make a mono version. Versions stack, and any earlier one can be branched from. <strong>Lock</strong> — turn the approved mark into production-ready vector files, ready for anything from a favicon to print.</p>
+      <p class="measure">The Studio honours the gates: each asset type stays locked until its brief exists, and a human picks and approves every result. Sal generates; a person chooses.</p>
+    </section>
+
+    <section class="g" id="social-studio" data-reveal>
+      <h2>The Social Studio</h2>
+      <p class="measure">The Social Studio is where a client's social media gets made and published, run by Pip. The process is Pip's name: <strong>Prepare</strong> — Pip drafts on-brand posts from the client's social strategy, with a tailored caption per platform and an optional on-brand image. <strong>Inspect</strong> — a human reviews every draft, tweaks the wording or swaps the image. <strong>Post</strong> — only once approved does anything publish, sensibly spaced rather than fired all at once.</p>
+      <p class="measure">Nothing goes out without sign-off. Editing an approved post returns it to draft, so a change can never sneak through unreviewed. Pip can also draft on a schedule — preparing the week ahead automatically — but the drafts always wait in the queue for a person. The AI keeps the channels fed; the human keeps them safe.</p>
+    </section>
+
+    <section class="g" id="client-portal" data-reveal>
+      <h2>The client portal</h2>
+      <p class="measure">Clients get a sign-in of their own — a clean, read-only view of exactly one thing: their project.</p>
+      <ul class="g-list">
+        <li><strong>Files</strong> — their workspace: the full 3D Process with a live progress bar, and every document produced for them, ready to open or download as a polished, branded PDF.</li>
+        <li><strong>Brain</strong> — their business's private brain: a personal assistant, Ari, that answers questions about their business, grounded in their own project documents and nothing else.</li>
+        <li><strong>Help</strong> — a short guide written for clients.</li>
+      </ul>
+      <p class="measure">The portal is deliberately calm. A deliverable reads as in progress until it is ready, then ready to view. Clients follow along in real time without wading through drafts or internal workings — and they only ever see their own work.</p>
+    </section>
+
+    <section class="g" id="client-websites" data-reveal>
+      <h2>How client websites work</h2>
+      <p class="measure">Maxxim builds, publishes and hosts each client's website, and every change is made by a person on the team — previewed privately, then promoted live. Clients follow along in their portal; they never need to touch hosting or code.</p>
+      <p class="measure">Every site lives in one of two states. <strong>Locked</strong> is the default: a modern, component-based site that the team evolves conversationally — change a shared element once and it updates everywhere. <strong>Unlocked</strong> freezes the finished site into plain, hand-editable pages for quick copy fixes and image swaps. Unlocking is a deliberate, one-way step taken when a design is settled.</p>
+      <p class="measure">The ownership story is simple. The domain is registered in the client's name. Branded email runs on it. The finished site is theirs — a real asset, live at their own address, not a rental inside someone else's platform.</p>
+    </section>
+
+    <div class="g-cta" data-reveal>
+      <Button href="/method" variant="outline">Walk the method</Button>
+      <Button href="/contact">Start a conversation</Button>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 44px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc-link {
+    font-size: var(--text-small);
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 8px 16px;
+    color: var(--color-body);
+    transition: all 0.2s var(--ease-out-quiet);
+  }
+  .toc-link:hover { border-color: var(--color-signal); color: var(--color-signal); }
+
+  .band { margin: 0 0 56px; }
+  .band picture { display: block; border-radius: 20px; overflow: hidden; }
+  .band img { width: 100%; height: auto; display: block; }
+
+  .g {
+    scroll-margin-top: 90px;
+    padding-block: 40px;
+    border-top: 1px solid var(--color-border-soft);
+  }
+  .g:first-of-type { border-top: none; padding-top: 0; }
+  .g h2 { font-size: var(--text-h1); line-height: var(--text-h1--line-height); margin: 0 0 20px; max-width: 22ch; }
+  .g p { color: var(--color-body); margin: 0 0 16px; }
+  .g p:last-child { margin-bottom: 0; }
+  .g-list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    max-width: var(--container-measure);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .g-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: var(--text-body);
+    color: var(--color-body);
+  }
+  .g-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-signal);
+    transform: rotate(45deg);
+  }
+  ol.g-list { counter-reset: step; }
+  ol.g-list li::before {
+    content: counter(step);
+    counter-increment: step;
+    top: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    transform: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    color: var(--color-signal);
+    font-weight: 700;
+  }
+
+  .g-cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px; }
+</style>
