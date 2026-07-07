@@ -16,3 +16,9 @@ public/book/
 # OS / editor
 .DS_Store
 *.log
+
+# Local Worker secrets (never commit)
+.dev.vars
+
+# Wrangler local state
+.wrangler/

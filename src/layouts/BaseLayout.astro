@@ -132,5 +132,10 @@ const { title, description, ogImage, noindex } = Astro.props;
       initScrollState();
       document.addEventListener("astro:page-load", initScrollState);
     </script>
+
+    <!-- Inline Copy Editor. Inert for visitors: activates only with an editor
+         token or a ?copyedit flag. Loads its own CSS as a same-origin file so
+         it respects the strict CSP. -->
+    <script defer src="/copy-edit.js" is:inline></script>
   </body>
 </html>

@@ -1,7 +1,37 @@
 {
   "name": "maxxim",
   "compatibility_date": "2026-07-01",
+  // The Worker runs first for HTML pages so the inline Copy Editor's live
+  // overrides apply at the edge; hashed and binary assets are excluded below
+  // and served straight from dist/.
+  "main": "worker/index.ts",
   "assets": {
-    "directory": "./dist"
-  }
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "/*",
+      "!/_astro/*",
+      "!/fonts/*",
+      "!/images/*",
+      "!/og/*",
+      "!/book/*",
+      "!/brand-guidelines/*",
+      "!/favicon.svg",
+      "!/robots.txt",
+      "!/llms.txt",
+      "!/sitemap-index.xml",
+      "!/sitemap-0.xml",
+      "!/copy-edit.js",
+      "!/copy-edit.css"
+    ]
+  },
+  // Live copy overrides store (Copy Editor). Writes are gated by the
+  // COPY_EDIT_TOKEN Worker secret, which the site owner sets with
+  //   npx wrangler secret put COPY_EDIT_TOKEN
+  // Until the secret is set, saving reports "not configured" and the site
+  // behaves as a plain static deploy.
+  "kv_namespaces": [
+    { "binding": "COPY", "id": "f6cd2a108eab47b699e5b9d7059e0896" }
+  ]
 }

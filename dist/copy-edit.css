@@ -1,0 +1,51 @@
+/* Maxxim inline Copy Editor — chrome and edit affordances.
+   Loaded as a same-origin stylesheet so it passes the strict site CSP. */
+
+#copy-edit-bar {
+  position: fixed;
+  z-index: 99999;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #0a0e1a;
+  color: #f7f8fb;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font: 500 13px/1 Poppins, system-ui, sans-serif;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+#copy-edit-bar button {
+  all: unset;
+  cursor: pointer;
+  color: #f7f8fb;
+  font: inherit;
+  padding: 2px 4px;
+}
+
+#copy-edit-bar button:hover {
+  color: #83a1ff;
+}
+
+#copy-edit-bar [data-ce="status"] {
+  font-size: 11px;
+  opacity: 0.75;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.copy-edit-on [data-ce-hover] {
+  outline: 1px dashed rgba(37, 71, 184, 0.7);
+  outline-offset: 2px;
+  cursor: text;
+}
+
+[data-ce-editing] {
+  outline: 2px solid #2547b8 !important;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
