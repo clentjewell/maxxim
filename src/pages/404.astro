@@ -23,6 +23,12 @@ import Monogram from "@components/ui/Monogram.astro";
 <style>
   .nf { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding-block: clamp(24px, 8vh, 80px); }
   .mark { color: var(--color-signal); }
+  @media (prefers-reduced-motion: no-preference) {
+    .mark { animation: mx-float 5s ease-in-out infinite alternate; }
+    @keyframes mx-float {
+      to { transform: translateY(-6px); }
+    }
+  }
   h1 { font-size: var(--text-h1); margin: 0; }
   .nf p.measure { color: var(--color-body); margin: 0; }
   .actions { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; }

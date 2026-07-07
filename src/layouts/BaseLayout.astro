@@ -80,9 +80,23 @@ const { title, description, ogImage, noindex } = Astro.props;
             pending.push(el);
           }
         });
+        // Stagger siblings that reveal together: index within their parent,
+        // capped so a long list doesn't drag out forever.
+        const parentCounts = new Map<Element, number>();
+        pending.forEach((el) => {
+          const parent = el.parentElement;
+          const idx = parent ? parentCounts.get(parent) ?? 0 : 0;
+          if (parent) parentCounts.set(parent, idx + 1);
+          el.style.transitionDelay = `${Math.min(idx, 5) * 70}ms`;
+        });
         function show(el: HTMLElement) {
           el.classList.remove("reveal-hidden");
           el.classList.add("reveal-in");
+          // Clear the stagger delay once revealed so later hover transitions
+          // (e.g. .lift) aren't delayed too.
+          window.setTimeout(() => {
+            el.style.transitionDelay = "";
+          }, 700);
         }
         const io = new IntersectionObserver(
           (entries, obs) => {
@@ -103,6 +117,20 @@ const { title, description, ogImage, noindex } = Astro.props;
       }
       initReveal();
       document.addEventListener("astro:page-load", initReveal);
+    </script>
+
+    <!-- Header scroll state: toggles body.is-scrolled for the sticky header's
+         solid-background + shadow treatment past a small scroll offset. -->
+    <script>
+      function initScrollState() {
+        function update() {
+          document.body.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+      }
+      initScrollState();
+      document.addEventListener("astro:page-load", initScrollState);
     </script>
   </body>
 </html>

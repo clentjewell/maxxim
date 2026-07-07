@@ -60,6 +60,16 @@ const phases = [
   .seam-bar .pct { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
   .seam-bar .lbl { font-size: var(--text-small); font-weight: 500; }
   .machine .lbl { color: var(--color-body); }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in .seam-bar .human { animation: mx-in-left var(--dur-soft) var(--ease-out-quiet) both; }
+    .reveal-in .seam-bar .machine { animation: mx-in-right var(--dur-soft) var(--ease-out-quiet) both; }
+    @keyframes mx-in-left {
+      from { opacity: 0; transform: translateX(-14px); }
+    }
+    @keyframes mx-in-right {
+      from { opacity: 0; transform: translateX(14px); }
+    }
+  }
 
   .phase { display: grid; gap: 28px; }
   .phase-side { display: flex; flex-direction: column; gap: 10px; }

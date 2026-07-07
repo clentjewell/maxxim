@@ -57,7 +57,7 @@ const swatches = [
     <div class="ed-head" data-reveal><p class="eyebrow">The brand book</p><h2>Read the flagship.</h2></div>
     <div class="editions">
       {editions.map((e) => (
-        <div class="edition" data-reveal>
+        <div class="edition lift" data-reveal>
           <h3>{e.t}</h3>
           <p>{e.d}</p>
           <Button href={e.href} variant="outline">{e.cta}</Button>
@@ -70,7 +70,10 @@ const swatches = [
 <style>
   .tokens { display: grid; gap: 40px; }
   .swatches { margin-top: 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .chip { height: 84px; border-radius: 12px; }
+  .chip { height: 84px; border-radius: 12px; transition: transform var(--dur-quick) var(--ease-out-quiet); }
+  @media (prefers-reduced-motion: no-preference) {
+    .chip:hover { transform: scale(1.02); }
+  }
   .chip-signal { background: var(--color-signal); }
   .chip-ink { background: var(--color-ink); }
   .chip-white { background: var(--color-white); border: 1px solid var(--color-border); }

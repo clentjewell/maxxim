@@ -52,15 +52,15 @@ const chapters = [
     <blockquote class="pull-line" data-reveal><p>AI proposes; a named person decides.</p></blockquote>
 
     <div class="tiles" data-reveal>
-      <div class="tile">
+      <div class="tile lift">
         <h3>Trust</h3>
         <p>A client trusts a person, not a model.</p>
       </div>
-      <div class="tile">
+      <div class="tile lift">
         <h3>Taste</h3>
         <p>Knowing which of ten good options is the right one.</p>
       </div>
-      <div class="tile">
+      <div class="tile lift">
         <h3>Judgement</h3>
         <p>What to say to a regulated client, when to push back, what matters now.</p>
       </div>
@@ -102,9 +102,9 @@ const chapters = [
     <p class="measure gate-hook" data-reveal>This is the most important idea in the method: later work unlocks only as earlier work exists.</p>
 
     <div class="stat-chips" data-reveal>
-      <div class="stat-chip"><span class="stat-n">26</span><span class="stat-l">deliverables per engagement</span></div>
-      <div class="stat-chip"><span class="stat-n">3</span><span class="stat-l">gated phases</span></div>
-      <div class="stat-chip"><span class="stat-n">1</span><span class="stat-l">sign-off at every gate</span></div>
+      <div class="stat-chip lift"><span class="stat-n">26</span><span class="stat-l">deliverables per engagement</span></div>
+      <div class="stat-chip lift"><span class="stat-n">3</span><span class="stat-l">gated phases</span></div>
+      <div class="stat-chip lift"><span class="stat-n">1</span><span class="stat-l">sign-off at every gate</span></div>
     </div>
 
     <details class="more" data-reveal>
@@ -139,7 +139,7 @@ const chapters = [
 
     <div class="specs" data-reveal>
       {SPECIALISTS.map((s) => (
-        <div class="spec">
+        <div class="spec lift">
           <span class="spec-mono"><Monogram size={22} /></span>
           <div class="spec-name">{s.name}</div>
           <div class="spec-role">{s.role}</div>
@@ -173,11 +173,11 @@ const chapters = [
     </figure>
 
     <div class="studio-tiles" data-reveal>
-      <div class="tile">
+      <div class="tile lift">
         <h3>Design Studio</h3>
         <p>The Design Studio is where a client's visuals get made — logos, brand imagery, collateral, video. The designer is Sal, directed in plain English and grounded in everything the client already has: their strategy, their brand, their briefs.</p>
       </div>
-      <div class="tile">
+      <div class="tile lift">
         <h3>Social Studio</h3>
         <p>The Social Studio is where a client's social media gets made and published, run by Pip.</p>
       </div>
@@ -241,8 +241,15 @@ const chapters = [
     min-height: min(70vh, 680px);
     background: var(--color-ink);
   }
-  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
   .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-bg img { animation: mx-kenburns 22s var(--ease-out-quiet) forwards; }
+    @keyframes mx-kenburns {
+      from { transform: scale(1); }
+      to { transform: scale(1.07); }
+    }
+  }
   .hero-scrim {
     position: absolute;
     inset: 0;
@@ -287,7 +294,11 @@ const chapters = [
     border: 1px solid color-mix(in srgb, var(--color-white) 30%, transparent);
     border-radius: var(--radius-pill);
     color: var(--color-white);
-    transition: all 0.2s var(--ease-out-quiet);
+    transition: color 0.2s var(--ease-out-quiet), border-color 0.2s var(--ease-out-quiet);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .chapter-pill { transition: color 0.2s var(--ease-out-quiet), border-color 0.2s var(--ease-out-quiet), transform var(--dur-quick) var(--ease-out-quiet); }
+    .chapter-pill:hover { transform: translateY(-1px); }
   }
   .chapter-pill:hover { border-color: var(--color-blue-tint); color: var(--color-blue-tint); }
 
@@ -335,6 +346,10 @@ const chapters = [
     border-radius: var(--radius-pill);
     background: var(--color-white);
     color: var(--color-ink);
+    transition: border-color var(--dur-quick) var(--ease-out-quiet), transform var(--dur-quick) var(--ease-out-quiet);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .gate-pill:hover { transform: translateY(-1px); border-color: var(--color-signal); }
   }
   .gate-tag { font-family: var(--font-mono); font-size: var(--text-eyebrow); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-signal); }
   .gate-arrow { font-family: var(--font-mono); color: var(--color-signal); font-size: 16px; }
@@ -358,8 +373,8 @@ const chapters = [
   /* 04 THE PRODUCT */
   .product-intro { margin-bottom: 40px; color: var(--color-body); }
   .frame { margin: 0 0 32px; }
-  .frame figcaption { margin-top: 12px; font-size: var(--text-small); color: var(--color-caption); }
-  .frames-note { margin: -8px 0 40px; font-size: 12px; color: var(--color-caption); }
+  .frame figcaption { margin-top: 12px; font-size: var(--text-small); color: var(--color-body); }
+  .frames-note { margin: -8px 0 40px; font-size: 12px; color: var(--color-body); }
 
   /* DETAILS DISCLOSURE */
   details.more {
@@ -373,12 +388,24 @@ const chapters = [
     cursor: pointer;
     font-weight: 600;
     font-size: var(--text-small);
-    color: var(--color-signal);
+    color: color-mix(in srgb, var(--color-signal) 78%, var(--color-ink));
     list-style: none;
   }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: " +"; }
+  summary::after {
+    content: " +";
+    display: inline-block;
+  }
   details[open] summary::after { content: " −"; }
+  @media (prefers-reduced-motion: no-preference) {
+    summary::after { transition: transform var(--dur-quick) var(--ease-out-quiet); }
+    details.more[open] > *:not(summary) {
+      animation: mx-fade var(--dur-soft) var(--ease-out-quiet);
+    }
+    @keyframes mx-fade {
+      from { opacity: 0; transform: translateY(6px); }
+    }
+  }
   details.more p {
     max-width: var(--container-measure);
     margin: 16px 0 0;

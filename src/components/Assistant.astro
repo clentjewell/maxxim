@@ -180,6 +180,15 @@ const KB = [
     flex-direction: column;
     max-height: min(70vh, 560px);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .panel:not([hidden]) {
+      animation: mx-pop var(--dur-quick) var(--ease-out-quiet);
+      transform-origin: bottom right;
+    }
+    @keyframes mx-pop {
+      from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    }
+  }
   .panel-head {
     display: flex; align-items: center; justify-content: space-between;
     gap: 12px; padding: 14px 16px;
@@ -190,6 +199,12 @@ const KB = [
   .msg { font-size: var(--text-small); line-height: 1.55; padding: 10px 13px; border-radius: 12px; max-width: 90%; margin: 0; }
   .msg.bot { background: var(--color-mist); color: var(--color-ink); align-self: flex-start; border-bottom-left-radius: 4px; }
   .msg.user { background: var(--color-signal); color: var(--color-white); align-self: flex-end; border-bottom-right-radius: 4px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .msg { animation: mx-msg 0.3s var(--ease-out-quiet); }
+    @keyframes mx-msg {
+      from { opacity: 0; transform: translateY(6px); }
+    }
+  }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
   .chip {
     font-size: 12px; background: var(--color-white);

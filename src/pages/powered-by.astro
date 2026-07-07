@@ -24,11 +24,11 @@ const you = [
   <Section tone="mist">
     <h2 class="sr-only">What Maxxim owns and what you own</h2>
     <div class="split">
-      <div class="col" data-reveal>
+      <div class="col lift" data-reveal>
         <span class="badge"><Monogram size={18} /> Maxxim owns</span>
         <div class="rows">{owns.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
       </div>
-      <div class="col" data-reveal>
+      <div class="col lift" data-reveal>
         <span class="badge you">You own</span>
         <div class="rows">{you.map((o) => (<div class="row"><h3>{o.t}</h3><p>{o.d}</p></div>))}</div>
       </div>
@@ -44,7 +44,7 @@ const you = [
         { no: "02", t: "Run the method", d: "The engine drafts Design and Deploy at AI speed; you sign off each gate." },
         { no: "03", t: "Ship it owned", d: "The client gets finished work they own. You get repeatable capacity." },
       ].map((s) => (
-        <div class="step" data-reveal><span class="sno">{s.no}</span><h3>{s.t}</h3><p>{s.d}</p></div>
+        <div class="step lift" data-reveal><span class="sno">{s.no}</span><h3>{s.t}</h3><p>{s.d}</p></div>
       ))}
     </div>
   </Section>

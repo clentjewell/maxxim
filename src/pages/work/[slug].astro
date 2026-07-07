@@ -77,7 +77,7 @@ const phases = d.solution
         <div class="block" data-reveal><span class="eyebrow">The method</span><h2>Run through 3D.</h2></div>
         <div class="phases">
           {phases.map((p) => (
-            <div class="phase" data-reveal>
+            <div class="phase lift" data-reveal>
               <span class="pno">{p.no}</span>
               <h3>{p.t}</h3>
               <p>{p.body}</p>
@@ -135,8 +135,15 @@ const phases = d.solution
   h1 { font-size: var(--text-display); line-height: var(--text-display--line-height); margin: 0; }
   .summary { font-size: var(--text-h3); font-weight: 300; color: var(--color-body); margin: 4px 0 0; }
   .actions { margin-top: 12px; }
-  .hero-img { margin-block: clamp(20px, 4vw, 40px); }
-  .hero-img img { width: 100%; height: clamp(240px, 40vw, 520px); object-fit: cover; border-radius: 20px; display: block; }
+  .hero-img { margin-block: clamp(20px, 4vw, 40px); border-radius: 20px; overflow: hidden; }
+  .hero-img img { width: 100%; height: clamp(240px, 40vw, 520px); object-fit: cover; display: block; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-img img { animation: mx-kenburns 22s var(--ease-out-quiet) forwards; }
+    @keyframes mx-kenburns {
+      from { transform: scale(1); }
+      to { transform: scale(1.07); }
+    }
+  }
 
   .results { display: grid; gap: 24px; }
   .result { border-left: 2px solid var(--color-signal); padding-left: 20px; }

@@ -44,6 +44,13 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
     background: color-mix(in srgb, var(--color-white) 82%, transparent);
     backdrop-filter: saturate(1.4) blur(12px);
     border-bottom: 1px solid var(--color-border-soft);
+    transition:
+      background var(--dur-quick) var(--ease-out-quiet),
+      box-shadow var(--dur-quick) var(--ease-out-quiet);
+  }
+  :global(body.is-scrolled) .site-header {
+    background: color-mix(in srgb, var(--color-white) 96%, transparent);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--color-ink) 7%, transparent);
   }
   .bar {
     display: flex;
@@ -71,6 +78,7 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
     margin-inline: auto;
   }
   .nav-link {
+    position: relative;
     font-size: var(--text-small);
     font-weight: 500;
     color: var(--color-body);
@@ -79,6 +87,26 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
   .nav-link:hover,
   .nav-link.is-active {
     color: var(--color-ink);
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--color-signal);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-link::after {
+      transition: transform var(--dur-quick) var(--ease-out-quiet);
+    }
+  }
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
   }
   .actions {
     display: flex;

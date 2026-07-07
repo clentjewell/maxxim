@@ -63,7 +63,7 @@ const values = [
         { n: "04", t: "Content", p: "Written, designed and scheduled." },
         { n: "05", t: "Campaigns", p: "Run, measured and refined." },
       ].map((g) => (
-        <div class="get" data-reveal>
+        <div class="get lift" data-reveal>
           <span class="gn">{g.n}</span>
           <h3>{g.t}</h3>
           <p>{g.p}</p>
@@ -81,7 +81,7 @@ const values = [
     </div>
     <div class="values">
       {values.map((v) => (
-        <div class="value" data-reveal>
+        <div class="value lift" data-reveal>
           <span class="vn">{v.n}</span>
           <h3>{v.t}</h3>
           <p>{v.p}</p>
@@ -137,17 +137,17 @@ const values = [
       <p class="measure">Every client, every deliverable and every approval in one place: the operator dashboard, the client room, and the Brain.</p>
     </div>
     <div class="frames">
-      <figure class="frame" data-reveal>
+      <figure class="frame lift-frame" data-reveal>
         <FrameDashboard />
         <figcaption>The morning view: every client, live progress and AI spend — one screen, no status meetings.</figcaption>
       </figure>
 
-      <figure class="frame" data-reveal>
+      <figure class="frame lift-frame" data-reveal>
         <FrameClientRoom />
         <figcaption>One room per client: onboarding, the 3D Process at 26/26, brand, website, studios, Brain and files.</figcaption>
       </figure>
 
-      <figure class="frame" data-reveal>
+      <figure class="frame lift-frame" data-reveal>
         <FrameBrain />
         <figcaption>Ask Ari anything about this client — grounded in every document their engagement has produced.</figcaption>
       </figure>
@@ -163,7 +163,7 @@ const values = [
     </div>
     <div class="specs">
       {SPECIALISTS.map((s) => (
-        <div class="spec" data-reveal>
+        <div class="spec lift" data-reveal>
           <span class="spec-mono"><Monogram size={22} /></span>
           <div class="spec-name">{s.name}</div>
           <div class="spec-role">{s.role}</div>
@@ -247,8 +247,15 @@ const values = [
     min-height: min(88vh, 860px);
     background: var(--color-ink);
   }
-  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
   .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-bg img { animation: mx-kenburns 22s var(--ease-out-quiet) forwards; }
+    @keyframes mx-kenburns {
+      from { transform: scale(1); }
+      to { transform: scale(1.07); }
+    }
+  }
   .hero-scrim {
     position: absolute;
     inset: 0;
@@ -323,13 +330,36 @@ const values = [
   .seam-bar .lbl { font-size: var(--text-small); font-weight: 500; opacity: 0.92; }
   .machine .lbl { color: var(--color-body); }
   .seam-note { margin-top: 20px; color: var(--color-body); }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in .seam-bar .human { animation: mx-in-left var(--dur-soft) var(--ease-out-quiet) both; }
+    .reveal-in .seam-bar .machine { animation: mx-in-right var(--dur-soft) var(--ease-out-quiet) both; }
+    @keyframes mx-in-left {
+      from { opacity: 0; transform: translateX(-14px); }
+    }
+    @keyframes mx-in-right {
+      from { opacity: 0; transform: translateX(14px); }
+    }
+  }
 
   /* METHOD */
   .method-head .eyebrow { color: var(--color-blue-tint); }
   .method-head h2 .plus { color: var(--color-blue-tint); }
   .method-head p { margin-top: 16px; color: color-mix(in srgb, var(--color-white) 78%, transparent); }
   .phases { margin-top: 48px; display: grid; gap: 1px; background: color-mix(in srgb, var(--color-white) 12%, transparent); border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent); border-radius: 14px; overflow: hidden; }
-  .phase { background: var(--color-ink); padding: 28px; }
+  .phase {
+    background: var(--color-ink);
+    padding: 28px;
+    border: 1px solid transparent;
+    transition:
+      transform var(--dur-quick) var(--ease-out-quiet),
+      border-color var(--dur-quick) var(--ease-out-quiet);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .phase:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--color-blue-tint) 40%, transparent);
+    }
+  }
   .phase .pno { font-family: var(--font-mono); font-size: var(--text-eyebrow); color: var(--color-blue-tint); letter-spacing: 0.14em; }
   .phase h3 { margin: 10px 0 8px; font-size: var(--text-h3); color: var(--color-white); }
   .phase p { margin: 0; font-size: var(--text-small); color: color-mix(in srgb, var(--color-white) 70%, transparent); }
@@ -351,6 +381,13 @@ const values = [
   .frames { margin-top: 48px; display: flex; flex-direction: column; gap: 32px; }
   .frame { margin: 0; }
   .frame figcaption { margin-top: 12px; font-size: var(--text-small); color: var(--color-caption); }
+  .lift-frame { transition: transform var(--dur-quick) var(--ease-out-quiet), box-shadow var(--dur-quick) var(--ease-out-quiet); }
+  @media (prefers-reduced-motion: no-preference) {
+    .lift-frame:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px color-mix(in srgb, #000 45%, transparent);
+    }
+  }
   .frames-note { margin-top: 24px; font-size: 12px; color: var(--color-caption); }
 
   /* BRAIN */

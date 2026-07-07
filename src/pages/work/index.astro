@@ -98,12 +98,29 @@ const audiences = ["All", "B2B", "B2C", "Personal brands"];
     border-radius: var(--radius-card);
     padding: 28px;
     color: var(--color-ink);
-    transition: border-color 0.2s var(--ease-out-quiet);
+    transition:
+      border-color 0.2s var(--ease-out-quiet),
+      transform var(--dur-quick) var(--ease-out-quiet),
+      box-shadow var(--dur-quick) var(--ease-out-quiet);
   }
   .brand-link:hover { border-color: var(--color-signal); }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px color-mix(in srgb, var(--color-ink) 8%, transparent);
+    }
+  }
   .brand-link-text { display: flex; flex-direction: column; gap: 8px; }
   .brand-link-line { font-size: var(--text-h3); font-weight: 500; max-width: 46ch; }
-  .brand-link-arrow { font-size: 22px; color: var(--color-signal); flex-shrink: 0; }
+  .brand-link-arrow {
+    font-size: 22px;
+    color: var(--color-signal);
+    flex-shrink: 0;
+    transition: transform var(--dur-quick) var(--ease-out-quiet);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-link:hover .brand-link-arrow { transform: translateX(4px); }
+  }
 </style>
 
 <script>
