@@ -18,17 +18,19 @@ results:
     label: "the method, enforced by the product"
   - metric: "Live"
     label: "at maxxim.ai"
-heroImage: "/images/cover-city.jpg"
+heroImage: "/images/case-studies/maxxim/hero.jpg"
 liveUrl: "https://maxxim.ai"
 status: "launched"
-marquee: true
-order: 20
+order: 50
 heroClaim: "The engine, built on itself."
 move:
   discover: "The trust gap, named: agencies have the human without the speed, AI tools have the speed without the human."
   design: "A calm, high-contrast identity that earns trust through legibility and restraint — Signal Blue, Poppins, the pixel double-X mark."
   deploy: "The platform, the portal, and the showcase — every output carrying a named person's accountability at the gate."
   deepen: "Every engagement feeds the output library, the evals and the method itself."
+gallery:
+  - { label: "The showcase, live", note: "A whole agency, in a box — live at maxxim.ai.", image: "/images/case-studies/maxxim/hero.jpg" }
+  - { label: "The work, not the pitch", note: "The proof system, run on the engine itself.", image: "/images/case-studies/maxxim/gallery-1.jpg" }
 takeout: "The engine is its own best case study — the method, enforced by the product that runs it."
 ---
 

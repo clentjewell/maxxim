@@ -26,7 +26,7 @@ heroImage: "/images/case-studies/pottsville-acupuncture/hero.jpg"
 liveUrl: "https://pottsvilleacupuncture.com.au"
 status: "launched"
 marquee: true
-order: 10
+order: 30
 heroClaim: "From respected local practice to a clearer growth pathway."
 whatWeSaw: "Protect the human care at the centre while building a more scalable commercial pathway around it."
 move:

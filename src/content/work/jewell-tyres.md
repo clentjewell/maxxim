@@ -25,7 +25,8 @@ reflection:
 heroImage: "/images/case-studies/jewell-tyres/hero.jpg"
 liveUrl: "https://jewelltyres.com.au"
 status: "launched"
-order: 40
+marquee: true
+order: 10
 heroClaim: "Operator knowledge, turned into a market-facing platform."
 whatWeSaw: "The opportunity was not just tyres. It was operator knowledge, category trust, platform authority, and qualified demand capture."
 needs:

@@ -9,7 +9,7 @@ const all = await getCollection("work", ({ data }) => !data.draft);
 const bySlug = (slug: string) => all.find((c) => c.id === slug);
 
 // The three that ran the method end to end, in the order they should read.
-const FLAGSHIP_SLUGS = ["pottsville-acupuncture", "maxxim", "ultimate-labs"];
+const FLAGSHIP_SLUGS = ["jewell-tyres", "ultimate-labs", "pottsville-acupuncture"];
 const flagship = FLAGSHIP_SLUGS.map(bySlug).filter((c): c is NonNullable<typeof c> => Boolean(c));
 const archive = all
   .filter((c) => !FLAGSHIP_SLUGS.includes(c.id))
