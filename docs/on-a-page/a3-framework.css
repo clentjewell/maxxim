@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Maxxim — On-a-Page A3 framework
+   One printed A3 landscape sheet (420 × 297 mm), boxed-segment layout.
+   Every On-a-Page artifact inlines this file verbatim, then sets the client
+   brand tokens in its own :root block. Layout lives in the page; components
+   live here. No content styles may hardcode colour — tokens only.
+   ========================================================================== */
+
+:root {
+  /* ---- Client brand tokens (SWAP PER CLIENT — these are the only knobs) */
+  --ink: #171c3d;        /* primary dark: headings, key text */
+  --accent: #fd8457;     /* single accent: labels, highlights, rules */
+  --paper: #ffffff;      /* sheet background */
+  --tint: #f6f7fb;       /* soft panel background */
+  --line: #e7e9f1;       /* hairline borders */
+  --muted: #4a5565;      /* secondary text */
+  --font-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* ---- Fixed scale (do not swap) */
+  --gap: 3mm;
+  --radius: 1.6mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #3a3f4c; }
+body { font-family: var(--font-body); color: var(--ink); }
+
+/* ---------------------------------------------------------------- sheet */
+.sheet {
+  width: 420mm; height: 297mm;
+  background: var(--paper);
+  padding: 7mm 9mm 6mm;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  margin: 0 auto;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+/* Screen preview: centre the sheet, scale to fit (script sets --fit). */
+@media screen {
+  body { padding: 24px 0; }
+  .stage { transform: scale(var(--fit, 0.5)); transform-origin: top center; }
+  .sheet { box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45); }
+}
+@page { size: A3 landscape; margin: 0; }
+@media print {
+  html, body { background: var(--paper); padding: 0; }
+  .stage { transform: none; }
+  .toolbar { display: none; }
+}
+
+/* ------------------------------------------------------------ header band */
+.sheet-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 8mm; padding-bottom: 3mm; margin-bottom: var(--gap);
+  border-bottom: 0.7mm solid var(--ink);
+}
+.sheet-head .ident { display: flex; align-items: center; gap: 4mm; }
+.sheet-head .logo img { height: 9mm; width: auto; display: block; }
+.sheet-head .logo .logo-text {
+  font-family: var(--font-head); font-weight: 700; font-size: 15pt; letter-spacing: -0.02em;
+}
+.sheet-head h1 {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 21pt; letter-spacing: -0.015em; line-height: 1;
+}
+.sheet-head h1 .thin { font-weight: 500; color: var(--muted); }
+.sheet-head .meta { display: flex; align-items: center; gap: 2.5mm; }
+
+.chip {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.5pt;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.4mm 3.2mm; color: var(--muted); white-space: nowrap;
+}
+.chip.gate { border-color: var(--accent); color: var(--accent); }
+.chip.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------------------- canvas */
+.canvas {
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap);
+  grid-auto-rows: minmax(0, auto);
+}
+
+/* ------------------------------------------------------------------ boxes */
+.box {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  background: var(--paper); padding: 2.8mm 3.2mm;
+  overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column; gap: 1.6mm;
+}
+.box.tint { background: var(--tint); }
+.box.ink { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.box.ink .box-label { color: var(--accent); }
+.box.ink p, .box.ink li { color: color-mix(in srgb, var(--paper) 88%, var(--ink)); }
+.box.rule-top { border-top: 1mm solid var(--accent); }
+
+.box-label {
+  font-family: var(--font-label); font-weight: 600;
+  font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); flex: none;
+}
+.box-label .sub { color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: none; }
+
+/* ------------------------------------------------------------- type scale */
+.box h3 { font-family: var(--font-head); font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; line-height: 1.15; }
+.box h4 { font-family: var(--font-head); font-weight: 600; font-size: 8.2pt; line-height: 1.2; }
+.box p  { font-size: 7.6pt; line-height: 1.42; color: var(--muted); }
+.box p.lead { font-size: 9.2pt; line-height: 1.35; color: var(--ink); font-weight: 500; }
+.box .statement {
+  font-family: var(--font-head); font-weight: 600; font-size: 13pt;
+  line-height: 1.22; letter-spacing: -0.01em; color: var(--ink);
+}
+.box ul { list-style: none; }
+.box li {
+  font-size: 7.6pt; line-height: 1.4; color: var(--muted);
+  padding-left: 3mm; position: relative; margin-bottom: 1mm;
+}
+.box li::before {
+  content: ''; position: absolute; left: 0; top: 1.35mm;
+  width: 1.4mm; height: 1.4mm; background: var(--accent); border-radius: 0.2mm;
+}
+.box li strong, .box p strong { color: var(--ink); font-weight: 600; }
+
+/* -------------------------------------------------------------- KPI tiles */
+.kpis { display: grid; gap: var(--gap); }
+.kpi {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  padding: 2.4mm 3mm; background: var(--tint); overflow: hidden;
+}
+.kpi .num {
+  font-family: var(--font-head); font-weight: 700; font-size: 16pt;
+  letter-spacing: -0.02em; line-height: 1; color: var(--ink); display: block;
+}
+.kpi .num em { font-style: normal; color: var(--accent); }
+.kpi .lbl {
+  display: block; margin-top: 1.2mm; font-family: var(--font-label); font-weight: 600;
+  font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ----------------------------------------------------------- mini tables */
+table.mini { width: 100%; border-collapse: collapse; }
+table.mini th {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.2pt;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: left;
+  color: var(--paper); background: var(--ink); padding: 1.4mm 2mm;
+}
+table.mini td {
+  font-size: 7.2pt; line-height: 1.35; color: var(--muted);
+  padding: 1.4mm 2mm; border-bottom: 0.25mm solid var(--line); vertical-align: top;
+}
+table.mini td strong { color: var(--ink); }
+table.mini tr:nth-child(even) td { background: var(--tint); }
+
+/* ---------------------------------------------------------------- pills */
+.pills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+.pill {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.6pt;
+  letter-spacing: 0.05em; border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.1mm 2.8mm; color: var(--ink); background: var(--paper); white-space: nowrap;
+}
+.pill.hot { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+/* -------------------------------------------------- journey / funnel bar */
+.journey { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.6mm; }
+.journey .stage-cell { min-width: 0; }
+.journey .stage-name {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.4pt;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+  background: var(--ink); border-radius: 1mm; padding: 1.3mm 2mm; text-align: center;
+  position: relative; margin-bottom: 1.6mm;
+}
+.journey .stage-cell:nth-child(even) .stage-name { background: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
+.journey ul { list-style: none; }
+.journey li { font-size: 6.8pt; line-height: 1.35; color: var(--muted); padding-left: 2.6mm; position: relative; margin-bottom: 0.9mm; }
+.journey li::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1.2mm; height: 1.2mm; background: var(--accent); border-radius: 0.2mm; }
+
+/* -------------------------------------------------------- persona cards */
+.persona { border: 0.35mm solid var(--line); border-radius: var(--radius); padding: 2.2mm 2.6mm; background: var(--paper); overflow: hidden; }
+.persona .p-name { font-family: var(--font-head); font-weight: 700; font-size: 8.6pt; }
+.persona .p-tag { font-family: var(--font-label); font-weight: 600; font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1mm; }
+.persona .pgp { display: grid; gap: 0.8mm; margin-top: 1.2mm; }
+.persona .pgp .row { font-size: 6.9pt; line-height: 1.32; color: var(--muted); }
+.persona .pgp .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-right: 1mm; }
+
+/* ----------------------------------------------------- checklists (READY) */
+.checklist { display: grid; gap: 1.2mm; }
+.check { display: flex; gap: 2mm; align-items: baseline; }
+.check .tick {
+  flex: none; width: 3.4mm; height: 3.4mm; border-radius: 0.8mm;
+  background: var(--accent); color: var(--paper);
+  font-size: 6.5pt; font-weight: 700; line-height: 3.4mm; text-align: center;
+  transform: translateY(0.6mm);
+}
+.check.open .tick { background: var(--paper); border: 0.4mm solid var(--accent); color: var(--accent); }
+.check .t { font-size: 7.4pt; line-height: 1.35; color: var(--muted); }
+.check .t strong { color: var(--ink); }
+
+/* --------------------------------------------------------- gate decision */
+.gate-box { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.gate-box .box-label { color: var(--accent); }
+.gate-box .verdict { font-family: var(--font-head); font-weight: 700; font-size: 12pt; line-height: 1.15; }
+.gate-box p, .gate-box li { color: color-mix(in srgb, var(--paper) 86%, var(--ink)); }
+.gate-box li::before { background: var(--accent); }
+
+/* ------------------------------------------------------------ swatches */
+.swatches { display: flex; gap: 1.6mm; }
+.swatch { flex: 1; border-radius: 1mm; border: 0.25mm solid var(--line); overflow: hidden; }
+.swatch .col { height: 7mm; }
+.swatch .code { font-family: var(--font-label); font-size: 5.6pt; letter-spacing: 0.04em; color: var(--muted); padding: 0.8mm 1.4mm; display: block; }
+
+/* ------------------------------------------------------------ footer band */
+.sheet-foot {
+  margin-top: var(--gap); padding-top: 2.2mm; border-top: 0.35mm solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 6mm; flex: none;
+}
+.sheet-foot .signoff { display: flex; gap: 6mm; }
+.sheet-foot .sig { display: flex; align-items: baseline; gap: 2mm; }
+.sheet-foot .sig .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sheet-foot .sig .line { display: inline-block; width: 26mm; border-bottom: 0.3mm solid var(--muted); height: 3.5mm; }
+.sheet-foot .src { font-size: 6pt; line-height: 1.4; color: var(--muted); max-width: 150mm; }
+.sheet-foot .brandline { font-family: var(--font-label); font-weight: 600; font-size: 6.2pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.sheet-foot .brandline strong { color: var(--ink); }
+
+/* ------------------------------------------------------------- toolbar */
+.toolbar {
+  position: fixed; top: 12px; right: 16px; z-index: 20; display: flex; gap: 8px;
+}
+.toolbar button {
+  font-family: var(--font-label); font-weight: 600; font-size: 12px;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 14px; cursor: pointer;
+}
