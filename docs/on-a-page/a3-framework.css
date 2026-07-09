@@ -206,6 +206,9 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
 .gate-box .verdict { font-family: var(--font-head); font-weight: 700; font-size: 12pt; line-height: 1.15; }
 .gate-box p, .gate-box li { color: color-mix(in srgb, var(--paper) 86%, var(--ink)); }
 .gate-box li::before { background: var(--accent); }
+/* strong text inside dark boxes must not fall back to --ink (invisible) */
+.box.ink p strong, .box.ink li strong,
+.gate-box p strong, .gate-box li strong { color: var(--accent); }
 
 /* ------------------------------------------------------------ swatches */
 .swatches { display: flex; gap: 1.6mm; }

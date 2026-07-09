@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deploy — on a page · Beyond the Clinic · Maxxim 3D</title>
+<meta name="maxxim:client" content="beyond-the-clinic">
+<meta name="maxxim:phase" content="deploy">
+<meta name="maxxim:skill" content="on-a-page">
+<meta name="maxxim:archetype" content="sme">
+<meta name="maxxim:checkpoint" content="CP3">
+<meta name="maxxim:generated" content="2026-07-09">
+<meta name="maxxim:sources" content="imc-summary, seo-strategy, edm-plan, pr-plan, events-plan, crm-plan, paid-media-plan, traditional-media-plan, case-study, validation-register">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* === a3-framework.css (verbatim) === */
+:root {
+  /* ---- Client brand tokens (SWAP PER CLIENT — these are the only knobs) */
+  --ink: #171c3d;        /* primary dark: headings, key text */
+  --accent: #fd8457;     /* single accent: labels, highlights, rules */
+  --paper: #ffffff;      /* sheet background */
+  --tint: #f6f7fb;       /* soft panel background */
+  --line: #e7e9f1;       /* hairline borders */
+  --muted: #4a5565;      /* secondary text */
+  --font-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* ---- Fixed scale (do not swap) */
+  --gap: 3mm;
+  --radius: 1.6mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #3a3f4c; }
+body { font-family: var(--font-body); color: var(--ink); }
+
+/* ---------------------------------------------------------------- sheet */
+.sheet {
+  width: 420mm; height: 297mm;
+  background: var(--paper);
+  padding: 7mm 9mm 6mm;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  margin: 0 auto;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+/* Screen preview: centre the sheet, scale to fit (script sets --fit). */
+@media screen {
+  body { padding: 24px 0; }
+  .stage { transform: scale(var(--fit, 0.5)); transform-origin: top center; }
+  .sheet { box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45); }
+}
+@page { size: A3 landscape; margin: 0; }
+@media print {
+  html, body { background: var(--paper); padding: 0; }
+  .stage { transform: none; }
+  .toolbar { display: none; }
+}
+
+/* ------------------------------------------------------------ header band */
+.sheet-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 8mm; padding-bottom: 3mm; margin-bottom: var(--gap);
+  border-bottom: 0.7mm solid var(--ink);
+}
+.sheet-head .ident { display: flex; align-items: center; gap: 4mm; }
+.sheet-head .logo img { height: 9mm; width: auto; display: block; }
+.sheet-head .logo .logo-text {
+  font-family: var(--font-head); font-weight: 700; font-size: 15pt; letter-spacing: -0.02em;
+}
+.sheet-head h1 {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 21pt; letter-spacing: -0.015em; line-height: 1;
+}
+.sheet-head h1 .thin { font-weight: 500; color: var(--muted); }
+.sheet-head .meta { display: flex; align-items: center; gap: 2.5mm; }
+
+.chip {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.5pt;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.4mm 3.2mm; color: var(--muted); white-space: nowrap;
+}
+.chip.gate { border-color: var(--accent); color: var(--accent); }
+.chip.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------------------- canvas */
+.canvas {
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap);
+  grid-auto-rows: minmax(0, auto);
+}
+
+/* ------------------------------------------------------------------ boxes */
+.box {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  background: var(--paper); padding: 2.8mm 3.2mm;
+  overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column; gap: 1.6mm;
+}
+.box.tint { background: var(--tint); }
+.box.ink { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.box.ink .box-label { color: var(--accent); }
+.box.ink p, .box.ink li { color: color-mix(in srgb, var(--paper) 88%, var(--ink)); }
+.box.rule-top { border-top: 1mm solid var(--accent); }
+
+.box-label {
+  font-family: var(--font-label); font-weight: 600;
+  font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); flex: none;
+}
+.box-label .sub { color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: none; }
+
+/* ------------------------------------------------------------- type scale */
+.box h3 { font-family: var(--font-head); font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; line-height: 1.15; }
+.box h4 { font-family: var(--font-head); font-weight: 600; font-size: 8.2pt; line-height: 1.2; }
+.box p  { font-size: 7.6pt; line-height: 1.42; color: var(--muted); }
+.box p.lead { font-size: 9.2pt; line-height: 1.35; color: var(--ink); font-weight: 500; }
+.box .statement {
+  font-family: var(--font-head); font-weight: 600; font-size: 13pt;
+  line-height: 1.22; letter-spacing: -0.01em; color: var(--ink);
+}
+.box ul { list-style: none; }
+.box li {
+  font-size: 7.6pt; line-height: 1.4; color: var(--muted);
+  padding-left: 3mm; position: relative; margin-bottom: 1mm;
+}
+.box li::before {
+  content: ''; position: absolute; left: 0; top: 1.35mm;
+  width: 1.4mm; height: 1.4mm; background: var(--accent); border-radius: 0.2mm;
+}
+.box li strong, .box p strong { color: var(--ink); font-weight: 600; }
+
+/* -------------------------------------------------------------- KPI tiles */
+.kpis { display: grid; gap: var(--gap); }
+.kpi {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  padding: 2.4mm 3mm; background: var(--tint); overflow: hidden;
+}
+.kpi .num {
+  font-family: var(--font-head); font-weight: 700; font-size: 16pt;
+  letter-spacing: -0.02em; line-height: 1; color: var(--ink); display: block;
+}
+.kpi .num em { font-style: normal; color: var(--accent); }
+.kpi .lbl {
+  display: block; margin-top: 1.2mm; font-family: var(--font-label); font-weight: 600;
+  font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ----------------------------------------------------------- mini tables */
+table.mini { width: 100%; border-collapse: collapse; }
+table.mini th {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.2pt;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: left;
+  color: var(--paper); background: var(--ink); padding: 1.4mm 2mm;
+}
+table.mini td {
+  font-size: 7.2pt; line-height: 1.35; color: var(--muted);
+  padding: 1.4mm 2mm; border-bottom: 0.25mm solid var(--line); vertical-align: top;
+}
+table.mini td strong { color: var(--ink); }
+table.mini tr:nth-child(even) td { background: var(--tint); }
+
+/* ---------------------------------------------------------------- pills */
+.pills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+.pill {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.6pt;
+  letter-spacing: 0.05em; border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.1mm 2.8mm; color: var(--ink); background: var(--paper); white-space: nowrap;
+}
+.pill.hot { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+/* -------------------------------------------------- journey / funnel bar */
+.journey { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.6mm; }
+.journey .stage-cell { min-width: 0; }
+.journey .stage-name {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.4pt;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+  background: var(--ink); border-radius: 1mm; padding: 1.3mm 2mm; text-align: center;
+  position: relative; margin-bottom: 1.6mm;
+}
+.journey .stage-cell:nth-child(even) .stage-name { background: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
+.journey ul { list-style: none; }
+.journey li { font-size: 6.8pt; line-height: 1.35; color: var(--muted); padding-left: 2.6mm; position: relative; margin-bottom: 0.9mm; }
+.journey li::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1.2mm; height: 1.2mm; background: var(--accent); border-radius: 0.2mm; }
+
+/* -------------------------------------------------------- persona cards */
+.persona { border: 0.35mm solid var(--line); border-radius: var(--radius); padding: 2.2mm 2.6mm; background: var(--paper); overflow: hidden; }
+.persona .p-name { font-family: var(--font-head); font-weight: 700; font-size: 8.6pt; }
+.persona .p-tag { font-family: var(--font-label); font-weight: 600; font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1mm; }
+.persona .pgp { display: grid; gap: 0.8mm; margin-top: 1.2mm; }
+.persona .pgp .row { font-size: 6.9pt; line-height: 1.32; color: var(--muted); }
+.persona .pgp .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-right: 1mm; }
+
+/* ----------------------------------------------------- checklists (READY) */
+.checklist { display: grid; gap: 1.2mm; }
+.check { display: flex; gap: 2mm; align-items: baseline; }
+.check .tick {
+  flex: none; width: 3.4mm; height: 3.4mm; border-radius: 0.8mm;
+  background: var(--accent); color: var(--paper);
+  font-size: 6.5pt; font-weight: 700; line-height: 3.4mm; text-align: center;
+  transform: translateY(0.6mm);
+}
+.check.open .tick { background: var(--paper); border: 0.4mm solid var(--accent); color: var(--accent); }
+.check .t { font-size: 7.4pt; line-height: 1.35; color: var(--muted); }
+.check .t strong { color: var(--ink); }
+
+/* --------------------------------------------------------- gate decision */
+.gate-box { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.gate-box .box-label { color: var(--accent); }
+.gate-box .verdict { font-family: var(--font-head); font-weight: 700; font-size: 12pt; line-height: 1.15; }
+.gate-box p, .gate-box li { color: color-mix(in srgb, var(--paper) 86%, var(--ink)); }
+.gate-box li::before { background: var(--accent); }
+
+/* ------------------------------------------------------------ swatches */
+.swatches { display: flex; gap: 1.6mm; }
+.swatch { flex: 1; border-radius: 1mm; border: 0.25mm solid var(--line); overflow: hidden; }
+.swatch .col { height: 7mm; }
+.swatch .code { font-family: var(--font-label); font-size: 5.6pt; letter-spacing: 0.04em; color: var(--muted); padding: 0.8mm 1.4mm; display: block; }
+
+/* ------------------------------------------------------------ footer band */
+.sheet-foot {
+  margin-top: var(--gap); padding-top: 2.2mm; border-top: 0.35mm solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 6mm; flex: none;
+}
+.sheet-foot .signoff { display: flex; gap: 6mm; }
+.sheet-foot .sig { display: flex; align-items: baseline; gap: 2mm; }
+.sheet-foot .sig .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sheet-foot .sig .line { display: inline-block; width: 26mm; border-bottom: 0.3mm solid var(--muted); height: 3.5mm; }
+.sheet-foot .src { font-size: 6pt; line-height: 1.4; color: var(--muted); max-width: 150mm; }
+.sheet-foot .brandline { font-family: var(--font-label); font-weight: 600; font-size: 6.2pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.sheet-foot .brandline strong { color: var(--ink); }
+
+/* ------------------------------------------------------------- toolbar */
+.toolbar {
+  position: fixed; top: 12px; right: 16px; z-index: 20; display: flex; gap: 8px;
+}
+.toolbar button {
+  font-family: var(--font-label); font-weight: 600; font-size: 12px;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 14px; cursor: pointer;
+}
+</style>
+<style>
+/* === page grid: BTC brand tokens + grid placement === */
+:root{
+  --ink:#171C3D; --accent:#FD8457; --paper:#ffffff; --tint:#F6F7FB; --line:#E7E9F1; --muted:#4A5565;
+  --font-head:'Inter Tight','Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-label:'Poppins','Inter',system-ui,sans-serif;
+}
+
+/* ---- canvas rows: 4 tracks (top pair, journey bar, bottom strip) ---- */
+.canvas{
+  grid-template-rows: 0.98fr 0.72fr 0.52fr 1.2fr;
+}
+
+#box-glance      { grid-column: 1 / 4;   grid-row: 1 / 2; }
+#box-channels    { grid-column: 4 / 10;  grid-row: 1 / 3; }
+#box-measurement { grid-column: 10 / 13; grid-row: 1 / 3; }
+#box-cadence     { grid-column: 1 / 4;   grid-row: 2 / 3; }
+#box-journey     { grid-column: 1 / 13;  grid-row: 3 / 4; }
+#box-budget      { grid-column: 1 / 4;   grid-row: 4 / 5; }
+#box-risks       { grid-column: 4 / 7;   grid-row: 4 / 5; }
+#box-governance  { grid-column: 7 / 10;  grid-row: 4 / 5; }
+#box-gate        { grid-column: 10 / 13; grid-row: 4 / 5; }
+
+/* ---- objectives list: slightly tighter than default box li ---- */
+#box-glance ul { margin-top: 0.4mm; }
+#box-glance li { margin-bottom: 0.9mm; }
+
+/* ---- channel plan: 4x2 grid of mini channel cells ---- */
+.channel-grid{
+  flex: 1; min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.8mm;
+}
+.channel-cell{
+  border: 0.3mm solid var(--line); border-top: 0.8mm solid var(--accent); border-radius: 1.2mm;
+  background: var(--tint);
+  padding: 2mm 2.4mm 2.2mm;
+  display: flex; flex-direction: column; gap: 1.4mm;
+  overflow: hidden; min-height: 0;
+}
+.channel-cell .ch-name{
+  font-family: var(--font-label); font-weight: 600; font-size: 7.2pt;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink);
+}
+.channel-cell .ch-play{
+  font-size: 7.4pt; line-height: 1.42; color: var(--muted);
+}
+.channel-cell .ch-kpi{
+  font-size: 7.1pt; line-height: 1.36; color: var(--ink); font-weight: 600;
+  margin-top: auto; padding-top: 1.4mm; border-top: 0.25mm solid var(--line);
+}
+
+/* ---- measurement box: compact kpi grid (2 cols x 3 rows) ---- */
+#box-measurement .kpis{
+  grid-template-columns: repeat(2, 1fr);
+  flex: 1; min-height: 0;
+}
+#box-measurement .kpi{ padding: 1.8mm 2.2mm; }
+#box-measurement .kpi .num{ font-size: 13pt; }
+#box-measurement .kpi .lbl{ font-size: 5.4pt; line-height: 1.25; margin-top: 0.8mm; }
+#box-measurement p.rhythm{ font-size: 6.6pt; line-height: 1.3; margin-top: 0.6mm; }
+
+/* ---- journey bar box: no default box padding fighting the framework component ---- */
+#box-journey .journey{ flex: 1; min-height: 0; }
+#box-journey .journey li{ font-size: 6.4pt; }
+
+/* ---- budget split: compact rows with a proportional bar ---- */
+.budget-rows{ display: flex; flex-direction: column; gap: 2.6mm; flex: 1; min-height: 0; justify-content: space-evenly; }
+.budget-row{ display: flex; flex-direction: column; gap: 0.9mm; }
+.budget-row .b-top{ display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+.budget-row .b-name{ font-size: 7.4pt; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.budget-row .b-pct{ font-family: var(--font-head); font-weight: 700; font-size: 9pt; color: var(--accent); white-space: nowrap; }
+.budget-row .b-bar{ height: 2.2mm; border-radius: 1mm; background: var(--line); overflow: hidden; }
+.budget-row .b-fill{ height: 100%; background: var(--accent); border-radius: 1mm; }
+.budget-row .b-what{ font-size: 5.9pt; line-height: 1.25; color: var(--muted); }
+
+/* ---- risks box: compact rows instead of default li spacing ---- */
+#box-risks ul{ flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: space-evenly; }
+#box-risks li{ font-size: 7.3pt; line-height: 1.4; margin-bottom: 0; }
+
+/* ---- governance mini-RACI table sizing ---- */
+#box-governance table.mini th, #box-governance table.mini td{ padding: 2.6mm 2mm; font-size: 7.4pt; }
+#box-governance table.mini th{ font-size: 6.2pt; }
+#box-governance p.gov-note{ font-size: 6.6pt; line-height: 1.35; margin-top: 1.4mm; }
+
+/* ---- gate box: next-90-days actions compact ---- */
+#box-gate .verdict{ font-size: 10.5pt; }
+#box-gate ul{ flex: 1; min-height: 0; }
+#box-gate li{ font-size: 6.6pt; line-height: 1.34; margin-bottom: 1.4mm; }
+#box-gate p.gate-sub{ font-size: 6.8pt; line-height: 1.32; margin-top: 0.2mm; }
+/* framework's ".box li strong" sets strong text to --ink (navy), which is
+   invisible against the gate-box's navy background — restore contrast here. */
+.gate-box li strong, .gate-box p strong { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="print()">Print / Save PDF (A3)</button></div>
+<div class="stage"><section class="sheet">
+
+  <header class="sheet-head">
+    <div class="ident">
+      <div class="logo"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIxLjE2IDc4Ny45NiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMxNzFjM2Q7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQyMS44MiwyMzEuMTdjNi4wNywzNi43MSwzNy45Niw2NC43Miw3Ni4zOSw2NC43MiwyNS4xMywwLDQ3LjQ1LTExLjk3LDYxLjYtMzAuNTJsMzQuNjUsMjMuMTVjLTIxLjY1LDI5LjY5LTU2LjcsNDguOTgtOTYuMjUsNDguOTgtNjEuNDUsMC0xMTIuMDMtNDYuNTctMTE4LjM3LTEwNi4zMy0uNDQtNC4xOC0uNjctOC40Mi0uNjctMTIuNzIsMC03LjUuNy0xNC44NCwyLjAyLTIxLjk2LDEwLjMtNTUuMjYsNTguNzgtOTcuMDksMTE3LjAyLTk3LjA5czEwNi43Myw0MS44MywxMTcuMDMsOTcuMDljMS4zMiw3LjEyLDIuMDIsMTQuNDYsMi4wMiwyMS45NiwwLDQuMjktLjIzLDguNTQtLjY4LDEyLjcyaC0xOTQuNzdaTTU3Mi40OSwxOTYuNDljLTkuNDctMzIuMDctMzkuMTMtNTUuNDgtNzQuMjgtNTUuNDhzLTY0LjgxLDIzLjQtNzQuMjgsNTUuNDhoMTQ4LjU1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTg0NC4wMiwxMDQuMDNsLTkyLjQ2LDIyOC43My0zOS4zLDk3LjJoLTQzLjkxbDM0LjI2LTg0Ljc2YzMuMjMtNy45OCwzLjIzLTE2LjkxLDAtMjQuODlsLTg3LjQzLTIxNi4yOGg0My45Mmw3MC41LDE3NC40LDcwLjUtMTc0LjRoNDMuOTJaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTA4MC41OSwyMTguNDVjMCw2NS43NS01My4zMSwxMTkuMDUtMTE5LjA1LDExOS4wNXMtMTE5LjA1LTUzLjMtMTE5LjA1LTExOS4wNSw1My4zLTExOS4wNCwxMTkuMDUtMTE5LjA0LDExOS4wNSw1My4zLDExOS4wNSwxMTkuMDRNMTAzOC45OCwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDQsMzQuNjctNzcuNDQsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDQsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzEyLjk0LDE5OC44djEzNC4wN2gtNDEuNjF2LTEzNC4wN2MwLTMxLjkxLTI1Ljg3LTU3Ljc5LTU3Ljc5LTU3Ljc5cy01Ny43OSwyNS44OC01Ny43OSw1Ny43OXYxMzMuNjhoLTQxLjYxVjEwMy42NGg0MS42MXYyMi4wOGMxMi44LTE2LjM0LDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQsNDQuNSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTgzLjcxLDB2MzMyLjg3aC00MS42MXYtMzAuNDhjLTE4LjA4LDIxLjY4LTQ0LjQ1LDM1LjEtNzcuNDQsMzUuMS02NS43NSwwLTExOS4wNS01My4zLTExOS4wNS0xMTkuMDVzNTMuMy0xMTkuMDQsMTE5LjA1LTExOS4wNGMzMi45OSwwLDU5LjM2LDEzLjQyLDc3LjQ0LDM1LjFWMGg0MS42MVpNMTU0Mi4xMSwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDMsMzQuNjctNzcuNDMsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDMsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTI5Ljg4IDQ4OS43NiAxMjkuODggNzgzLjM0IDg4LjI3IDc4My4zNCA4OC4yNyA0ODkuNzYgMCA0ODkuNzYgMCA0NTAuNDYgMjE3LjMgNDUwLjQ2IDIxNy4zIDQ4OS43NiAxMjkuODggNDg5Ljc2Ii8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDM5LjE1LDY0OS4yNnYxMzQuMDdoLTQxLjYxdi0xMzQuMDdjMC0zMS45MS0yNS44Ny01Ny43OS01Ny44LTU3Ljc5cy01Ny43OSwyNS44Ny01Ny43OSw1Ny43OXYxMzMuNjloLTQxLjZ2LTMzMi40OWg0MS42djEyNS43MWMxMi44LTE2LjMzLDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQxLDQ0LjUsOTkuNDEsOTkuMzkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MTYuMTEsNjgxLjYyYzYuMDcsMzYuNzIsMzcuOTYsNjQuNzMsNzYuMzksNjQuNzMsMjUuMTMsMCw0Ny40NS0xMS45Nyw2MS42LTMwLjUybDM0LjY1LDIzLjE1Yy0yMS42NSwyOS42OS01Ni43LDQ4Ljk4LTk2LjI1LDQ4Ljk4LTYxLjQ1LDAtMTEyLjAzLTQ2LjU3LTExOC4zNy0xMDYuMzQtLjQ0LTQuMTgtLjY3LTguNDItLjY3LTEyLjcxLDAtNy41LjctMTQuODQsMi4wMi0yMS45NiwxMC4zLTU1LjI2LDU4Ljc4LTk3LjA5LDExNy4wMi05Ny4wOXMxMDYuNzMsNDEuODMsMTE3LjAzLDk3LjA5YzEuMzIsNy4xMiwyLjAyLDE0LjQ2LDIuMDIsMjEuOTYsMCw0LjI5LS4yMyw4LjUzLS42OCwxMi43MWgtMTk0Ljc3Wk02NjYuNzgsNjQ2Ljk1Yy05LjQ3LTMyLjA4LTM5LjEzLTU1LjQ4LTc0LjI4LTU1LjQ4cy02NC44MSwyMy40LTc0LjI4LDU1LjQ4aDE0OC41NVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTI2LjczLDY4OC43NWwzNC42NywyM2MtMzAuNjYsNDUuOTUtODIuOTksNzYuMjEtMTQyLjM3LDc2LjIxLTk0LjQ4LDAtMTcxLjA2LTc2LjU5LTE3MS4wNi0xNzEuMDZzNzYuNTgtMTcxLjA2LDE3MS4wNi0xNzEuMDZjNTkuMjksMCwxMTEuNTMsMzAuMTcsMTQyLjIyLDc1Ljk5bC0zNC41OSwyMy4xMmMtMjMuMjMtMzQuNjctNjIuNzctNTcuNS0xMDcuNjMtNTcuNS03MS41LDAtMTI5LjQ1LDU3Ljk2LTEyOS40NSwxMjkuNDVzNTcuOTYsMTI5LjQ1LDEyOS40NSwxMjkuNDVjNDQuOSwwLDg0LjQ3LTIyLjg3LDEwNy42OS01Ny42Ii8+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxMTk0LjAyIiB5PSI0NTAuNDYiIHdpZHRoPSI0MS42MSIgaGVpZ2h0PSIzMzIuODciLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjg1LjcyLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xMjg1LjcyLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTU3Ni4yMiw2NDkuMjZ2MTM0LjA3aC00MS42MXYtMTM0LjA3YzAtMzEuOTEtMjUuODctNTcuNzktNTcuOC01Ny43OXMtNTcuNzksMjUuODctNTcuNzksNTcuNzl2MTMzLjY4aC00MS42MXYtMjI4Ljg1aDQxLjYxdjIyLjA4YzEyLjgtMTYuMzMsMzEuOC0yNi4zMSw1Ny43OS0yNi4zMSw1NC45LDAsOTkuNCw0NC41MSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNjIyLjExLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xNjIyLjExLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTg4NS42Niw3MTEuOTRsMzQuNiwyMy4xMmMtMjEuMzYsMzEuOS01Ny43MSw1Mi45LTk4Ljk5LDUyLjktNjUuNzUsMC0xMTkuMDUtNTMuMzEtMTE5LjA1LTExOS4wNXM1My4zLTExOS4wNSwxMTkuMDUtMTE5LjA1YzQxLjI4LDAsNzcuNjQsMjEsOTguOTksNTIuOWwtMzQuNiwyMy4xMmMtMTMuODktMjAuNzUtMzcuNTUtMzQuNDEtNjQuMzktMzQuNDEtNDIuNzcsMC03Ny40NCwzNC42Ny03Ny40NCw3Ny40NHMzNC42Nyw3Ny40NCw3Ny40NCw3Ny40NGMyNi44NCwwLDUwLjUtMTMuNjYsNjQuMzktMzQuNDEiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xOTAwLjkxLDQ4NC45NGMwLTUuMjYtNC4yNC05LjUyLTkuNDgtOS41MmgtMTAuNzR2MzAuNDdoMi41M3YtMTEuNDJoNy44NWw3LjUyLDExLjQyaDIuOTVsLTcuNzItMTEuNzRjNC4wOC0xLjA2LDcuMDktNC43OCw3LjA5LTkuMjFNMTg4My4yMSw0OTEuOTN2LTEzLjk3aDguMjFjMy44NCwwLDYuOTUsMy4xMyw2Ljk1LDYuOThzLTMuMTEsNi45OC02Ljk1LDYuOThoLTguMjFaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTkxOC42OSw0NzguNDFjLTEuNTgtMy43NC0zLjgzLTcuMS02LjcxLTEwLTIuODgtMi44OS02LjIyLTUuMTYtOS45Ni02Ljc0LTMuODYtMS42NC03Ljk2LTIuNDgtMTIuMTktMi40OHMtOC4zMy44NC0xMi4xOSwyLjQ4Yy0zLjczLDEuNTgtNy4wOCwzLjg1LTkuOTUsNi43NC0yLjg4LDIuODktNS4xNCw2LjI1LTYuNzIsMTAtMS42NCwzLjg5LTIuNDYsOC0yLjQ2LDEyLjI1cy44Miw4LjM2LDIuNDYsMTIuMjRjMS41OCwzLjc0LDMuODQsNy4xMSw2LjcyLDEwLDIuODcsMi44OCw2LjIyLDUuMTUsOS45NSw2Ljc0LDMuODYsMS42NCw3Ljk2LDIuNDgsMTIuMTksMi40OHM4LjMzLS44MywxMi4xOS0yLjQ4YzMuNzQtMS41OCw3LjA4LTMuODUsOS45Ni02Ljc0LDIuODgtMi44OSw1LjE0LTYuMjYsNi43MS0xMCwxLjY0LTMuODgsMi40Ni04LDIuNDYtMTIuMjRzLS44My04LjM2LTIuNDYtMTIuMjVNMTkxNS41OCw1MDEuNThjLTEuNDEsMy4zNC0zLjQyLDYuMzQtNS45OSw4LjkxLTIuNTYsMi41OC01LjU1LDQuNi04Ljg4LDYuMDItMy40NCwxLjQ2LTcuMSwyLjItMTAuODcsMi4ycy03LjQzLS43NC0xMC44Ny0yLjJjLTMuMzMtMS40MS02LjMxLTMuNDQtOC44OC02LjAyLTIuNTctMi41Ny00LjU4LTUuNTctNS45OS04LjkxLTEuNDUtMy40Ni0yLjE5LTcuMTMtMi4xOS0xMC45MnMuNzQtNy40NiwyLjE5LTEwLjkyYzEuNDEtMy4zNCwzLjQyLTYuMzQsNS45OS04LjkyLDIuNTYtMi41OCw1LjU1LTQuNiw4Ljg4LTYuMDIsMy40NC0xLjQ2LDcuMS0yLjIsMTAuODctMi4yczcuNDMuNzQsMTAuODcsMi4yYzMuMzMsMS40MSw2LjMyLDMuNDQsOC44OCw2LjAyLDIuNTcsMi41OCw0LjU4LDUuNTgsNS45OSw4LjkyLDEuNDYsMy40NiwyLjE5LDcuMTMsMi4xOSwxMC45MnMtLjc0LDcuNDYtMi4xOSwxMC45MiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMzMS4wMiwxNzcuOTdjLTIuODMsNC42My03LjU2LDkuNjQtMTQuNzIsMTUuMDctNS41Niw0LjIyLTExLjQ1LDcuODMtMTcuMDcsMTAuMzUsNy4zMSw5LjI1LDExLjc0LDIwLjg2LDExLjc0LDMzLjU2LDAsMjkuNjEtMjMuNyw1My43LTUzLjE3LDU0LjMxaDBzLTIxMy41MSwwLTIxMy41MSwwbC4wOC01NC4zMWMwLTI5LjYxLDIzLjctNTMuNjksNTMuMTctNTQuMzFoMHMxMjkuOTMsMCwxMjkuOTMsMGMzMi4wNS0uMjcsNDEuNzcuNDIsNjYuMzEtMTUuODQsNC42Ni0zLjA5LDguNzItNi41OSwxMi4yOS0xMC4yNi0uMDEtLjAxLS4wMi0uMDItLjA0LS4wMywxNS45NS0xNi42MiwyNS43NS0zOS4xNywyNS43NS02NC4wM0MzMzEuNzgsNDEuNDEsMjkwLjM4LDAsMjM5LjMxLDBIMi42OHYxNTYuNzljMTAuNTEtMTkuNTUsMjQuNjktMjkuNDcsNDEuNjEtMzcuNTVWNDEuNjFoMTk1LjAyYzI4LjA5LDAsNTAuODYsMjIuNzcsNTAuODYsNTAuODZzLTIyLjU1LDUwLjYzLTUwLjQ1LDUwLjg1aC0xMTguOTVsLS45My4xN3MtNDMuOS0yLjY5LTcwLjUxLDEzLjAxQzIxLjQ2LDE3MywyLjc3LDIwMy4zNywyLjc3LDIzOC4xMXY5NC43N2gyNTcuMzV2LS4wMmM1MS4yOC0xLjIzLDkyLjQ2LTQzLjE4LDkyLjQ2LTk0Ljc0LDAtMjIuODQtOC4wOS00My43OC0yMS41NS02MC4xNCIvPjwvc3ZnPg==" alt="Beyond the Clinic"></div>
+      <h1>Deploy <span class="thin">— on a page</span></h1>
+    </div>
+    <div class="meta">
+      <span class="chip gate">CP3 · Gate 3</span>
+      <span class="chip">Beyond the Clinic</span>
+      <span class="chip">v1.0 · 09 Jul 2026</span>
+      <span class="chip solid">Maxxim 3D Process</span>
+    </div>
+  </header>
+
+  <div class="canvas">
+
+    <!-- slot: activation-at-a-glance | sources: imc-summary §1, §15 | budget: 50 words + 3 objectives | archetype notes (sme): campaign rationale framed as the founder's near-term commercial wedge (insurer pilot), not a mass brand ambition -->
+    <div class="box" id="box-glance">
+      <div class="box-label">Activation at a glance</div>
+      <p class="lead">One belief, one CTA, one wedge. Every channel builds credibility, captures demand, or enables the sale — all converging on "Book a pilot scoping session," with the insurer as the near-term revenue path. Proof leads: the nib Project Mobilise ~3x ROI case study, built once, placed everywhere.</p>
+      <ul>
+        <li><strong>Convert the insurer wedge</strong> into signed pilots — the near-term revenue path.</li>
+        <li><strong>Activate the surgical channel</strong> through the Stryker relationship.</li>
+        <li><strong>Reduce founder dependency</strong> — move the close path into the CRM, not Ali's memory.</li>
+      </ul>
+    </div>
+
+    <!-- slot: channel-plan | sources: seo-strategy, edm-plan, pr-plan, events-plan, crm-plan, paid-media-plan, traditional-media-plan, pr-plan §7 (social), imc-summary | budget: 8 × 22 words | archetype notes (sme): integrated sales + marketing funnel — every channel named as one system feeding a single pilot-scoping CTA, not parallel campaigns -->
+    <div class="box" id="box-channels">
+      <div class="box-label">Channel plan — one system, one CTA</div>
+      <div class="channel-grid">
+        <div class="channel-cell">
+          <div class="ch-name">SEO</div>
+          <div class="ch-play">Own a tight cluster of AU insurer / surgical decision-stage terms; make the hub the durable destination.</div>
+          <div class="ch-kpi">KPI: page-1 AU visibility on the priority term set by 12 months.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">EDM</div>
+          <div class="ch-play">Five buyer-segmented sequences nurture named accounts on triggers, not on Ali remembering.</div>
+          <div class="ch-kpi">KPI: insurer sequence touches 100% of scoping sessions first.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">PR</div>
+          <div class="ch-play">Earned credibility in Tier 1/2 outlets, led by Dr Tsung's clinician-founder voice.</div>
+          <div class="ch-kpi">KPI: 6–10 quality placements, 2–3 bylines over 12 months.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">Events</div>
+          <div class="ch-play">Owned insurer roundtables and partner briefings warm named accounts toward a scoping ask.</div>
+          <div class="ch-kpi">KPI: 4+ insurer scoping sessions sourced or advanced.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">CRM</div>
+          <div class="ch-play">Procurement-led pipeline stages hold the documented close path so no deal lives in one head.</div>
+          <div class="ch-kpi">KPI: majority of proposals issued from reusable assets.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">Paid media</div>
+          <div class="ch-play">LinkedIn ABM to named accounts, brand-defence search, and retargeting — air cover, never the engine.</div>
+          <div class="ch-kpi">KPI: capped at 7% of budget; no consumer prospecting.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">Social / content</div>
+          <div class="ch-play">Every earned placement and case-study derivative reshared via BTC and founder LinkedIn profiles.</div>
+          <div class="ch-kpi">KPI: one creation, many placements — no paid social prospecting.</div>
+        </div>
+        <div class="channel-cell">
+          <div class="ch-name">Traditional media</div>
+          <div class="ch-play">Not recommended: broad reach would spend against people BTC does not need to reach.</div>
+          <div class="ch-kpi">KPI: no budget allocated — TV, radio, print ruled out by design.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- slot: measurement | sources: marketing-plan goal (via events-plan §Objective 1), case-study, pr-plan §1, edm-plan §1, events-plan §Objective 4, imc-summary §14 | budget: 4–6 tiles + 20 words | archetype notes (sme): pipeline + conversion-reliability KPIs, not reach — matches the SME "revenue, pipeline" numbers lens -->
+    <div class="box tint" id="box-measurement">
+      <div class="box-label">Measurement</div>
+      <div class="kpis">
+        <div class="kpi"><span class="num">8</span><span class="lbl">Qualified pilot-scoping sessions — the north star</span></div>
+        <div class="kpi"><span class="num"><em>~3x</em></span><span class="lbl">nib Project Mobilise ROI — hero proof</span></div>
+        <div class="kpi"><span class="num">6–10</span><span class="lbl">Quality PR placements over 12 months</span></div>
+        <div class="kpi"><span class="num">100%</span><span class="lbl">Scoping sessions touched by EDM first</span></div>
+        <div class="kpi"><span class="num">80%</span><span class="lbl">Named accounts enrolled in nurture by H1</span></div>
+        <div class="kpi"><span class="num">5+</span><span class="lbl">Reusable content pieces per event</span></div>
+      </div>
+      <p class="rhythm">Fortnightly pipeline review, monthly channel report, quarterly strategic review against the five objectives; baselines set after one full quarter.</p>
+    </div>
+
+    <!-- slot: cadence | sources: edm-plan §3, imc-summary §12, §14 | budget: 40 words + roadmap line | archetype notes (sme): weekly/fortnightly rhythm sized to a small owner-led team, not an agency cadence -->
+    <div class="box" id="box-cadence">
+      <div class="box-label">Cadence</div>
+      <p>Nurture runs roughly fortnightly inside an active sequence; a light monthly update keeps warm contacts and subscribers engaged. Named-pipeline review is fortnightly, channel reporting monthly, and a full strategic review runs quarterly against the five marketing objectives.</p>
+      <p><strong>Roadmap:</strong> Days 1–30 foundation → 31–60 capture surfaces live → 61–90 system in motion → H2 scale &amp; proof.</p>
+    </div>
+
+    <!-- slot: journey-x-touchpoints | sources: imc-summary §3 (Channel Integration Map), §4 (Priya journey) | budget: 4 stages × 4 items | archetype notes (sme): integrated sales + marketing funnel across a long committee cycle -->
+    <div class="box" id="box-journey">
+      <div class="box-label">Journey × touchpoints</div>
+      <div class="journey">
+        <div class="stage-cell">
+          <div class="stage-name">Awareness</div>
+          <ul>
+            <li>PR earned coverage &amp; Dr Tsung thought leadership</li>
+            <li>Speaking placements at industry events</li>
+            <li>SEO authority hub &amp; content</li>
+            <li>Peer roundtable introductions warm the room</li>
+          </ul>
+        </div>
+        <div class="stage-cell">
+          <div class="stage-name">Consideration</div>
+          <ul>
+            <li>SEO pathway &amp; proof pages capture research</li>
+            <li>Owned roundtables &amp; partner briefings</li>
+            <li>5-email insurer EDM nurture sequence</li>
+            <li>LinkedIn ABM keeps proof visible to the account</li>
+          </ul>
+        </div>
+        <div class="stage-cell">
+          <div class="stage-name">Decision</div>
+          <ul>
+            <li>Case-study proof pack + pricing card arms the champion</li>
+            <li>Retargeting recovers known visitors</li>
+            <li>CRM pilot-scoping stage: cohort, metrics, go/no-go gate</li>
+            <li>Booked scoping session → signed pilot</li>
+          </ul>
+        </div>
+        <div class="stage-cell">
+          <div class="stage-name">Retention / advocacy</div>
+          <ul>
+            <li>CRM rollout &amp; expansion stages</li>
+            <li>Board-ready ROI &amp; claims-impact reporting</li>
+            <li>Renewal &amp; reference creation</li>
+            <li>The proven fund becomes "the next nib"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- slot: budget-split | sources: imc-summary §2 (Total Investment Summary) | budget: 5 lines (source gives 7 stated categories, shown in full — all figures are the source's own percentage split, not invented) | archetype notes (sme): allocation weighted to owned content and relationships over media spend, consistent with a founder-led B2B sale -->
+    <div class="box" id="box-budget">
+      <div class="box-label">Budget split <span class="sub">— % of marketing budget</span></div>
+      <div class="budget-rows">
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Owned content, thought leadership, creative</span><span class="b-pct">30%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:100%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Account-based outreach, referral, sales enablement</span><span class="b-pct">25%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:83%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Events, forums, conferences</span><span class="b-pct">15%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:50%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Email, CRM, marketing automation</span><span class="b-pct">10%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:33%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">SEO &amp; owned hub</span><span class="b-pct">8%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:27%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Paid media (LinkedIn ABM + branded search)</span><span class="b-pct">7%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:23%"></div></div>
+        </div>
+        <div class="budget-row">
+          <div class="b-top"><span class="b-name">Contingency</span><span class="b-pct">5%</span></div>
+          <div class="b-bar"><div class="b-fill" style="width:17%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- slot: risks | sources: imc-summary §15 (hard gates), §13 (founder dependency) | budget: 4 × 15 words | archetype notes (sme): risks framed as gates on a founder-led sale (consent, platform, destinations, single-point dependency) -->
+    <div class="box" id="box-risks">
+      <div class="box-label">Risks</div>
+      <ul>
+        <li><strong>Partner consent pending</strong> (nib, Stryker) blocks all named proof — pursued from day 1; de-identified angles run meanwhile.</li>
+        <li><strong>CRM / ESP not yet chosen</strong> — blocks EDM automation and attribution — settle both in the first 30 days.</li>
+        <li><strong>Owned destinations not live</strong> — blocks paid, SEO content, and events conversion — build conversion pages first.</li>
+        <li><strong>Ali is the central sales dependency</strong> — the CRM, EDM, and case study move the close path into the system.</li>
+      </ul>
+    </div>
+
+    <!-- slot: governance | sources: crm-plan §1, §7 (owners), pr-plan §4, §8 (spokesperson protocols) | budget: ≤4 rows | archetype notes (sme): owner-per-function RACI, sized to a five-person founder-led team, not a full corporate RACI -->
+    <div class="box" id="box-governance">
+      <div class="box-label">Governance</div>
+      <table class="mini">
+        <thead><tr><th>Stream</th><th>Responsible</th><th>Accountable</th></tr></thead>
+        <tbody>
+          <tr><td>Commercial pipeline &amp; pricing sign-off</td><td><strong>Ali Stokes</strong></td><td>Ali Stokes + leadership</td></tr>
+          <tr><td>Clinical voice &amp; PR</td><td><strong>Dr Jason Tsung</strong></td><td>Leadership, legal, clinical</td></tr>
+          <tr><td>Content capture &amp; reporting</td><td><strong>Taylor</strong></td><td>Ali Stokes</td></tr>
+          <tr><td>Pilot activation &amp; operations</td><td><strong>Courtney</strong></td><td>Ali Stokes (commercial)</td></tr>
+        </tbody>
+      </table>
+      <p class="gov-note">Hard control: no opportunity advances to a buyer-facing price until pricing sign-off status is set to "signed off" by Ali Stokes.</p>
+    </div>
+
+    <!-- slot: gate-3-next-90-days | sources: imc-summary §15 (Gate 3 recommendation), §12 (implementation timeline) | budget: 6 actions | archetype notes (sme): verdict framed as founder-led "proceed to execution", runway sequenced by the source's own day-ranges and named owners -->
+    <div class="box gate-box" id="box-gate">
+      <div class="box-label">Gate 3 · next 90 days</div>
+      <div class="verdict">Proceed to execution.</div>
+      <p class="gate-sub">A coherent, integrated system: one CTA, one proof spine, a CRM backbone against founder dependency.</p>
+      <ul>
+        <li><strong>Days 1–30:</strong> Stand up the CRM &amp; stage gates; pursue nib and Stryker consent — owner Ali Stokes.</li>
+        <li><strong>Days 1–30:</strong> Build the insurer proof pack and case-study draft; technical SEO foundation at site build.</li>
+        <li><strong>Days 31–60:</strong> Launch hub conversion pages, proof pack, and pilot-scoping page.</li>
+        <li><strong>Days 31–60:</strong> Build the five EDM automations; load named-account ABM lists.</li>
+        <li><strong>Days 61–90:</strong> Run the first insurer roundtable — owners Dr Tsung &amp; Ali Stokes.</li>
+        <li><strong>Days 61–90:</strong> Switch on LinkedIn ABM at half pace; first PR placements and a speaking slot.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="sheet-foot">
+    <div class="signoff">
+      <div class="sig"><span class="k">Prepared by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Approved by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Date</span><span class="line"></span></div>
+    </div>
+    <div class="src">Distilled from: imc-summary · 8 channel plans · validation-register — generated 09 Jul 2026</div>
+    <div class="brandline">Powered by <strong>Maxxim</strong> · 3D Process</div>
+  </footer>
+
+</section></div>
+<script>
+const fit=()=>{const st=document.querySelector('.stage'),sh=document.querySelector('.sheet');const f=Math.min(1,(innerWidth-32)/sh.offsetWidth);document.documentElement.style.setProperty('--fit',f);st.style.height=(sh.offsetHeight*f)+'px';};
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
