@@ -267,7 +267,7 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
 /* ---- overall canvas rhythm: three bands ------------------------------ */
 .canvas{
   /* rows sized by fr so THE CORE stays dense and rows 1/3 breathe */
-  grid-template-rows: minmax(0,1fr) minmax(0,1.62fr) minmax(0,0.7fr);
+  grid-template-rows: minmax(0,1.12fr) minmax(0,1.5fr) minmax(0,0.72fr);
 }
 
 /* band 1 — belief / ready / killer questions */
@@ -311,7 +311,11 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
 .core-box table.mini td, .core-box table.mini th{ padding: 1.1mm 1.5mm; font-size: 6.6pt; }
 .core-box table.mini th{ font-size: 5.8pt; }
 
-.b-killer ol{ list-style: none; counter-reset: kq; display:flex; flex-direction:column; gap: 1.6mm; }
+/* distribute short checklists over the box height (breathing room, not clutter) */
+.b-ready .checklist{ flex: 1; align-content: space-evenly; }
+.b-ready .check .t{ font-size: 7.8pt; }
+
+.b-killer ol{ list-style: none; counter-reset: kq; display:flex; flex-direction:column; gap: 1.6mm; flex: 1; justify-content: space-evenly; }
 .b-killer ol li{ counter-increment: kq; padding-left: 5mm; position: relative; }
 .b-killer ol li::before{
   content: counter(kq); position:absolute; left:0; top:0;

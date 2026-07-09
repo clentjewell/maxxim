@@ -292,12 +292,11 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
 /* --- content boxes: top-aligned (label pinned at the very top, content
        flows down from it); sparse boxes let their content distribute over
        the remaining height so nothing pools at the top --- */
-.b-brand, .b-business, .b-messaging, .b-platform { gap: 2.6mm; }
-.b-brand { justify-content: space-between; }
-.b-brand p, .b-messaging p { line-height: 1.6; }
+.b-brand, .b-business, .b-messaging, .b-platform { gap: 3.2mm; }
+.b-brand p, .b-messaging p { line-height: 1.62; }
 .b-business ul, .b-platform ul { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; gap: 2.6mm; }
 .b-business li, .b-platform li { margin-bottom: 0; line-height: 1.6; }
-.b-messaging .pills { margin-top: auto; padding-bottom: 1mm; }
+.b-messaging .pills { gap: 1.8mm; }
 
 /* --- customer box: persona cards stacked, compact --- */
 .b-customer { gap: 1.8mm; }
@@ -395,11 +394,14 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
     <!-- slot: messaging | sources: copy-deck, brand-strategy | budget: 60 words | archetype notes: sme — pillars and tone applied as the brand-system voice guide, phrases rendered as reusable pills for a sales/marketing motion. -->
     <div class="box b-messaging">
       <span class="box-label">Messaging</span>
-      <p><strong>Pillars:</strong> proof before promise, clinician-built credibility, Australian differentiation, whole-pathway coordination. <strong>Voice:</strong> plain over technical, evidence-led over hype. <strong>Do:</strong> "roughly 3x ROI" — named and sized to evidence. <strong>Don't:</strong> "digital physio", "just an app", AI-hype, generic wellness language.</p>
+      <p><strong>Pillars:</strong> proof before promise, clinician-built credibility, Australian differentiation, whole-pathway coordination. <strong>Voice:</strong> plain over technical, evidence-led over hype, commercially clear over visionary.</p>
+      <p><strong>Do:</strong> "roughly 3x ROI" — named proof, sized to evidence. <strong>Don't:</strong> "digital physio", "just an app", AI-hype, generic wellness language. Predictive AI is roadmap, never present tense.</p>
       <div class="pills">
         <span class="pill hot">Be · Beyond · Happier</span>
         <span class="pill">Why → Result → Method</span>
         <span class="pill">~3x ROI</span>
+        <span class="pill">Book a pilot scoping session</span>
+        <span class="pill">The whole pathway, not one episode</span>
       </div>
     </div>
 
