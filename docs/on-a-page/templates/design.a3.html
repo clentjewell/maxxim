@@ -263,7 +263,7 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
    fabricated hex value. */
 
 .canvas {
-  grid-template-rows: 0.74fr 1.38fr 1.3fr 1.02fr;
+  grid-template-rows: 0.58fr 1.44fr 1.36fr 1.06fr;
 }
 
 /* row 1 — hero, full width */
@@ -289,12 +289,15 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
 .type-note { font-size: 6.6pt; line-height: 1.4; color: var(--muted); }
 .type-note strong { color: var(--ink); }
 
-/* --- content boxes: top-aligned (label first, content flows down);
-       generous line spacing absorbs residual height without floating --- */
+/* --- content boxes: top-aligned (label pinned at the very top, content
+       flows down from it); sparse boxes let their content distribute over
+       the remaining height so nothing pools at the top --- */
 .b-brand, .b-business, .b-messaging, .b-platform { gap: 2.6mm; }
+.b-brand { justify-content: space-between; }
 .b-brand p, .b-messaging p { line-height: 1.6; }
-.b-business ul, .b-platform ul { display: flex; flex-direction: column; gap: 3mm; }
+.b-business ul, .b-platform ul { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; gap: 2.6mm; }
 .b-business li, .b-platform li { margin-bottom: 0; line-height: 1.6; }
+.b-messaging .pills { margin-top: auto; padding-bottom: 1mm; }
 
 /* --- customer box: persona cards stacked, compact --- */
 .b-customer { gap: 1.8mm; }
