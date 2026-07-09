@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design — on a page · Beyond the Clinic · Maxxim 3D</title>
+<meta name="maxxim:client" content="beyond-the-clinic">
+<meta name="maxxim:phase" content="design">
+<meta name="maxxim:skill" content="on-a-page">
+<meta name="maxxim:archetype" content="sme">
+<meta name="maxxim:checkpoint" content="CP2">
+<meta name="maxxim:generated" content="2026-07-09">
+<meta name="maxxim:sources" content="strategy-summary, brand-strategy, brand-guidelines, customer-profile, business-plan, marketing-plan, copy-deck, website-strategy, social-strategy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   Maxxim — On-a-Page A3 framework
+   One printed A3 landscape sheet (420 × 297 mm), boxed-segment layout.
+   Every On-a-Page artifact inlines this file verbatim, then sets the client
+   brand tokens in its own :root block. Layout lives in the page; components
+   live here. No content styles may hardcode colour — tokens only.
+   ========================================================================== */
+
+:root {
+  /* ---- Client brand tokens (SWAP PER CLIENT — these are the only knobs) */
+  --ink: #171c3d;        /* primary dark: headings, key text */
+  --accent: #fd8457;     /* single accent: labels, highlights, rules */
+  --paper: #ffffff;      /* sheet background */
+  --tint: #f6f7fb;       /* soft panel background */
+  --line: #e7e9f1;       /* hairline borders */
+  --muted: #4a5565;      /* secondary text */
+  --font-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* ---- Fixed scale (do not swap) */
+  --gap: 3mm;
+  --radius: 1.6mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #3a3f4c; }
+body { font-family: var(--font-body); color: var(--ink); }
+
+/* ---------------------------------------------------------------- sheet */
+.sheet {
+  width: 420mm; height: 297mm;
+  background: var(--paper);
+  padding: 7mm 9mm 6mm;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  margin: 0 auto;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+/* Screen preview: centre the sheet, scale to fit (script sets --fit). */
+@media screen {
+  body { padding: 24px 0; }
+  .stage { transform: scale(var(--fit, 0.5)); transform-origin: top center; }
+  .sheet { box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45); }
+}
+@page { size: A3 landscape; margin: 0; }
+@media print {
+  html, body { background: var(--paper); padding: 0; }
+  .stage { transform: none; }
+  .toolbar { display: none; }
+}
+
+/* ------------------------------------------------------------ header band */
+.sheet-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 8mm; padding-bottom: 3mm; margin-bottom: var(--gap);
+  border-bottom: 0.7mm solid var(--ink);
+}
+.sheet-head .ident { display: flex; align-items: center; gap: 4mm; }
+.sheet-head .logo img { height: 9mm; width: auto; display: block; }
+.sheet-head .logo .logo-text {
+  font-family: var(--font-head); font-weight: 700; font-size: 15pt; letter-spacing: -0.02em;
+}
+.sheet-head h1 {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 21pt; letter-spacing: -0.015em; line-height: 1;
+}
+.sheet-head h1 .thin { font-weight: 500; color: var(--muted); }
+.sheet-head .meta { display: flex; align-items: center; gap: 2.5mm; }
+
+.chip {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.5pt;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.4mm 3.2mm; color: var(--muted); white-space: nowrap;
+}
+.chip.gate { border-color: var(--accent); color: var(--accent); }
+.chip.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------------------- canvas */
+.canvas {
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap);
+  grid-auto-rows: minmax(0, auto);
+}
+
+/* ------------------------------------------------------------------ boxes */
+.box {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  background: var(--paper); padding: 2.8mm 3.2mm;
+  overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column; gap: 1.6mm;
+}
+.box.tint { background: var(--tint); }
+.box.ink { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.box.ink .box-label { color: var(--accent); }
+.box.ink p, .box.ink li { color: color-mix(in srgb, var(--paper) 88%, var(--ink)); }
+.box.rule-top { border-top: 1mm solid var(--accent); }
+
+.box-label {
+  font-family: var(--font-label); font-weight: 600;
+  font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); flex: none;
+}
+.box-label .sub { color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: none; }
+
+/* ------------------------------------------------------------- type scale */
+.box h3 { font-family: var(--font-head); font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; line-height: 1.15; }
+.box h4 { font-family: var(--font-head); font-weight: 600; font-size: 8.2pt; line-height: 1.2; }
+.box p  { font-size: 7.6pt; line-height: 1.42; color: var(--muted); }
+.box p.lead { font-size: 9.2pt; line-height: 1.35; color: var(--ink); font-weight: 500; }
+.box .statement {
+  font-family: var(--font-head); font-weight: 600; font-size: 13pt;
+  line-height: 1.22; letter-spacing: -0.01em; color: var(--ink);
+}
+.box ul { list-style: none; }
+.box li {
+  font-size: 7.6pt; line-height: 1.4; color: var(--muted);
+  padding-left: 3mm; position: relative; margin-bottom: 1mm;
+}
+.box li::before {
+  content: ''; position: absolute; left: 0; top: 1.35mm;
+  width: 1.4mm; height: 1.4mm; background: var(--accent); border-radius: 0.2mm;
+}
+.box li strong, .box p strong { color: var(--ink); font-weight: 600; }
+
+/* -------------------------------------------------------------- KPI tiles */
+.kpis { display: grid; gap: var(--gap); }
+.kpi {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  padding: 2.4mm 3mm; background: var(--tint); overflow: hidden;
+}
+.kpi .num {
+  font-family: var(--font-head); font-weight: 700; font-size: 16pt;
+  letter-spacing: -0.02em; line-height: 1; color: var(--ink); display: block;
+}
+.kpi .num em { font-style: normal; color: var(--accent); }
+.kpi .lbl {
+  display: block; margin-top: 1.2mm; font-family: var(--font-label); font-weight: 600;
+  font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ----------------------------------------------------------- mini tables */
+table.mini { width: 100%; border-collapse: collapse; }
+table.mini th {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.2pt;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: left;
+  color: var(--paper); background: var(--ink); padding: 1.4mm 2mm;
+}
+table.mini td {
+  font-size: 7.2pt; line-height: 1.35; color: var(--muted);
+  padding: 1.4mm 2mm; border-bottom: 0.25mm solid var(--line); vertical-align: top;
+}
+table.mini td strong { color: var(--ink); }
+table.mini tr:nth-child(even) td { background: var(--tint); }
+
+/* ---------------------------------------------------------------- pills */
+.pills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+.pill {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.6pt;
+  letter-spacing: 0.05em; border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.1mm 2.8mm; color: var(--ink); background: var(--paper); white-space: nowrap;
+}
+.pill.hot { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+/* -------------------------------------------------- journey / funnel bar */
+.journey { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.6mm; }
+.journey .stage-cell { min-width: 0; }
+.journey .stage-name {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.4pt;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+  background: var(--ink); border-radius: 1mm; padding: 1.3mm 2mm; text-align: center;
+  position: relative; margin-bottom: 1.6mm;
+}
+.journey .stage-cell:nth-child(even) .stage-name { background: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
+.journey ul { list-style: none; }
+.journey li { font-size: 6.8pt; line-height: 1.35; color: var(--muted); padding-left: 2.6mm; position: relative; margin-bottom: 0.9mm; }
+.journey li::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1.2mm; height: 1.2mm; background: var(--accent); border-radius: 0.2mm; }
+
+/* -------------------------------------------------------- persona cards */
+.persona { border: 0.35mm solid var(--line); border-radius: var(--radius); padding: 2.2mm 2.6mm; background: var(--paper); overflow: hidden; }
+.persona .p-name { font-family: var(--font-head); font-weight: 700; font-size: 8.6pt; }
+.persona .p-tag { font-family: var(--font-label); font-weight: 600; font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1mm; }
+.persona .pgp { display: grid; gap: 0.8mm; margin-top: 1.2mm; }
+.persona .pgp .row { font-size: 6.9pt; line-height: 1.32; color: var(--muted); }
+.persona .pgp .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-right: 1mm; }
+
+/* ----------------------------------------------------- checklists (READY) */
+.checklist { display: grid; gap: 1.2mm; }
+.check { display: flex; gap: 2mm; align-items: baseline; }
+.check .tick {
+  flex: none; width: 3.4mm; height: 3.4mm; border-radius: 0.8mm;
+  background: var(--accent); color: var(--paper);
+  font-size: 6.5pt; font-weight: 700; line-height: 3.4mm; text-align: center;
+  transform: translateY(0.6mm);
+}
+.check.open .tick { background: var(--paper); border: 0.4mm solid var(--accent); color: var(--accent); }
+.check .t { font-size: 7.4pt; line-height: 1.35; color: var(--muted); }
+.check .t strong { color: var(--ink); }
+
+/* --------------------------------------------------------- gate decision */
+.gate-box { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.gate-box .box-label { color: var(--accent); }
+.gate-box .verdict { font-family: var(--font-head); font-weight: 700; font-size: 12pt; line-height: 1.15; }
+.gate-box p, .gate-box li { color: color-mix(in srgb, var(--paper) 86%, var(--ink)); }
+.gate-box li::before { background: var(--accent); }
+
+/* ------------------------------------------------------------ swatches */
+.swatches { display: flex; gap: 1.6mm; }
+.swatch { flex: 1; border-radius: 1mm; border: 0.25mm solid var(--line); overflow: hidden; }
+.swatch .col { height: 7mm; }
+.swatch .code { font-family: var(--font-label); font-size: 5.6pt; letter-spacing: 0.04em; color: var(--muted); padding: 0.8mm 1.4mm; display: block; }
+
+/* ------------------------------------------------------------ footer band */
+.sheet-foot {
+  margin-top: var(--gap); padding-top: 2.2mm; border-top: 0.35mm solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 6mm; flex: none;
+}
+.sheet-foot .signoff { display: flex; gap: 6mm; }
+.sheet-foot .sig { display: flex; align-items: baseline; gap: 2mm; }
+.sheet-foot .sig .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sheet-foot .sig .line { display: inline-block; width: 26mm; border-bottom: 0.3mm solid var(--muted); height: 3.5mm; }
+.sheet-foot .src { font-size: 6pt; line-height: 1.4; color: var(--muted); max-width: 150mm; }
+.sheet-foot .brandline { font-family: var(--font-label); font-weight: 600; font-size: 6.2pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.sheet-foot .brandline strong { color: var(--ink); }
+
+/* ------------------------------------------------------------- toolbar */
+.toolbar {
+  position: fixed; top: 12px; right: 16px; z-index: 20; display: flex; gap: 8px;
+}
+.toolbar button {
+  font-family: var(--font-label); font-weight: 600; font-size: 12px;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 14px; cursor: pointer;
+}
+</style>
+<style>
+/* === page grid: BTC brand tokens + grid placement =========================
+   Tokens already match the Design-phase visual direction: vivid orange
+   accent (--accent) and a deep navy ink (--ink) stand in for BTC's working
+   palette (vivid orange primary / deep blue-cobalt secondary). Exact hex,
+   CMYK and PMS values are locked at the brand-identity stage per
+   brand-guidelines.html — swatches below are labelled by role, not by a
+   fabricated hex value. */
+
+.canvas {
+  grid-template-rows: 0.74fr 1.38fr 1.3fr 1.02fr;
+}
+
+/* row 1 — hero, full width */
+.b-strategy { grid-column: 1 / 13; grid-row: 1 / 2; gap: 2mm; }
+.b-strategy .kicker { font-family: var(--font-label); font-weight: 600; font-size: 6.6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.b-strategy .proofline { font-size: 8pt; color: var(--muted); }
+.b-strategy .proofline strong { color: var(--ink); }
+
+/* row 2 */
+.b-brand    { grid-column: 1 / 5;  grid-row: 2 / 3; }
+.b-customer { grid-column: 5 / 9;  grid-row: 2 / 3; }
+.b-business { grid-column: 9 / 13; grid-row: 2 / 3; }
+
+/* row 3 */
+.b-messaging { grid-column: 1 / 5;  grid-row: 3 / 4; }
+.b-platform  { grid-column: 5 / 9;  grid-row: 3 / 4; }
+.b-success   { grid-column: 9 / 13; grid-row: 3 / 4; }
+
+/* row 4 — gate, full width */
+.b-gate { grid-column: 1 / 13; grid-row: 4 / 5; }
+
+/* --- brand box internals --- */
+.type-note { font-size: 6.6pt; line-height: 1.4; color: var(--muted); }
+.type-note strong { color: var(--ink); }
+
+/* --- content boxes: top-aligned (label first, content flows down);
+       generous line spacing absorbs residual height without floating --- */
+.b-brand, .b-business, .b-messaging, .b-platform { gap: 2.6mm; }
+.b-brand p, .b-messaging p { line-height: 1.6; }
+.b-business ul, .b-platform ul { display: flex; flex-direction: column; gap: 3mm; }
+.b-business li, .b-platform li { margin-bottom: 0; line-height: 1.6; }
+
+/* --- customer box: persona cards stacked, compact --- */
+.b-customer { gap: 1.8mm; }
+.b-customer .persona { flex: 1; }
+.b-customer .persona p { line-height: 1.5; }
+.b-customer .persona { padding: 1.8mm 2.2mm; gap: 0; }
+.b-customer .persona .p-name { font-size: 7.8pt; }
+.b-customer .persona .p-tag { margin-bottom: 0.6mm; }
+.b-customer .persona p { margin-top: 0.5mm; }
+
+/* --- success measures: 3x2 KPI grid --- */
+.b-success .kpis { grid-template-columns: repeat(3, 1fr); flex: 1; }
+.b-success .kpi { display: flex; flex-direction: column; justify-content: center; }
+.b-success .kpi .num { font-size: 15pt; }
+.b-success .kpi .lbl { font-size: 6.3pt; }
+
+/* --- gate 2 decision: three-column verdict layout --- */
+.b-gate { gap: 2.4mm; padding: 3.4mm 5mm; }
+.b-gate .verdict { font-size: 14pt; margin-bottom: 0; }
+.gate-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; flex: 1; min-height: 0; align-content: start; }
+.gate-cols h4 { font-family: var(--font-label); font-weight: 600; font-size: 6.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4mm; }
+.gate-cols ul { margin: 0; display: flex; flex-direction: column; gap: 1.4mm; }
+.gate-cols li { margin-bottom: 0; font-size: 8pt; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="print()">Print / Save PDF (A3)</button></div>
+<div class="stage"><section class="sheet">
+
+  <header class="sheet-head">
+    <div class="ident">
+      <div class="logo"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIxLjE2IDc4Ny45NiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMxNzFjM2Q7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQyMS44MiwyMzEuMTdjNi4wNywzNi43MSwzNy45Niw2NC43Miw3Ni4zOSw2NC43MiwyNS4xMywwLDQ3LjQ1LTExLjk3LDYxLjYtMzAuNTJsMzQuNjUsMjMuMTVjLTIxLjY1LDI5LjY5LTU2LjcsNDguOTgtOTYuMjUsNDguOTgtNjEuNDUsMC0xMTIuMDMtNDYuNTctMTE4LjM3LTEwNi4zMy0uNDQtNC4xOC0uNjctOC40Mi0uNjctMTIuNzIsMC03LjUuNy0xNC44NCwyLjAyLTIxLjk2LDEwLjMtNTUuMjYsNTguNzgtOTcuMDksMTE3LjAyLTk3LjA5czEwNi43Myw0MS44MywxMTcuMDMsOTcuMDljMS4zMiw3LjEyLDIuMDIsMTQuNDYsMi4wMiwyMS45NiwwLDQuMjktLjIzLDguNTQtLjY4LDEyLjcyaC0xOTQuNzdaTTU3Mi40OSwxOTYuNDljLTkuNDctMzIuMDctMzkuMTMtNTUuNDgtNzQuMjgtNTUuNDhzLTY0LjgxLDIzLjQtNzQuMjgsNTUuNDhoMTQ4LjU1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTg0NC4wMiwxMDQuMDNsLTkyLjQ2LDIyOC43My0zOS4zLDk3LjJoLTQzLjkxbDM0LjI2LTg0Ljc2YzMuMjMtNy45OCwzLjIzLTE2LjkxLDAtMjQuODlsLTg3LjQzLTIxNi4yOGg0My45Mmw3MC41LDE3NC40LDcwLjUtMTc0LjRoNDMuOTJaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTA4MC41OSwyMTguNDVjMCw2NS43NS01My4zMSwxMTkuMDUtMTE5LjA1LDExOS4wNXMtMTE5LjA1LTUzLjMtMTE5LjA1LTExOS4wNSw1My4zLTExOS4wNCwxMTkuMDUtMTE5LjA0LDExOS4wNSw1My4zLDExOS4wNSwxMTkuMDRNMTAzOC45OCwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDQsMzQuNjctNzcuNDQsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDQsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzEyLjk0LDE5OC44djEzNC4wN2gtNDEuNjF2LTEzNC4wN2MwLTMxLjkxLTI1Ljg3LTU3Ljc5LTU3Ljc5LTU3Ljc5cy01Ny43OSwyNS44OC01Ny43OSw1Ny43OXYxMzMuNjhoLTQxLjYxVjEwMy42NGg0MS42MXYyMi4wOGMxMi44LTE2LjM0LDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQsNDQuNSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTgzLjcxLDB2MzMyLjg3aC00MS42MXYtMzAuNDhjLTE4LjA4LDIxLjY4LTQ0LjQ1LDM1LjEtNzcuNDQsMzUuMS02NS43NSwwLTExOS4wNS01My4zLTExOS4wNS0xMTkuMDVzNTMuMy0xMTkuMDQsMTE5LjA1LTExOS4wNGMzMi45OSwwLDU5LjM2LDEzLjQyLDc3LjQ0LDM1LjFWMGg0MS42MVpNMTU0Mi4xMSwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDMsMzQuNjctNzcuNDMsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDMsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTI5Ljg4IDQ4OS43NiAxMjkuODggNzgzLjM0IDg4LjI3IDc4My4zNCA4OC4yNyA0ODkuNzYgMCA0ODkuNzYgMCA0NTAuNDYgMjE3LjMgNDUwLjQ2IDIxNy4zIDQ4OS43NiAxMjkuODggNDg5Ljc2Ii8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDM5LjE1LDY0OS4yNnYxMzQuMDdoLTQxLjYxdi0xMzQuMDdjMC0zMS45MS0yNS44Ny01Ny43OS01Ny44LTU3Ljc5cy01Ny43OSwyNS44Ny01Ny43OSw1Ny43OXYxMzMuNjloLTQxLjZ2LTMzMi40OWg0MS42djEyNS43MWMxMi44LTE2LjMzLDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQxLDQ0LjUsOTkuNDEsOTkuMzkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MTYuMTEsNjgxLjYyYzYuMDcsMzYuNzIsMzcuOTYsNjQuNzMsNzYuMzksNjQuNzMsMjUuMTMsMCw0Ny40NS0xMS45Nyw2MS42LTMwLjUybDM0LjY1LDIzLjE1Yy0yMS42NSwyOS42OS01Ni43LDQ4Ljk4LTk2LjI1LDQ4Ljk4LTYxLjQ1LDAtMTEyLjAzLTQ2LjU3LTExOC4zNy0xMDYuMzQtLjQ0LTQuMTgtLjY3LTguNDItLjY3LTEyLjcxLDAtNy41LjctMTQuODQsMi4wMi0yMS45NiwxMC4zLTU1LjI2LDU4Ljc4LTk3LjA5LDExNy4wMi05Ny4wOXMxMDYuNzMsNDEuODMsMTE3LjAzLDk3LjA5YzEuMzIsNy4xMiwyLjAyLDE0LjQ2LDIuMDIsMjEuOTYsMCw0LjI5LS4yMyw4LjUzLS42OCwxMi43MWgtMTk0Ljc3Wk02NjYuNzgsNjQ2Ljk1Yy05LjQ3LTMyLjA4LTM5LjEzLTU1LjQ4LTc0LjI4LTU1LjQ4cy02NC44MSwyMy40LTc0LjI4LDU1LjQ4aDE0OC41NVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTI2LjczLDY4OC43NWwzNC42NywyM2MtMzAuNjYsNDUuOTUtODIuOTksNzYuMjEtMTQyLjM3LDc2LjIxLTk0LjQ4LDAtMTcxLjA2LTc2LjU5LTE3MS4wNi0xNzEuMDZzNzYuNTgtMTcxLjA2LDE3MS4wNi0xNzEuMDZjNTkuMjksMCwxMTEuNTMsMzAuMTcsMTQyLjIyLDc1Ljk5bC0zNC41OSwyMy4xMmMtMjMuMjMtMzQuNjctNjIuNzctNTcuNS0xMDcuNjMtNTcuNS03MS41LDAtMTI5LjQ1LDU3Ljk2LTEyOS40NSwxMjkuNDVzNTcuOTYsMTI5LjQ1LDEyOS40NSwxMjkuNDVjNDQuOSwwLDg0LjQ3LTIyLjg3LDEwNy42OS01Ny42Ii8+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxMTk0LjAyIiB5PSI0NTAuNDYiIHdpZHRoPSI0MS42MSIgaGVpZ2h0PSIzMzIuODciLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjg1LjcyLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xMjg1LjcyLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTU3Ni4yMiw2NDkuMjZ2MTM0LjA3aC00MS42MXYtMTM0LjA3YzAtMzEuOTEtMjUuODctNTcuNzktNTcuOC01Ny43OXMtNTcuNzksMjUuODctNTcuNzksNTcuNzl2MTMzLjY4aC00MS42MXYtMjI4Ljg1aDQxLjYxdjIyLjA4YzEyLjgtMTYuMzMsMzEuOC0yNi4zMSw1Ny43OS0yNi4zMSw1NC45LDAsOTkuNCw0NC41MSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNjIyLjExLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xNjIyLjExLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTg4NS42Niw3MTEuOTRsMzQuNiwyMy4xMmMtMjEuMzYsMzEuOS01Ny43MSw1Mi45LTk4Ljk5LDUyLjktNjUuNzUsMC0xMTkuMDUtNTMuMzEtMTE5LjA1LTExOS4wNXM1My4zLTExOS4wNSwxMTkuMDUtMTE5LjA1YzQxLjI4LDAsNzcuNjQsMjEsOTguOTksNTIuOWwtMzQuNiwyMy4xMmMtMTMuODktMjAuNzUtMzcuNTUtMzQuNDEtNjQuMzktMzQuNDEtNDIuNzcsMC03Ny40NCwzNC42Ny03Ny40NCw3Ny40NHMzNC42Nyw3Ny40NCw3Ny40NCw3Ny40NGMyNi44NCwwLDUwLjUtMTMuNjYsNjQuMzktMzQuNDEiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xOTAwLjkxLDQ4NC45NGMwLTUuMjYtNC4yNC05LjUyLTkuNDgtOS41MmgtMTAuNzR2MzAuNDdoMi41M3YtMTEuNDJoNy44NWw3LjUyLDExLjQyaDIuOTVsLTcuNzItMTEuNzRjNC4wOC0xLjA2LDcuMDktNC43OCw3LjA5LTkuMjFNMTg4My4yMSw0OTEuOTN2LTEzLjk3aDguMjFjMy44NCwwLDYuOTUsMy4xMyw2Ljk1LDYuOThzLTMuMTEsNi45OC02Ljk1LDYuOThoLTguMjFaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTkxOC42OSw0NzguNDFjLTEuNTgtMy43NC0zLjgzLTcuMS02LjcxLTEwLTIuODgtMi44OS02LjIyLTUuMTYtOS45Ni02Ljc0LTMuODYtMS42NC03Ljk2LTIuNDgtMTIuMTktMi40OHMtOC4zMy44NC0xMi4xOSwyLjQ4Yy0zLjczLDEuNTgtNy4wOCwzLjg1LTkuOTUsNi43NC0yLjg4LDIuODktNS4xNCw2LjI1LTYuNzIsMTAtMS42NCwzLjg5LTIuNDYsOC0yLjQ2LDEyLjI1cy44Miw4LjM2LDIuNDYsMTIuMjRjMS41OCwzLjc0LDMuODQsNy4xMSw2LjcyLDEwLDIuODcsMi44OCw2LjIyLDUuMTUsOS45NSw2Ljc0LDMuODYsMS42NCw3Ljk2LDIuNDgsMTIuMTksMi40OHM4LjMzLS44MywxMi4xOS0yLjQ4YzMuNzQtMS41OCw3LjA4LTMuODUsOS45Ni02Ljc0LDIuODgtMi44OSw1LjE0LTYuMjYsNi43MS0xMCwxLjY0LTMuODgsMi40Ni04LDIuNDYtMTIuMjRzLS44My04LjM2LTIuNDYtMTIuMjVNMTkxNS41OCw1MDEuNThjLTEuNDEsMy4zNC0zLjQyLDYuMzQtNS45OSw4LjkxLTIuNTYsMi41OC01LjU1LDQuNi04Ljg4LDYuMDItMy40NCwxLjQ2LTcuMSwyLjItMTAuODcsMi4ycy03LjQzLS43NC0xMC44Ny0yLjJjLTMuMzMtMS40MS02LjMxLTMuNDQtOC44OC02LjAyLTIuNTctMi41Ny00LjU4LTUuNTctNS45OS04LjkxLTEuNDUtMy40Ni0yLjE5LTcuMTMtMi4xOS0xMC45MnMuNzQtNy40NiwyLjE5LTEwLjkyYzEuNDEtMy4zNCwzLjQyLTYuMzQsNS45OS04LjkyLDIuNTYtMi41OCw1LjU1LTQuNiw4Ljg4LTYuMDIsMy40NC0xLjQ2LDcuMS0yLjIsMTAuODctMi4yczcuNDMuNzQsMTAuODcsMi4yYzMuMzMsMS40MSw2LjMyLDMuNDQsOC44OCw2LjAyLDIuNTcsMi41OCw0LjU4LDUuNTgsNS45OSw4LjkyLDEuNDYsMy40NiwyLjE5LDcuMTMsMi4xOSwxMC45MnMtLjc0LDcuNDYtMi4xOSwxMC45MiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMzMS4wMiwxNzcuOTdjLTIuODMsNC42My03LjU2LDkuNjQtMTQuNzIsMTUuMDctNS41Niw0LjIyLTExLjQ1LDcuODMtMTcuMDcsMTAuMzUsNy4zMSw5LjI1LDExLjc0LDIwLjg2LDExLjc0LDMzLjU2LDAsMjkuNjEtMjMuNyw1My43LTUzLjE3LDU0LjMxaDBzLTIxMy41MSwwLTIxMy41MSwwbC4wOC01NC4zMWMwLTI5LjYxLDIzLjctNTMuNjksNTMuMTctNTQuMzFoMHMxMjkuOTMsMCwxMjkuOTMsMGMzMi4wNS0uMjcsNDEuNzcuNDIsNjYuMzEtMTUuODQsNC42Ni0zLjA5LDguNzItNi41OSwxMi4yOS0xMC4yNi0uMDEtLjAxLS4wMi0uMDItLjA0LS4wMywxNS45NS0xNi42MiwyNS43NS0zOS4xNywyNS43NS02NC4wM0MzMzEuNzgsNDEuNDEsMjkwLjM4LDAsMjM5LjMxLDBIMi42OHYxNTYuNzljMTAuNTEtMTkuNTUsMjQuNjktMjkuNDcsNDEuNjEtMzcuNTVWNDEuNjFoMTk1LjAyYzI4LjA5LDAsNTAuODYsMjIuNzcsNTAuODYsNTAuODZzLTIyLjU1LDUwLjYzLTUwLjQ1LDUwLjg1aC0xMTguOTVsLS45My4xN3MtNDMuOS0yLjY5LTcwLjUxLDEzLjAxQzIxLjQ2LDE3MywyLjc3LDIwMy4zNywyLjc3LDIzOC4xMXY5NC43N2gyNTcuMzV2LS4wMmM1MS4yOC0xLjIzLDkyLjQ2LTQzLjE4LDkyLjQ2LTk0Ljc0LDAtMjIuODQtOC4wOS00My43OC0yMS41NS02MC4xNCIvPjwvc3ZnPg==" alt="Beyond the Clinic"></div>
+      <h1>Design <span class="thin">— on a page</span></h1>
+    </div>
+    <div class="meta">
+      <span class="chip gate">CP2 · Gate 2</span>
+      <span class="chip">Beyond the Clinic</span>
+      <span class="chip">v1.0 · 09 Jul 2026</span>
+      <span class="chip solid">Maxxim 3D Process</span>
+    </div>
+  </header>
+
+  <div class="canvas">
+
+    <!-- slot: strategy-on-a-line | sources: strategy-summary, brand-strategy | budget: 25 words | archetype notes: sme — read as the founder's commercial promise (positioning + proof), not a mission/mandate statement; carries the Why→Result→Method discipline locked at Gate 2. -->
+    <div class="box b-strategy rule-top">
+      <span class="box-label">Strategy on a line</span>
+      <p class="statement">The clinician-founded MSK pathway platform that lowers Australian payers' claims cost and improves member outcomes by coordinating the full pathway, not one episode.</p>
+      <p class="proofline">Proven, not promised — <strong>roughly 3x ROI</strong> on nib / Honeysuckle Project Mobilise. Why, then Result, then Method: every buyer-facing asset opens on the belief before it names the platform.</p>
+    </div>
+
+    <!-- slot: brand | sources: brand-strategy, brand-guidelines | budget: 50 words + tokens | archetype notes: sme — Expression rendered as a brand system (essence, archetype, voice, tagline) rather than personal identity or sub-brand architecture. -->
+    <div class="box b-brand">
+      <span class="box-label">Brand</span>
+      <p><strong>Essence:</strong> care beyond the clinic door, so people can simply Be. <strong>Archetype:</strong> Sage plus Caregiver core, expressed now with Hero and Outlaw courage, growing toward a Jester north star. <strong>Voice:</strong> direct, credible, grounded, warm. <strong>Tagline:</strong> "The whole pathway, not one episode."</p>
+      <div class="swatches">
+        <div class="swatch"><div class="col" style="background:var(--accent)"></div><span class="code">Primary — vivid orange</span></div>
+        <div class="swatch"><div class="col" style="background:var(--ink)"></div><span class="code">Secondary — deep blue / cobalt</span></div>
+        <div class="swatch"><div class="col" style="background:#14161c"></div><span class="code">Neutral dark — near-black</span></div>
+        <div class="swatch"><div class="col" style="background:var(--tint); border-bottom:0.25mm solid var(--line)"></div><span class="code">Neutral light — off-white</span></div>
+      </div>
+      <p class="type-note"><strong>Type:</strong> display face (campaign headlines) · clean geometric sans (logotype/UI) · legible sans (body). Exact hex, CMYK/PMS and typefaces locked at brand-identity stage.</p>
+    </div>
+
+    <!-- slot: customer | sources: customer-profile | budget: 3 × 25 words | archetype notes: sme — customer segments carried as named buyer personas with a UVP line each, not a stakeholder map. -->
+    <div class="box b-customer">
+      <span class="box-label">Customer</span>
+      <div class="persona">
+        <div class="p-name">Priya</div>
+        <span class="p-tag">Insurer Innovation Lead · primary</span>
+        <p>Champions the deal but doesn't hold the final yes; needs documented ROI, procurement-safe pricing, and a member experience she can defend to the board.</p>
+      </div>
+      <div class="persona">
+        <div class="p-name">Marcus</div>
+        <span class="p-tag">Surgical Channel Partner · strategic</span>
+        <p>Can sign, but surgeon trust is the real gate; wins on pathway quality and adherence, never on insurer-style ROI language.</p>
+      </div>
+      <div class="persona">
+        <div class="p-name">Patient</div>
+        <span class="p-tag">Member · adoption layer</span>
+        <p>The two-minute camera assessment turns proof into reality: a clinical report and personalised plan in minutes is the fastest first-value moment in the model.</p>
+      </div>
+    </div>
+
+    <!-- slot: business-model | sources: business-plan | budget: 60 words | archetype notes: sme — Offering rendered as product/service ladder + pricing posture (revenue streams, one card per buyer, referenced margins), all flagged directional per source. -->
+    <div class="box b-business">
+      <span class="box-label">Business model</span>
+      <ul>
+        <li>Revenue: partnership/licensing (Stryker, ~AUD 550k across a 2+3-year term), per-cohort program fees (~AUD 1,200), telehealth/platform fees (~AUD 49/mo, ~AUD 195 patient fee).</li>
+        <li>Pricing posture: one procurement-safe card per buyer type — indicative, pending Ali Stokes validation and leadership sign-off.</li>
+        <li>Unit economics: referenced gross margins ~80% prevention/CDMP, ~70% surgical — to hold as service-delivery cost scales.</li>
+      </ul>
+    </div>
+
+    <!-- slot: messaging | sources: copy-deck, brand-strategy | budget: 60 words | archetype notes: sme — pillars and tone applied as the brand-system voice guide, phrases rendered as reusable pills for a sales/marketing motion. -->
+    <div class="box b-messaging">
+      <span class="box-label">Messaging</span>
+      <p><strong>Pillars:</strong> proof before promise, clinician-built credibility, Australian differentiation, whole-pathway coordination. <strong>Voice:</strong> plain over technical, evidence-led over hype. <strong>Do:</strong> "roughly 3x ROI" — named and sized to evidence. <strong>Don't:</strong> "digital physio", "just an app", AI-hype, generic wellness language.</p>
+      <div class="pills">
+        <span class="pill hot">Be · Beyond · Happier</span>
+        <span class="pill">Why → Result → Method</span>
+        <span class="pill">~3x ROI</span>
+      </div>
+    </div>
+
+    <!-- slot: platform | sources: website-strategy, social-strategy | budget: 3 × 18 words | archetype notes: sme — go-to-market shown as an integrated sales + marketing funnel (site, social, content) feeding one CTA. -->
+    <div class="box b-platform">
+      <span class="box-label">Platform</span>
+      <ul>
+        <li><strong>Website:</strong> buyer-led site — three pathway pages, proof above the fold, one CTA — book a pilot scoping session.</li>
+        <li><strong>Social:</strong> LinkedIn is primary by far; YouTube/Vimeo runs as a proof library; three to four posts weekly, minimum two.</li>
+        <li><strong>Content:</strong> four pillars — clinical authority 35%, payer ROI proof 30%, surgical adherence 20%, category/local wedge 15%.</li>
+      </ul>
+    </div>
+
+    <!-- slot: success-measures | sources: marketing-plan, business-plan | budget: 4–6 KPI tiles | archetype notes: sme — "the numbers" expressed as pipeline, revenue-motion and cadence targets (not corporate/NFP/gov reach or funds-raised framing). -->
+    <div class="box b-success">
+      <span class="box-label">Success measures</span>
+      <div class="kpis">
+        <div class="kpi"><span class="num">8+</span><span class="lbl">Qualified insurer scoping sessions / 12 mo</span></div>
+        <div class="kpi"><span class="num">2</span><span class="lbl">Signed insurer pilots (≥1 by H1)</span></div>
+        <div class="kpi"><span class="num">~3x</span><span class="lbl">ROI — nib / Honeysuckle Project Mobilise</span></div>
+        <div class="kpi"><span class="num">12</span><span class="lbl">Thought-leadership pieces / year</span></div>
+        <div class="kpi"><span class="num">3–4</span><span class="lbl">LinkedIn posts / week</span></div>
+        <div class="kpi"><span class="num">100%</span><span class="lbl">Insurer sessions citing the proof pack, from Q1</span></div>
+      </div>
+    </div>
+
+    <!-- slot: gate-2-decision | sources: strategy-summary | budget: 80 words | archetype notes: sme — sign-off authority sits with founder/GM; governance shown as owner-per-function risk items rather than a full RACI or compliance register. -->
+    <div class="box b-gate gate-box">
+      <span class="box-label">Gate 2 decision <span class="sub" style="color:inherit;opacity:.7;">— Design → Deploy</span></span>
+      <p class="verdict">Proceed to Deploy.</p>
+      <div class="gate-cols">
+        <div>
+          <h4>Locked</h4>
+          <ul>
+            <li>One brand, three buyer-led offers — PHI Cost &amp; Outcomes, Surgical Optimisation, MSK Risk &amp; Prevention.</li>
+            <li>Insurers first, Stryker next, prevention and employers held.</li>
+            <li>Why, then Result, then Method — the compression discipline for every asset.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Deploy inherits</h4>
+          <ul>
+            <li>The buyer-led website (three pathway pages, proof above the fold).</li>
+            <li>Three campaigns: "The cost of waiting", "Beyond the appointment", "The category, made local".</li>
+            <li>A collateral system built to carry proof and cut founder dependency.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Open risks</h4>
+          <ul>
+            <li>Pricing validation and proof consolidation, not yet complete.</li>
+            <li>Reliance on Ali Stokes for narrative, pipeline and close.</li>
+            <li>Brand assets — colour, type, logo — locked at brand-identity stage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="sheet-foot">
+    <div class="signoff">
+      <div class="sig"><span class="k">Prepared by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Approved by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Date</span><span class="line"></span></div>
+    </div>
+    <div class="src">Distilled from: strategy-summary · brand-strategy · brand-guidelines · customer-profile · business-plan · marketing-plan · copy-deck — generated 09 Jul 2026</div>
+    <div class="brandline">Powered by <strong>Maxxim</strong> · 3D Process</div>
+  </footer>
+
+</section></div>
+<script>
+const fit=()=>{const st=document.querySelector('.stage'),sh=document.querySelector('.sheet');const f=Math.min(1,(innerWidth-32)/sh.offsetWidth);document.documentElement.style.setProperty('--fit',f);st.style.height=(sh.offsetHeight*f)+'px';};
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
