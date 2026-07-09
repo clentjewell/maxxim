@@ -40,6 +40,18 @@ const PAGES = [
 ]
 
 const framework = readFileSync(join(HERE, '..', 'a3-framework.css'), 'utf8')
+const zoomJs = readFileSync(join(HERE, '..', 'a3-zoom.js'), 'utf8')
+
+// a3-framework.css ends with the zoom/lightbox block. That block must NOT go
+// through the `.pg`-scoping pass below — the lightbox overlay it styles is
+// appended straight to <body>, outside every `.pg` section, so a scoped
+// selector like `.pg .a3-lightbox` would simply never match. Split it off
+// and emit it once, verbatim, globally (its class names are namespaced
+// enough — a3-* — to never collide with sheet or pack content).
+const ZOOM_MARKER = '/* ================================================================\n   Zoom / lightbox'
+const zoomSplit = framework.indexOf(ZOOM_MARKER)
+const frameworkCore = zoomSplit === -1 ? framework : framework.slice(0, zoomSplit)
+const zoomCss = zoomSplit === -1 ? '' : framework.slice(zoomSplit)
 
 /**
  * Scope a full stylesheet under `prefix`. Handles @media (recurses),
@@ -98,7 +110,12 @@ const pageCss = []
 for (const p of PAGES) {
   const raw = readFileSync(join(TPL, p.file), 'utf8')
   const styles = [...raw.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m => m[1])
-  pageCss.push(`/* ---- ${p.name} ---- */\n${scopeStylesheet(styles[styles.length - 1], `#pg-${p.name}`)}`)
+  // Each template inlines 3 style blocks: [0] the framework (verbatim copy —
+  // ignored here, the canonical file above is used instead), [1] the
+  // page-specific brand tokens + grid placement, [2] a duplicate copy of the
+  // framework's zoom/lightbox block (also ignored — emitted once globally
+  // above). Always the grid block specifically, never "whichever is last".
+  pageCss.push(`/* ---- ${p.name} ---- */\n${scopeStylesheet(styles[1], `#pg-${p.name}`)}`)
   const body = raw.replace(/^[\s\S]*?<body>/, '').replace(/<script>[\s\S]*$/, '')
   const stage = body.match(/<div class="stage">([\s\S]*)<\/div>\s*$/)?.[1]
   if (!stage) throw new Error(`no .stage found in ${p.file}`)
@@ -205,12 +222,16 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 </style>
 <style>
 /* --------------------------------------- A3 framework, scoped to sheets */
-${scopeStylesheet(framework, '.pg')}
+${scopeStylesheet(frameworkCore, '.pg')}
 </style>
 <style>
 ${pageCss.join('\n')}
 </style>
 ${btcCss ? `<style>\n/* ----------------------------- BTC pack document, scoped */\n${btcCss}\n</style>` : ''}
+<style>
+/* --------------------------- On-a-Page zoom/lightbox, global (unscoped) */
+${zoomCss}
+</style>
 </head>
 <body>
 <header class="pg-nav">
@@ -235,6 +256,9 @@ const fit = () => {
 addEventListener('resize', fit)
 addEventListener('load', fit)
 fit()
+</script>
+<script>
+${zoomJs}
 </script>
 ${btcScript ? `<script>\n${btcScript}\n</script>` : ''}
 </body>

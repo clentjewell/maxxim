@@ -238,3 +238,56 @@ table.mini tr:nth-child(even) td { background: var(--tint); }
   background: var(--paper); color: var(--ink); border: 1px solid var(--line);
   border-radius: 8px; padding: 8px 14px; cursor: pointer;
 }
+
+/* ================================================================
+   Zoom / lightbox (a3-zoom.js) — click any sheet to read it enlarged.
+   Pairs with a3-zoom.js, inlined verbatim alongside this stylesheet.
+   Namespaced a3- throughout so it can never collide with sheet content.
+   ================================================================ */
+.a3-zoomable { position: relative; }
+.a3-zoom-btn {
+  position: absolute; bottom: 8px; right: 8px; z-index: 5;
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-label, 'Poppins', sans-serif); font-weight: 600; font-size: 11px;
+  background: rgba(255, 255, 255, 0.94); color: var(--ink, #171c3d);
+  border: 1px solid var(--line, #e7e9f1); border-radius: 999px;
+  padding: 6px 11px 6px 8px; cursor: zoom-in;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+.a3-zoom-btn:hover { border-color: var(--accent, #fd8457); color: var(--accent, #fd8457); }
+.a3-zoom-btn svg { flex: none; }
+@media print { .a3-zoom-btn { display: none; } }
+
+/* The sheet's own scaled-down wrapper (.stage / .oap-stage) becomes the
+   lightbox itself, in place — deliberately not a separate overlay element,
+   so the sheet never leaves the ancestor chain its own CSS is scoped to. */
+.stage.a3-zoom-open, .oap-stage.a3-zoom-open {
+  position: fixed !important; inset: 0 !important; z-index: 9998;
+  background: rgba(15, 17, 26, 0.9);
+  overflow: auto; text-align: center; padding: 78px 28px 28px;
+}
+.a3-zoom-open .a3-zoom-btn { display: none; }
+.a3-zoom-wrap { display: inline-block; text-align: left; vertical-align: top; position: relative; }
+.a3-zoom-open .sheet { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important; cursor: default; }
+html.a3-lb-lock, html.a3-lb-lock body { overflow: hidden; }
+
+.a3-lb-bar {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9999;
+  display: none; align-items: center; justify-content: center; gap: 8px;
+}
+.a3-lb-bar.open { display: flex; }
+.a3-lb-btn {
+  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; line-height: 1;
+  background: #fff; color: #171c3d; border: 0; border-radius: 8px; min-width: 36px; height: 36px;
+  padding: 0 12px; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+.a3-lb-btn:hover { background: #fff6f1; }
+.a3-lb-pct {
+  min-width: 52px; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 600;
+  font-size: 12px; color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+.a3-lb-close { margin-left: 14px; font-size: 20px; }
+@media (max-width: 640px) {
+  .stage.a3-zoom-open, .oap-stage.a3-zoom-open { padding: 66px 12px 16px; }
+  .a3-lb-btn { min-width: 32px; height: 32px; padding: 0 9px; font-size: 12px; }
+}
