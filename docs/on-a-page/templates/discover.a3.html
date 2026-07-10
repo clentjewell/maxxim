@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discover — on a page · Beyond the Clinic · Maxxim 3D</title>
+<meta name="maxxim:client" content="beyond-the-clinic">
+<meta name="maxxim:phase" content="discover">
+<meta name="maxxim:skill" content="on-a-page">
+<meta name="maxxim:archetype" content="sme">
+<meta name="maxxim:checkpoint" content="CP1">
+<meta name="maxxim:generated" content="2026-07-09">
+<meta name="maxxim:sources" content="discover-summary, audience-teardown, competitor-analysis, offer-worksheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   Maxxim — On-a-Page A3 framework
+   One printed A3 landscape sheet (420 × 297 mm), boxed-segment layout.
+   Every On-a-Page artifact inlines this file verbatim, then sets the client
+   brand tokens in its own :root block. Layout lives in the page; components
+   live here. No content styles may hardcode colour — tokens only.
+   ========================================================================== */
+
+:root {
+  /* ---- Client brand tokens (SWAP PER CLIENT — these are the only knobs) */
+  --ink: #171c3d;        /* primary dark: headings, key text */
+  --accent: #fd8457;     /* single accent: labels, highlights, rules */
+  --paper: #ffffff;      /* sheet background */
+  --tint: #f6f7fb;       /* soft panel background */
+  --line: #e7e9f1;       /* hairline borders */
+  --muted: #4a5565;      /* secondary text */
+  --font-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* ---- Fixed scale (do not swap) */
+  --gap: 3mm;
+  --radius: 1.6mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #3a3f4c; }
+body { font-family: var(--font-body); color: var(--ink); }
+
+/* ---------------------------------------------------------------- sheet */
+.sheet {
+  width: 420mm; height: 297mm;
+  background: var(--paper);
+  padding: 7mm 9mm 6mm;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  margin: 0 auto;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+/* Screen preview: centre the sheet, scale to fit (script sets --fit). */
+@media screen {
+  body { padding: 24px 0; }
+  .stage { transform: scale(var(--fit, 0.5)); transform-origin: top center; }
+  .sheet { box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45); }
+}
+@page { size: A3 landscape; margin: 0; }
+@media print {
+  html, body { background: var(--paper); padding: 0; }
+  .stage { transform: none; }
+  .toolbar { display: none; }
+}
+
+/* ------------------------------------------------------------ header band */
+.sheet-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 8mm; padding-bottom: 3mm; margin-bottom: var(--gap);
+  border-bottom: 0.7mm solid var(--ink);
+}
+.sheet-head .ident { display: flex; align-items: center; gap: 4mm; }
+.sheet-head .logo img { height: 9mm; width: auto; display: block; }
+.sheet-head .logo .logo-text {
+  font-family: var(--font-head); font-weight: 700; font-size: 15pt; letter-spacing: -0.02em;
+}
+.sheet-head h1 {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 21pt; letter-spacing: -0.015em; line-height: 1;
+}
+.sheet-head h1 .thin { font-weight: 500; color: var(--muted); }
+.sheet-head .meta { display: flex; align-items: center; gap: 2.5mm; }
+
+.chip {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.5pt;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.4mm 3.2mm; color: var(--muted); white-space: nowrap;
+}
+.chip.gate { border-color: var(--accent); color: var(--accent); }
+.chip.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------------------- canvas */
+.canvas {
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap);
+  grid-auto-rows: minmax(0, auto);
+}
+
+/* ------------------------------------------------------------------ boxes */
+.box {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  background: var(--paper); padding: 2.8mm 3.2mm;
+  overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column; gap: 1.6mm;
+}
+.box.tint { background: var(--tint); }
+.box.ink { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.box.ink .box-label { color: var(--accent); }
+.box.ink p, .box.ink li { color: color-mix(in srgb, var(--paper) 88%, var(--ink)); }
+.box.rule-top { border-top: 1mm solid var(--accent); }
+
+.box-label {
+  font-family: var(--font-label); font-weight: 600;
+  font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); flex: none;
+}
+.box-label .sub { color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: none; }
+
+/* ------------------------------------------------------------- type scale */
+.box h3 { font-family: var(--font-head); font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; line-height: 1.15; }
+.box h4 { font-family: var(--font-head); font-weight: 600; font-size: 8.2pt; line-height: 1.2; }
+.box p  { font-size: 7.6pt; line-height: 1.42; color: var(--muted); }
+.box p.lead { font-size: 9.2pt; line-height: 1.35; color: var(--ink); font-weight: 500; }
+.box .statement {
+  font-family: var(--font-head); font-weight: 600; font-size: 13pt;
+  line-height: 1.22; letter-spacing: -0.01em; color: var(--ink);
+}
+.box ul { list-style: none; }
+.box li {
+  font-size: 7.6pt; line-height: 1.4; color: var(--muted);
+  padding-left: 3mm; position: relative; margin-bottom: 1mm;
+}
+.box li::before {
+  content: ''; position: absolute; left: 0; top: 1.35mm;
+  width: 1.4mm; height: 1.4mm; background: var(--accent); border-radius: 0.2mm;
+}
+.box li strong, .box p strong { color: var(--ink); font-weight: 600; }
+
+/* -------------------------------------------------------------- KPI tiles */
+.kpis { display: grid; gap: var(--gap); }
+.kpi {
+  border: 0.35mm solid var(--line); border-radius: var(--radius);
+  padding: 2.4mm 3mm; background: var(--tint); overflow: hidden;
+}
+.kpi .num {
+  font-family: var(--font-head); font-weight: 700; font-size: 16pt;
+  letter-spacing: -0.02em; line-height: 1; color: var(--ink); display: block;
+}
+.kpi .num em { font-style: normal; color: var(--accent); }
+.kpi .lbl {
+  display: block; margin-top: 1.2mm; font-family: var(--font-label); font-weight: 600;
+  font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ----------------------------------------------------------- mini tables */
+table.mini { width: 100%; border-collapse: collapse; }
+table.mini th {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.2pt;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: left;
+  color: var(--paper); background: var(--ink); padding: 1.4mm 2mm;
+}
+table.mini td {
+  font-size: 7.2pt; line-height: 1.35; color: var(--muted);
+  padding: 1.4mm 2mm; border-bottom: 0.25mm solid var(--line); vertical-align: top;
+}
+table.mini td strong { color: var(--ink); }
+table.mini tr:nth-child(even) td { background: var(--tint); }
+
+/* ---------------------------------------------------------------- pills */
+.pills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+.pill {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.6pt;
+  letter-spacing: 0.05em; border: 0.35mm solid var(--line); border-radius: 999px;
+  padding: 1.1mm 2.8mm; color: var(--ink); background: var(--paper); white-space: nowrap;
+}
+.pill.hot { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+/* -------------------------------------------------- journey / funnel bar */
+.journey { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.6mm; }
+.journey .stage-cell { min-width: 0; }
+.journey .stage-name {
+  font-family: var(--font-label); font-weight: 600; font-size: 6.4pt;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+  background: var(--ink); border-radius: 1mm; padding: 1.3mm 2mm; text-align: center;
+  position: relative; margin-bottom: 1.6mm;
+}
+.journey .stage-cell:nth-child(even) .stage-name { background: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
+.journey ul { list-style: none; }
+.journey li { font-size: 6.8pt; line-height: 1.35; color: var(--muted); padding-left: 2.6mm; position: relative; margin-bottom: 0.9mm; }
+.journey li::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1.2mm; height: 1.2mm; background: var(--accent); border-radius: 0.2mm; }
+
+/* -------------------------------------------------------- persona cards */
+.persona { border: 0.35mm solid var(--line); border-radius: var(--radius); padding: 2.2mm 2.6mm; background: var(--paper); overflow: hidden; }
+.persona .p-name { font-family: var(--font-head); font-weight: 700; font-size: 8.6pt; }
+.persona .p-tag { font-family: var(--font-label); font-weight: 600; font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1mm; }
+.persona .pgp { display: grid; gap: 0.8mm; margin-top: 1.2mm; }
+.persona .pgp .row { font-size: 6.9pt; line-height: 1.32; color: var(--muted); }
+.persona .pgp .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-right: 1mm; }
+
+/* ----------------------------------------------------- checklists (READY) */
+.checklist { display: grid; gap: 1.2mm; }
+.check { display: flex; gap: 2mm; align-items: baseline; }
+.check .tick {
+  flex: none; width: 3.4mm; height: 3.4mm; border-radius: 0.8mm;
+  background: var(--accent); color: var(--paper);
+  font-size: 6.5pt; font-weight: 700; line-height: 3.4mm; text-align: center;
+  transform: translateY(0.6mm);
+}
+.check.open .tick { background: var(--paper); border: 0.4mm solid var(--accent); color: var(--accent); }
+.check .t { font-size: 7.4pt; line-height: 1.35; color: var(--muted); }
+.check .t strong { color: var(--ink); }
+
+/* --------------------------------------------------------- gate decision */
+.gate-box { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.gate-box .box-label { color: var(--accent); }
+.gate-box .verdict { font-family: var(--font-head); font-weight: 700; font-size: 12pt; line-height: 1.15; }
+.gate-box p, .gate-box li { color: color-mix(in srgb, var(--paper) 86%, var(--ink)); }
+.gate-box li::before { background: var(--accent); }
+
+/* ------------------------------------------------------------ swatches */
+.swatches { display: flex; gap: 1.6mm; }
+.swatch { flex: 1; border-radius: 1mm; border: 0.25mm solid var(--line); overflow: hidden; }
+.swatch .col { height: 7mm; }
+.swatch .code { font-family: var(--font-label); font-size: 5.6pt; letter-spacing: 0.04em; color: var(--muted); padding: 0.8mm 1.4mm; display: block; }
+
+/* ------------------------------------------------------------ footer band */
+.sheet-foot {
+  margin-top: var(--gap); padding-top: 2.2mm; border-top: 0.35mm solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 6mm; flex: none;
+}
+.sheet-foot .signoff { display: flex; gap: 6mm; }
+.sheet-foot .sig { display: flex; align-items: baseline; gap: 2mm; }
+.sheet-foot .sig .k { font-family: var(--font-label); font-weight: 600; font-size: 5.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sheet-foot .sig .line { display: inline-block; width: 26mm; border-bottom: 0.3mm solid var(--muted); height: 3.5mm; }
+.sheet-foot .src { font-size: 6pt; line-height: 1.4; color: var(--muted); max-width: 150mm; }
+.sheet-foot .brandline { font-family: var(--font-label); font-weight: 600; font-size: 6.2pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.sheet-foot .brandline strong { color: var(--ink); }
+
+/* ------------------------------------------------------------- toolbar */
+.toolbar {
+  position: fixed; top: 12px; right: 16px; z-index: 20; display: flex; gap: 8px;
+}
+.toolbar button {
+  font-family: var(--font-label); font-weight: 600; font-size: 12px;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 14px; cursor: pointer;
+}
+</style>
+<style>
+/* === page grid: BTC brand tokens + grid placement ===================== */
+:root{
+  /* Beyond the Clinic brand tokens */
+  --ink:#171C3D; --accent:#FD8457; --paper:#ffffff; --tint:#F6F7FB;
+  --line:#E7E9F1; --muted:#4A5565;
+  --font-head:'Inter Tight','Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-label:'Poppins','Inter',system-ui,sans-serif;
+}
+
+/* ---- overall canvas rhythm: three bands ------------------------------ */
+.canvas{
+  /* rows sized by fr so THE CORE stays dense and rows 1/3 breathe */
+  grid-template-rows: minmax(0,1.12fr) minmax(0,1.5fr) minmax(0,0.72fr);
+}
+
+/* band 1 — belief / ready / killer questions */
+.b-belief   { grid-column: 1 / 5;  grid-row: 1; }
+.b-ready    { grid-column: 5 / 9;  grid-row: 1; }
+.b-killer   { grid-column: 9 / 13; grid-row: 1; }
+
+/* band 2 — THE CORE cluster, full width, the heart of the sheet */
+.core-cluster{
+  grid-column: 1 / 13; grid-row: 2;
+  display: flex; flex-direction: column; gap: 1.4mm; min-height: 0;
+}
+.core-label{
+  font-family: var(--font-label); font-weight: 700; font-size: 8pt;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  flex: none; display: flex; align-items: baseline; gap: 2mm;
+}
+.core-label .sub{ font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--muted); font-size: 7.4pt; }
+.core-grid{
+  flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap);
+}
+.core-box{ border-top: 1mm solid var(--accent); }
+.core-letter{
+  font-family: var(--font-head); font-weight: 800; font-size: 15pt;
+  color: var(--accent); letter-spacing: 0; margin-right: 0.8mm;
+}
+
+/* band 3 — position / evidence / gate decision */
+.b-position { grid-column: 1 / 5;  grid-row: 3; }
+.b-position p.lead{ font-size: 10.6pt; line-height: 1.45; margin: auto 0; }
+.b-evidence { grid-column: 5 / 9;  grid-row: 3; }
+.b-gate     { grid-column: 9 / 13; grid-row: 3; }
+
+/* ---- content-specific tweaks ----------------------------------------- */
+.b-belief .statement{ font-size: 14pt; }
+.b-belief .belief-order{ margin-top: auto; padding-top: 3mm; border-top: 0.3mm solid var(--line); font-style: italic; }
+
+.core-box.b-customers{ display:flex; flex-direction:column; }
+.core-box.b-customers .persona-stack{ display:flex; flex-direction:column; gap:1.6mm; flex:1; min-height:0; justify-content: flex-start; }
+
+.core-box table.mini td, .core-box table.mini th{ padding: 1.1mm 1.5mm; font-size: 6.6pt; }
+.core-box table.mini th{ font-size: 5.8pt; }
+
+/* distribute short checklists over the box height (breathing room, not clutter) */
+.b-ready .checklist{ flex: 1; align-content: space-evenly; }
+.b-ready .check .t{ font-size: 7.8pt; }
+
+.b-killer ol{ list-style: none; counter-reset: kq; display:flex; flex-direction:column; gap: 1.6mm; flex: 1; justify-content: space-evenly; }
+.b-killer ol li{ counter-increment: kq; padding-left: 5mm; position: relative; }
+.b-killer ol li::before{
+  content: counter(kq); position:absolute; left:0; top:0;
+  width:3.6mm; height:3.6mm; border-radius:50%; background: var(--ink); color: var(--paper);
+  font-family: var(--font-label); font-weight:700; font-size:6pt; text-align:center; line-height:3.6mm;
+}
+
+.b-gate .verdict{ margin-bottom: 0.4mm; }
+.b-gate p{ margin-top: 0.6mm; }
+/* framework's `.box p strong` (0,1,2) outranks a bare `.b-gate strong` — match its specificity */
+.gate-box p strong, .gate-box li strong{ color: var(--accent); }
+
+.core-box .core-body{
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  justify-content: flex-start; gap: 3mm;
+}
+.core-box .core-body p.lead{ font-size: 9.6pt; line-height: 1.42; }
+.core-box .core-body p{ font-size: 8.4pt; line-height: 1.48; }
+.core-box .core-body .pills{ gap: 1.8mm; }
+.core-box .core-body .pill{ font-size: 7.2pt; padding: 1.6mm 3.4mm; }
+.core-box table.mini td, .core-box table.mini th{ padding: 2mm 2.2mm; font-size: 7.2pt; }
+.core-box table.mini th{ font-size: 6.2pt; }
+
+.sheet-head .logo img{ height: 9mm; }
+</style>
+<style>
+/* ================================================================
+   Zoom / lightbox (a3-zoom.js) — click any sheet to read it enlarged.
+   Pairs with a3-zoom.js, inlined verbatim alongside this stylesheet.
+   Namespaced a3- throughout so it can never collide with sheet content.
+   ================================================================ */
+.a3-zoomable { position: relative; }
+.a3-zoom-btn {
+  position: absolute; bottom: 8px; right: 8px; z-index: 5;
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-label, 'Poppins', sans-serif); font-weight: 600; font-size: 11px;
+  background: rgba(255, 255, 255, 0.94); color: var(--ink, #171c3d);
+  border: 1px solid var(--line, #e7e9f1); border-radius: 999px;
+  padding: 6px 11px 6px 8px; cursor: zoom-in;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+.a3-zoom-btn:hover { border-color: var(--accent, #fd8457); color: var(--accent, #fd8457); }
+.a3-zoom-btn svg { flex: none; }
+@media print { .a3-zoom-btn { display: none; } }
+
+/* The sheet's own scaled-down wrapper (.stage / .oap-stage) becomes the
+   lightbox itself, in place — deliberately not a separate overlay element,
+   so the sheet never leaves the ancestor chain its own CSS is scoped to. */
+.stage.a3-zoom-open, .oap-stage.a3-zoom-open {
+  position: fixed !important; inset: 0 !important; z-index: 9998;
+  background: rgba(15, 17, 26, 0.9);
+  overflow: auto; text-align: center; padding: 78px 28px 28px;
+}
+.a3-zoom-open .a3-zoom-btn { display: none; }
+.a3-zoom-wrap { display: inline-block; text-align: left; vertical-align: top; position: relative; }
+.a3-zoom-open .sheet { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important; cursor: default; }
+html.a3-lb-lock, html.a3-lb-lock body { overflow: hidden; }
+
+.a3-lb-bar {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9999;
+  display: none; align-items: center; justify-content: center; gap: 8px;
+}
+.a3-lb-bar.open { display: flex; }
+.a3-lb-btn {
+  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; line-height: 1;
+  background: #fff; color: #171c3d; border: 0; border-radius: 8px; min-width: 36px; height: 36px;
+  padding: 0 12px; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+.a3-lb-btn:hover { background: #fff6f1; }
+.a3-lb-pct {
+  min-width: 52px; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 600;
+  font-size: 12px; color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+.a3-lb-close { margin-left: 14px; font-size: 20px; }
+@media (max-width: 640px) {
+  .stage.a3-zoom-open, .oap-stage.a3-zoom-open { padding: 66px 12px 16px; }
+  .a3-lb-btn { min-width: 32px; height: 32px; padding: 0 9px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="print()">Print / Save PDF (A3)</button></div>
+<div class="stage"><section class="sheet">
+
+  <header class="sheet-head">
+    <div class="ident">
+      <div class="logo"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIxLjE2IDc4Ny45NiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMxNzFjM2Q7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQyMS44MiwyMzEuMTdjNi4wNywzNi43MSwzNy45Niw2NC43Miw3Ni4zOSw2NC43MiwyNS4xMywwLDQ3LjQ1LTExLjk3LDYxLjYtMzAuNTJsMzQuNjUsMjMuMTVjLTIxLjY1LDI5LjY5LTU2LjcsNDguOTgtOTYuMjUsNDguOTgtNjEuNDUsMC0xMTIuMDMtNDYuNTctMTE4LjM3LTEwNi4zMy0uNDQtNC4xOC0uNjctOC40Mi0uNjctMTIuNzIsMC03LjUuNy0xNC44NCwyLjAyLTIxLjk2LDEwLjMtNTUuMjYsNTguNzgtOTcuMDksMTE3LjAyLTk3LjA5czEwNi43Myw0MS44MywxMTcuMDMsOTcuMDljMS4zMiw3LjEyLDIuMDIsMTQuNDYsMi4wMiwyMS45NiwwLDQuMjktLjIzLDguNTQtLjY4LDEyLjcyaC0xOTQuNzdaTTU3Mi40OSwxOTYuNDljLTkuNDctMzIuMDctMzkuMTMtNTUuNDgtNzQuMjgtNTUuNDhzLTY0LjgxLDIzLjQtNzQuMjgsNTUuNDhoMTQ4LjU1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTg0NC4wMiwxMDQuMDNsLTkyLjQ2LDIyOC43My0zOS4zLDk3LjJoLTQzLjkxbDM0LjI2LTg0Ljc2YzMuMjMtNy45OCwzLjIzLTE2LjkxLDAtMjQuODlsLTg3LjQzLTIxNi4yOGg0My45Mmw3MC41LDE3NC40LDcwLjUtMTc0LjRoNDMuOTJaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTA4MC41OSwyMTguNDVjMCw2NS43NS01My4zMSwxMTkuMDUtMTE5LjA1LDExOS4wNXMtMTE5LjA1LTUzLjMtMTE5LjA1LTExOS4wNSw1My4zLTExOS4wNCwxMTkuMDUtMTE5LjA0LDExOS4wNSw1My4zLDExOS4wNSwxMTkuMDRNMTAzOC45OCwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDQsMzQuNjctNzcuNDQsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDQsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzEyLjk0LDE5OC44djEzNC4wN2gtNDEuNjF2LTEzNC4wN2MwLTMxLjkxLTI1Ljg3LTU3Ljc5LTU3Ljc5LTU3Ljc5cy01Ny43OSwyNS44OC01Ny43OSw1Ny43OXYxMzMuNjhoLTQxLjYxVjEwMy42NGg0MS42MXYyMi4wOGMxMi44LTE2LjM0LDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQsNDQuNSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTgzLjcxLDB2MzMyLjg3aC00MS42MXYtMzAuNDhjLTE4LjA4LDIxLjY4LTQ0LjQ1LDM1LjEtNzcuNDQsMzUuMS02NS43NSwwLTExOS4wNS01My4zLTExOS4wNS0xMTkuMDVzNTMuMy0xMTkuMDQsMTE5LjA1LTExOS4wNGMzMi45OSwwLDU5LjM2LDEzLjQyLDc3LjQ0LDM1LjFWMGg0MS42MVpNMTU0Mi4xMSwyMTguNDVjMC00Mi43Ny0zNC42Ny03Ny40NC03Ny40NC03Ny40NHMtNzcuNDMsMzQuNjctNzcuNDMsNzcuNDQsMzQuNjcsNzcuNDQsNzcuNDMsNzcuNDQsNzcuNDQtMzQuNjcsNzcuNDQtNzcuNDQiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTI5Ljg4IDQ4OS43NiAxMjkuODggNzgzLjM0IDg4LjI3IDc4My4zNCA4OC4yNyA0ODkuNzYgMCA0ODkuNzYgMCA0NTAuNDYgMjE3LjMgNDUwLjQ2IDIxNy4zIDQ4OS43NiAxMjkuODggNDg5Ljc2Ii8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDM5LjE1LDY0OS4yNnYxMzQuMDdoLTQxLjYxdi0xMzQuMDdjMC0zMS45MS0yNS44Ny01Ny43OS01Ny44LTU3Ljc5cy01Ny43OSwyNS44Ny01Ny43OSw1Ny43OXYxMzMuNjloLTQxLjZ2LTMzMi40OWg0MS42djEyNS43MWMxMi44LTE2LjMzLDMxLjgtMjYuMzEsNTcuNzktMjYuMzEsNTQuOSwwLDk5LjQxLDQ0LjUsOTkuNDEsOTkuMzkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MTYuMTEsNjgxLjYyYzYuMDcsMzYuNzIsMzcuOTYsNjQuNzMsNzYuMzksNjQuNzMsMjUuMTMsMCw0Ny40NS0xMS45Nyw2MS42LTMwLjUybDM0LjY1LDIzLjE1Yy0yMS42NSwyOS42OS01Ni43LDQ4Ljk4LTk2LjI1LDQ4Ljk4LTYxLjQ1LDAtMTEyLjAzLTQ2LjU3LTExOC4zNy0xMDYuMzQtLjQ0LTQuMTgtLjY3LTguNDItLjY3LTEyLjcxLDAtNy41LjctMTQuODQsMi4wMi0yMS45NiwxMC4zLTU1LjI2LDU4Ljc4LTk3LjA5LDExNy4wMi05Ny4wOXMxMDYuNzMsNDEuODMsMTE3LjAzLDk3LjA5YzEuMzIsNy4xMiwyLjAyLDE0LjQ2LDIuMDIsMjEuOTYsMCw0LjI5LS4yMyw4LjUzLS42OCwxMi43MWgtMTk0Ljc3Wk02NjYuNzgsNjQ2Ljk1Yy05LjQ3LTMyLjA4LTM5LjEzLTU1LjQ4LTc0LjI4LTU1LjQ4cy02NC44MSwyMy40LTc0LjI4LDU1LjQ4aDE0OC41NVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTI2LjczLDY4OC43NWwzNC42NywyM2MtMzAuNjYsNDUuOTUtODIuOTksNzYuMjEtMTQyLjM3LDc2LjIxLTk0LjQ4LDAtMTcxLjA2LTc2LjU5LTE3MS4wNi0xNzEuMDZzNzYuNTgtMTcxLjA2LDE3MS4wNi0xNzEuMDZjNTkuMjksMCwxMTEuNTMsMzAuMTcsMTQyLjIyLDc1Ljk5bC0zNC41OSwyMy4xMmMtMjMuMjMtMzQuNjctNjIuNzctNTcuNS0xMDcuNjMtNTcuNS03MS41LDAtMTI5LjQ1LDU3Ljk2LTEyOS40NSwxMjkuNDVzNTcuOTYsMTI5LjQ1LDEyOS40NSwxMjkuNDVjNDQuOSwwLDg0LjQ3LTIyLjg3LDEwNy42OS01Ny42Ii8+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxMTk0LjAyIiB5PSI0NTAuNDYiIHdpZHRoPSI0MS42MSIgaGVpZ2h0PSIzMzIuODciLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjg1LjcyLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xMjg1LjcyLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTU3Ni4yMiw2NDkuMjZ2MTM0LjA3aC00MS42MXYtMTM0LjA3YzAtMzEuOTEtMjUuODctNTcuNzktNTcuOC01Ny43OXMtNTcuNzksMjUuODctNTcuNzksNTcuNzl2MTMzLjY4aC00MS42MXYtMjI4Ljg1aDQxLjYxdjIyLjA4YzEyLjgtMTYuMzMsMzEuOC0yNi4zMSw1Ny43OS0yNi4zMSw1NC45LDAsOTkuNCw0NC41MSw5OS40LDk5LjQiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNjIyLjExLDQ2NC4zM2g0MS42MXY0MS42MWgtNDEuNjF2LTQxLjYxWk0xNjIyLjExLDU1NC40OWg0MS42MXYyMjguODVoLTQxLjYxdi0yMjguODVaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTg4NS42Niw3MTEuOTRsMzQuNiwyMy4xMmMtMjEuMzYsMzEuOS01Ny43MSw1Mi45LTk4Ljk5LDUyLjktNjUuNzUsMC0xMTkuMDUtNTMuMzEtMTE5LjA1LTExOS4wNXM1My4zLTExOS4wNSwxMTkuMDUtMTE5LjA1YzQxLjI4LDAsNzcuNjQsMjEsOTguOTksNTIuOWwtMzQuNiwyMy4xMmMtMTMuODktMjAuNzUtMzcuNTUtMzQuNDEtNjQuMzktMzQuNDEtNDIuNzcsMC03Ny40NCwzNC42Ny03Ny40NCw3Ny40NHMzNC42Nyw3Ny40NCw3Ny40NCw3Ny40NGMyNi44NCwwLDUwLjUtMTMuNjYsNjQuMzktMzQuNDEiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xOTAwLjkxLDQ4NC45NGMwLTUuMjYtNC4yNC05LjUyLTkuNDgtOS41MmgtMTAuNzR2MzAuNDdoMi41M3YtMTEuNDJoNy44NWw3LjUyLDExLjQyaDIuOTVsLTcuNzItMTEuNzRjNC4wOC0xLjA2LDcuMDktNC43OCw3LjA5LTkuMjFNMTg4My4yMSw0OTEuOTN2LTEzLjk3aDguMjFjMy44NCwwLDYuOTUsMy4xMyw2Ljk1LDYuOThzLTMuMTEsNi45OC02Ljk1LDYuOThoLTguMjFaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTkxOC42OSw0NzguNDFjLTEuNTgtMy43NC0zLjgzLTcuMS02LjcxLTEwLTIuODgtMi44OS02LjIyLTUuMTYtOS45Ni02Ljc0LTMuODYtMS42NC03Ljk2LTIuNDgtMTIuMTktMi40OHMtOC4zMy44NC0xMi4xOSwyLjQ4Yy0zLjczLDEuNTgtNy4wOCwzLjg1LTkuOTUsNi43NC0yLjg4LDIuODktNS4xNCw2LjI1LTYuNzIsMTAtMS42NCwzLjg5LTIuNDYsOC0yLjQ2LDEyLjI1cy44Miw4LjM2LDIuNDYsMTIuMjRjMS41OCwzLjc0LDMuODQsNy4xMSw2LjcyLDEwLDIuODcsMi44OCw2LjIyLDUuMTUsOS45NSw2Ljc0LDMuODYsMS42NCw3Ljk2LDIuNDgsMTIuMTksMi40OHM4LjMzLS44MywxMi4xOS0yLjQ4YzMuNzQtMS41OCw3LjA4LTMuODUsOS45Ni02Ljc0LDIuODgtMi44OSw1LjE0LTYuMjYsNi43MS0xMCwxLjY0LTMuODgsMi40Ni04LDIuNDYtMTIuMjRzLS44My04LjM2LTIuNDYtMTIuMjVNMTkxNS41OCw1MDEuNThjLTEuNDEsMy4zNC0zLjQyLDYuMzQtNS45OSw4LjkxLTIuNTYsMi41OC01LjU1LDQuNi04Ljg4LDYuMDItMy40NCwxLjQ2LTcuMSwyLjItMTAuODcsMi4ycy03LjQzLS43NC0xMC44Ny0yLjJjLTMuMzMtMS40MS02LjMxLTMuNDQtOC44OC02LjAyLTIuNTctMi41Ny00LjU4LTUuNTctNS45OS04LjkxLTEuNDUtMy40Ni0yLjE5LTcuMTMtMi4xOS0xMC45MnMuNzQtNy40NiwyLjE5LTEwLjkyYzEuNDEtMy4zNCwzLjQyLTYuMzQsNS45OS04LjkyLDIuNTYtMi41OCw1LjU1LTQuNiw4Ljg4LTYuMDIsMy40NC0xLjQ2LDcuMS0yLjIsMTAuODctMi4yczcuNDMuNzQsMTAuODcsMi4yYzMuMzMsMS40MSw2LjMyLDMuNDQsOC44OCw2LjAyLDIuNTcsMi41OCw0LjU4LDUuNTgsNS45OSw4LjkyLDEuNDYsMy40NiwyLjE5LDcuMTMsMi4xOSwxMC45MnMtLjc0LDcuNDYtMi4xOSwxMC45MiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMzMS4wMiwxNzcuOTdjLTIuODMsNC42My03LjU2LDkuNjQtMTQuNzIsMTUuMDctNS41Niw0LjIyLTExLjQ1LDcuODMtMTcuMDcsMTAuMzUsNy4zMSw5LjI1LDExLjc0LDIwLjg2LDExLjc0LDMzLjU2LDAsMjkuNjEtMjMuNyw1My43LTUzLjE3LDU0LjMxaDBzLTIxMy41MSwwLTIxMy41MSwwbC4wOC01NC4zMWMwLTI5LjYxLDIzLjctNTMuNjksNTMuMTctNTQuMzFoMHMxMjkuOTMsMCwxMjkuOTMsMGMzMi4wNS0uMjcsNDEuNzcuNDIsNjYuMzEtMTUuODQsNC42Ni0zLjA5LDguNzItNi41OSwxMi4yOS0xMC4yNi0uMDEtLjAxLS4wMi0uMDItLjA0LS4wMywxNS45NS0xNi42MiwyNS43NS0zOS4xNywyNS43NS02NC4wM0MzMzEuNzgsNDEuNDEsMjkwLjM4LDAsMjM5LjMxLDBIMi42OHYxNTYuNzljMTAuNTEtMTkuNTUsMjQuNjktMjkuNDcsNDEuNjEtMzcuNTVWNDEuNjFoMTk1LjAyYzI4LjA5LDAsNTAuODYsMjIuNzcsNTAuODYsNTAuODZzLTIyLjU1LDUwLjYzLTUwLjQ1LDUwLjg1aC0xMTguOTVsLS45My4xN3MtNDMuOS0yLjY5LTcwLjUxLDEzLjAxQzIxLjQ2LDE3MywyLjc3LDIwMy4zNywyLjc3LDIzOC4xMXY5NC43N2gyNTcuMzV2LS4wMmM1MS4yOC0xLjIzLDkyLjQ2LTQzLjE4LDkyLjQ2LTk0Ljc0LDAtMjIuODQtOC4wOS00My43OC0yMS41NS02MC4xNCIvPjwvc3ZnPg==" alt="Beyond the Clinic"></div>
+      <h1>Discover <span class="thin">— on a page</span></h1>
+    </div>
+    <div class="meta">
+      <span class="chip gate">CP1 · Gate 1</span>
+      <span class="chip">Beyond the Clinic</span>
+      <span class="chip">v1.0 · 09 Jul 2026</span>
+      <span class="chip solid">Powered by Maxxim&trade;</span>
+    </div>
+  </header>
+
+  <div class="canvas">
+
+    <!-- slot: the-belief | sources: discover-summary | budget: 30 words | archetype notes: personal=personal mission/story; sme=founder's promise; org=mandate/mission -->
+    <section class="box b-belief">
+      <div class="box-label">The Belief</div>
+      <p class="statement">BTC believes healthcare should not stop at the clinic door — that every person and every partner deserves to Be free of pain and limitation, beyond a broken, fragmented, clinic-bound system.</p>
+      <p class="belief-order">Read in order: the belief leads, documented results earn it, the method explains it — Why, then Result, then Method.</p>
+    </section>
+
+    <!-- slot: are-you-ready | sources: discover-summary | budget: 5 x 12 words | archetype notes: READY is a Discover-only qualification frame (SPEC §4), not in the §5 archetype table; rendered directly for the sme lens -->
+    <section class="box b-ready">
+      <div class="box-label">Are You READY?</div>
+      <div class="checklist">
+        <div class="check open"><span class="tick">?</span><span class="t"><strong>Resources</strong> — beyond one founder? Ali still owns relationship, narrative, proposal and close.</span></div>
+        <div class="check open"><span class="tick">?</span><span class="t"><strong>Executive buy-in</strong> — pricing and packaging await sign-off from Ali, Jason and Courtney.</span></div>
+        <div class="check"><span class="tick">✓</span><span class="t"><strong>Alignment</strong> — three buyer-led offers, one platform, insurers as the near-term wedge.</span></div>
+        <div class="check open"><span class="tick">?</span><span class="t"><strong>Deadline</strong> — no Design-kickoff date stated yet; to be set with leadership.</span></div>
+        <div class="check"><span class="tick">✓</span><span class="t"><strong>Yes-criteria</strong> — pricing validated and proof consolidated before Design proceeds.</span></div>
+      </div>
+    </section>
+
+    <!-- slot: killer-questions | sources: discover-summary §1 | budget: 5 x 20 words | archetype notes: not in the §5 archetype table (Discover-only slot); truths selected as-stated for the sme lens -->
+    <section class="box b-killer">
+      <div class="box-label">Killer Questions <span class="sub">— the 5 truths</span></div>
+      <ol>
+        <li>BTC has done the hard part: real product, real clinical authority, real market proof. The question is not legitimacy — it is packaging.</li>
+        <li>The growth bottleneck is conversion architecture, not product. BTC needs cleaner translation of what already exists, not more ideas.</li>
+        <li>Different buyers want different BTCs — telling them all the same story at once is the core failure mode.</li>
+        <li>BTC is over-dependent on one person, Ali Stokes, for narrative, proposals and close. Sales infrastructure must reduce that risk.</li>
+        <li>Pricing clarity is the biggest unlock. The product is ahead of the pitch; interest does not close without procurement-safe packaging.</li>
+      </ol>
+    </section>
+
+    <!-- slot: the-core | sources: audience-teardown, offer-worksheet, competitor-analysis, discover-summary | budget: see sub-slots below -->
+    <div class="core-cluster">
+      <div class="core-label">THE CORE <span class="sub">— the heart of the sheet</span></div>
+      <div class="core-grid">
+
+        <!-- slot: core-customers | sources: audience-teardown | budget: 3 personas x 30 words | archetype notes: personal=audience & community; sme=customer segments + personas; org=stakeholder map (customers, board, funders/donors, citizens) -->
+        <div class="box core-box b-customers">
+          <div class="box-label"><span class="core-letter">C</span>ustomers</div>
+          <div class="persona-stack">
+            <div class="persona">
+              <span class="p-tag">Insurer Innovation Lead</span>
+              <div class="p-name">Priya</div>
+              <div class="pgp">
+                <div class="row"><span class="k">Pain</span>Rising MSK claims, pilots that never scale, fear of backing a vendor who overclaims.</div>
+                <div class="row"><span class="k">Need</span>A measured pathway with documented ROI, clean governance, defensible member experience.</div>
+              </div>
+            </div>
+            <div class="persona">
+              <span class="p-tag">Surgical Channel Partner</span>
+              <div class="p-name">Marcus</div>
+              <div class="pgp">
+                <div class="row"><span class="k">Pain</span>Patient drop-off, weak prehab uptake, generic digital tools clinicians distrust.</div>
+                <div class="row"><span class="k">Need</span>A pathway that keeps patients engaged, lifts recovery, differentiates the partner.</div>
+              </div>
+            </div>
+            <div class="persona">
+              <span class="p-tag">Strategic Investor</span>
+              <div class="p-name">Capital & Grants</div>
+              <div class="pgp">
+                <div class="row"><span class="k">Pain</span>Services disguised as software, fragile founder-dependent sales, concentration risk.</div>
+                <div class="row"><span class="k">Need</span>Repeatable economics and a credible moat proving the present is real.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- slot: core-offering | sources: offer-worksheet | budget: 60 words | archetype notes: personal=products, services, content, speaking; sme=product/service ladder + pricing; org=portfolio/programs/services (Gov: service catalogue) -->
+        <div class="box core-box b-offering">
+          <div class="box-label"><span class="core-letter">O</span>ffer</div>
+          <div class="core-body">
+            <p class="lead">Three buyer-led offers on one platform, priced by pilot, cohort or pathway — one pricing card per buyer type; numbers are directional, TBC pending leadership sign-off.</p>
+            <p><strong>Proof:</strong> nib / Honeysuckle Project Mobilise, roughly 3x ROI, published with nib's consent.</p>
+            <div class="pills">
+              <span class="pill hot">Insurers → PHI Cost &amp; Outcomes</span>
+              <span class="pill hot">Surgical → Surgical Optimisation</span>
+              <span class="pill hot">Future → MSK Risk &amp; Prevention</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- slot: core-rivals | sources: competitor-analysis | budget: 4 rows x 20 words | archetype notes: personal=competing voices, differentiation; sme=direct competitor battlecard; org=category forces + benchmark orgs (NFP: share of giving) -->
+        <div class="box core-box b-rivals">
+          <div class="box-label"><span class="core-letter">R</span>ivals</div>
+          <div class="core-body">
+          <table class="mini">
+            <thead><tr><th>Who</th><th>Claim</th><th>Weakness</th><th>Our response</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sword / Hinge / Kaia</strong></td><td>Digital-first MSK at scale, well-funded</td><td>Remote, imported, weaker local payer &amp; surgical fit</td><td>Lead local proof over imported category status</td></tr>
+              <tr><td><strong>Local physio networks</strong></td><td>Hands-on, trusted local care</td><td>Fragmented, no platform leverage, weak measurement</td><td>Coordinate the full pathway, one platform</td></tr>
+              <tr><td><strong>In-house insurer programs</strong></td><td>Safe, embedded member wellbeing</td><td>Slow, committee-heavy, shallow MSK depth</td><td>Faster, specialised, documented local ROI</td></tr>
+              <tr><td><strong>Do nothing / status quo</strong></td><td>Politically safe, no vendor risk</td><td>Cost blowout, poor coordination continues</td><td>Make delay look expensive</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <!-- slot: core-expression | sources: discover-summary, competitor-analysis | budget: 50 words | archetype notes: personal=personal identity: photography, voice, platforms; sme=brand system; org=brand + sub-brand architecture, compliance rules -->
+        <div class="box core-box">
+          <div class="box-label"><span class="core-letter">E</span>xpression</div>
+          <div class="core-body">
+            <p class="lead">BTC's voice is proof-led when it should be belief-led. The story compresses to one generic pitch for every buyer, and closing depends on Ali narrating from memory.</p>
+            <p>The fix: open every room on the belief, prove it buyer-specific, then explain the platform — three front doors, one underlying truth.</p>
+            <div class="pills">
+              <span class="pill">Clinically credible</span>
+              <span class="pill">Locally grounded</span>
+              <span class="pill">Commercially clear</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- slot: the-position | sources: discover-summary | budget: 40 words | archetype notes: not in the §5 archetype table (Discover-only slot); the defended Gate 1 position, sme lens -->
+    <section class="box b-position tint">
+      <div class="box-label">The Position</div>
+      <p class="lead">BTC takes people beyond a broken, clinic-bound system — the opportunity is real, the constraint is commercial framing, not legitimacy. Position: three buyer-led offers on one platform, insurers as near-term wedge, Stryker as credibility layer, prevention and employer pathways held as expansion.</p>
+    </section>
+
+    <!-- slot: evidence | sources: discover-summary, offer-worksheet | budget: 5 x 15 words | archetype notes: not in the §5 archetype table (Discover-only slot); proof points cleared exactly as sources state them -->
+    <section class="box b-evidence">
+      <div class="box-label">Evidence</div>
+      <ul>
+        <li>nib / Honeysuckle Project Mobilise: roughly 3x ROI, published with nib's consent — strongest commercial proof.</li>
+        <li>Stryker partnership: strategic credibility and surgical-channel relevance, named with Stryker's sign-off.</li>
+        <li>Clinician-founded model led by Dr Jason Tsung anchors clinical authority and trust.</li>
+        <li>Active insurer pipeline, including AHSA and HBF conversations, beyond the nib relationship.</li>
+        <li>Owned, stable in-house AWS platform with real telehealth and product capability.</li>
+      </ul>
+    </section>
+
+    <!-- slot: gate-1-decision | sources: discover-summary (Gate 1 recommendation) | budget: 80 words | archetype notes: sign-off maps to §5 (personal=the person; sme=founder/GM; org=accountable executive + endorsing body); verdict framed for sme (founder/GM) lens -->
+    <section class="box gate-box b-gate">
+      <div class="box-label">Gate 1 Decision</div>
+      <p class="verdict">PROCEED TO DESIGN</p>
+      <p><strong>Decided:</strong> three buyer-led offers on one platform; insurers as near-term wedge; Stryker as credibility and channel layer; prevention and employer pathways held as expansion.</p>
+      <p><strong>Still open:</strong> exact pricing and packaging per buyer type; conversion and drop-off metrics; live status of each pipeline account; whether the employer pathway commercialises now or later.</p>
+      <p><strong>Before Design:</strong> pricing validated and consolidated proof (activation, conversion, retention, claims impact, ROI) signed off by leadership — pricing stays TBC until then.</p>
+    </section>
+
+  </div>
+
+  <footer class="sheet-foot">
+    <div class="signoff">
+      <div class="sig"><span class="k">Prepared by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Approved by</span><span class="line"></span></div>
+      <div class="sig"><span class="k">Date</span><span class="line"></span></div>
+    </div>
+    <div class="src">Distilled from: discover-summary · audience-teardown · competitor-analysis · offer-worksheet — generated 09 Jul 2026</div>
+    <div class="brandline">Powered by <strong>Maxxim&trade;</strong> · Jewell 3D Process&trade;</div>
+  </footer>
+
+</section></div>
+<script>
+const fit=()=>{const st=document.querySelector('.stage'),sh=document.querySelector('.sheet');const f=Math.min(1,(innerWidth-32)/sh.offsetWidth);document.documentElement.style.setProperty('--fit',f);st.style.height=(sh.offsetHeight*f)+'px';};
+addEventListener('resize',fit);fit();
+</script>
+<script>
+/* ================================================================
+   Maxxim — On-a-Page zoom.
+   Inlined verbatim alongside a3-framework.css in every On-a-Page
+   artifact. Finds every scaled-down sheet on the page (the elements
+   that wrap a `.sheet`: `.stage` in standalone/merged-pack contexts,
+   `.oap-stage` when embedded in a client pack), and adds a small
+   "Zoom" button that enlarges it full-viewport, scrollable and
+   pannable — the print scale is too dense to read comfortably on
+   screen without this.
+
+   Deliberately does NOT clone or relocate the `.sheet` element: several
+   delivery contexts scope the sheet's own CSS to an ancestor wrapper
+   (`.pg .box`, `#pg-discover .box-label`, `#oap-deploy table.mini`, …),
+   so moving it out of that ancestry — even into a same-page overlay —
+   would silently drop all of its styling. Instead the `.stage`/
+   `.oap-stage` wrapper itself becomes the full-viewport, scrollable
+   "lightbox" in place, and the sheet is temporarily re-parented one
+   level down into a small measurement wrapper (still inside the same
+   ancestor chain, so every scoped selector keeps matching) purely so
+   its zoomed box can be centred and scrolled correctly. Everything is
+   restored exactly on close.
+
+   Safe to include once per page even with multiple sheets present
+   (each gets its own trigger; one shared control bar is reused). Guards
+   against double-init if a page accidentally inlines this twice.
+   ================================================================ */
+(function () {
+  if (window.__a3ZoomInit) return;
+  window.__a3ZoomInit = true;
+
+  function init() {
+    var stages = [].slice.call(document.querySelectorAll('.stage, .oap-stage'));
+    if (!stages.length) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'a3-lb-bar';
+    bar.innerHTML =
+      '<button type="button" class="a3-lb-btn" data-a3="out" aria-label="Zoom out">−</button>' +
+      '<span class="a3-lb-pct" data-a3="pct">100%</span>' +
+      '<button type="button" class="a3-lb-btn" data-a3="in" aria-label="Zoom in">+</button>' +
+      '<button type="button" class="a3-lb-btn" data-a3="reset" aria-label="Reset zoom">Fit</button>' +
+      '<button type="button" class="a3-lb-btn a3-lb-close" data-a3="close" aria-label="Close">×</button>';
+    document.body.appendChild(bar);
+    var pctEl = bar.querySelector('[data-a3="pct"]');
+
+    var active = null; // { stage, sheet, wrap, natW, natH, baseScale, zoom, savedStageStyle, savedSheetTransform }
+
+    function applyZoom() {
+      if (!active) return;
+      var s = active.baseScale * active.zoom;
+      active.sheet.style.transform = 'scale(' + s + ')';
+      active.sheet.style.transformOrigin = 'top left';
+      active.wrap.style.width = (active.natW * s) + 'px';
+      active.wrap.style.height = (active.natH * s) + 'px';
+      pctEl.textContent = Math.round(active.zoom * 100) + '%';
+    }
+
+    function open(stage) {
+      if (active) close();
+      var sheet = stage.querySelector('.sheet');
+      if (!sheet) return;
+
+      var savedSheetTransform = sheet.style.transform;
+      sheet.style.transform = 'none';
+      var natW = sheet.offsetWidth, natH = sheet.offsetHeight;
+      if (!natW || !natH) { sheet.style.transform = savedSheetTransform; return; }
+
+      var savedStageStyle = stage.getAttribute('style') || '';
+
+      // `position:fixed` positions relative to the viewport UNLESS some
+      // ancestor establishes its own containing block — via transform,
+      // filter, perspective, backdrop-filter, will-change, or contain.
+      // The treacherous case is a finished CSS entrance animation held by
+      // `animation-fill-mode: both` (host packs fade/rise each newly-shown
+      // section in): its filled transform reports as an identity matrix,
+      // still a containing block, and — because animations outrank plain
+      // inline styles in the cascade — a bare `style.transform='none'`
+      // does nothing against it. So: cancel live animations on the chain
+      // first (one-shot entrance effects, long since played out, so
+      // cancelling is visually a no-op and the site re-runs them fresh on
+      // the next page visit), then force any remaining offender off with
+      // an `!important` inline override, which does outrank animations.
+      var CB_PROPS = {
+        'transform': 'none', 'filter': 'none', 'backdrop-filter': 'none',
+        'perspective': 'none', 'will-change': 'auto', 'contain': 'none',
+      };
+      function makesContainingBlock(prop, v) {
+        if (!v) return false;
+        if (prop === 'will-change') return /transform|filter|perspective/.test(v);
+        if (prop === 'contain') return /paint|layout|content|strict/.test(v);
+        return v !== 'none';
+      }
+      var neutralised = [];
+      for (var an = stage.parentElement; an && an !== document.body; an = an.parentElement) {
+        if (an.getAnimations) {
+          an.getAnimations().forEach(function (a) { try { a.cancel(); } catch (e) {} });
+        }
+        var cs = getComputedStyle(an);
+        for (var prop in CB_PROPS) {
+          if (makesContainingBlock(prop, cs.getPropertyValue(prop))) {
+            neutralised.push({
+              el: an, prop: prop,
+              prev: an.style.getPropertyValue(prop),
+              prevPriority: an.style.getPropertyPriority(prop),
+            });
+            an.style.setProperty(prop, CB_PROPS[prop], 'important');
+          }
+        }
+      }
+
+      // Re-parent the sheet one level down, inside the SAME ancestor chain
+      // (stage is untouched otherwise), purely so its exact scaled box size
+      // can be reserved for margin-based centring inside the scrollable stage.
+      var wrap = document.createElement('div');
+      wrap.className = 'a3-zoom-wrap';
+      stage.insertBefore(wrap, sheet);
+      wrap.appendChild(sheet);
+
+      active = {
+        stage: stage, sheet: sheet, wrap: wrap, natW: natW, natH: natH,
+        zoom: 1, savedStageStyle: savedStageStyle, savedSheetTransform: savedSheetTransform,
+        neutralised: neutralised,
+      };
+
+      stage.style.transform = 'none';
+      stage.style.width = '';
+      stage.style.height = '';
+      stage.classList.add('a3-zoom-open');
+
+      var availW = innerWidth * 0.92, availH = innerHeight * 0.82;
+      active.baseScale = Math.min(availW / natW, availH / natH, 1.6);
+      applyZoom();
+
+      bar.classList.add('open');
+      document.documentElement.classList.add('a3-lb-lock');
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
+    }
+
+    function close() {
+      if (!active) return;
+      var a = active;
+      a.sheet.style.transform = a.savedSheetTransform;
+      a.stage.insertBefore(a.sheet, a.wrap);
+      a.wrap.remove();
+      if (a.savedStageStyle) a.stage.setAttribute('style', a.savedStageStyle);
+      else a.stage.removeAttribute('style');
+      a.stage.classList.remove('a3-zoom-open');
+      a.neutralised.forEach(function (n) {
+        if (n.prev) n.el.style.setProperty(n.prop, n.prev, n.prevPriority);
+        else n.el.style.removeProperty(n.prop);
+      });
+      active = null;
+      bar.classList.remove('open');
+      document.documentElement.classList.remove('a3-lb-lock');
+    }
+
+    stages.forEach(function (stage) {
+      stage.classList.add('a3-zoomable');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'a3-zoom-btn';
+      btn.setAttribute('aria-label', 'Zoom in to read this sheet');
+      btn.innerHTML =
+        '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" ' +
+        'stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/>' +
+        '<line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/>' +
+        '<line x1="8" y1="11" x2="14" y2="11"/></svg><span>Zoom</span>';
+      btn.addEventListener('click', function (e) { e.stopPropagation(); open(stage); });
+      stage.appendChild(btn);
+
+      // Click the dark surround (not the sheet itself) to close.
+      stage.addEventListener('click', function (e) {
+        if (stage.classList.contains('a3-zoom-open') && e.target === stage) close();
+      });
+    });
+
+    bar.addEventListener('click', function (e) {
+      var act = e.target.closest && e.target.closest('[data-a3]');
+      if (!act || !active) return;
+      var k = act.getAttribute('data-a3');
+      if (k === 'in') { active.zoom = Math.min(active.zoom + 0.25, 4); applyZoom(); }
+      else if (k === 'out') { active.zoom = Math.max(active.zoom - 0.25, 0.4); applyZoom(); }
+      else if (k === 'reset') { active.zoom = 1; applyZoom(); active.stage.scrollTop = 0; active.stage.scrollLeft = 0; }
+      else if (k === 'close') close();
+    });
+
+    document.addEventListener('wheel', function (e) {
+      if (!active || !e.ctrlKey) return;
+      e.preventDefault();
+      active.zoom = Math.min(4, Math.max(0.4, active.zoom + (e.deltaY < 0 ? 0.12 : -0.12)));
+      applyZoom();
+    }, { passive: false });
+
+    document.addEventListener('keydown', function (e) {
+      if (!active) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === '+' || e.key === '=') { active.zoom = Math.min(4, active.zoom + 0.25); applyZoom(); }
+      else if (e.key === '-' || e.key === '_') { active.zoom = Math.max(0.4, active.zoom - 0.25); applyZoom(); }
+      else if (e.key === '0') { active.zoom = 1; applyZoom(); }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

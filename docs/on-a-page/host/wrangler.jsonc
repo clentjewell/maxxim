@@ -1,0 +1,19 @@
+{
+  // Hosted On-a-Page pack (BTC worked example) — password-gated static worker,
+  // same delivery pattern as the BTC 3D Process summary document.
+  // Deploy: node build.mjs && npx wrangler deploy
+  "name": "claude-btc-on-a-page",
+  "compatibility_date": "2026-06-01",
+  "main": "worker.js",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // The gate must see every request — without this, assets that match a
+    // path (i.e. the document itself) are served before the Worker runs.
+    "run_worker_first": true
+  },
+  "vars": {
+    // Override with `wrangler secret put PACK_PASSWORD` for a non-repo password.
+    "PACK_PASSWORD": "btc2026"
+  }
+}
