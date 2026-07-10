@@ -68,19 +68,43 @@
       var savedStageStyle = stage.getAttribute('style') || '';
 
       // `position:fixed` positions relative to the viewport UNLESS some
-      // ancestor establishes its own containing block — which any ancestor
-      // with a non-`none` transform does, including one mid- or post- a CSS
-      // entrance animation (some host packs fade/rise each newly-shown
-      // section in with `animation: ... both`, and a few browsers keep that
-      // animation's effect "in force" — and its transform engaged — even
-      // once finished). Walk up and neutralise any such transform inline
-      // for the duration of the zoom, so the lightbox reliably fills the
-      // real viewport regardless of what the surrounding page is doing.
+      // ancestor establishes its own containing block — via transform,
+      // filter, perspective, backdrop-filter, will-change, or contain.
+      // The treacherous case is a finished CSS entrance animation held by
+      // `animation-fill-mode: both` (host packs fade/rise each newly-shown
+      // section in): its filled transform reports as an identity matrix,
+      // still a containing block, and — because animations outrank plain
+      // inline styles in the cascade — a bare `style.transform='none'`
+      // does nothing against it. So: cancel live animations on the chain
+      // first (one-shot entrance effects, long since played out, so
+      // cancelling is visually a no-op and the site re-runs them fresh on
+      // the next page visit), then force any remaining offender off with
+      // an `!important` inline override, which does outrank animations.
+      var CB_PROPS = {
+        'transform': 'none', 'filter': 'none', 'backdrop-filter': 'none',
+        'perspective': 'none', 'will-change': 'auto', 'contain': 'none',
+      };
+      function makesContainingBlock(prop, v) {
+        if (!v) return false;
+        if (prop === 'will-change') return /transform|filter|perspective/.test(v);
+        if (prop === 'contain') return /paint|layout|content|strict/.test(v);
+        return v !== 'none';
+      }
       var neutralised = [];
       for (var an = stage.parentElement; an && an !== document.body; an = an.parentElement) {
-        if (getComputedStyle(an).transform !== 'none') {
-          neutralised.push({ el: an, prev: an.style.transform });
-          an.style.transform = 'none';
+        if (an.getAnimations) {
+          an.getAnimations().forEach(function (a) { try { a.cancel(); } catch (e) {} });
+        }
+        var cs = getComputedStyle(an);
+        for (var prop in CB_PROPS) {
+          if (makesContainingBlock(prop, cs.getPropertyValue(prop))) {
+            neutralised.push({
+              el: an, prop: prop,
+              prev: an.style.getPropertyValue(prop),
+              prevPriority: an.style.getPropertyPriority(prop),
+            });
+            an.style.setProperty(prop, CB_PROPS[prop], 'important');
+          }
         }
       }
 
@@ -123,8 +147,8 @@
       else a.stage.removeAttribute('style');
       a.stage.classList.remove('a3-zoom-open');
       a.neutralised.forEach(function (n) {
-        if (n.prev) n.el.style.transform = n.prev;
-        else n.el.style.removeProperty('transform');
+        if (n.prev) n.el.style.setProperty(n.prop, n.prev, n.prevPriority);
+        else n.el.style.removeProperty(n.prop);
       });
       active = null;
       bar.classList.remove('open');
